@@ -13,6 +13,7 @@ int main(int argc, char* argv[])
 
 	igl::read_triangle_mesh("C:/Users/karen/source/repos/libigl/out/build/x64-Debug/_deps/libigl_tutorial_data-src" "/cylinder.obj", V, F);
 
+	//Gets number of triangles from the faces matrix
 	int numOfTrianlges = F.rows();
 
 	int random = rand() % numOfTrianlges;

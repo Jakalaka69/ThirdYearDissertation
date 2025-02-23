@@ -1,8 +1,8 @@
-# Install script for directory: C:/Users/karen/source/repos/year3diss
+# Install script for directory: C:/Users/karen/source/repos/ThirdYearDissertation5
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "C:/Users/karen/source/repos/year3diss/out/install/x64-Debug")
+  set(CMAKE_INSTALL_PREFIX "C:/Users/karen/Source/Repos/ThirdYearDissertation5/out/install/x64-Debug")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -34,17 +34,17 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/karen/source/repos/year3diss/out/build/x64-Debug/_deps/libigl-build/cmake_install.cmake")
+  include("C:/Users/karen/source/repos/ThirdYearDissertation5/out/build/x64-Debug/_deps/libigl-build/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/karen/source/repos/year3diss/out/build/x64-Debug/_deps/glfw-build/cmake_install.cmake")
+  include("C:/Users/karen/source/repos/ThirdYearDissertation5/out/build/x64-Debug/_deps/glfw-build/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/karen/source/repos/year3diss/out/build/x64-Debug/_deps/glad-build/cmake_install.cmake")
+  include("C:/Users/karen/source/repos/ThirdYearDissertation5/out/build/x64-Debug/_deps/glad-build/cmake_install.cmake")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
@@ -62,6 +62,6 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-  file(WRITE "C:/Users/karen/source/repos/year3diss/out/build/x64-Debug/${CMAKE_INSTALL_MANIFEST}"
+  file(WRITE "C:/Users/karen/source/repos/ThirdYearDissertation5/out/build/x64-Debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()
