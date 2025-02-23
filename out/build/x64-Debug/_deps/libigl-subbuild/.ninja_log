@@ -1,0 +1,21 @@
+# ninja log v6
+5	86	7620325869611112	libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-mkdir	6ec4e07c5664ca74
+5	86	7620325869611112	C:/Users/karen/source/repos/year3diss/out/build/x64-Debug/_deps/libigl-subbuild/libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-mkdir	6ec4e07c5664ca74
+87	5893	7620325927652562	libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-download	4d484c887b3e63d
+87	5893	7620325927652562	C:/Users/karen/source/repos/year3diss/out/build/x64-Debug/_deps/libigl-subbuild/libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-download	4d484c887b3e63d
+5894	6169	7620325927758723	libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-update	96d275c9ac9d8c54
+5894	6169	7620325927758723	C:/Users/karen/source/repos/year3diss/out/build/x64-Debug/_deps/libigl-subbuild/libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-update	96d275c9ac9d8c54
+6169	6261	7620325931331731	libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-patch	14bef8a2d2d6f07e
+6169	6261	7620325931331731	C:/Users/karen/source/repos/year3diss/out/build/x64-Debug/_deps/libigl-subbuild/libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-patch	14bef8a2d2d6f07e
+6261	6356	7620325932298109	libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-configure	71ed14f8e58b2fa2
+6261	6356	7620325932298109	C:/Users/karen/source/repos/year3diss/out/build/x64-Debug/_deps/libigl-subbuild/libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-configure	71ed14f8e58b2fa2
+6356	6447	7620325933223319	libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-build	5378526dd75a5db8
+6356	6447	7620325933223319	C:/Users/karen/source/repos/year3diss/out/build/x64-Debug/_deps/libigl-subbuild/libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-build	5378526dd75a5db8
+6447	6543	7620325934168079	libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-install	6ea57ed8b660a8b0
+6447	6543	7620325934168079	C:/Users/karen/source/repos/year3diss/out/build/x64-Debug/_deps/libigl-subbuild/libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-install	6ea57ed8b660a8b0
+6544	6636	7620325935104713	libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-test	8d0b0665f849e07f
+6544	6636	7620325935104713	C:/Users/karen/source/repos/year3diss/out/build/x64-Debug/_deps/libigl-subbuild/libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-test	8d0b0665f849e07f
+6637	6768	7620325936434701	CMakeFiles/libigl-populate-complete	5e0237e867f18fdb
+6637	6768	7620325936434701	libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-done	5e0237e867f18fdb
+6637	6768	7620325936434701	C:/Users/karen/source/repos/year3diss/out/build/x64-Debug/_deps/libigl-subbuild/CMakeFiles/libigl-populate-complete	5e0237e867f18fdb
+6637	6768	7620325936434701	C:/Users/karen/source/repos/year3diss/out/build/x64-Debug/_deps/libigl-subbuild/libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-done	5e0237e867f18fdb

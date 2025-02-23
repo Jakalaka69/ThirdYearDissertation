@@ -1,0 +1,22 @@
+# ninja log v6
+19	52	7620326207671725	clean	8c45b54705a541e8
+90	627	7620326209045940	_deps/glfw-build/src/CMakeFiles/glfw.dir/win32_monitor.c.obj	35bcffcd15f7fc17
+118	636	7620326209332972	_deps/glfw-build/src/CMakeFiles/glfw.dir/wgl_context.c.obj	920fdb68d2bf87c3
+77	644	7620326208920219	_deps/glfw-build/src/CMakeFiles/glfw.dir/win32_init.c.obj	6596ee3ae70c34ce
+61	651	7620326208757742	_deps/glfw-build/src/CMakeFiles/glfw.dir/vulkan.c.obj	396b0e451fb651b5
+97	656	7620326209107066	_deps/glfw-build/src/CMakeFiles/glfw.dir/win32_time.c.obj	9559510b1f706bd7
+54	662	7620326208684232	_deps/glfw-build/src/CMakeFiles/glfw.dir/monitor.c.obj	6f9c78a766049c54
+69	666	7620326208833112	_deps/glfw-build/src/CMakeFiles/glfw.dir/window.c.obj	5d799bcb4897e0e2
+38	670	7620326208532935	_deps/glfw-build/src/CMakeFiles/glfw.dir/init.c.obj	fca27dc304584906
+30	674	7620326208442987	_deps/glfw-build/src/CMakeFiles/glfw.dir/context.c.obj	8f72dd62f4306f23
+47	677	7620326208601011	_deps/glfw-build/src/CMakeFiles/glfw.dir/input.c.obj	590ca27f9ca35c93
+84	681	7620326208980594	_deps/glfw-build/src/CMakeFiles/glfw.dir/win32_joystick.c.obj	3f8ea7b228a6e7ed
+111	685	7620326209257777	_deps/glfw-build/src/CMakeFiles/glfw.dir/win32_window.c.obj	99a5f83fcc239b9c
+132	738	7620326209473689	_deps/glfw-build/src/CMakeFiles/glfw.dir/osmesa_context.c.obj	5896945860994bc2
+143	786	7620326209579184	_deps/glad-build/CMakeFiles/glad.dir/src/glad.c.obj	3cff0fab2805a18c
+787	863	7620326216010592	_deps/glad-build/glad.lib	12371894a4a04811
+104	915	7620326209187443	_deps/glfw-build/src/CMakeFiles/glfw.dir/win32_thread.c.obj	36e26c95078f82cf
+125	930	7620326209388315	_deps/glfw-build/src/CMakeFiles/glfw.dir/egl_context.c.obj	4d2a7c2f7b743436
+931	991	7620326217450942	_deps/glfw-build/src/glfw3.lib	3a4a43dd9a0249ba
+151	23805	7620326209654402	CMakeFiles/example.dir/main.cpp.obj	4201810334898672
+23810	25311	7620326446238928	example.exe	b1815b78d143f99a

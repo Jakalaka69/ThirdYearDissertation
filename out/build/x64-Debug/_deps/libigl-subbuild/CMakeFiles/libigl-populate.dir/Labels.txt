@@ -1,0 +1,14 @@
+# Target labels
+ libigl-populate
+# Source files and their labels
+C:/Users/karen/source/repos/year3diss/out/build/x64-Debug/_deps/libigl-subbuild/CMakeFiles/libigl-populate
+C:/Users/karen/source/repos/year3diss/out/build/x64-Debug/_deps/libigl-subbuild/CMakeFiles/libigl-populate.rule
+C:/Users/karen/source/repos/year3diss/out/build/x64-Debug/_deps/libigl-subbuild/CMakeFiles/libigl-populate-complete.rule
+C:/Users/karen/source/repos/year3diss/out/build/x64-Debug/_deps/libigl-subbuild/libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-build.rule
+C:/Users/karen/source/repos/year3diss/out/build/x64-Debug/_deps/libigl-subbuild/libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-configure.rule
+C:/Users/karen/source/repos/year3diss/out/build/x64-Debug/_deps/libigl-subbuild/libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-download.rule
+C:/Users/karen/source/repos/year3diss/out/build/x64-Debug/_deps/libigl-subbuild/libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-install.rule
+C:/Users/karen/source/repos/year3diss/out/build/x64-Debug/_deps/libigl-subbuild/libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-mkdir.rule
+C:/Users/karen/source/repos/year3diss/out/build/x64-Debug/_deps/libigl-subbuild/libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-patch.rule
+C:/Users/karen/source/repos/year3diss/out/build/x64-Debug/_deps/libigl-subbuild/libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-test.rule
+C:/Users/karen/source/repos/year3diss/out/build/x64-Debug/_deps/libigl-subbuild/libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-update.rule

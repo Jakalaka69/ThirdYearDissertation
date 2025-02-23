@@ -1,0 +1,21 @@
+# ninja log v6
+8	91	7620326104320262	glad-populate-prefix/src/glad-populate-stamp/glad-populate-mkdir	ae63943d24888c57
+8	91	7620326104320262	C:/Users/karen/source/repos/year3diss/out/build/x64-Debug/_deps/glad-subbuild/glad-populate-prefix/src/glad-populate-stamp/glad-populate-mkdir	ae63943d24888c57
+92	1689	7620326120308537	glad-populate-prefix/src/glad-populate-stamp/glad-populate-download	8a06067318bf3aa
+92	1689	7620326120308537	C:/Users/karen/source/repos/year3diss/out/build/x64-Debug/_deps/glad-subbuild/glad-populate-prefix/src/glad-populate-stamp/glad-populate-download	8a06067318bf3aa
+1690	1963	7620326120384821	glad-populate-prefix/src/glad-populate-stamp/glad-populate-update	be40e6255f8ba491
+1690	1963	7620326120384821	C:/Users/karen/source/repos/year3diss/out/build/x64-Debug/_deps/glad-subbuild/glad-populate-prefix/src/glad-populate-stamp/glad-populate-update	be40e6255f8ba491
+1963	2049	7620326123923289	glad-populate-prefix/src/glad-populate-stamp/glad-populate-patch	a65ae1054996f2c2
+1963	2049	7620326123923289	C:/Users/karen/source/repos/year3diss/out/build/x64-Debug/_deps/glad-subbuild/glad-populate-prefix/src/glad-populate-stamp/glad-populate-patch	a65ae1054996f2c2
+2049	2132	7620326124759406	glad-populate-prefix/src/glad-populate-stamp/glad-populate-configure	2d6c8632e3912a9d
+2049	2132	7620326124759406	C:/Users/karen/source/repos/year3diss/out/build/x64-Debug/_deps/glad-subbuild/glad-populate-prefix/src/glad-populate-stamp/glad-populate-configure	2d6c8632e3912a9d
+2133	2215	7620326125604586	glad-populate-prefix/src/glad-populate-stamp/glad-populate-build	23b287579f12270f
+2133	2215	7620326125604586	C:/Users/karen/source/repos/year3diss/out/build/x64-Debug/_deps/glad-subbuild/glad-populate-prefix/src/glad-populate-stamp/glad-populate-build	23b287579f12270f
+2215	2294	7620326126391314	glad-populate-prefix/src/glad-populate-stamp/glad-populate-install	7a3fe1d24ecb6e3
+2215	2294	7620326126391314	C:/Users/karen/source/repos/year3diss/out/build/x64-Debug/_deps/glad-subbuild/glad-populate-prefix/src/glad-populate-stamp/glad-populate-install	7a3fe1d24ecb6e3
+2295	2380	7620326127244663	glad-populate-prefix/src/glad-populate-stamp/glad-populate-test	9319611bcd2277df
+2295	2380	7620326127244663	C:/Users/karen/source/repos/year3diss/out/build/x64-Debug/_deps/glad-subbuild/glad-populate-prefix/src/glad-populate-stamp/glad-populate-test	9319611bcd2277df
+2381	2505	7620326128492843	CMakeFiles/glad-populate-complete	7cb82b00b3d92918
+2381	2505	7620326128492843	glad-populate-prefix/src/glad-populate-stamp/glad-populate-done	7cb82b00b3d92918
+2381	2505	7620326128492843	C:/Users/karen/source/repos/year3diss/out/build/x64-Debug/_deps/glad-subbuild/CMakeFiles/glad-populate-complete	7cb82b00b3d92918
+2381	2505	7620326128492843	C:/Users/karen/source/repos/year3diss/out/build/x64-Debug/_deps/glad-subbuild/glad-populate-prefix/src/glad-populate-stamp/glad-populate-done	7cb82b00b3d92918
