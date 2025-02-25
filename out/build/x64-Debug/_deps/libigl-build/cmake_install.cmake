@@ -1,8 +1,8 @@
-# Install script for directory: C:/Users/karen/source/repos/ThirdYearDissertation5/out/build/x64-Debug/_deps/libigl-src
+# Install script for directory: C:/Users/jaywh/source/repos/ThirdYearDissertation/out/build/x64-Debug/_deps/libigl-src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "C:/Users/karen/Source/Repos/ThirdYearDissertation5/out/install/x64-Debug")
+  set(CMAKE_INSTALL_PREFIX "C:/Users/jaywh/Source/Repos/ThirdYearDissertation/out/install/x64-Debug")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -33,14 +33,14 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "eigen" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE DIRECTORY FILES "C:/Users/karen/source/repos/ThirdYearDissertation5/out/build/x64-Debug/_deps/eigen-src/Eigen")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE DIRECTORY FILES "C:/Users/jaywh/source/repos/ThirdYearDissertation/out/build/x64-Debug/_deps/eigen-src/Eigen")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "eigen" OR NOT CMAKE_INSTALL_COMPONENT)
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/cmake/eigen/EigenTargets.cmake")
     file(DIFFERENT _cmake_export_file_changed FILES
          "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/cmake/eigen/EigenTargets.cmake"
-         "C:/Users/karen/source/repos/ThirdYearDissertation5/out/build/x64-Debug/_deps/libigl-build/CMakeFiles/Export/249b5657e72390bf7963761b324f92ad/EigenTargets.cmake")
+         "C:/Users/jaywh/source/repos/ThirdYearDissertation/out/build/x64-Debug/_deps/libigl-build/CMakeFiles/Export/249b5657e72390bf7963761b324f92ad/EigenTargets.cmake")
     if(_cmake_export_file_changed)
       file(GLOB _cmake_old_config_files "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/cmake/eigen/EigenTargets-*.cmake")
       if(_cmake_old_config_files)
@@ -53,6 +53,6 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "eigen" OR NOT CMAKE_INSTALL_COMPONENT)
     endif()
     unset(_cmake_export_file_changed)
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/eigen" TYPE FILE FILES "C:/Users/karen/source/repos/ThirdYearDissertation5/out/build/x64-Debug/_deps/libigl-build/CMakeFiles/Export/249b5657e72390bf7963761b324f92ad/EigenTargets.cmake")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/eigen" TYPE FILE FILES "C:/Users/jaywh/source/repos/ThirdYearDissertation/out/build/x64-Debug/_deps/libigl-build/CMakeFiles/Export/249b5657e72390bf7963761b324f92ad/EigenTargets.cmake")
 endif()
 

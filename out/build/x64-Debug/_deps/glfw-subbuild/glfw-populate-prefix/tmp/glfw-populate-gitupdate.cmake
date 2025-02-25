@@ -3,29 +3,19 @@
 
 cmake_minimum_required(VERSION 3.5)
 
-# Even at VERBOSE level, we don't want to see the commands executed, but
-# enabling them to be shown for DEBUG may be useful to help diagnose problems.
-cmake_language(GET_MESSAGE_LOG_LEVEL active_log_level)
-if(active_log_level MATCHES "DEBUG|TRACE")
-  set(maybe_show_command COMMAND_ECHO STDOUT)
-else()
-  set(maybe_show_command "")
-endif()
-
 function(do_fetch)
   message(VERBOSE "Fetching latest from the remote origin")
   execute_process(
     COMMAND "C:/Program Files/Git/cmd/git.exe" --git-dir=.git fetch --tags --force "origin"
-    WORKING_DIRECTORY "C:/Users/karen/source/repos/ThirdYearDissertation5/out/build/x64-Debug/_deps/glfw-src"
+    WORKING_DIRECTORY "C:/Users/jaywh/source/repos/ThirdYearDissertation/out/build/x64-Debug/_deps/glfw-src"
     COMMAND_ERROR_IS_FATAL LAST
-    ${maybe_show_command}
   )
 endfunction()
 
 function(get_hash_for_ref ref out_var err_var)
   execute_process(
     COMMAND "C:/Program Files/Git/cmd/git.exe" --git-dir=.git rev-parse "${ref}^0"
-    WORKING_DIRECTORY "C:/Users/karen/source/repos/ThirdYearDissertation5/out/build/x64-Debug/_deps/glfw-src"
+    WORKING_DIRECTORY "C:/Users/jaywh/source/repos/ThirdYearDissertation/out/build/x64-Debug/_deps/glfw-src"
     RESULT_VARIABLE error_code
     OUTPUT_VARIABLE ref_hash
     ERROR_VARIABLE error_msg
@@ -44,13 +34,10 @@ if(head_sha STREQUAL "")
   message(FATAL_ERROR "Failed to get the hash for HEAD:\n${error_msg}")
 endif()
 
-if("${can_fetch}" STREQUAL "")
-  set(can_fetch "YES")
-endif()
 
 execute_process(
   COMMAND "C:/Program Files/Git/cmd/git.exe" --git-dir=.git show-ref "3327050ca66ad34426a82c217c2d60ced61526b7"
-  WORKING_DIRECTORY "C:/Users/karen/source/repos/ThirdYearDissertation5/out/build/x64-Debug/_deps/glfw-src"
+  WORKING_DIRECTORY "C:/Users/jaywh/source/repos/ThirdYearDissertation/out/build/x64-Debug/_deps/glfw-src"
   OUTPUT_VARIABLE show_ref_output
 )
 if(show_ref_output MATCHES "^[a-z0-9]+[ \\t]+refs/remotes/")
@@ -70,7 +57,7 @@ elseif(show_ref_output MATCHES "^[a-z0-9]+[ \\t]+refs/tags/")
   # FIXME: We should provide an option to always fetch for this case
   get_hash_for_ref("3327050ca66ad34426a82c217c2d60ced61526b7" tag_sha error_msg)
   if(tag_sha STREQUAL head_sha)
-    message(VERBOSE "Already at requested tag: 3327050ca66ad34426a82c217c2d60ced61526b7")
+    message(VERBOSE "Already at requested tag: ${tag_sha}")
     return()
   endif()
 
@@ -110,7 +97,7 @@ else()
     # because it can be confusing for users to see a failed git command.
     # That failure is being handled here, so it isn't an error.
     if(NOT error_msg STREQUAL "")
-      message(DEBUG "${error_msg}")
+      message(VERBOSE "${error_msg}")
     endif()
     do_fetch()
     set(checkout_name "3327050ca66ad34426a82c217c2d60ced61526b7")
@@ -139,7 +126,7 @@ if(git_update_strategy MATCHES "^REBASE(_CHECKOUT)?$")
   # branch isn't tracking the one we want to checkout.
   execute_process(
     COMMAND "C:/Program Files/Git/cmd/git.exe" --git-dir=.git symbolic-ref -q HEAD
-    WORKING_DIRECTORY "C:/Users/karen/source/repos/ThirdYearDissertation5/out/build/x64-Debug/_deps/glfw-src"
+    WORKING_DIRECTORY "C:/Users/jaywh/source/repos/ThirdYearDissertation/out/build/x64-Debug/_deps/glfw-src"
     OUTPUT_VARIABLE current_branch
     OUTPUT_STRIP_TRAILING_WHITESPACE
     # Don't test for an error. If this isn't a branch, we get a non-zero error
@@ -155,7 +142,7 @@ if(git_update_strategy MATCHES "^REBASE(_CHECKOUT)?$")
   else()
     execute_process(
       COMMAND "C:/Program Files/Git/cmd/git.exe" --git-dir=.git for-each-ref "--format=%(upstream:short)" "${current_branch}"
-      WORKING_DIRECTORY "C:/Users/karen/source/repos/ThirdYearDissertation5/out/build/x64-Debug/_deps/glfw-src"
+      WORKING_DIRECTORY "C:/Users/jaywh/source/repos/ThirdYearDissertation/out/build/x64-Debug/_deps/glfw-src"
       OUTPUT_VARIABLE upstream_branch
       OUTPUT_STRIP_TRAILING_WHITESPACE
       COMMAND_ERROR_IS_FATAL ANY  # There is no error if no upstream is set
@@ -178,7 +165,7 @@ endif()
 # Check if stash is needed
 execute_process(
   COMMAND "C:/Program Files/Git/cmd/git.exe" --git-dir=.git status --porcelain
-  WORKING_DIRECTORY "C:/Users/karen/source/repos/ThirdYearDissertation5/out/build/x64-Debug/_deps/glfw-src"
+  WORKING_DIRECTORY "C:/Users/jaywh/source/repos/ThirdYearDissertation/out/build/x64-Debug/_deps/glfw-src"
   RESULT_VARIABLE error_code
   OUTPUT_VARIABLE repo_status
 )
@@ -192,23 +179,21 @@ string(LENGTH "${repo_status}" need_stash)
 if(need_stash)
   execute_process(
     COMMAND "C:/Program Files/Git/cmd/git.exe" --git-dir=.git stash save --quiet;--include-untracked
-    WORKING_DIRECTORY "C:/Users/karen/source/repos/ThirdYearDissertation5/out/build/x64-Debug/_deps/glfw-src"
+    WORKING_DIRECTORY "C:/Users/jaywh/source/repos/ThirdYearDissertation/out/build/x64-Debug/_deps/glfw-src"
     COMMAND_ERROR_IS_FATAL ANY
-    ${maybe_show_command}
   )
 endif()
 
 if(git_update_strategy STREQUAL "CHECKOUT")
   execute_process(
     COMMAND "C:/Program Files/Git/cmd/git.exe" --git-dir=.git checkout "${checkout_name}"
-    WORKING_DIRECTORY "C:/Users/karen/source/repos/ThirdYearDissertation5/out/build/x64-Debug/_deps/glfw-src"
+    WORKING_DIRECTORY "C:/Users/jaywh/source/repos/ThirdYearDissertation/out/build/x64-Debug/_deps/glfw-src"
     COMMAND_ERROR_IS_FATAL ANY
-    ${maybe_show_command}
   )
 else()
   execute_process(
     COMMAND "C:/Program Files/Git/cmd/git.exe" --git-dir=.git rebase "${checkout_name}"
-    WORKING_DIRECTORY "C:/Users/karen/source/repos/ThirdYearDissertation5/out/build/x64-Debug/_deps/glfw-src"
+    WORKING_DIRECTORY "C:/Users/jaywh/source/repos/ThirdYearDissertation/out/build/x64-Debug/_deps/glfw-src"
     RESULT_VARIABLE error_code
     OUTPUT_VARIABLE rebase_output
     ERROR_VARIABLE  rebase_output
@@ -217,8 +202,7 @@ else()
     # Rebase failed, undo the rebase attempt before continuing
     execute_process(
       COMMAND "C:/Program Files/Git/cmd/git.exe" --git-dir=.git rebase --abort
-      WORKING_DIRECTORY "C:/Users/karen/source/repos/ThirdYearDissertation5/out/build/x64-Debug/_deps/glfw-src"
-      ${maybe_show_command}
+      WORKING_DIRECTORY "C:/Users/jaywh/source/repos/ThirdYearDissertation/out/build/x64-Debug/_deps/glfw-src"
     )
 
     if(NOT git_update_strategy STREQUAL "REBASE_CHECKOUT")
@@ -226,11 +210,10 @@ else()
       if(need_stash)
         execute_process(
           COMMAND "C:/Program Files/Git/cmd/git.exe" --git-dir=.git stash pop --index --quiet
-          WORKING_DIRECTORY "C:/Users/karen/source/repos/ThirdYearDissertation5/out/build/x64-Debug/_deps/glfw-src"
-          ${maybe_show_command}
+          WORKING_DIRECTORY "C:/Users/jaywh/source/repos/ThirdYearDissertation/out/build/x64-Debug/_deps/glfw-src"
           )
       endif()
-      message(FATAL_ERROR "\nFailed to rebase in: 'C:/Users/karen/source/repos/ThirdYearDissertation5/out/build/x64-Debug/_deps/glfw-src'."
+      message(FATAL_ERROR "\nFailed to rebase in: 'C:/Users/jaywh/source/repos/ThirdYearDissertation/out/build/x64-Debug/_deps/glfw-src'."
                           "\nOutput from the attempted rebase follows:"
                           "\n${rebase_output}"
                           "\n\nYou will have to resolve the conflicts manually")
@@ -251,16 +234,14 @@ else()
       COMMAND "C:/Program Files/Git/cmd/git.exe" --git-dir=.git tag -a
               -m "ExternalProject attempting to move from here to ${checkout_name}"
               ${tag_name}
-      WORKING_DIRECTORY "C:/Users/karen/source/repos/ThirdYearDissertation5/out/build/x64-Debug/_deps/glfw-src"
+      WORKING_DIRECTORY "C:/Users/jaywh/source/repos/ThirdYearDissertation/out/build/x64-Debug/_deps/glfw-src"
       COMMAND_ERROR_IS_FATAL ANY
-      ${maybe_show_command}
     )
 
     execute_process(
       COMMAND "C:/Program Files/Git/cmd/git.exe" --git-dir=.git checkout "${checkout_name}"
-      WORKING_DIRECTORY "C:/Users/karen/source/repos/ThirdYearDissertation5/out/build/x64-Debug/_deps/glfw-src"
+      WORKING_DIRECTORY "C:/Users/jaywh/source/repos/ThirdYearDissertation/out/build/x64-Debug/_deps/glfw-src"
       COMMAND_ERROR_IS_FATAL ANY
-      ${maybe_show_command}
     )
   endif()
 endif()
@@ -269,36 +250,31 @@ if(need_stash)
   # Put back the stashed changes
   execute_process(
     COMMAND "C:/Program Files/Git/cmd/git.exe" --git-dir=.git stash pop --index --quiet
-    WORKING_DIRECTORY "C:/Users/karen/source/repos/ThirdYearDissertation5/out/build/x64-Debug/_deps/glfw-src"
+    WORKING_DIRECTORY "C:/Users/jaywh/source/repos/ThirdYearDissertation/out/build/x64-Debug/_deps/glfw-src"
     RESULT_VARIABLE error_code
-    ${maybe_show_command}
     )
   if(error_code)
     # Stash pop --index failed: Try again dropping the index
     execute_process(
       COMMAND "C:/Program Files/Git/cmd/git.exe" --git-dir=.git reset --hard --quiet
-      WORKING_DIRECTORY "C:/Users/karen/source/repos/ThirdYearDissertation5/out/build/x64-Debug/_deps/glfw-src"
-      ${maybe_show_command}
+      WORKING_DIRECTORY "C:/Users/jaywh/source/repos/ThirdYearDissertation/out/build/x64-Debug/_deps/glfw-src"
     )
     execute_process(
       COMMAND "C:/Program Files/Git/cmd/git.exe" --git-dir=.git stash pop --quiet
-      WORKING_DIRECTORY "C:/Users/karen/source/repos/ThirdYearDissertation5/out/build/x64-Debug/_deps/glfw-src"
+      WORKING_DIRECTORY "C:/Users/jaywh/source/repos/ThirdYearDissertation/out/build/x64-Debug/_deps/glfw-src"
       RESULT_VARIABLE error_code
-      ${maybe_show_command}
     )
     if(error_code)
       # Stash pop failed: Restore previous state.
       execute_process(
         COMMAND "C:/Program Files/Git/cmd/git.exe" --git-dir=.git reset --hard --quiet ${head_sha}
-        WORKING_DIRECTORY "C:/Users/karen/source/repos/ThirdYearDissertation5/out/build/x64-Debug/_deps/glfw-src"
-        ${maybe_show_command}
+        WORKING_DIRECTORY "C:/Users/jaywh/source/repos/ThirdYearDissertation/out/build/x64-Debug/_deps/glfw-src"
       )
       execute_process(
         COMMAND "C:/Program Files/Git/cmd/git.exe" --git-dir=.git stash pop --index --quiet
-        WORKING_DIRECTORY "C:/Users/karen/source/repos/ThirdYearDissertation5/out/build/x64-Debug/_deps/glfw-src"
-        ${maybe_show_command}
+        WORKING_DIRECTORY "C:/Users/jaywh/source/repos/ThirdYearDissertation/out/build/x64-Debug/_deps/glfw-src"
       )
-      message(FATAL_ERROR "\nFailed to unstash changes in: 'C:/Users/karen/source/repos/ThirdYearDissertation5/out/build/x64-Debug/_deps/glfw-src'."
+      message(FATAL_ERROR "\nFailed to unstash changes in: 'C:/Users/jaywh/source/repos/ThirdYearDissertation/out/build/x64-Debug/_deps/glfw-src'."
                           "\nYou will have to resolve the conflicts manually")
     endif()
   endif()
@@ -310,8 +286,7 @@ if(init_submodules)
     COMMAND "C:/Program Files/Git/cmd/git.exe"
             --git-dir=.git 
             submodule update --recursive --init 
-    WORKING_DIRECTORY "C:/Users/karen/source/repos/ThirdYearDissertation5/out/build/x64-Debug/_deps/glfw-src"
+    WORKING_DIRECTORY "C:/Users/jaywh/source/repos/ThirdYearDissertation/out/build/x64-Debug/_deps/glfw-src"
     COMMAND_ERROR_IS_FATAL ANY
-    ${maybe_show_command}
   )
 endif()
