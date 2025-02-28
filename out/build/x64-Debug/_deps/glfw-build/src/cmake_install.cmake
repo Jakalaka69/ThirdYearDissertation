@@ -1,8 +1,8 @@
-# Install script for directory: C:/Users/jaywh/source/repos/ThirdYearDissertation/out/build/x64-Debug/_deps/glfw-src/src
+# Install script for directory: C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/glfw-src/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "C:/Users/jaywh/Source/Repos/ThirdYearDissertation/out/install/x64-Debug")
+  set(CMAKE_INSTALL_PREFIX "C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/install/x64-Debug")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 

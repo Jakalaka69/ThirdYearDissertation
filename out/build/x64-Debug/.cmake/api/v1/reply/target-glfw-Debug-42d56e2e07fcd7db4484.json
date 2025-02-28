@@ -130,15 +130,15 @@
 			[
 				{
 					"backtrace" : 6,
-					"path" : "C:/Users/jaywh/source/repos/ThirdYearDissertation/out/build/x64-Debug/_deps/glfw-src/include"
+					"path" : "C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/glfw-src/include"
 				},
 				{
 					"backtrace" : 7,
-					"path" : "C:/Users/jaywh/source/repos/ThirdYearDissertation/out/build/x64-Debug/_deps/glfw-src/src"
+					"path" : "C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/glfw-src/src"
 				},
 				{
 					"backtrace" : 7,
-					"path" : "C:/Users/jaywh/source/repos/ThirdYearDissertation/out/build/x64-Debug/_deps/glfw-build/src"
+					"path" : "C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/glfw-build/src"
 				}
 			],
 			"language" : "C",

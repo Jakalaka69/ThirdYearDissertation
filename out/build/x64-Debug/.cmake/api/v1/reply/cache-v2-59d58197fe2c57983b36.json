@@ -51,7 +51,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "c:/Users/jaywh/source/repos/ThirdYearDissertation/out/build/x64-Debug"
+			"value" : "c:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -479,7 +479,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/jaywh/source/repos/ThirdYearDissertation/out/build/x64-Debug/CMakeFiles/pkgRedirects"
+			"value" : "C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -575,7 +575,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/Users/jaywh/source/repos/ThirdYearDissertation"
+			"value" : "C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation"
 		},
 		{
 			"name" : "CMAKE_INSTALL_BINDIR",
@@ -779,7 +779,7 @@
 				}
 			],
 			"type" : "PATH",
-			"value" : "C:/Users/jaywh/Source/Repos/ThirdYearDissertation/out/install/x64-Debug"
+			"value" : "C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/install/x64-Debug"
 		},
 		{
 			"name" : "CMAKE_INSTALL_RUNSTATEDIR",
@@ -1451,7 +1451,7 @@
 				}
 			],
 			"type" : "PATH",
-			"value" : "C:/Users/jaywh/source/repos/ThirdYearDissertation/out/build/x64-Debug/_deps"
+			"value" : "C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps"
 		},
 		{
 			"name" : "FETCHCONTENT_FULLY_DISCONNECTED",
@@ -1635,7 +1635,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/jaywh/source/repos/ThirdYearDissertation/out/build/x64-Debug/_deps/glfw-build"
+			"value" : "C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/glfw-build"
 		},
 		{
 			"name" : "GLFW_BUILD_DOCS",
@@ -1707,7 +1707,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/jaywh/source/repos/ThirdYearDissertation/out/build/x64-Debug/_deps/glfw-src"
+			"value" : "C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/glfw-src"
 		},
 		{
 			"name" : "GLFW_USE_HYBRID_HPG",
@@ -2051,7 +2051,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/Users/jaywh/Source/Repos/ThirdYearDissertation/out/install/x64-Debug"
+			"value" : "C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/install/x64-Debug"
 		},
 		{
 			"name" : "example_BINARY_DIR",
@@ -2063,7 +2063,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/jaywh/source/repos/ThirdYearDissertation/out/build/x64-Debug"
+			"value" : "C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug"
 		},
 		{
 			"name" : "example_IS_TOP_LEVEL",
@@ -2087,7 +2087,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/jaywh/source/repos/ThirdYearDissertation"
+			"value" : "C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation"
 		},
 		{
 			"name" : "glad_BINARY_DIR",
@@ -2099,7 +2099,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/jaywh/source/repos/ThirdYearDissertation/out/build/x64-Debug/_deps/glad-build"
+			"value" : "C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/glad-build"
 		},
 		{
 			"name" : "glad_IS_TOP_LEVEL",
@@ -2123,7 +2123,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/jaywh/source/repos/ThirdYearDissertation/out/build/x64-Debug/_deps/glad-src"
+			"value" : "C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/glad-src"
 		},
 		{
 			"name" : "libigl_BINARY_DIR",
@@ -2135,7 +2135,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/jaywh/source/repos/ThirdYearDissertation/out/build/x64-Debug/_deps/libigl-build"
+			"value" : "C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/libigl-build"
 		},
 		{
 			"name" : "libigl_IS_TOP_LEVEL",
@@ -2159,7 +2159,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/jaywh/source/repos/ThirdYearDissertation/out/build/x64-Debug/_deps/libigl-src"
+			"value" : "C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/libigl-src"
 		}
 	],
 	"kind" : "cache",

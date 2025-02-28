@@ -12,7 +12,7 @@ int main(int argc, char* argv[])
 {
 	// Load a mesh in OFF format
 
-	igl::read_triangle_mesh("C:/Users/jaywh/source/repos/ThirdYearDissertation/Models" "/cylinder3.obj", V, F);
+	igl::read_triangle_mesh("C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/models" "/cylinder1.obj", V, F);
 
 	//Gets number of triangles from the faces matrix
 	int numOfTrianlges = F.rows();
@@ -21,9 +21,9 @@ int main(int argc, char* argv[])
 	//int random = rand() % numOfTrianlges;
 	int random = 315;
 	//assign points of a random traingle
-	auto point0 = V.row(F.row(random)[0]);
-	auto point1 = V.row(F.row(random)[1]);
-	auto point2 = V.row(F.row(random)[2]);
+	double *point0 = V.row(F.row(random)[0]).data();
+	double *point1 = V.row(F.row(random)[1]).data();
+	double *point2 = V.row(F.row(random)[2]).data();
 
 
 	
@@ -36,9 +36,9 @@ int main(int argc, char* argv[])
 		}
 
 		//gets the verticies for the current triangle in loop
-		auto currPoint0 = V.row(F.row(x)[0]);
-		auto currPoint1 = V.row(F.row(x)[1]);
-		auto currPoint2 = V.row(F.row(x)[2]);
+		double *currPoint0 = V.row(F.row(x)[0]).data();
+		double *currPoint1 = V.row(F.row(x)[1]).data();
+		double *currPoint2 = V.row(F.row(x)[2]).data();
 
 
 		//initialise how many verticies hit
@@ -54,8 +54,8 @@ int main(int argc, char* argv[])
 		//possibly come back to improve here with array based approch
 		//checks if pairs of triangles have 2 matching points
 
-		vector<Eigen::Block<Eigen::MatrixXd,1,-1,false>> origList = {point0,point1,point2};
-		vector<Eigen::Block<Eigen::MatrixXd, 1, -1, false>> currentList = { currPoint0,currPoint1,currPoint2 };
+		vector<double *> origList = {point0,point1,point2};
+		vector<double* > currentList = { currPoint0,currPoint1,currPoint2 };
 		
 		
 
