@@ -12,7 +12,7 @@ int main(int argc, char* argv[])
 {
 	// Load a mesh in OFF format
 
-	igl::read_triangle_mesh("C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/models" "/planeTest.obj", V, F);
+	igl::read_triangle_mesh("C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/models" "/planeTest2.obj", V, F);
 
 	//Gets number of triangles from the faces matrix
 	int numOfTrianlges = F.rows();
@@ -20,11 +20,23 @@ int main(int argc, char* argv[])
 	//select random triangle
 	//int random = rand() % numOfTrianlges;
 	int random = 0;
-	//assign points of a random traingle
+	//assign points of a random traingle 
+
+	//bug .data() is are not coordinates, its just some number, find way to extract coordinates from points, possibly store
+	//using points[3][3] style list
 	double *point0 = V.row(F.row(random)[0]).data();
+	V.row(F.row(random)[0]);
 	double *point1 = V.row(F.row(random)[1]).data();
 	double *point2 = V.row(F.row(random)[2]).data();
 
+	double* targetTri[3];
+
+	//loop to select target triangle
+	std::cout << "target Triangle" << endl;
+	for (int i = 0; i < 3; i++) {
+		targetTri[i] = V.row(F.row(random)[i]).data();
+		std::cout << *targetTri[i] << endl;
+	}
 
 	
 	//search through each triangle and find ones connected to the input
@@ -32,32 +44,32 @@ int main(int argc, char* argv[])
 
 		//skips currnnt loop iteration iftriangle is equal to input triangle
 		if (F.row(x) == F.row(random)) {
+			std::cout << "target Triangle Located" << endl;
 			continue;
 		}
 
 		//gets the verticies for the current triangle in loop
 		double *currPoint0 = V.row(F.row(x)[0]).data();
-	//	V.row(F.row(x)[0]).setZero();
 		double *currPoint1 = V.row(F.row(x)[1]).data();
-	//	V.row(F.row(x)[1]).setZero();
-		double *currPoint2 = V.row(F.row(x)[2]).data();
-	//	V.row(F.row(x)[2]).setZero();
 
+		double *currPoint2 = V.row(F.row(x)[2]).data();
+
+		//initialises current points list
 		double* points[3];
 
-		cout << "========" << endl;
-		cout << "triangle no." << x << endl;
+		//prints all coords of current triangle
+		std::cout << "========" << endl;
+		std::cout << "triangle no." << x << endl;
 		for (int i = 0; i < 3; i++) {
 			points[i] = V.row(F.row(x)[i]).data();
-			cout << *points[i] << endl;
+			std::cout << *points[i] << endl;
 		}
-
-		cout << "========" << endl;
+		std::cout << "========" << endl;
 
 
 	}
 	//Plot the mesh
-	cout << endl << endl << endl;
+	std::cout << endl << endl << endl;
 	//open libigl viewer
 	igl::opengl::glfw::Viewer viewer;
 	viewer.data().set_mesh(V, F);
