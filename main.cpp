@@ -12,19 +12,31 @@ int main(int argc, char* argv[])
 {
 	// Load a mesh in OFF format
 
-	igl::read_triangle_mesh("C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/models" "/cylinder1.obj", V, F);
+	igl::read_triangle_mesh("C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/models" "/planeTest2.obj", V, F);
 
 	//Gets number of triangles from the faces matrix
 	int numOfTrianlges = F.rows();
 
 	//select random triangle
 	//int random = rand() % numOfTrianlges;
-	int random = 315;
-	//assign points of a random traingle
+	int random = 0;
+	//assign points of a random traingle 
+
+	//bug .data() is are not coordinates, its just some number, find way to extract coordinates from points, possibly store
+	//using points[3][3] style list
 	double *point0 = V.row(F.row(random)[0]).data();
+	V.row(F.row(random)[0]);
 	double *point1 = V.row(F.row(random)[1]).data();
 	double *point2 = V.row(F.row(random)[2]).data();
 
+	double* targetTri[3];
+
+	//loop to select target triangle
+	std::cout << "target Triangle" << endl;
+	for (int i = 0; i < 3; i++) {
+		targetTri[i] = V.row(F.row(random)[i]).data();
+		std::cout << *targetTri[i] << endl;
+	}
 
 	
 	//search through each triangle and find ones connected to the input
@@ -32,83 +44,32 @@ int main(int argc, char* argv[])
 
 		//skips currnnt loop iteration iftriangle is equal to input triangle
 		if (F.row(x) == F.row(random)) {
+			std::cout << "target Triangle Located" << endl;
 			continue;
 		}
 
 		//gets the verticies for the current triangle in loop
 		double *currPoint0 = V.row(F.row(x)[0]).data();
 		double *currPoint1 = V.row(F.row(x)[1]).data();
+
 		double *currPoint2 = V.row(F.row(x)[2]).data();
 
+		//initialises current points list
+		double* points[3];
 
-		//initialise how many verticies hit
-		bool point0Hit = false;
-		bool point1Hit = false;
-		bool point2Hit = false;
-
-		int count = 0;
-
-		bool cuPo0 = false;
-		bool cuPo1 = false;
-		bool cuPo2 = false;
-		//possibly come back to improve here with array based approch
-		//checks if pairs of triangles have 2 matching points
-
-		vector<double *> origList = {point0,point1,point2};
-		vector<double* > currentList = { currPoint0,currPoint1,currPoint2 };
-		
-		
-
-
-		for(int p = 0; p < 3;p++){
-			for (int y = 0; y < currentList.size()-1;y++) {
-				if (origList[p] == currentList[y]) {
-					point0Hit = true;
-					currentList.erase(currentList.begin()+y);
-					y--;
-					count++;
-				}
-			}
+		//prints all coords of current triangle
+		std::cout << "========" << endl;
+		std::cout << "triangle no." << x << endl;
+		for (int i = 0; i < 3; i++) {
+			points[i] = V.row(F.row(x)[i]).data();
+			std::cout << *points[i] << endl;
 		}
-/*
-		if (point0 == currPoint0  || point0 == currPoint1 || point0 == currPoint2) {
-			count++;
-			point0Hit = true;
-
-		}
-		if (point1 == currPoint0 || point1 == currPoint1 || point1 == currPoint2) {
-			count++;
-			point1Hit = true;
-		}
-		//if first two verticies dont match, skip the last comparison (saves time) and move onto the next triangle
-		else if (count == 0) {
-			continue;
-		}
-		//if first two verticies do match, skip the last comparison(saves time)
-		if (count == 2) {}
-		else if (point2 == currPoint0 || point2 == currPoint1 || point2 == currPoint2) {
-			count++;
-			point2Hit = true;
-		}
-		*/
-		//if the triangles are touching, output the edge they touch on
-		if (count == 2) {
-			cout << "===";
-			cout << currentList[0] << "    " << origList[0] << "    " << origList[1] << "    " << origList[2];
-			cout << "===";
-
-
-
-			
-			
-			
-			cout << endl;
-		}
+		std::cout << "========" << endl;
 
 
 	}
 	//Plot the mesh
-	cout << endl << endl << endl;
+	std::cout << endl << endl << endl;
 	//open libigl viewer
 	igl::opengl::glfw::Viewer viewer;
 	viewer.data().set_mesh(V, F);
