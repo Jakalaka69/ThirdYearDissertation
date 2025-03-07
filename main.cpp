@@ -12,23 +12,23 @@ int main(int argc, char* argv[])
 {
 	// Load a mesh in OFF format
 
-	igl::read_triangle_mesh("C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/models" "/planeTest2.obj", V, F);
+	igl::read_triangle_mesh("C:/Users/jaywh/source/repos/ThirdYearDissertation4/models"  "/planeTest2.obj", V, F);
 
 	//Gets number of triangles from the faces matrix
 	int numOfTrianlges = F.rows();
 
 	//select random triangle
 	//int random = rand() % numOfTrianlges;
-	int random = 0;
+	int random = 5;
 	//assign points of a random traingle 
 
 	//bug .data() is are not coordinates, its just some number, find way to extract coordinates from points, possibly store
 	//using points[3][3] style list
 	double *point0 = V.row(F.row(random)[0]).data();
-	V.row(F.row(random)[0]);
+	auto here = F;
 	double *point1 = V.row(F.row(random)[1]).data();
 	double *point2 = V.row(F.row(random)[2]).data();
-
+	cout << "    " << here << "     " << endl;
 	double* targetTri[3];
 
 	//loop to select target triangle
@@ -46,7 +46,7 @@ int main(int argc, char* argv[])
 		if (F.row(x) == F.row(random)) {
 			std::cout << "target Triangle Located" << endl;
 			continue;
-		}
+		}//asdasdsad
 
 		//gets the verticies for the current triangle in loop
 		double *currPoint0 = V.row(F.row(x)[0]).data();
@@ -55,14 +55,14 @@ int main(int argc, char* argv[])
 		double *currPoint2 = V.row(F.row(x)[2]).data();
 
 		//initialises current points list
-		double* points[3];
+		double points[3];
 
 		//prints all coords of current triangle
 		std::cout << "========" << endl;
 		std::cout << "triangle no." << x << endl;
 		for (int i = 0; i < 3; i++) {
-			points[i] = V.row(F.row(x)[i]).data();
-			std::cout << *points[i] << endl;
+			
+			std::cout << V(F(x, i),0) << " " << V(F(x, i), 1) << " " << V(F(x, i), 2) << endl;
 		}
 		std::cout << "========" << endl;
 
