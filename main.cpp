@@ -1,12 +1,55 @@
 #include <igl/readOFF.h>
 #include <igl/opengl/glfw/Viewer.h>
 #include <igl/read_triangle_mesh.h>
-#include <list>
+#include <vector>
 
 using namespace std;
 
 Eigen::MatrixXd V;
 Eigen::MatrixXi F;
+vector<vector<vector<double>>> FindConnected(vector<vector<double>> startTriangle, vector<vector<vector<double>>> fullConnectedList) {
+	//for every triangle in F
+	for (int x = 0; x < F.rows();x++) {
+		//if the triangle has not already been added to the fullConnectedList (stops repeats and looping)
+		if (F(x, 0) == 0 && F(x, 1) == 0 && F(x, 2) == 0) {
+			continue;
+		}
+
+		//initialise the current triangle in loop
+		vector<vector<double>> nextTriangle = {};
+		for (int i = 0; i < 3; i++) {
+
+			nextTriangle.push_back({ V(F(x, i), 0), V(F(x, i), 1), V(F(x, i), 2) });
+			//std::cout << V(F(x, i), 0) << " " << V(F(x, i), 1) << " " << V(F(x, i), 2) << endl;
+		}
+		//check all points of the startTriangle that we pass in and the current triangle of the for loop and keep a count of the amount of corners that touch
+		int count = 0;
+		for (int j = 0;j < 3;j++) {
+			for (int k = 0; k < 3; k++) {
+				
+				if (startTriangle[j] == nextTriangle[k]) {
+					
+					count++;
+				}
+				
+			}
+		}
+		//if the amount of corners that touch is equal to 2 then remove the current triangle of the for loop from F and recurse, using the current triangle as the start triangle for the function
+		if (count == 2) {
+			//put angle checks here and only do the stuff below if they pass
+			F(x, 0) = 0;
+			F(x, 1) = 0;
+			F(x, 2) = 0;
+			fullConnectedList.push_back(nextTriangle);
+			fullConnectedList = FindConnected(nextTriangle, fullConnectedList);
+		}
+
+
+
+
+	}
+	return fullConnectedList;
+}
 
 int main(int argc, char* argv[])
 {
@@ -19,55 +62,40 @@ int main(int argc, char* argv[])
 
 	//select random triangle
 	//int random = rand() % numOfTrianlges;
-	int random = 5;
-	//assign points of a random traingle 
+	int random = 1;
 
-	//bug .data() is are not coordinates, its just some number, find way to extract coordinates from points, possibly store
-	//using points[3][3] style list
-	double *point0 = V.row(F.row(random)[0]).data();
-	auto here = F;
-	double *point1 = V.row(F.row(random)[1]).data();
-	double *point2 = V.row(F.row(random)[2]).data();
-	cout << "    " << here << "     " << endl;
-	double* targetTri[3];
+	//assign point coordinates of a random traingle 
+	vector<double> P1 = {V(F(random, 0), 0), V(F(random, 0), 1), V(F(random, 0), 2)};
+	vector<double> P2 = { V(F(random, 1), 0), V(F(random, 1), 1), V(F(random, 1), 2) };
+	vector<double> P3 = { V(F(random, 2), 0), V(F(random, 2), 1), V(F(random, 2), 2) };
 
-	//loop to select target triangle
-	std::cout << "target Triangle" << endl;
-	for (int i = 0; i < 3; i++) {
-		targetTri[i] = V.row(F.row(random)[i]).data();
-		std::cout << *targetTri[i] << endl;
-	}
+	//initialise triangle with the points
+	vector<vector<double>> randTriangle = { P1, P2, P3 };
+	//remove randTriangle from F
+	F(random) = 0;
 
+	//list of connected faces to pass into FindConnected recursive function
+	vector<vector<vector<double>>> fullConnectedList;
+
+	//Call function, currently just returns all triangles in the model but once we 
+	//include the angle checks it will then print the correct triangles to make a plane out of
+	fullConnectedList = FindConnected(randTriangle,fullConnectedList);
 	
-	//search through each triangle and find ones connected to the input
-	for (int x = 0; x < F.rows();x++) {
-
-		//skips currnnt loop iteration iftriangle is equal to input triangle
-		if (F.row(x) == F.row(random)) {
-			std::cout << "target Triangle Located" << endl;
-			continue;
-		}//asdasdsad
-
-		//gets the verticies for the current triangle in loop
-		double *currPoint0 = V.row(F.row(x)[0]).data();
-		double *currPoint1 = V.row(F.row(x)[1]).data();
-
-		double *currPoint2 = V.row(F.row(x)[2]).data();
-
-		//initialises current points list
-		double points[3];
-
-		//prints all coords of current triangle
-		std::cout << "========" << endl;
-		std::cout << "triangle no." << x << endl;
-		for (int i = 0; i < 3; i++) {
-			
-			std::cout << V(F(x, i),0) << " " << V(F(x, i), 1) << " " << V(F(x, i), 2) << endl;
+	//print all triangles in final list
+	for (vector<vector<double>> triangle : fullConnectedList) {
+		cout << "Start of triangle" << endl;
+		int count1 = 0;
+		for (vector<double> point : triangle) {
+			cout << "Point " << count1 << " coordinates:";
+			count1++;
+			for (double coord : point) {
+				cout << coord;
+			}
+			cout << endl;
 		}
-		std::cout << "========" << endl;
-
-
+		cout << "End of triangle" << endl;
 	}
+	
 	//Plot the mesh
 	std::cout << endl << endl << endl;
 	//open libigl viewer
@@ -75,3 +103,22 @@ int main(int argc, char* argv[])
 	viewer.data().set_mesh(V, F);
 	viewer.launch();
 }
+
+
+
+
+
+/*output code for printing a triangle(weird because its a vector)
+
+cout << "Start of startTriangle" << endl;
+
+
+for (vector<double> point : startTriangle) {
+	cout << "Point " << " coordinates:";
+
+	for (double coord : point) {
+		cout << coord << " ";
+	}
+	cout << endl;
+}
+cout << "End startTriangle" << endl;*/
