@@ -1,16 +1,20 @@
-#include <igl/readOFF.h>
+﻿#include <igl/readOFF.h>
 #include <igl/opengl/glfw/Viewer.h>
 #include <igl/read_triangle_mesh.h>
 #include <vector>
-
+#include <cmath>
+#define _USE_MATH_DEFINES
 using namespace std;
 
 Eigen::MatrixXd V;
 Eigen::MatrixXi F;
+double pi = 3.14159265;
 
 vector<vector<vector<double>>> FindConnected(vector<vector<double>> startTriangle, vector<vector<vector<double>>> fullConnectedList) {
 	//for every triangle in F
 	for (int x = 0; x < F.rows();x++) {
+		
+		
 		//if the triangle has not already been added to the fullConnectedList (stops repeats and looping)
 		if (F(x, 0) == 0 && F(x, 1) == 0 && F(x, 2) == 0) {
 			continue;
@@ -21,6 +25,7 @@ vector<vector<vector<double>>> FindConnected(vector<vector<double>> startTriangl
 		
 		vector<vector<double>> touchingPoints = {};
 		vector<vector<double>> allPoints = {};
+		vector<vector<double>> final4Points = {};
 		allPoints = startTriangle;
 
 		for (int i = 0; i < 3; i++) {
@@ -55,20 +60,117 @@ vector<vector<vector<double>>> FindConnected(vector<vector<double>> startTriangl
 
 		//IDEA: look at unique points before removing the other points, that way we know these are the 2 peaks we have to calc the angles between
 
-		/*sort(allPoints.begin(), allPoints.end());
-		allPoints.erase(unique(allPoints.begin(), allPoints.end()), allPoints.end());*/
+		sort(allPoints.begin(), allPoints.end());
+		allPoints.erase(unique(allPoints.begin(), allPoints.end()), allPoints.end());
 
+		
+		int aVertIndex;
+		int dVertIndex;
 		//if the amount of corners that touch is equal to 2 then remove the current triangle of the for loop from F
 		//and recurse, using the current triangle as the start triangle for the function
 		if (count == 2) {
 			//put angle checks here and only do the stuff below if they pass
+
 			
 
-			F(x, 0) = 0;
-			F(x, 1) = 0;
-			F(x, 2) = 0;
-			fullConnectedList.push_back(nextTriangle);
-			fullConnectedList = FindConnected(nextTriangle, fullConnectedList);
+
+			int temp = 0;
+			for (vector<double> allPoint : allPoints) {
+				if (allPoint == touchingPoints[0]) {
+					final4Points.push_back(allPoint);
+					aVertIndex = temp;
+				}
+				else if (allPoint == touchingPoints[1]) {
+					final4Points.push_back(allPoint);
+					dVertIndex = temp;
+				}
+				else if (allPoint != touchingPoints[0] && allPoint != touchingPoints[1]) {
+					final4Points.push_back(allPoint);
+
+				}
+				temp++;
+			}
+			aVertIndex = aVertIndex % 4;
+			dVertIndex = dVertIndex % 4;
+			int offset = 1;
+			int bVertIndex = 0;
+			while (bVertIndex == aVertIndex || bVertIndex == dVertIndex) {
+				
+				bVertIndex = offset % 4;
+				offset++;
+			}
+			offset = 1;
+			int cVertIndex = 0;
+			while (cVertIndex == aVertIndex || cVertIndex == dVertIndex || cVertIndex == bVertIndex) {
+				
+				cVertIndex = offset % 4;
+				offset++;
+			}
+
+			
+
+			vector<double> U = { final4Points[aVertIndex][0] - final4Points[bVertIndex][0]
+							   , final4Points[aVertIndex][1] - final4Points[bVertIndex][1]
+							   , final4Points[aVertIndex][2] - final4Points[bVertIndex][2] };
+
+			vector<double> V = {final4Points[aVertIndex][0] - final4Points[dVertIndex][0]
+							  , final4Points[aVertIndex][1] - final4Points[dVertIndex][1]
+							  , final4Points[aVertIndex][2] - final4Points[dVertIndex][2]};
+			
+			vector<double> Normal = { 0,0,0 };
+
+			
+
+			Normal[0] = (U[1] * V[2]) - (U[2] * V[1]);
+			Normal[1] = (U[2] * V[0]) - (U[0] * V[2]);
+			Normal[2] = (U[0] * V[1]) - (U[1] * V[0]);
+
+			
+			
+				
+
+			
+
+			vector<double> U2 = { final4Points[aVertIndex][0] - final4Points[cVertIndex][0]
+							   , final4Points[aVertIndex][1] - final4Points[cVertIndex][1]
+							   , final4Points[aVertIndex][2] - final4Points[cVertIndex][2]};
+
+			vector<double> V2 = { final4Points[aVertIndex][0] - final4Points[dVertIndex][0]
+							  , final4Points[aVertIndex][1] - final4Points[dVertIndex][1]
+							  , final4Points[aVertIndex][2] - final4Points[dVertIndex][2]};
+
+			vector<double> Normal2 = { 0,0,0 };
+
+			Normal2[0] = (U2[1] * V2[2]) - (U2[2] * V2[1]);
+			Normal2[1] = (U2[2] * V2[0]) - (U2[0] * V2[2]);
+			Normal2[2] = (U2[0] * V2[1]) - (U2[1] * V2[0]);
+
+			
+			double numerator = abs((Normal[0] * Normal2[0]) + (Normal[1] * Normal2[1]) + (Normal[2] * Normal2[2]));
+			double denominator = (sqrt(pow(Normal[0], 2) + pow(Normal[1], 2) + pow(Normal[2], 2)) * sqrt(pow(Normal2[0], 2) + pow(Normal2[1], 2) + pow(Normal2[2], 2)));
+			double interiorAngle = acos(numerator / denominator);
+			double interiorDegrees = interiorAngle * (180 / pi);
+			cout << endl << interiorDegrees;
+			
+
+			
+			if (interiorDegrees < 20) {
+
+
+				unsigned int numRows = F.rows() - 1;
+				unsigned int numCols = F.cols();
+
+				if (x < numRows) {
+					F.block(x, 0, numRows - x, numCols) = F.block(x + 1, 0, numRows - x, numCols);
+				}
+
+				F.conservativeResize(numRows, numCols);
+
+				
+				fullConnectedList.push_back(nextTriangle);
+				fullConnectedList = FindConnected(nextTriangle, fullConnectedList);
+			}
+			
 		}
 
 
@@ -83,14 +185,15 @@ int main(int argc, char* argv[])
 	// Load a mesh in OFF format
 	
 
-	igl::read_triangle_mesh("C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/models"  "/planeTest2.obj", V, F);
+	igl::read_triangle_mesh("C:/Users/jaywh/source/repos/ThirdYearDissertation4/models"  "/squarePlane3.obj", V, F);
 
+	
 	//Gets number of triangles from the faces matrix
 	int numOfTrianlges = F.rows();
 
 	//select random triangle
 	//int random = rand() % numOfTrianlges;
-	int random = 1;
+	int random = 0;
 
 	//assign point coordinates of a random traingle 
 	vector<double> P1 = {V(F(random, 0), 0), V(F(random, 0), 1), V(F(random, 0), 2)};
@@ -100,7 +203,13 @@ int main(int argc, char* argv[])
 	//initialise triangle with the points
 	vector<vector<double>> randTriangle = { P1, P2, P3 };
 	//remove randTriangle from F
-	F(random) = 0;
+	unsigned int numRows = F.rows() - 1;
+	unsigned int numCols = F.cols();
+
+	if (random < numRows) {
+		//F.block(random, 0, numRows - random, numCols) = F.block(random + 1, 0, numRows - random, numCols);
+	}
+	//F.conservativeResize(numRows, numCols);
 
 	//list of connected faces to pass into FindConnected recursive function
 	vector<vector<vector<double>>> fullConnectedList;
@@ -151,3 +260,76 @@ for (vector<double> point : startTriangle) {
 	cout << endl;
 }
 cout << "End startTriangle" << endl;*/
+
+
+
+
+//Line AB 
+
+
+
+			/*double distAtoB = sqrt(pow(final4Points[aVertIndex][0] - final4Points[bVertIndex][0], 2)
+								 + pow(final4Points[aVertIndex][1] - final4Points[bVertIndex][1], 2)
+								 + pow(final4Points[aVertIndex][2] - final4Points[bVertIndex][2], 2));
+			cout << endl << "a-B = " << distAtoB;
+			//line AC
+			double distAtoC = sqrt(pow(final4Points[aVertIndex][0] - final4Points[cVertIndex][0], 2)
+								 + pow(final4Points[aVertIndex][1] - final4Points[cVertIndex][1], 2)
+								 + pow(final4Points[aVertIndex][2] - final4Points[cVertIndex][2], 2));
+			cout << endl << "A-C = " << distAtoC;
+			double distBtoC = sqrt(pow(final4Points[bVertIndex][0] - final4Points[cVertIndex][0], 2)
+								 + pow(final4Points[bVertIndex][1] - final4Points[cVertIndex][1], 2)
+								 + pow(final4Points[bVertIndex][2] - final4Points[cVertIndex][2], 2));
+			cout << endl << "B-C = " << distBtoC;
+			//Line DA
+			double distDtoA = sqrt(pow(final4Points[dVertIndex][0] - final4Points[aVertIndex][0], 2)
+								 + pow(final4Points[dVertIndex][1] - final4Points[aVertIndex][1], 2)
+								 + pow(final4Points[dVertIndex][2] - final4Points[aVertIndex][2], 2));
+			cout << endl << "D-A = " << distDtoA;
+			//Line DB
+			double distDtoB = sqrt(pow(final4Points[dVertIndex][0] - final4Points[bVertIndex][0], 2)
+								 + pow(final4Points[dVertIndex][1] - final4Points[bVertIndex][1], 2)
+								 + pow(final4Points[dVertIndex][2] - final4Points[bVertIndex][2], 2));
+			cout << endl << "D-B = " << distDtoB;
+			//Line DC
+			double distDtoC = sqrt(pow(final4Points[dVertIndex][0] - final4Points[cVertIndex][0], 2)
+								 + pow(final4Points[dVertIndex][1] - final4Points[cVertIndex][1], 2)
+								 + pow(final4Points[dVertIndex][2] - final4Points[cVertIndex][2], 2));
+			cout << endl << "D-C = " << distDtoC;
+
+
+
+			//Shared verts are a and d
+			// Triangle 1 = A-B B-D D-A
+			// Triangle 2 = A-C C-D D-A
+			//
+			// assume both triangle scalene to cover all cases
+			// s = (a+b+c)/2
+			//
+			// Heron's formula
+			// sqrt(s(s-a)(s-b)(s-c)) to find area
+			//
+			// 2*area/base to find the height
+			//
+			//cos(A) = (b^2 + c^2 − a^2)/2bc For interior angle once all three values are found
+
+
+			double s = (distAtoB + distDtoB + distDtoA) / 2;
+
+			double h = sqrt(s*(s - distAtoB)*(s - distDtoB)*(s - distDtoA));
+
+			double triangle1Height = 2 * h / distDtoA;
+
+			s = (distAtoC + distDtoC + distDtoA) / 2;
+
+			h = sqrt(s*(s - distAtoC)*(s - distDtoC)*(s - distDtoA));
+
+			double triangle2Height = 2 * h / distDtoA;
+
+			cout << triangle1Height << " " << triangle2Height << " " << distBtoC << endl;
+
+			double interiorAngle = acos((pow(triangle2Height,2)+pow(triangle1Height,2)-pow(distBtoC,2))/(2*triangle2Height*triangle1Height));
+			
+			double interiorDegrees = interiorAngle * 180 / pi;
+			cout << endl  << interiorDegrees << " <--";
+			*/
