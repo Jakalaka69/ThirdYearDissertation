@@ -230,7 +230,53 @@ int main(int argc, char* argv[])
 	fullConnectedList.push_back(randTriangle);
 	 fullConnectedList = FindConnected(randTriangle,fullConnectedList,randTriangle);
 	
-	
+	 vector<double> P1 = { V(F(random, 0), 0), V(F(random, 0), 1), V(F(random, 0), 2) };
+	 vector<double> P2 = { V(F(random, 1), 0), V(F(random, 1), 1), V(F(random, 1), 2) };
+	 vector<double> P3 = { V(F(random, 2), 0), V(F(random, 2), 1), V(F(random, 2), 2) };
+
+	 //initialise triangle with the points
+	 vector<vector<double>> randTriangle = { P1, P2, P3 };
+
+
+	 V.conservativeResize(V.rows() + 3, V.cols());
+
+	 double x_c = (P1[0] + P2[0] + P3[0]) / 3;
+	 double y_c = (P1[1] + P2[1] + P3[1]) / 3;
+	 double z_c = (P1[2] + P2[2] + P3[2]) / 3;
+
+
+	 //test plane
+	 //plane made of 2 traingles
+	 // double plane1
+	 // plane1
+	 // double
+	 // double
+
+
+
+	 cout << P1[0] << P1[1] << P1[2] << endl;
+	 cout << P2[0] << P2[1] << P2[2] << endl;
+	 cout << P3[0] << P3[1] << P3[2] << endl;
+	 cout << x_c << endl;
+	 cout << y_c << endl;
+	 cout << z_c << endl;
+	 V(V.rows() - 1, 0) = x_c + (P1[0] - x_c) * 10;
+	 V(V.rows() - 1, 1) = y_c + (P1[1] - y_c) * 10;
+	 V(V.rows() - 1, 2) = z_c + (P1[2] - z_c) * 10;
+	 V(V.rows() - 2, 0) = x_c + (P2[0] - x_c) * 10;
+	 V(V.rows() - 2, 1) = y_c + (P2[1] - y_c) * 10;
+	 V(V.rows() - 2, 2) = z_c + (P2[2] - z_c) * 10;
+	 V(V.rows() - 3, 0) = x_c + (P3[0] - x_c) * 10;
+	 V(V.rows() - 3, 1) = y_c + (P3[1] - y_c) * 10;
+	 V(V.rows() - 3, 2) = z_c + (P3[2] - z_c) * 10;
+
+	 F.conservativeResize(F.rows() + 1, V.cols());
+
+	 F(F.rows() - 1, 0) = V.rows() - 1;
+	 F(F.rows() - 1, 1) = V.rows() - 2;
+	 F(F.rows() - 1, 2) = V.rows() - 3;
+
+	 cout << V << endl;
 	//print all triangles in final list
 	for (vector<vector<double>> triangle : fullConnectedList) {
 		std::cout << "Start of triangle" << endl;
