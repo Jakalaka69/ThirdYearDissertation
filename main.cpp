@@ -193,7 +193,8 @@ int main(int argc, char* argv[])
 	// Load a mesh in OFF format
 	
 
-	igl::read_triangle_mesh("C:/Users/jaywh/source/repos/ThirdYearDissertation4/models"  "/Tower.obj", V, F);
+	//igl::read_triangle_mesh("C:/Users/jaywh/source/repos/ThirdYearDissertation4/models"  "/Tower.obj", V, F);
+	igl::read_triangle_mesh("C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/models"  "/Tower.obj", V, F);
 
 	
 	//Gets number of triangles from the faces matrix
@@ -202,7 +203,7 @@ int main(int argc, char* argv[])
 
 	//select random triangle
 	//int random = rand() % numOfTrianlges;
-	int random = 14;
+	int random = 500;
 
 	//assign point coordinates of a random traingle 
 	vector<double> P1 = {V(F(random, 0), 0), V(F(random, 0), 1), V(F(random, 0), 2)};
@@ -230,12 +231,12 @@ int main(int argc, char* argv[])
 	fullConnectedList.push_back(randTriangle);
 	 fullConnectedList = FindConnected(randTriangle,fullConnectedList,randTriangle);
 	
-	 vector<double> P1 = { V(F(random, 0), 0), V(F(random, 0), 1), V(F(random, 0), 2) };
-	 vector<double> P2 = { V(F(random, 1), 0), V(F(random, 1), 1), V(F(random, 1), 2) };
-	 vector<double> P3 = { V(F(random, 2), 0), V(F(random, 2), 1), V(F(random, 2), 2) };
+	 //vector<double> P1 = { V(F(random, 0), 0), V(F(random, 0), 1), V(F(random, 0), 2) };
+	 //vector<double> P2 = { V(F(random, 1), 0), V(F(random, 1), 1), V(F(random, 1), 2) };
+	 //vector<double> P3 = { V(F(random, 2), 0), V(F(random, 2), 1), V(F(random, 2), 2) };
 
 	 //initialise triangle with the points
-	 vector<vector<double>> randTriangle = { P1, P2, P3 };
+	 //vector<vector<double>> randTriangle = { P1, P2, P3 };
 
 
 	 V.conservativeResize(V.rows() + 3, V.cols());

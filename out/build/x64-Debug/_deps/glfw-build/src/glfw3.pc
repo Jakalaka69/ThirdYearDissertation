@@ -1,7 +1,7 @@
-prefix=C:/Users/jaywh/Source/Repos/ThirdYearDissertation4/out/install/x64-Debug
+prefix=C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/install/x64-Debug
 exec_prefix=${prefix}
-includedir=C:/Users/jaywh/Source/Repos/ThirdYearDissertation4/out/install/x64-Debug/include
-libdir=C:/Users/jaywh/Source/Repos/ThirdYearDissertation4/out/install/x64-Debug/lib
+includedir=C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/install/x64-Debug/include
+libdir=C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/install/x64-Debug/lib
 
 Name: GLFW
 Description: A multi-platform library for OpenGL, window and input
