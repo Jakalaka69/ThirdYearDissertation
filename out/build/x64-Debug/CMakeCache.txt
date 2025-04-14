@@ -14,6 +14,12 @@
 # EXTERNAL cache entries
 ########################
 
+//Build triangle executable
+BUILD_EXECUTABLE:BOOL=OFF
+
+//Build libtriangle library
+BUILD_LIBRARY:BOOL=ON
+
 //Build shared libraries
 BUILD_SHARED_LIBS:BOOL=OFF
 
@@ -290,6 +296,10 @@ FETCHCONTENT_SOURCE_DIR_GLFW:PATH=
 // for libigl
 FETCHCONTENT_SOURCE_DIR_LIBIGL:PATH=
 
+//When not empty, overrides where to find pre-populated content
+// for triangle
+FETCHCONTENT_SOURCE_DIR_TRIANGLE:PATH=
+
 //Enables UPDATE_DISCONNECTED behavior for all content population
 FETCHCONTENT_UPDATES_DISCONNECTED:BOOL=OFF
 
@@ -304,6 +314,9 @@ FETCHCONTENT_UPDATES_DISCONNECTED_GLFW:BOOL=OFF
 
 //Enables UPDATE_DISCONNECTED behavior just for population of libigl
 FETCHCONTENT_UPDATES_DISCONNECTED_LIBIGL:BOOL=OFF
+
+//Enables UPDATE_DISCONNECTED behavior just for population of triangle
+FETCHCONTENT_UPDATES_DISCONNECTED_TRIANGLE:BOOL=OFF
 
 //Git command line client
 GIT_EXECUTABLE:FILEPATH=C:/Program Files/Git/cmd/git.exe
@@ -437,6 +450,15 @@ libigl_IS_TOP_LEVEL:STATIC=OFF
 //Value Computed by CMake
 libigl_SOURCE_DIR:STATIC=C:/Users/jaywh/source/repos/ThirdYearDissertation4/out/build/x64-Debug/_deps/libigl-src
 
+//Value Computed by CMake
+triangle_BINARY_DIR:STATIC=C:/Users/jaywh/source/repos/ThirdYearDissertation4/out/build/x64-Debug/_deps/triangle-build
+
+//Value Computed by CMake
+triangle_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+triangle_SOURCE_DIR:STATIC=C:/Users/jaywh/source/repos/ThirdYearDissertation4/out/build/x64-Debug/_deps/triangle-src
+
 
 ########################
 # INTERNAL cache entries
@@ -566,7 +588,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_MT
 CMAKE_MT-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=5
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=6
 //Platform information initialized
 CMAKE_PLATFORM_INFO_INITIALIZED:INTERNAL=1
 //noop for ranlib

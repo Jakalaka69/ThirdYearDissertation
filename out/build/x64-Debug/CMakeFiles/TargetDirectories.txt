@@ -1,3 +1,4 @@
+C:/Users/jaywh/source/repos/ThirdYearDissertation4/out/build/x64-Debug/CMakeFiles/igl_restricted_triangle.dir
 C:/Users/jaywh/source/repos/ThirdYearDissertation4/out/build/x64-Debug/CMakeFiles/igl_glfw.dir
 C:/Users/jaywh/source/repos/ThirdYearDissertation4/out/build/x64-Debug/CMakeFiles/igl_opengl.dir
 C:/Users/jaywh/source/repos/ThirdYearDissertation4/out/build/x64-Debug/CMakeFiles/example.dir
@@ -12,6 +13,12 @@ C:/Users/jaywh/source/repos/ThirdYearDissertation4/out/build/x64-Debug/_deps/lib
 C:/Users/jaywh/source/repos/ThirdYearDissertation4/out/build/x64-Debug/_deps/libigl-build/CMakeFiles/list_install_components.dir
 C:/Users/jaywh/source/repos/ThirdYearDissertation4/out/build/x64-Debug/_deps/libigl-build/CMakeFiles/install.dir
 C:/Users/jaywh/source/repos/ThirdYearDissertation4/out/build/x64-Debug/_deps/libigl-build/CMakeFiles/install/local.dir
+C:/Users/jaywh/source/repos/ThirdYearDissertation4/out/build/x64-Debug/_deps/triangle-build/CMakeFiles/triangle.dir
+C:/Users/jaywh/source/repos/ThirdYearDissertation4/out/build/x64-Debug/_deps/triangle-build/CMakeFiles/edit_cache.dir
+C:/Users/jaywh/source/repos/ThirdYearDissertation4/out/build/x64-Debug/_deps/triangle-build/CMakeFiles/rebuild_cache.dir
+C:/Users/jaywh/source/repos/ThirdYearDissertation4/out/build/x64-Debug/_deps/triangle-build/CMakeFiles/list_install_components.dir
+C:/Users/jaywh/source/repos/ThirdYearDissertation4/out/build/x64-Debug/_deps/triangle-build/CMakeFiles/install.dir
+C:/Users/jaywh/source/repos/ThirdYearDissertation4/out/build/x64-Debug/_deps/triangle-build/CMakeFiles/install/local.dir
 C:/Users/jaywh/source/repos/ThirdYearDissertation4/out/build/x64-Debug/_deps/glfw-build/CMakeFiles/edit_cache.dir
 C:/Users/jaywh/source/repos/ThirdYearDissertation4/out/build/x64-Debug/_deps/glfw-build/CMakeFiles/rebuild_cache.dir
 C:/Users/jaywh/source/repos/ThirdYearDissertation4/out/build/x64-Debug/_deps/glfw-build/CMakeFiles/list_install_components.dir
