@@ -8,7 +8,7 @@ using namespace std;
 
 Eigen::MatrixXd V;
 Eigen::MatrixXi F;
-double pi = 3.14159265;
+double pi = 3.14159265; 
 
 vector<vector<vector<double>>> FindConnected(vector<vector<double>> startTriangle, vector<vector<vector<double>>> fullConnectedList, vector<vector<double>> curTriangle) {
 
@@ -231,12 +231,12 @@ int main(int argc, char* argv[])
 	fullConnectedList.push_back(randTriangle);
 	 fullConnectedList = FindConnected(randTriangle,fullConnectedList,randTriangle);
 	
-	 vector<double> P1 = { V(F(random, 0), 0), V(F(random, 0), 1), V(F(random, 0), 2) };
-	 vector<double> P2 = { V(F(random, 1), 0), V(F(random, 1), 1), V(F(random, 1), 2) };
-	 vector<double> P3 = { V(F(random, 2), 0), V(F(random, 2), 1), V(F(random, 2), 2) };
+	 //vector<double> P1 = { V(F(random, 0), 0), V(F(random, 0), 1), V(F(random, 0), 2) };
+	 //vector<double> P2 = { V(F(random, 1), 0), V(F(random, 1), 1), V(F(random, 1), 2) };
+	 //vector<double> P3 = { V(F(random, 2), 0), V(F(random, 2), 1), V(F(random, 2), 2) };
 
-	 //initialise triangle with the points
-	 vector<vector<double>> randTriangle = { P1, P2, P3 };
+	 ////initialise triangle with the points
+	 //vector<vector<double>> randTriangle = { P1, P2, P3 };
 
 
 	 V.conservativeResize(V.rows() + 3, V.cols());
