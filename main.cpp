@@ -1,8 +1,10 @@
 ﻿#include <igl/readOFF.h>
 #include <igl/opengl/glfw/Viewer.h>
 #include <igl/read_triangle_mesh.h>
+#include <C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\triangleClass.h>
 #include <vector>
 #include <cmath>
+#include <string>
 #define _USE_MATH_DEFINES
 using namespace std;
 
@@ -22,6 +24,8 @@ vector<vector<vector<double>>> FindConnected(vector<vector<double>> startTriangl
 		}
 
 		//initialise the current triangle in loop
+
+		
 		vector<vector<double>> nextTriangle = {};
 		vector<vector<double>> touchingPoints = {};
 		vector<vector<double>> allPoints = {};
@@ -39,8 +43,17 @@ vector<vector<vector<double>>> FindConnected(vector<vector<double>> startTriangl
 
 			//std::cout << V(F(x, i), 0) << " " << V(F(x, i), 1) << " " << V(F(x, i), 2) << endl;
 		}
+		cout << x << endl;
+
+		if (x == 14) {
+			printf("BREAK");
+		}
 		
-		
+		//NEW
+		triangleClass NEXT_TRIANGLE = triangleClass(nextTriangle);
+		triangleClass START_TRIANGLE = triangleClass(startTriangle);
+		//NEW
+
 			//check all points of the startTriangle that we pass in and the current triangle of the for loop and keep a count of the amount of corners that touch
 			int count = 0;
 			for (int j = 0;j < 3;j++) {
@@ -128,6 +141,10 @@ vector<vector<vector<double>>> FindConnected(vector<vector<double>> startTriangl
 				Normal[1] = (U[2] * V[0]) - (U[0] * V[2]);
 				Normal[2] = (U[0] * V[1]) - (U[1] * V[0]);
 
+				if (Normal == START_TRIANGLE.returnNormal()) {
+					printf("Normal Match");
+				}
+
 
 
 
@@ -157,7 +174,12 @@ vector<vector<vector<double>>> FindConnected(vector<vector<double>> startTriangl
 
 
 
-				if (interiorDegrees < 30) {
+
+				//NEW
+				double intAng = START_TRIANGLE.calcInteriorAngle(NEXT_TRIANGLE);
+				//NEW
+
+				if (intAng < 30) {
 
 					
 						unsigned int numRows = F.rows() - 1;
