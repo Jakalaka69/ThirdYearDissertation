@@ -11,7 +11,7 @@ using namespace std;
 
 const vector<vector<double>> relatedTriangle;
 const vector<double> normal;
-vector<Plane> connectedPlanes;
+vector<Plane*> connectedPlanes;
 
    
 
@@ -38,7 +38,7 @@ Plane::Plane(vector<vector<double>> inputTriangle) {
     normal = Normal2;
 }
 
-void Plane::AddConnectedPlane(Plane &planeToAdd) {
+void Plane::AddConnectedPlane(Plane* planeToAdd) {
     connectedPlanes.push_back(planeToAdd);
 }
     
@@ -50,7 +50,7 @@ vector<double> Plane::GetNormal() {
     return normal;
 }
 
-vector<Plane> Plane::GetConnectedPlanes() {
+vector<Plane*> Plane::GetConnectedPlanes() {
     return connectedPlanes;
 }
 

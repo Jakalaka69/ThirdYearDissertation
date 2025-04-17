@@ -195,7 +195,7 @@ vector<vector<vector<double>>> FindConnected(vector<vector<double>> startTriangl
 
 }
 
-vector<double> threePlaneIntersectionPoint(Plane plane1, Plane plane2, Plane plane3) {
+vector<double> threePlaneIntersectionPoint(Plane plane1, Plane* plane2, Plane* plane3) {
 	vector<vector<double>> planeNormals;
 	Eigen::MatrixXd A(3, 3);
 	Eigen::MatrixXd D(3, 1);
@@ -211,16 +211,16 @@ vector<double> threePlaneIntersectionPoint(Plane plane1, Plane plane2, Plane pla
 	
 	D(0) = (Normal2[0] * P1[0] + Normal2[1] * P1[1] + Normal2[2] * P1[2]);
 
-	Normal2 = plane2.GetNormal();
-	P1 = plane2.getRelatedTriangle()[0];
+	Normal2 = plane2->GetNormal();
+	P1 = plane2->getRelatedTriangle()[0];
 
 	A(1, 0) = Normal2[0];
 	A(1, 1) = Normal2[1];
 	A(1, 2) = Normal2[2];
 	D(1) = (Normal2[0] * P1[0] + Normal2[1] * P1[1] + Normal2[2] * P1[2]);
 
-	Normal2 = plane3.GetNormal();
-	P1 = plane3.getRelatedTriangle()[0];
+	Normal2 = plane3->GetNormal();
+	P1 = plane3->getRelatedTriangle()[0];
 
 	A(2, 0) = Normal2[0];
 	A(2, 1) = Normal2[1];
@@ -253,27 +253,28 @@ void weightingChecks(vector<vector<vector<double>>> faces) {
 }
 
 vector<vector<double>> getNextPlane(Plane planeX) {
-	vector<Plane> adjacentPlanes = planeX.GetConnectedPlanes();
+	vector<Plane*> adjacentPlanes = planeX.GetConnectedPlanes();
 	
-	Plane lastPlane = adjacentPlanes[0];
-	cout << lastPlane.GetConnectedPlanes().size() << "<-----";
+	Plane* lastPlane = adjacentPlanes[0];
+	cout << lastPlane->GetConnectedPlanes().size() << "<-----";
 	vector<vector<double>> frame;
-	Plane firstPlane = adjacentPlanes[0];
-	Plane start = adjacentPlanes[1];
+	Plane* firstPlane = adjacentPlanes[0];
+	
+	Plane* start = adjacentPlanes[1];
 	bool first = true;
 	
 
 	for (int i = 0; i < adjacentPlanes.size();i++) {
 		
 		for (int x = 0; x < adjacentPlanes.size(); x++) {
-			Plane currentPlane = adjacentPlanes[x];
+			Plane* currentPlane = adjacentPlanes[x];
 			
 			if ((firstPlane == currentPlane || currentPlane == lastPlane || currentPlane == start) && lastPlane != adjacentPlanes[0]) {
 				
 				continue;
 			}
 			
-			vector<Plane> currentPlaneList = currentPlane.GetConnectedPlanes();
+			vector<Plane*> currentPlaneList = currentPlane->GetConnectedPlanes();
 			
 			for (int y = 0; y < currentPlaneList.size();y++) {
 				
@@ -387,38 +388,45 @@ int main(int argc, char* argv[])
 	Plane plane4(randTriangle4);
 	Plane plane5(randTriangle5);
 
-	plane1.AddConnectedPlane(plane2);
-	plane1.AddConnectedPlane(plane3);
-	plane1.AddConnectedPlane(plane4);
+	
 
-	plane2.AddConnectedPlane(plane1);
-	plane2.AddConnectedPlane(plane3);
-	plane2.AddConnectedPlane(plane5);
+	plane3.AddConnectedPlane(&plane1);
+	plane3.AddConnectedPlane(&plane2);
+	plane3.AddConnectedPlane(&plane4);
+	plane3.AddConnectedPlane(&plane5);
+	cout << plane3.GetConnectedPlanes()[0]->GetConnectedPlanes().size();
+
+	plane1.AddConnectedPlane(&plane2);
+	plane1.AddConnectedPlane(&plane3);
+	plane1.AddConnectedPlane(&plane4);
+
+	cout << plane3.GetConnectedPlanes()[0]->GetConnectedPlanes().size();
+
+	plane2.AddConnectedPlane(&plane1);
+	plane2.AddConnectedPlane(&plane3);
+	plane2.AddConnectedPlane(&plane5);
 
 	
 
-	plane4.AddConnectedPlane(plane1);
-	plane4.AddConnectedPlane(plane3);
-	plane4.AddConnectedPlane(plane5);
+	plane4.AddConnectedPlane(&plane1);
+	plane4.AddConnectedPlane(&plane3);
+	plane4.AddConnectedPlane(&plane5);
 
-	plane5.AddConnectedPlane(plane2);
-	plane5.AddConnectedPlane(plane3);
-	plane5.AddConnectedPlane(plane4);
+	plane5.AddConnectedPlane(&plane2);
+	plane5.AddConnectedPlane(&plane3);
+	plane5.AddConnectedPlane(&plane4);
 
 
-	plane3.AddConnectedPlane(plane1);
-	plane3.AddConnectedPlane(plane2);
-	plane3.AddConnectedPlane(plane4);
-	plane3.AddConnectedPlane(plane5);
+	
 
 	cout << plane4.toString();
 
 
 	
-	vector<Plane> adjacentPlanes = plane3.GetConnectedPlanes();
+	
 
-	Plane lastPlane = adjacentPlanes[2];
-	cout << lastPlane.GetConnectedPlanes().size() << "<-----";
+	
+	
 	
 
 
@@ -467,14 +475,24 @@ int main(int argc, char* argv[])
 
 	}
 
-	
+	Eigen::MatrixXd D(V.rows() + V4.rows(), V.cols()); // <-- D(A.rows() + B.rows(), ...)
+	D << V, V4;
+
+	for (int x = 0;x < F2.rows();x++) {
+		for (int y = 0;y < 3;y++) {
+			F2(x, y) += V.rows();
+		}
+	}
+
+	Eigen::MatrixXi P(F.rows() + F2.rows(), F.cols()); // <-- D(A.rows() + B.rows(), ...)
+	P << F, F2;
 	
 	
 	//Plot the mesh
 	std::cout << endl << endl << endl;
 	//open libigl viewer
 	igl::opengl::glfw::Viewer viewer;
-	viewer.data().set_mesh(V4, F2);
+	viewer.data().set_mesh(D, P);
 	viewer.launch();
 	
 
