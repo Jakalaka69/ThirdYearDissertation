@@ -158,15 +158,7 @@
 	[
 		{
 			"backtrace" : 12,
-			"id" : "igl_opengl::@6890427a1f51a3e7e1df"
-		},
-		{
-			"backtrace" : 12,
-			"id" : "igl_core::@7e03116a751a0a925ea3"
-		},
-		{
-			"backtrace" : 12,
-			"id" : "igl_glfw::@6890427a1f51a3e7e1df"
+			"id" : "glad::@f022c46af7fd79d63a94"
 		},
 		{
 			"backtrace" : 12,
@@ -174,7 +166,15 @@
 		},
 		{
 			"backtrace" : 12,
-			"id" : "glad::@f022c46af7fd79d63a94"
+			"id" : "igl_glfw::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 12,
+			"id" : "igl_core::@7e03116a751a0a925ea3"
+		},
+		{
+			"backtrace" : 12,
+			"id" : "igl_opengl::@6890427a1f51a3e7e1df"
 		}
 	],
 	"id" : "example::@6890427a1f51a3e7e1df",

@@ -43,15 +43,19 @@ vector<vector<vector<double>>> FindConnected(vector<vector<double>> startTriangl
 
 			//std::cout << V(F(x, i), 0) << " " << V(F(x, i), 1) << " " << V(F(x, i), 2) << endl;
 		}
-		cout << x << endl;
+		//cout << x << endl;
 
-		if (x == 14) {
-			printf("BREAK");
-		}
+		//if (x == 14) {
+		//	printf("BREAK");
+		//}
 		
 		//NEW
 		triangleClass NEXT_TRIANGLE = triangleClass(nextTriangle);
 		triangleClass START_TRIANGLE = triangleClass(startTriangle);
+
+
+		//cout << startTriangle[0][0] << endl;
+		//cout << START_TRIANGLE.returnNormal().size() << endl;
 		//NEW
 
 			//check all points of the startTriangle that we pass in and the current triangle of the for loop and keep a count of the amount of corners that touch
@@ -90,92 +94,94 @@ vector<vector<vector<double>>> FindConnected(vector<vector<double>> startTriangl
 
 
 
-				int temp = 0;
-				for (vector<double> allPoint : allPoints) {
-					if (allPoint == touchingPoints[0]) {
-						final4Points.push_back(allPoint);
-						aVertIndex = temp;
-					}
-					else if (allPoint == touchingPoints[1]) {
-						final4Points.push_back(allPoint);
-						dVertIndex = temp;
-					}
-					else if (allPoint != touchingPoints[0] && allPoint != touchingPoints[1]) {
-						final4Points.push_back(allPoint);
+				//int temp = 0;
+				//for (vector<double> allPoint : allPoints) {
+				//	if (allPoint == touchingPoints[0]) {
+				//		final4Points.push_back(allPoint);
+				//		aVertIndex = temp;
+				//	}
+				//	else if (allPoint == touchingPoints[1]) {
+				//		final4Points.push_back(allPoint);
+				//		dVertIndex = temp;
+				//	}
+				//	else if (allPoint != touchingPoints[0] && allPoint != touchingPoints[1]) {
+				//		final4Points.push_back(allPoint);
 
-					}
-					temp++;
-				}
-				aVertIndex = aVertIndex % 4;
-				dVertIndex = dVertIndex % 4;
-				int offset = 1;
-				int bVertIndex = 0;
-				while (bVertIndex == aVertIndex || bVertIndex == dVertIndex) {
+				//	}
+				//	temp++;
+				//}
+				//aVertIndex = aVertIndex % 4;
+				//dVertIndex = dVertIndex % 4;
+				//int offset = 1;
+				//int bVertIndex = 0;
+				//while (bVertIndex == aVertIndex || bVertIndex == dVertIndex) {
 
-					bVertIndex = offset % 4;
-					offset++;
-				}
-				offset = 1;
-				int cVertIndex = 0;
-				while (cVertIndex == aVertIndex || cVertIndex == dVertIndex || cVertIndex == bVertIndex) {
+				//	bVertIndex = offset % 4;
+				//	offset++;
+				//}
+				//offset = 1;
+				//int cVertIndex = 0;
+				//while (cVertIndex == aVertIndex || cVertIndex == dVertIndex || cVertIndex == bVertIndex) {
 
-					cVertIndex = offset % 4;
-					offset++;
-				}
-
-
-
-				vector<double> U = { startTriangle[0][0] - startTriangle[1][0]
-								   , startTriangle[0][1] - startTriangle[1][1]
-								   , startTriangle[0][2] - startTriangle[1][2] };
-
-				vector<double> V = { startTriangle[0][0] - startTriangle[2][0]
-								   , startTriangle[0][1] - startTriangle[2][1]
-								   , startTriangle[0][2] - startTriangle[2][2] };
-
-				vector<double> Normal = { 0,0,0 };
+				//	cVertIndex = offset % 4;
+				//	offset++;
+				//}
 
 
 
-				Normal[0] = (U[1] * V[2]) - (U[2] * V[1]);
-				Normal[1] = (U[2] * V[0]) - (U[0] * V[2]);
-				Normal[2] = (U[0] * V[1]) - (U[1] * V[0]);
+				//vector<double> U = { startTriangle[0][0] - startTriangle[1][0]
+				//				   , startTriangle[0][1] - startTriangle[1][1]
+				//				   , startTriangle[0][2] - startTriangle[1][2] };
 
-				if (Normal == START_TRIANGLE.returnNormal()) {
-					printf("Normal Match");
-				}
+				//vector<double> V = { startTriangle[0][0] - startTriangle[2][0]
+				//				   , startTriangle[0][1] - startTriangle[2][1]
+				//				   , startTriangle[0][2] - startTriangle[2][2] };
+
+				//vector<double> Normal = { 0,0,0 };
 
 
+
+				//Normal[0] = (U[1] * V[2]) - (U[2] * V[1]);
+				//Normal[1] = (U[2] * V[0]) - (U[0] * V[2]);
+				//Normal[2] = (U[0] * V[1]) - (U[1] * V[0]);
+
+				//if (Normal == START_TRIANGLE.returnNormal()) {
+				//	printf("Normal Match");
+				//}
 
 
 
 
 
-				vector<double> U2 = { final4Points[aVertIndex][0] - final4Points[cVertIndex][0]
-								   , final4Points[aVertIndex][1] - final4Points[cVertIndex][1]
-								   , final4Points[aVertIndex][2] - final4Points[cVertIndex][2] };
-
-				vector<double> V2 = { final4Points[aVertIndex][0] - final4Points[dVertIndex][0]
-								  , final4Points[aVertIndex][1] - final4Points[dVertIndex][1]
-								  , final4Points[aVertIndex][2] - final4Points[dVertIndex][2] };
-
-				vector<double> Normal2 = { 0,0,0 };
-
-				Normal2[0] = (U2[1] * V2[2]) - (U2[2] * V2[1]);
-				Normal2[1] = (U2[2] * V2[0]) - (U2[0] * V2[2]);
-				Normal2[2] = (U2[0] * V2[1]) - (U2[1] * V2[0]);
 
 
-				double numerator = abs((Normal[0] * Normal2[0]) + (Normal[1] * Normal2[1]) + (Normal[2] * Normal2[2]));
-				double denominator = (sqrt(pow(Normal[0], 2) + pow(Normal[1], 2) + pow(Normal[2], 2)) * sqrt(pow(Normal2[0], 2) + pow(Normal2[1], 2) + pow(Normal2[2], 2)));
-				double interiorAngle = acos(numerator / denominator);
-				double interiorDegrees = interiorAngle * (180 / pi);
-				cout << endl << interiorAngle * (180 / pi);
+				//vector<double> U2 = { final4Points[aVertIndex][0] - final4Points[cVertIndex][0]
+				//				   , final4Points[aVertIndex][1] - final4Points[cVertIndex][1]
+				//				   , final4Points[aVertIndex][2] - final4Points[cVertIndex][2] };
+
+				//vector<double> V2 = { final4Points[aVertIndex][0] - final4Points[dVertIndex][0]
+				//				  , final4Points[aVertIndex][1] - final4Points[dVertIndex][1]
+				//				  , final4Points[aVertIndex][2] - final4Points[dVertIndex][2] };
+
+				//vector<double> Normal2 = { 0,0,0 };
+
+				//Normal2[0] = (U2[1] * V2[2]) - (U2[2] * V2[1]);
+				//Normal2[1] = (U2[2] * V2[0]) - (U2[0] * V2[2]);
+				//Normal2[2] = (U2[0] * V2[1]) - (U2[1] * V2[0]);
+
+
+				//double numerator = abs((Normal[0] * Normal2[0]) + (Normal[1] * Normal2[1]) + (Normal[2] * Normal2[2]));
+				//double denominator = (sqrt(pow(Normal[0], 2) + pow(Normal[1], 2) + pow(Normal[2], 2)) * sqrt(pow(Normal2[0], 2) + pow(Normal2[1], 2) + pow(Normal2[2], 2)));
+				//double interiorAngle = acos(numerator / denominator);
+				//double interiorDegrees = interiorAngle * (180 / pi);
+				////cout << endl << interiorAngle * (180 / pi);
 
 
 
+				//Above code redundant
 
 				//NEW
+				
 				double intAng = START_TRIANGLE.calcInteriorAngle(NEXT_TRIANGLE);
 				//NEW
 

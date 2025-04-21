@@ -21,12 +21,18 @@ double pii = 3.14159265;
                            , points[0][1] - points[2][1]
                            , points[0][2] - points[2][2] };
 
-        vector<double> normal = { 0,0,0 };
+        normal = { 0,0,0 };
 
         normal[0] = (U[1] * V[2]) - (U[2] * V[1]);
         normal[1] = (U[2] * V[0]) - (U[0] * V[2]);
         normal[2] = (U[0] * V[1]) - (U[1] * V[0]);
+        //cout << " ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? " << endl;
         //cout << normal[0] << endl;
+        //cout << normal[1] << endl;
+        //cout << normal[2] << endl;
+        //cout << " ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? " << endl;
+
+        //cout << returnNormal().size() << endl;
 
     }
 
@@ -39,19 +45,27 @@ double pii = 3.14159265;
     }
 
     vector<double> triangleClass::returnNormal() {
-        return normal;
+        /*cout << " ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? " << endl;
+        cout << normal[0] << endl;
+        cout << " ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? " << endl;*/
+        return this->normal;
     }
 
     double triangleClass::calcInteriorAngle(triangleClass triangle) {
         vector<double> normal2 = triangle.returnNormal();
-        normal2;
+        //cout << " ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? " << endl;
 
+        //cout << normal[0] << endl;
+        //cout << normal2[0] << endl;
+        //cout << points[2][2] << endl;
+        //cout << " ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? "<< endl;
         double numerator = abs((normal[0] * normal2[0]) + (normal[1] * normal2[1]) + (normal[2] * normal2[2]));
-
         double denominator = (sqrt(pow(normal[0], 2) + pow(normal[1], 2) + pow(normal[2], 2)) * sqrt(pow(normal2[0], 2) + pow(normal2[1], 2) + pow(normal2[2], 2)));
         double interiorAngle = acos(numerator / denominator);
         double interiorDegrees = interiorAngle * (180 / pii);
         //cout << endl << interiorAngle * (180 / pi);
+
+        //double interiorDegrees = 32.0;
 
         return interiorDegrees;
     }

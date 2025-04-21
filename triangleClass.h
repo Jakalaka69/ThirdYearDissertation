@@ -7,10 +7,13 @@ using namespace std;
 
 
 class triangleClass {
+
+private:
+    vector<vector<double>> points;
+    vector<triangleClass> adjacenttriangles;
+    vector<double> normal;
 public:
-    //vector<vector<double>> points;  
-    //vector<triangleClass> adjacenttriangles;
-    //vector<double> normal;
+    
     triangleClass(vector<vector<double>> x);
     void addToAdjacentTriangles(triangleClass);
     vector<vector<double>> returnPoints();
