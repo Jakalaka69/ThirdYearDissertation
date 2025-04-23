@@ -85,6 +85,24 @@ build CMakeFiles\example.dir\main.cpp.obj: CXX_COMPILER__example_unscanned_Debug
   TARGET_COMPILE_PDB = CMakeFiles\example.dir\
   TARGET_PDB = example.pdb
 
+build CMakeFiles\example.dir\planeClass.cpp.obj: CXX_COMPILER__example_unscanned_Debug C$:\Users\jaywh\source\repos\ThirdYearDissertation4\planeClass.cpp || cmake_object_order_depends_target_example
+  DEFINES = -DNOMINMAX
+  FLAGS = /DWIN32 /D_WINDOWS /GR /EHsc /Zi /Ob0 /Od /RTC1 -MDd /MP /bigobj
+  INCLUDES = -IC:\Users\jaywh\source\repos\ThirdYearDissertation4\out\build\x64-Debug\_deps\libigl-src\include -IC:\Users\jaywh\source\repos\ThirdYearDissertation4\out\build\x64-Debug\_deps\glad-src\include -IC:\Users\jaywh\source\repos\ThirdYearDissertation4\out\build\x64-Debug\_deps\glfw-src\include -IC:\Users\jaywh\source\repos\ThirdYearDissertation4\out\build\x64-Debug\_deps\triangle-src -external:IC:\Users\jaywh\source\repos\ThirdYearDissertation4\out\build\x64-Debug\_deps\eigen-src -external:W0
+  OBJECT_DIR = CMakeFiles\example.dir
+  OBJECT_FILE_DIR = CMakeFiles\example.dir
+  TARGET_COMPILE_PDB = CMakeFiles\example.dir\
+  TARGET_PDB = example.pdb
+
+build CMakeFiles\example.dir\triangleClass.cpp.obj: CXX_COMPILER__example_unscanned_Debug C$:\Users\jaywh\source\repos\ThirdYearDissertation4\triangleClass.cpp || cmake_object_order_depends_target_example
+  DEFINES = -DNOMINMAX
+  FLAGS = /DWIN32 /D_WINDOWS /GR /EHsc /Zi /Ob0 /Od /RTC1 -MDd /MP /bigobj
+  INCLUDES = -IC:\Users\jaywh\source\repos\ThirdYearDissertation4\out\build\x64-Debug\_deps\libigl-src\include -IC:\Users\jaywh\source\repos\ThirdYearDissertation4\out\build\x64-Debug\_deps\glad-src\include -IC:\Users\jaywh\source\repos\ThirdYearDissertation4\out\build\x64-Debug\_deps\glfw-src\include -IC:\Users\jaywh\source\repos\ThirdYearDissertation4\out\build\x64-Debug\_deps\triangle-src -external:IC:\Users\jaywh\source\repos\ThirdYearDissertation4\out\build\x64-Debug\_deps\eigen-src -external:W0
+  OBJECT_DIR = CMakeFiles\example.dir
+  OBJECT_FILE_DIR = CMakeFiles\example.dir
+  TARGET_COMPILE_PDB = CMakeFiles\example.dir\
+  TARGET_PDB = example.pdb
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target example
@@ -93,7 +111,7 @@ build CMakeFiles\example.dir\main.cpp.obj: CXX_COMPILER__example_unscanned_Debug
 #############################################
 # Link the executable example.exe
 
-build example.exe: CXX_EXECUTABLE_LINKER__example_Debug CMakeFiles\example.dir\Plane.cpp.obj CMakeFiles\example.dir\main.cpp.obj | _deps\glad-build\glad.lib _deps\glfw-build\src\glfw3.lib _deps\triangle-build\triangle.lib || _deps\glad-build\glad.lib _deps\glfw-build\src\glfw3.lib _deps\libigl-build\igl_core _deps\triangle-build\triangle.lib igl_glfw igl_opengl igl_restricted_triangle
+build example.exe: CXX_EXECUTABLE_LINKER__example_Debug CMakeFiles\example.dir\Plane.cpp.obj CMakeFiles\example.dir\main.cpp.obj CMakeFiles\example.dir\planeClass.cpp.obj CMakeFiles\example.dir\triangleClass.cpp.obj | _deps\glad-build\glad.lib _deps\glfw-build\src\glfw3.lib _deps\triangle-build\triangle.lib || _deps\glad-build\glad.lib _deps\glfw-build\src\glfw3.lib _deps\libigl-build\igl_core _deps\triangle-build\triangle.lib igl_glfw igl_opengl igl_restricted_triangle
   FLAGS = /DWIN32 /D_WINDOWS /GR /EHsc /Zi /Ob0 /Od /RTC1 -MDd
   LINK_FLAGS = /machine:x64 /debug /INCREMENTAL /subsystem:console
   LINK_LIBRARIES = _deps\glad-build\glad.lib  opengl32.lib  _deps\glfw-build\src\glfw3.lib  _deps\triangle-build\triangle.lib  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib

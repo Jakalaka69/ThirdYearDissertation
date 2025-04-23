@@ -27,7 +27,7 @@ igl_include(glfw)
 igl_include(restricted triangle)
 
 file(GLOB SRC_FILES *.cpp)
-add_executable(${PROJECT_NAME} ${SRC_FILES})
+add_executable(${PROJECT_NAME} ${SRC_FILES} "triangleClass.cpp")
 
 
 # Link igl (and the glfw module) to your project
