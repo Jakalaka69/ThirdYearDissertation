@@ -190,6 +190,14 @@
 	[
 		{
 			"backtrace" : 17,
+			"id" : "triangle::@afb7f2633d2441d2a5b6"
+		},
+		{
+			"backtrace" : 17,
+			"id" : "igl_core::@7e03116a751a0a925ea3"
+		},
+		{
+			"backtrace" : 17,
 			"id" : "igl_restricted_triangle::@6890427a1f51a3e7e1df"
 		},
 		{
@@ -199,14 +207,6 @@
 		{
 			"backtrace" : 17,
 			"id" : "igl_opengl::@6890427a1f51a3e7e1df"
-		},
-		{
-			"backtrace" : 17,
-			"id" : "igl_core::@7e03116a751a0a925ea3"
-		},
-		{
-			"backtrace" : 17,
-			"id" : "triangle::@afb7f2633d2441d2a5b6"
 		},
 		{
 			"backtrace" : 17,

@@ -247,9 +247,6 @@ vector<double> threePlaneIntersectionPoint(Plane plane1, Plane* plane2, Plane* p
 
 	return interPoint;
 }
-
-
-
 void weightingChecks(vector<vector<vector<double>>> faces) {
 	//calculating surface area
 	for (vector<vector<double>> triangle : faces) {
