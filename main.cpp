@@ -26,7 +26,7 @@ void vecToString(vector<vector<double>> vec) {
 	
 }
 
-vector<vector<vector<double>>> FindConnected(vector<vector<double>> startTriangle, vector<vector<vector<double>>> fullConnectedList, vector<vector<double>> curTriangle) {
+vector<vector<vector<double>>> FindConnected(triangleClass startTriangle, vector<vector<vector<double>>> fullConnectedList, vector<vector<double>> curTriangle) {
 
 	
 
@@ -38,41 +38,23 @@ vector<vector<vector<double>>> FindConnected(vector<vector<double>> startTriangl
 		}
 
 		//initialise the current triangle in loop
-
-		
 		vector<vector<double>> nextTriangle = {};
 		vector<vector<double>> touchingPoints = {};
-		vector<vector<double>> allPoints = {};
-		vector<vector<double>> final4Points = {};
-
-		allPoints = curTriangle;
 
 		for (int i = 0; i < 3; i++) {
 
 			nextTriangle.push_back({ V(F(x, i), 0), V(F(x, i), 1), V(F(x, i), 2) });
 
-
-			allPoints.push_back({ V(F(x, i), 0), V(F(x, i), 1), V(F(x, i), 2) });
-
-
-			//std::cout << V(F(x, i), 0) << " " << V(F(x, i), 1) << " " << V(F(x, i), 2) << endl;
 		}
-		//cout << x << endl;
 
-		//if (x == 14) {
-		//	printf("BREAK");
-		//}
-		
 		//NEW
+
 		triangleClass NEXT_TRIANGLE = triangleClass(nextTriangle);
-		triangleClass START_TRIANGLE = triangleClass(startTriangle);
 
-
-		//cout << startTriangle[0][0] << endl;
-		//cout << START_TRIANGLE.returnNormal().size() << endl;
 		//NEW
 
-			//check all points of the startTriangle that we pass in and the current triangle of the for loop and keep a count of the amount of corners that touch
+			//check all points of the startTriangle that we pass in and the current triangle of 
+			// the for loop and keep a count of the amount of corners that touch
 			int count = 0;
 			for (int j = 0;j < 3;j++) {
 				for (int k = 0; k < 3; k++) {
@@ -87,30 +69,18 @@ vector<vector<vector<double>>> FindConnected(vector<vector<double>> startTriangl
 				}
 			}
 
-
-			//below code sorts and removes duplicate points leaving 4 points in triangles that touch in 2 places
-			//trying to come up with method of calculating angle between 2 traingles
-			//may have to forgo the duplicate point removal
-
-			//IDEA: look at unique points before removing the other points, that way we know these are the 2 peaks we have to calc the angles between
-
-			sort(allPoints.begin(), allPoints.end());
-			allPoints.erase(unique(allPoints.begin(), allPoints.end()), allPoints.end());
-
-
-			int aVertIndex;
-			int dVertIndex;
 			//if the amount of corners that touch is equal to 2 then remove the current triangle of the for loop from F
 			//and recurse, using the current triangle as the start triangle for the function
 			if (count == 2) {
 				
 				//NEW
 				
-				double intAng = START_TRIANGLE.calcInteriorAngle(NEXT_TRIANGLE);
+				double intAng = startTriangle.calcInteriorAngle(NEXT_TRIANGLE);
 				//NEW
 
 				if (intAng < 30) {
 
+						//adds row to matrix
 					
 						unsigned int numRows = F.rows() - 1;
 						unsigned int numCols = F.cols();
@@ -123,6 +93,8 @@ vector<vector<vector<double>>> FindConnected(vector<vector<double>> startTriangl
 
 					
 						fullConnectedList.push_back(nextTriangle);
+						startTriangle.addToAdjacentTriangles(&NEXT_TRIANGLE);
+						NEXT_TRIANGLE.addToAdjacentTriangles(&startTriangle);
 
 						//changed startTriangle to temp + 1 to incrmement triangle each loop
 						fullConnectedList = FindConnected(startTriangle, fullConnectedList, nextTriangle);
@@ -629,8 +601,13 @@ int main(int argc, char* argv[])
 	vector<double> P2 = { V(F(random, 1), 0), V(F(random, 1), 1), V(F(random, 1), 2) };
 	vector<double> P3 = { V(F(random, 2), 0), V(F(random, 2), 1), V(F(random, 2), 2) };
 
+
+
 	//initialise triangle with the points
 	vector<vector<double>> randTriangle = { P1, P2, P3 };
+
+
+	triangleClass START_TRIANGLE = triangleClass(randTriangle);
 	//remove randTriangle from F
 	unsigned int numRows = F.rows() - 1;
 	unsigned int numCols = F.cols();
@@ -648,7 +625,7 @@ int main(int argc, char* argv[])
 
 	//swap randTriangle for t
 	fullConnectedList.push_back(randTriangle);
-	fullConnectedList = FindConnected(randTriangle, fullConnectedList, randTriangle);
+	fullConnectedList = FindConnected(START_TRIANGLE, fullConnectedList, randTriangle);
 
 	//vector<double> P1 = { V(F(random, 0), 0), V(F(random, 0), 1), V(F(random, 0), 2) };
 	//vector<double> P2 = { V(F(random, 1), 0), V(F(random, 1), 1), V(F(random, 1), 2) };
@@ -697,6 +674,7 @@ int main(int argc, char* argv[])
 	F(F.rows() - 1, 2) = V.rows() - 3;
 
 	cout << V << endl;
+
 	//print all triangles in final list
 	for (vector<vector<double>> triangle : fullConnectedList) {
 		std::cout << "Start of triangle" << endl;
@@ -704,9 +682,9 @@ int main(int argc, char* argv[])
 		for (vector<double> point : triangle) {
 			std::cout << "Point " << count1 << " coordinates:";
 			count1++;
-			for (double coord : point) {
-				std::cout << coord;
-			}
+			//for (double coord : point) {
+			//	std::cout << coord;
+			//}
 			std::cout << endl;
 		}
 		std::cout << "End of triangle" << endl;

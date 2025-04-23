@@ -8,7 +8,7 @@ double pii = 3.14159265;
 
 
     vector<vector<double>> points;  
-    vector<triangleClass> adjacenttriangles;
+    vector<triangleClass*> adjacenttriangles;
     vector<double> normal;
 
     triangleClass::triangleClass(vector<vector<double>> x) {
@@ -28,7 +28,7 @@ double pii = 3.14159265;
         normal[2] = (U[0] * V[1]) - (U[1] * V[0]);
     }
 
-    void triangleClass::addToAdjacentTriangles(triangleClass triangle) {
+    void triangleClass::addToAdjacentTriangles(triangleClass* triangle) {
                     adjacenttriangles.push_back(triangle);
     }
 

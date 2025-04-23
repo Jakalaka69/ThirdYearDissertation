@@ -10,12 +10,12 @@ class triangleClass {
 
 private:
     vector<vector<double>> points;
-    vector<triangleClass> adjacenttriangles;
+    vector<triangleClass*> adjacenttriangles;
     vector<double> normal;
 public:
     
     triangleClass(vector<vector<double>> x);
-    void addToAdjacentTriangles(triangleClass);
+    void addToAdjacentTriangles(triangleClass*);
     vector<vector<double>> returnPoints();
     vector<double> returnNormal();
     double calcInteriorAngle(triangleClass);
