@@ -6,6 +6,8 @@ list(PREPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 # Libigl
 include(libigl)
 
+igl_include(restricted triangle)
+set(LIBIGL_WITH_TRIANGLE ON)
 # Enable the target igl::glfw
 igl_include(glfw)
 # Other modules you could enable
@@ -22,11 +24,11 @@ igl_include(glfw)
 #igl_include(copyleft tetgen)
 #igl_include(restricted matlab)
 #igl_include(restricted mosek)
-#igl_include(restricted triangle)
+igl_include(restricted triangle)
 
-# Add your project files
 file(GLOB SRC_FILES *.cpp)
 add_executable(${PROJECT_NAME} ${SRC_FILES} "triangleClass.cpp")
+
 
 # Link igl (and the glfw module) to your project
 target_link_libraries(${PROJECT_NAME} PUBLIC 
@@ -45,5 +47,5 @@ target_link_libraries(${PROJECT_NAME} PUBLIC
   # igl_copyleft::tetgen
   # igl_restricted::matlab
   # igl_restricted::mosek
-  # igl_restricted::triangle
+  igl_restricted::triangle
   )
