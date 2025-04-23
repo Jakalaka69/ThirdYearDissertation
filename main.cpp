@@ -6,6 +6,7 @@
 #include <igl/opengl/glfw/Viewer.h>
 #include <igl/read_triangle_mesh.h>
 #include "Plane.h"
+#include "triangleClass.h"
 #include <vector>
 #include <cmath>
 #include <string>
@@ -102,97 +103,7 @@ vector<vector<vector<double>>> FindConnected(vector<vector<double>> startTriangl
 			//if the amount of corners that touch is equal to 2 then remove the current triangle of the for loop from F
 			//and recurse, using the current triangle as the start triangle for the function
 			if (count == 2) {
-				//put angle checks here and only do the stuff below if they pass
-
-
-
-
-				//int temp = 0;
-				//for (vector<double> allPoint : allPoints) {
-				//	if (allPoint == touchingPoints[0]) {
-				//		final4Points.push_back(allPoint);
-				//		aVertIndex = temp;
-				//	}
-				//	else if (allPoint == touchingPoints[1]) {
-				//		final4Points.push_back(allPoint);
-				//		dVertIndex = temp;
-				//	}
-				//	else if (allPoint != touchingPoints[0] && allPoint != touchingPoints[1]) {
-				//		final4Points.push_back(allPoint);
-
-				//	}
-				//	temp++;
-				//}
-				//aVertIndex = aVertIndex % 4;
-				//dVertIndex = dVertIndex % 4;
-				//int offset = 1;
-				//int bVertIndex = 0;
-				//while (bVertIndex == aVertIndex || bVertIndex == dVertIndex) {
-
-				//	bVertIndex = offset % 4;
-				//	offset++;
-				//}
-				//offset = 1;
-				//int cVertIndex = 0;
-				//while (cVertIndex == aVertIndex || cVertIndex == dVertIndex || cVertIndex == bVertIndex) {
-
-				//	cVertIndex = offset % 4;
-				//	offset++;
-				//}
-
-
-
-				//vector<double> U = { startTriangle[0][0] - startTriangle[1][0]
-				//				   , startTriangle[0][1] - startTriangle[1][1]
-				//				   , startTriangle[0][2] - startTriangle[1][2] };
-
-				//vector<double> V = { startTriangle[0][0] - startTriangle[2][0]
-				//				   , startTriangle[0][1] - startTriangle[2][1]
-				//				   , startTriangle[0][2] - startTriangle[2][2] };
-
-				//vector<double> Normal = { 0,0,0 };
-
-
-
-				//Normal[0] = (U[1] * V[2]) - (U[2] * V[1]);
-				//Normal[1] = (U[2] * V[0]) - (U[0] * V[2]);
-				//Normal[2] = (U[0] * V[1]) - (U[1] * V[0]);
-
-				//if (Normal == START_TRIANGLE.returnNormal()) {
-				//	printf("Normal Match");
-				//}
-
-
-
-
-
-
-
-				//vector<double> U2 = { final4Points[aVertIndex][0] - final4Points[cVertIndex][0]
-				//				   , final4Points[aVertIndex][1] - final4Points[cVertIndex][1]
-				//				   , final4Points[aVertIndex][2] - final4Points[cVertIndex][2] };
-
-				//vector<double> V2 = { final4Points[aVertIndex][0] - final4Points[dVertIndex][0]
-				//				  , final4Points[aVertIndex][1] - final4Points[dVertIndex][1]
-				//				  , final4Points[aVertIndex][2] - final4Points[dVertIndex][2] };
-
-				//vector<double> Normal2 = { 0,0,0 };
-
-				//Normal2[0] = (U2[1] * V2[2]) - (U2[2] * V2[1]);
-				//Normal2[1] = (U2[2] * V2[0]) - (U2[0] * V2[2]);
-				//Normal2[2] = (U2[0] * V2[1]) - (U2[1] * V2[0]);
-
-
-				//double numerator = abs((Normal[0] * Normal2[0]) + (Normal[1] * Normal2[1]) + (Normal[2] * Normal2[2]));
-				//double denominator = (sqrt(pow(Normal[0], 2) + pow(Normal[1], 2) + pow(Normal[2], 2)) * sqrt(pow(Normal2[0], 2) + pow(Normal2[1], 2) + pow(Normal2[2], 2)));
-				//double interiorAngle = acos(numerator / denominator);
-				//double interiorDegrees = interiorAngle * (180 / pi);
-				////cout << endl << interiorAngle * (180 / pi);
-
-
-
-				//Above code redundant
-
+				
 				//NEW
 				
 				double intAng = START_TRIANGLE.calcInteriorAngle(NEXT_TRIANGLE);
@@ -433,10 +344,16 @@ vector<double> calcD(Plane plane, double x, double y) {
 
 }
 
+
+
+/*
+
 int main(int argc, char* argv[])
 {
 	// Load a mesh in OFF format
-	igl::read_triangle_mesh("C:/Users/jaywh/source/repos/ThirdYearDissertation4/models"  "/PlaneWithHoleTest.obj", V, F);
+	//igl::read_triangle_mesh("C:/Users/jaywh/source/repos/ThirdYearDissertation4/models"  "/PlaneWithHoleTest.obj", V, F);
+	//igl::read_triangle_mesh("C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/models"  "/PlaneWithHoleTest.obj", V, F);
+	igl::read_triangle_mesh("C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/models"  "/Tower.obj", V, F);
 
 	
 	//Gets number of triangles from the faces matrix
@@ -686,6 +603,122 @@ int main(int argc, char* argv[])
 }
 
 
+*/
+
+//Alex Testing MainVVVVV
+
+int main(int argc, char* argv[])
+{
+	// Load a mesh in OFF format
+
+
+	//igl::read_triangle_mesh("C:/Users/jaywh/source/repos/ThirdYearDissertation4/models"  "/Tower.obj", V, F);
+	igl::read_triangle_mesh("C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/models"  "/Tower.obj", V, F);
+
+
+	//Gets number of triangles from the faces matrix
+	int numOfTriangles = F.rows();
+	vector<vector<vector<double>>> fullConnectedList;
+
+	//select random triangle
+	//int random = rand() % numOfTrianlges;
+	int random = 14;
+
+	//assign point coordinates of a random traingle 
+	vector<double> P1 = { V(F(random, 0), 0), V(F(random, 0), 1), V(F(random, 0), 2) };
+	vector<double> P2 = { V(F(random, 1), 0), V(F(random, 1), 1), V(F(random, 1), 2) };
+	vector<double> P3 = { V(F(random, 2), 0), V(F(random, 2), 1), V(F(random, 2), 2) };
+
+	//initialise triangle with the points
+	vector<vector<double>> randTriangle = { P1, P2, P3 };
+	//remove randTriangle from F
+	unsigned int numRows = F.rows() - 1;
+	unsigned int numCols = F.cols();
+
+	if (random < numRows) {
+		//F.block(random, 0, numRows - random, numCols) = F.block(random + 1, 0, numRows - random, numCols);
+	}
+	//F.conservativeResize(numRows, numCols);
+
+	//list of connected faces to pass into FindConnected recursive function
+
+
+	//Call function, currently just returns all triangles in the model but once we 
+	//include the angle checks it will then print the correct triangles to make a plane out of
+
+	//swap randTriangle for t
+	fullConnectedList.push_back(randTriangle);
+	fullConnectedList = FindConnected(randTriangle, fullConnectedList, randTriangle);
+
+	//vector<double> P1 = { V(F(random, 0), 0), V(F(random, 0), 1), V(F(random, 0), 2) };
+	//vector<double> P2 = { V(F(random, 1), 0), V(F(random, 1), 1), V(F(random, 1), 2) };
+	//vector<double> P3 = { V(F(random, 2), 0), V(F(random, 2), 1), V(F(random, 2), 2) };
+
+	////initialise triangle with the points
+	//vector<vector<double>> randTriangle = { P1, P2, P3 };
+
+
+	V.conservativeResize(V.rows() + 3, V.cols());
+
+	double x_c = (P1[0] + P2[0] + P3[0]) / 3;
+	double y_c = (P1[1] + P2[1] + P3[1]) / 3;
+	double z_c = (P1[2] + P2[2] + P3[2]) / 3;
+
+
+	//test plane
+	//plane made of 2 traingles
+	// double plane1
+	// plane1
+	// double
+	// double
+
+
+
+	cout << P1[0] << P1[1] << P1[2] << endl;
+	cout << P2[0] << P2[1] << P2[2] << endl;
+	cout << P3[0] << P3[1] << P3[2] << endl;
+	cout << x_c << endl;
+	cout << y_c << endl;
+	cout << z_c << endl;
+	V(V.rows() - 1, 0) = x_c + (P1[0] - x_c) * 10;
+	V(V.rows() - 1, 1) = y_c + (P1[1] - y_c) * 10;
+	V(V.rows() - 1, 2) = z_c + (P1[2] - z_c) * 10;
+	V(V.rows() - 2, 0) = x_c + (P2[0] - x_c) * 10;
+	V(V.rows() - 2, 1) = y_c + (P2[1] - y_c) * 10;
+	V(V.rows() - 2, 2) = z_c + (P2[2] - z_c) * 10;
+	V(V.rows() - 3, 0) = x_c + (P3[0] - x_c) * 10;
+	V(V.rows() - 3, 1) = y_c + (P3[1] - y_c) * 10;
+	V(V.rows() - 3, 2) = z_c + (P3[2] - z_c) * 10;
+
+	F.conservativeResize(F.rows() + 1, V.cols());
+
+	F(F.rows() - 1, 0) = V.rows() - 1;
+	F(F.rows() - 1, 1) = V.rows() - 2;
+	F(F.rows() - 1, 2) = V.rows() - 3;
+
+	cout << V << endl;
+	//print all triangles in final list
+	for (vector<vector<double>> triangle : fullConnectedList) {
+		std::cout << "Start of triangle" << endl;
+		int count1 = 0;
+		for (vector<double> point : triangle) {
+			std::cout << "Point " << count1 << " coordinates:";
+			count1++;
+			for (double coord : point) {
+				std::cout << coord;
+			}
+			std::cout << endl;
+		}
+		std::cout << "End of triangle" << endl;
+	}
+
+	//Plot the mesh
+	std::cout << endl << endl << endl;
+	//open libigl viewer
+	igl::opengl::glfw::Viewer viewer;
+	viewer.data().set_mesh(V, F);
+	viewer.launch();
+}
 
 
 
