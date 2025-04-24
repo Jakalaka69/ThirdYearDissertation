@@ -40,6 +40,12 @@ double pii = 3.14159265;
         return this->normal;
     }
 
+    int triangleClass::getNoOfConnectedTriangles()
+    {
+        return adjacenttriangles.size();
+    }
+        
+
     double triangleClass::calcInteriorAngle(triangleClass triangle) {
         vector<double> normal2 = triangle.returnNormal();
         double numerator = abs((normal[0] * normal2[0]) + (normal[1] * normal2[1]) + (normal[2] * normal2[2]));

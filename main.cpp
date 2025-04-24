@@ -26,7 +26,7 @@ void vecToString(vector<vector<double>> vec) {
 	
 }
 
-vector<vector<vector<double>>> FindConnected(triangleClass startTriangle, vector<vector<vector<double>>> fullConnectedList, vector<vector<double>> curTriangle) {
+triangleClass FindConnected(triangleClass startTriangle, vector<vector<vector<double>>> fullConnectedList, vector<vector<double>> curTriangle) {
 
 	
 
@@ -97,7 +97,7 @@ vector<vector<vector<double>>> FindConnected(triangleClass startTriangle, vector
 						NEXT_TRIANGLE.addToAdjacentTriangles(&startTriangle);
 
 						//changed startTriangle to temp + 1 to incrmement triangle each loop
-						fullConnectedList = FindConnected(startTriangle, fullConnectedList, nextTriangle);
+						FindConnected(startTriangle, fullConnectedList, nextTriangle);
 					
 				}
 
@@ -107,7 +107,7 @@ vector<vector<vector<double>>> FindConnected(triangleClass startTriangle, vector
 
 
 		}
-		return fullConnectedList;
+		return startTriangle;
 	
 
 }
@@ -625,7 +625,11 @@ int main(int argc, char* argv[])
 
 	//swap randTriangle for t
 	fullConnectedList.push_back(randTriangle);
-	fullConnectedList = FindConnected(START_TRIANGLE, fullConnectedList, randTriangle);
+	//fullConnectedList = FindConnected(START_TRIANGLE, fullConnectedList, randTriangle);
+	triangleClass finalTriangle = FindConnected(START_TRIANGLE, fullConnectedList, randTriangle);
+	cout << "NUMBER OF CONNECTED TRIANGLES" << endl;
+	int temp = finalTriangle.getNoOfConnectedTriangles();
+	cout << to_string(temp)	 << endl;
 
 	//vector<double> P1 = { V(F(random, 0), 0), V(F(random, 0), 1), V(F(random, 0), 2) };
 	//vector<double> P2 = { V(F(random, 1), 0), V(F(random, 1), 1), V(F(random, 1), 2) };
@@ -676,19 +680,19 @@ int main(int argc, char* argv[])
 	cout << V << endl;
 
 	//print all triangles in final list
-	for (vector<vector<double>> triangle : fullConnectedList) {
-		std::cout << "Start of triangle" << endl;
-		int count1 = 0;
-		for (vector<double> point : triangle) {
-			std::cout << "Point " << count1 << " coordinates:";
-			count1++;
-			//for (double coord : point) {
-			//	std::cout << coord;
-			//}
-			std::cout << endl;
-		}
-		std::cout << "End of triangle" << endl;
-	}
+	//for (vector<vector<double>> triangle : fullConnectedList) {
+	//	std::cout << "Start of triangle" << endl;
+	//	int count1 = 0;
+	//	for (vector<double> point : triangle) {
+	//		std::cout << "Point " << count1 << " coordinates:";
+	//		count1++;
+	//		//for (double coord : point) {
+	//		//	std::cout << coord;
+	//		//}
+	//		std::cout << endl;
+	//	}
+	//	std::cout << "End of triangle" << endl;
+	//}
 
 	//Plot the mesh
 	std::cout << endl << endl << endl;

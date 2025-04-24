@@ -18,5 +18,6 @@ public:
     void addToAdjacentTriangles(triangleClass*);
     vector<vector<double>> returnPoints();
     vector<double> returnNormal();
+    int getNoOfConnectedTriangles();
     double calcInteriorAngle(triangleClass);
 };
