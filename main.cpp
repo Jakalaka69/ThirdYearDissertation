@@ -93,11 +93,17 @@ triangleClass FindConnected(triangleClass startTriangle, vector<vector<vector<do
 
 					
 						fullConnectedList.push_back(nextTriangle);
-						startTriangle.addToAdjacentTriangles(&NEXT_TRIANGLE);
-						NEXT_TRIANGLE.addToAdjacentTriangles(&startTriangle);
+						startTriangle.addToAdjacentTriangles(NEXT_TRIANGLE);
+						if (startTriangle.isTrianglePresent(NEXT_TRIANGLE)) {
+							printf("TESTWORKING");
+						}
+
+						
+
+						
 
 						//changed startTriangle to temp + 1 to incrmement triangle each loop
-						FindConnected(startTriangle, fullConnectedList, nextTriangle);
+						startTriangle = FindConnected(startTriangle, fullConnectedList, nextTriangle);
 					
 				}
 
@@ -107,7 +113,10 @@ triangleClass FindConnected(triangleClass startTriangle, vector<vector<vector<do
 
 
 		}
-		return startTriangle;
+
+
+	
+	return startTriangle;
 	
 
 }
@@ -627,6 +636,21 @@ int main(int argc, char* argv[])
 	fullConnectedList.push_back(randTriangle);
 	//fullConnectedList = FindConnected(START_TRIANGLE, fullConnectedList, randTriangle);
 	triangleClass finalTriangle = FindConnected(START_TRIANGLE, fullConnectedList, randTriangle);
+	int z = finalTriangle.getNoOfConnectedTriangles();
+	for (int x = 0; x < z; x++) {
+	if (finalTriangle.adjacenttriangles[x].adjacenttriangles.empty()) {
+		finalTriangle.adjacenttriangles[x].addToAdjacentTriangles(finalTriangle);
+	}
+	for (int y = 0; y < z; y++) {
+		if (!finalTriangle.adjacenttriangles[x].isTrianglePresent(finalTriangle.adjacenttriangles[y])) {
+			//cout << "TRIANGLE PAIR" << endl;
+			//cout << finalTriangle.adjacenttriangles[x].toString() << endl;
+			//cout << finalTriangle.adjacenttriangles[y].toString() << endl;
+			//cout << "---------------------" << endl;
+			finalTriangle.adjacenttriangles[x].addToAdjacentTriangles(finalTriangle.adjacenttriangles[y]);
+		}
+	}
+}
 	cout << "NUMBER OF CONNECTED TRIANGLES" << endl;
 	int temp = finalTriangle.getNoOfConnectedTriangles();
 	cout << to_string(temp)	 << endl;

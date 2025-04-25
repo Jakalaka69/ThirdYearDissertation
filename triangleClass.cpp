@@ -1,6 +1,7 @@
 #include <vector>
 #include <cmath>
 #include <iostream>
+#include <String>
 #include <C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\triangleClass.h>
 #define _USE_MATH_DEFINES
 using namespace std;
@@ -8,7 +9,7 @@ double pii = 3.14159265;
 
 
     vector<vector<double>> points;  
-    vector<triangleClass*> adjacenttriangles;
+    vector<triangleClass> adjacenttriangles;
     vector<double> normal;
 
     triangleClass::triangleClass(vector<vector<double>> x) {
@@ -28,8 +29,17 @@ double pii = 3.14159265;
         normal[2] = (U[0] * V[1]) - (U[1] * V[0]);
     }
 
-    void triangleClass::addToAdjacentTriangles(triangleClass* triangle) {
-                    adjacenttriangles.push_back(triangle);
+    //void triangleClass::addToAdjacentTriangles(triangleClass* triangle) {
+    //    adjacenttriangles.push_back(triangle);
+    //}
+
+    void triangleClass::addToAdjacentTriangles(triangleClass triangle){
+        adjacenttriangles.push_back(triangle);
+    }
+
+    void triangleClass::removeAdjacentTriangle(triangleClass triangle) {
+        adjacenttriangles.erase(std::remove(adjacenttriangles.begin(), adjacenttriangles.end(), triangle), adjacenttriangles.end());
+
     }
 
     vector<vector<double>> triangleClass::returnPoints() {
@@ -44,6 +54,34 @@ double pii = 3.14159265;
     {
         return adjacenttriangles.size();
     }
+
+    vector<triangleClass> triangleClass::getConnectedTriangles()
+    {
+        return adjacenttriangles;
+    }
+
+    bool triangleClass::isTrianglePresent(triangleClass t)
+    {
+
+        for (triangleClass queried : adjacenttriangles) {
+            if (queried == t) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
+        return false;
+    }
+
+    string triangleClass::toString() {
+        string String = "\n Triangle Point: " + to_string(points[0][0]) + " " + to_string(points[0][1]) + " Normal: " + to_string(points[0][2]) + " "
+            + to_string(normal[0]) + " " + to_string(normal[1]) + " " + to_string(normal[2]) + "\n";
+
+
+        return String;
+    }
         
 
     double triangleClass::calcInteriorAngle(triangleClass triangle) {
@@ -53,5 +91,15 @@ double pii = 3.14159265;
         double interiorAngle = acos(numerator / denominator);
         double interiorDegrees = interiorAngle * (180 / pii);
         return interiorDegrees;
+    }
+
+    bool operator!=(triangleClass t1, triangleClass t2)
+    {
+        return t1.returnPoints() != t2.returnPoints();
+    }
+
+    bool operator==(triangleClass t1, triangleClass t2)
+    {
+        return t1.returnPoints() == t2.returnPoints();
     }
 
