@@ -71,6 +71,8 @@ triangleClass FindConnected(triangleClass startTriangle, vector<vector<vector<do
 
 			//if the amount of corners that touch is equal to 2 then remove the current triangle of the for loop from F
 			//and recurse, using the current triangle as the start triangle for the function
+
+
 			if (count == 2) {
 				
 				//NEW
@@ -105,6 +107,10 @@ triangleClass FindConnected(triangleClass startTriangle, vector<vector<vector<do
 						//changed startTriangle to temp + 1 to incrmement triangle each loop
 						startTriangle = FindConnected(startTriangle, fullConnectedList, nextTriangle);
 					
+				}
+
+				else {
+					startTriangle.addToBorderTriangles(NEXT_TRIANGLE);
 				}
 
 			}
@@ -638,19 +644,15 @@ int main(int argc, char* argv[])
 	triangleClass finalTriangle = FindConnected(START_TRIANGLE, fullConnectedList, randTriangle);
 	int z = finalTriangle.getNoOfConnectedTriangles();
 	for (int x = 0; x < z; x++) {
-	if (finalTriangle.adjacenttriangles[x].adjacenttriangles.empty()) {
-		finalTriangle.adjacenttriangles[x].addToAdjacentTriangles(finalTriangle);
-	}
-	for (int y = 0; y < z; y++) {
-		if (!finalTriangle.adjacenttriangles[x].isTrianglePresent(finalTriangle.adjacenttriangles[y])) {
-			//cout << "TRIANGLE PAIR" << endl;
-			//cout << finalTriangle.adjacenttriangles[x].toString() << endl;
-			//cout << finalTriangle.adjacenttriangles[y].toString() << endl;
-			//cout << "---------------------" << endl;
-			finalTriangle.adjacenttriangles[x].addToAdjacentTriangles(finalTriangle.adjacenttriangles[y]);
+		if (finalTriangle.adjacenttriangles[x].adjacenttriangles.empty()) {
+			finalTriangle.adjacenttriangles[x].addToAdjacentTriangles(finalTriangle);
+		}
+		for (int y = 0; y < z; y++) {
+			if (!finalTriangle.adjacenttriangles[x].isTrianglePresent(finalTriangle.adjacenttriangles[y])) {
+				finalTriangle.adjacenttriangles[x].addToAdjacentTriangles(finalTriangle.adjacenttriangles[y]);
+			}
 		}
 	}
-}
 	cout << "NUMBER OF CONNECTED TRIANGLES" << endl;
 	int temp = finalTriangle.getNoOfConnectedTriangles();
 	cout << to_string(temp)	 << endl;

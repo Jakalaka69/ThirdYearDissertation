@@ -12,6 +12,11 @@ double pii = 3.14159265;
     vector<triangleClass> adjacenttriangles;
     vector<double> normal;
 
+
+    //triangles that are adjacent to the outermost layer of connected triangles
+    //but not apart of it
+    vector<triangleClass> borderTriangles;
+
     triangleClass::triangleClass(vector<vector<double>> x) {
         points = x;
         vector<double> U = { points[0][0] - points[1][0]
@@ -39,6 +44,10 @@ double pii = 3.14159265;
 
     void triangleClass::addToAdjacentTriangles(triangleClass triangle){
         adjacenttriangles.push_back(triangle);
+    }
+
+    void triangleClass::addToBorderTriangles(triangleClass triangle) {
+        borderTriangles.push_back(triangle);
     }
 
     void triangleClass::removeAdjacentTriangle(triangleClass triangle) {

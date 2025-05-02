@@ -46,3 +46,9 @@
 16251	16973	7678991495446396	example.exe	c59e350cd6d3b9d9
 9	17998	7679023053673436	CMakeFiles/example.dir/main.cpp.obj	6dad2abffe092af7
 17999	19397	7679023067002403	example.exe	c59e350cd6d3b9d9
+80	919	7679217763570357	CMakeFiles/example.dir/triangleClass.cpp.obj	52195daeede81db4
+52	920	7679217763570357	CMakeFiles/example.dir/Plane.cpp.obj	e58d883c1276e98c
+67	17381	7679217927986047	CMakeFiles/example.dir/main.cpp.obj	6dad2abffe092af7
+17382	19516	7679217947530277	example.exe	c59e350cd6d3b9d9
+10	15649	7679218843753952	CMakeFiles/example.dir/main.cpp.obj	6dad2abffe092af7
+15650	17180	7679218858011473	example.exe	c59e350cd6d3b9d9

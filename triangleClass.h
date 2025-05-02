@@ -17,11 +17,13 @@ public:
     vector<vector<double>> points;
     vector<triangleClass> adjacenttriangles;
     vector<double> normal;
+    vector<triangleClass> borderTriangles;
 public:
     triangleClass();
     triangleClass(vector<vector<double>> x);
     //void addToAdjacentTriangles(triangleClass*);
     void addToAdjacentTriangles(triangleClass);
+    void addToBorderTriangles(triangleClass);
     void removeAdjacentTriangle(triangleClass triangle);
     vector<vector<double>> returnPoints();
     vector<double> returnNormal();
