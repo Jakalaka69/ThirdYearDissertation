@@ -1,6 +1,11 @@
 #include <vector>
 #include <cmath>
 #define _USE_MATH_DEFINES
+#ifndef _myheader_h_included_
+#define _myheader_h_included_
+
+
+
 
 using namespace std;
 
@@ -13,7 +18,7 @@ public:
     vector<triangleClass> adjacenttriangles;
     vector<double> normal;
 public:
-    
+    triangleClass();
     triangleClass(vector<vector<double>> x);
     //void addToAdjacentTriangles(triangleClass*);
     void addToAdjacentTriangles(triangleClass);
@@ -28,3 +33,5 @@ public:
     friend bool operator==(triangleClass t1, triangleClass t2);
     string toString();
 };
+
+#endif

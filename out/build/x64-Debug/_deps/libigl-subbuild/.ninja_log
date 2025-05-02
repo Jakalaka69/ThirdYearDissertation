@@ -1,37 +1,21 @@
 # ninja log v5
-1205	1466	7672924418836904	CMakeFiles/libigl-populate-complete	5a80fbe95d478e2
-1	134	7671195646563395	libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-mkdir	785fdc1431513d88
-2	256	0	libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-update	8ab4fbf19f633cfd
-1	134	7671195646563395	C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/libigl-subbuild/libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-mkdir	785fdc1431513d88
-257	451	7672924408691709	libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-patch	7bc5365f00f7074d
-135	5191	7671195697123869	libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-download	db701c7170aa3720
-257	451	7672924408691709	C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/libigl-subbuild/libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-patch	7bc5365f00f7074d
-135	5191	7671195697123869	C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/libigl-subbuild/libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-download	db701c7170aa3720
-2	256	0	C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/libigl-subbuild/libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-update	8ab4fbf19f633cfd
-451	651	7672924410704415	libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-configure	ac4c56b0ef0b0158
-1205	1466	7672924418836904	C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/libigl-subbuild/libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-done	5a80fbe95d478e2
-451	651	7672924410704415	C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/libigl-subbuild/libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-configure	ac4c56b0ef0b0158
-651	817	7672924412358825	libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-build	976682d37635f980
-651	817	7672924412358825	C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/libigl-subbuild/libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-build	976682d37635f980
-817	1010	7672924414290748	libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-install	c4028fe0ac60a5fe
-817	1010	7672924414290748	C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/libigl-subbuild/libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-install	c4028fe0ac60a5fe
-1010	1205	7672924416243461	libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-test	72550d9fc17e930e
-1010	1205	7672924416243461	C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/libigl-subbuild/libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-test	72550d9fc17e930e
-1205	1466	7672924418836904	libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-done	5a80fbe95d478e2
-1205	1466	7672924418836904	C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/libigl-subbuild/CMakeFiles/libigl-populate-complete	5a80fbe95d478e2
-2	215	0	libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-update	8ab4fbf19f633cfd
-2	215	0	C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/libigl-subbuild/libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-update	8ab4fbf19f633cfd
-215	349	7672945924561933	libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-patch	7bc5365f00f7074d
-215	349	7672945924561933	C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/libigl-subbuild/libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-patch	7bc5365f00f7074d
-349	485	7672945925928969	libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-configure	ac4c56b0ef0b0158
-349	485	7672945925928969	C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/libigl-subbuild/libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-configure	ac4c56b0ef0b0158
-485	621	7672945927291499	libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-build	976682d37635f980
-485	621	7672945927291499	C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/libigl-subbuild/libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-build	976682d37635f980
-622	753	7672945928602691	libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-install	c4028fe0ac60a5fe
-622	753	7672945928602691	C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/libigl-subbuild/libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-install	c4028fe0ac60a5fe
-754	876	7672945929823155	libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-test	72550d9fc17e930e
-754	876	7672945929823155	C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/libigl-subbuild/libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-test	72550d9fc17e930e
-876	1054	7672945931615768	CMakeFiles/libigl-populate-complete	5a80fbe95d478e2
-876	1054	7672945931615768	libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-done	5a80fbe95d478e2
-876	1054	7672945931615768	C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/libigl-subbuild/CMakeFiles/libigl-populate-complete	5a80fbe95d478e2
-876	1054	7672945931615768	C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/libigl-subbuild/libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-done	5a80fbe95d478e2
+3	85	7678951246308404	libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-mkdir	785fdc1431513d88
+3	85	7678951246308404	C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/libigl-subbuild/libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-mkdir	785fdc1431513d88
+85	5050	7678951295968874	libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-download	db701c7170aa3720
+85	5050	7678951295968874	C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/libigl-subbuild/libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-download	db701c7170aa3720
+5050	5232	0	libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-update	8ab4fbf19f633cfd
+5050	5232	0	C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/libigl-subbuild/libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-update	8ab4fbf19f633cfd
+5232	5311	7678951298554273	libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-patch	7bc5365f00f7074d
+5232	5311	7678951298554273	C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/libigl-subbuild/libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-patch	7bc5365f00f7074d
+5311	5386	7678951299329547	libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-configure	ac4c56b0ef0b0158
+5311	5386	7678951299329547	C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/libigl-subbuild/libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-configure	ac4c56b0ef0b0158
+5386	5459	7678951300051625	libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-build	976682d37635f980
+5386	5459	7678951300051625	C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/libigl-subbuild/libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-build	976682d37635f980
+5459	5533	7678951300784899	libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-install	c4028fe0ac60a5fe
+5459	5533	7678951300784899	C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/libigl-subbuild/libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-install	c4028fe0ac60a5fe
+5533	5610	7678951301552530	libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-test	72550d9fc17e930e
+5533	5610	7678951301552530	C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/libigl-subbuild/libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-test	72550d9fc17e930e
+5610	5723	7678951302696001	CMakeFiles/libigl-populate-complete	5a80fbe95d478e2
+5610	5723	7678951302696001	libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-done	5a80fbe95d478e2
+5610	5723	7678951302696001	C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/libigl-subbuild/CMakeFiles/libigl-populate-complete	5a80fbe95d478e2
+5610	5723	7678951302696001	C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/libigl-subbuild/libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-done	5a80fbe95d478e2

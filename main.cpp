@@ -129,7 +129,7 @@ vector<double> threePlaneIntersectionPoint(Plane plane1, Plane* plane2, Plane* p
 	
 	vector<double> Normal2 = plane1.GetNormal();
 	
-	vector<double> P1 = plane1.getRelatedTriangle()[0];
+	vector<double> P1 = plane1.getPoints()[0];
 
 	A(0, 0) = Normal2[0];
 	A(0, 1) = Normal2[1];
@@ -138,7 +138,7 @@ vector<double> threePlaneIntersectionPoint(Plane plane1, Plane* plane2, Plane* p
 	D(0) = (Normal2[0] * P1[0] + Normal2[1] * P1[1] + Normal2[2] * P1[2]);
 
 	Normal2 = plane2->GetNormal();
-	P1 = plane2->getRelatedTriangle()[0];
+	P1 = plane2->getPoints()[0];
 
 	A(1, 0) = Normal2[0];
 	A(1, 1) = Normal2[1];
@@ -146,7 +146,7 @@ vector<double> threePlaneIntersectionPoint(Plane plane1, Plane* plane2, Plane* p
 	D(1) = (Normal2[0] * P1[0] + Normal2[1] * P1[1] + Normal2[2] * P1[2]);
 
 	Normal2 = plane3->GetNormal();
-	P1 = plane3->getRelatedTriangle()[0];
+	P1 = plane3->getPoints()[0];
 
 	A(2, 0) = Normal2[0];
 	A(2, 1) = Normal2[1];
@@ -311,7 +311,7 @@ vector<vector<vector<double>>> getNextPlane(Plane planeX, vector<Plane*> remaini
 }
 
 vector<double> calcD(Plane plane, double x, double y) {
-	vector<double> pointOnPlane = plane.getRelatedTriangle()[0];
+	vector<double> pointOnPlane = plane.getPoints()[0];
 	vector<double> normal = plane.GetNormal();
 	double total = 0;
 	total += normal[0] * pointOnPlane[0] + normal[1] * pointOnPlane[1] + normal[2] * pointOnPlane[2];

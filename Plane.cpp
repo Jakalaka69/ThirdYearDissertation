@@ -8,42 +8,30 @@
 using namespace std;
 
 
-
-const vector<vector<double>> relatedTriangle;
+const triangleClass baseTriangle;
+vector<vector<double>> Tpoints;
 const vector<double> normal;
 vector<Plane*> connectedPlanes;
 
    
 
-Plane::Plane(vector<vector<double>> inputTriangle) {
-    relatedTriangle = inputTriangle;
+Plane::Plane(triangleClass inputTriangle) {
+    baseTriangle = inputTriangle;
+    Tpoints = inputTriangle.returnPoints();
 
-    vector<double> P1 = { relatedTriangle[0][0], relatedTriangle[0][1], relatedTriangle[0][2] };
-    vector<double> P2 = { relatedTriangle[1][0], relatedTriangle[1][1], relatedTriangle[1][2] };
-    vector<double> P3 = { relatedTriangle[2][0], relatedTriangle[2][1], relatedTriangle[2][2] };
-    vector<double> V1 = { P1[0] - P2[0]
-                        , P1[1] - P2[1]
-                        , P1[2] - P2[2] };
+    vector<double> P1 = { Tpoints[0][0], Tpoints[0][1], Tpoints[0][2] };
+    vector<double> P2 = { Tpoints[1][0], Tpoints[1][1], Tpoints[1][2] };
+    vector<double> P3 = { Tpoints[2][0], Tpoints[2][1], Tpoints[2][2] };
 
-    vector<double> V2 = { P3[0] - P2[0]
-                        , P3[1] - P2[1]
-                        , P3[2] - P2[2] };
-
-    vector<double> Normal2 = { 0,0,0 };
-
-    Normal2[0] = (V1[1] * V2[2]) - (V1[2] * V2[1]);
-    Normal2[1] = (V1[2] * V2[0]) - (V1[0] * V2[2]);
-    Normal2[2] = (V1[0] * V2[1]) - (V1[1] * V2[0]);
-
-    normal = Normal2;
+    normal = inputTriangle.returnNormal();
 }
 
 void Plane::AddConnectedPlane(Plane* planeToAdd) {
     connectedPlanes.push_back(planeToAdd);
 }
     
-vector<vector<double>> Plane::getRelatedTriangle() {
-    return relatedTriangle;
+vector<vector<double>> Plane::getPoints() {
+    return Tpoints;
 }
 
 vector<double> Plane::GetNormal() {
@@ -54,6 +42,11 @@ vector<Plane*> Plane::GetConnectedPlanes() {
     return connectedPlanes;
 }
 
+
+bool Plane::isPlaneConnected(Plane inputPlane) {
+
+    return true;
+}
 
 
 bool operator==(Plane plane1, Plane plane2)

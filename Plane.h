@@ -3,23 +3,25 @@
 #include <string>
 #include <compare>
 #include <unordered_set>
-
+#include "triangleClass.h"
 
 
 using namespace std;
 class Plane
 {
 private:
-    vector<vector<double>> relatedTriangle;
+    triangleClass baseTriangle;
+    vector<vector<double>> Tpoints;
     vector<double> normal;
     vector<Plane*> connectedPlanes;
     
 public:
-    Plane(vector<vector<double>> inputTriangle);
+    Plane(triangleClass inputTriangle);
     void AddConnectedPlane(Plane* planeToAdd);
-    vector<vector<double>> getRelatedTriangle();
+    vector<vector<double>> getPoints();
     vector<double> GetNormal();
     vector<Plane*> GetConnectedPlanes();
+    bool isPlaneConnected(Plane inputPlane);
     friend bool operator==(Plane plane1, Plane plane2);
     friend bool operator!=(Plane plane1, Plane plane2);
     string toString();

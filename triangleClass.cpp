@@ -29,6 +29,10 @@ double pii = 3.14159265;
         normal[2] = (U[0] * V[1]) - (U[1] * V[0]);
     }
 
+    triangleClass::triangleClass() {
+
+    }
+
     //void triangleClass::addToAdjacentTriangles(triangleClass* triangle) {
     //    adjacenttriangles.push_back(triangle);
     //}
