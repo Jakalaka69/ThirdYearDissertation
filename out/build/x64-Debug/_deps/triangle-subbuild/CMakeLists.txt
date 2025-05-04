@@ -28,8 +28,8 @@ set_property(GLOBAL PROPERTY _CMAKE_FindGit_GIT_EXECUTABLE_VERSION
 include(ExternalProject)
 ExternalProject_Add(triangle-populate
                      "UPDATE_DISCONNECTED" "False" "GIT_REPOSITORY" "https://github.com/libigl/triangle.git" "EXTERNALPROJECT_INTERNAL_ARGUMENT_SEPARATOR" "GIT_TAG" "3ee6cac2230f0fe1413879574f741c7b6da11221"
-                    SOURCE_DIR          "C:/Users/jaywh/source/repos/ThirdYearDissertation4/out/build/x64-Debug/_deps/triangle-src"
-                    BINARY_DIR          "C:/Users/jaywh/source/repos/ThirdYearDissertation4/out/build/x64-Debug/_deps/triangle-build"
+                    SOURCE_DIR          "C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/triangle-src"
+                    BINARY_DIR          "C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/triangle-build"
                     CONFIGURE_COMMAND   ""
                     BUILD_COMMAND       ""
                     INSTALL_COMMAND     ""

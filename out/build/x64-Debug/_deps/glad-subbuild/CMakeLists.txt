@@ -28,8 +28,8 @@ set_property(GLOBAL PROPERTY _CMAKE_FindGit_GIT_EXECUTABLE_VERSION
 include(ExternalProject)
 ExternalProject_Add(glad-populate
                      "UPDATE_DISCONNECTED" "False" "GIT_REPOSITORY" "https://github.com/libigl/libigl-glad.git" "EXTERNALPROJECT_INTERNAL_ARGUMENT_SEPARATOR" "GIT_TAG" "ead2d21fd1d9f566d8f9a9ce99ddf85829258c7a"
-                    SOURCE_DIR          "C:/Users/jaywh/source/repos/ThirdYearDissertation4/out/build/x64-Debug/_deps/glad-src"
-                    BINARY_DIR          "C:/Users/jaywh/source/repos/ThirdYearDissertation4/out/build/x64-Debug/_deps/glad-build"
+                    SOURCE_DIR          "C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/glad-src"
+                    BINARY_DIR          "C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/glad-build"
                     CONFIGURE_COMMAND   ""
                     BUILD_COMMAND       ""
                     INSTALL_COMMAND     ""

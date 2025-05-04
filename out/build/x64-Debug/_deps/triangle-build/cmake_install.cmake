@@ -1,8 +1,8 @@
-# Install script for directory: C:/Users/jaywh/source/repos/ThirdYearDissertation4/out/build/x64-Debug/_deps/triangle-src
+# Install script for directory: C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/triangle-src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "C:/Users/jaywh/Source/Repos/ThirdYearDissertation4/out/install/x64-Debug")
+  set(CMAKE_INSTALL_PREFIX "C:/Users/jaywh/source/repos/Dissertation/out/install/x64-Debug")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 

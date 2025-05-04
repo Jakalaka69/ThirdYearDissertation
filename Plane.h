@@ -13,6 +13,7 @@ private:
     vector<vector<double>> relatedTriangle;
     vector<double> normal;
     vector<Plane*> connectedPlanes;
+   
     
 public:
     Plane(vector<vector<double>> inputTriangle);

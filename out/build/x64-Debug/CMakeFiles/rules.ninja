@@ -101,7 +101,7 @@ rule C_STATIC_LIBRARY_LINKER__glad_Debug
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE
-  command = "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -SC:\Users\jaywh\source\repos\ThirdYearDissertation4 -BC:\Users\jaywh\source\repos\ThirdYearDissertation4\out\build\x64-Debug
+  command = "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -SC:\Users\jaywh\source\repos\Dissertation -BC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug
   description = Re-running CMake...
   generator = 1
 
