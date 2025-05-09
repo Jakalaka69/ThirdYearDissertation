@@ -35,5 +35,5 @@ public:
     //bool isTrianglePresent(triangleClass t);
     friend bool operator!=(triangleClass t1, triangleClass t2);
     friend bool operator==(triangleClass t1, triangleClass t2);
-    string toString();
+    
 };

@@ -130,17 +130,6 @@
 			[
 				{
 					"backtrace" : 6,
-<<<<<<<< HEAD:out/build/x64-Debug/.cmake/api/v1/reply/target-glfw-Debug-42d56e2e07fcd7db4484.json
-					"path" : "C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/glfw-src/include"
-				},
-				{
-					"backtrace" : 7,
-					"path" : "C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/glfw-src/src"
-				},
-				{
-					"backtrace" : 7,
-					"path" : "C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/glfw-build/src"
-========
 					"path" : "C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/glfw-src/include"
 				},
 				{
@@ -150,7 +139,6 @@
 				{
 					"backtrace" : 7,
 					"path" : "C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/glfw-build/src"
->>>>>>>> jayparts:out/build/x64-Debug/.cmake/api/v1/reply/target-glfw-Debug-c21b132244b8da786956.json
 				}
 			],
 			"language" : "C",

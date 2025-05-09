@@ -109,13 +109,7 @@ double pii = 3.14159265;
     //    return false;
     //}
 
-    string triangleClass::toString() {
-        string String = "\n Triangle Point: " + to_string(points[0][0]) + " " + to_string(points[0][1]) + " Normal: " + to_string(points[0][2]) + " "
-            + to_string(normal[0]) + " " + to_string(normal[1]) + " " + to_string(normal[2]) + "\n";
 
-
-        return String;
-    }
         
 
     double triangleClass::calcInteriorAngle(triangleClass triangle) {

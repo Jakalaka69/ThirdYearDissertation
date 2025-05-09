@@ -10,7 +10,7 @@ using namespace std;
 class Plane
 {
 private:
-    triangleClass baseTriangle;
+    triangleClass relatedTriangle;
     vector<vector<double>> Tpoints;
     vector<double> normal;
     vector<Plane*> connectedPlanes;
@@ -20,7 +20,7 @@ public:
     Plane();
     Plane(triangleClass inputTriangle);
     void AddConnectedPlane(Plane* planeToAdd);
-    vector<vector<double>> getPoints();
+    vector<vector<double>> getRelatedTriangle();
     vector<double> GetNormal();
     vector<Plane*> GetConnectedPlanes();
     bool isPlaneConnected(Plane inputPlane);

@@ -8,7 +8,7 @@
 using namespace std;
 
 
-const triangleClass baseTriangle;
+const triangleClass relatedTriangle;
 vector<vector<double>> Tpoints;
 const vector<double> normal;
 vector<Plane*> connectedPlanes;
@@ -16,7 +16,7 @@ vector<Plane*> connectedPlanes;
    
 
 Plane::Plane(triangleClass inputTriangle) {
-    baseTriangle = inputTriangle;
+    relatedTriangle = inputTriangle;
     Tpoints = inputTriangle.returnPoints();
 
     vector<double> P1 = { Tpoints[0][0], Tpoints[0][1], Tpoints[0][2] };
@@ -34,7 +34,7 @@ void Plane::AddConnectedPlane(Plane* planeToAdd) {
     connectedPlanes.push_back(planeToAdd);
 }
     
-vector<vector<double>> Plane::getPoints() {
+vector<vector<double>> Plane::getRelatedTriangle() {
     return Tpoints;
 }
 
@@ -64,7 +64,7 @@ bool operator!=(Plane plane1, Plane plane2)
 }
 
 string Plane::toString() {
-    string String = "\nPlane normal: " + to_string(normal[0]) + "j + " + to_string(normal[1]) + "k + " + to_string(normal[2]) + "l " + "\n" + "List size: " + to_string(connectedPlanes.size() ) + "\n" + to_string(relatedTriangle[0][0]) + " " + to_string(relatedTriangle[0][1]) + " " +  to_string(relatedTriangle[0][2]) + "\n";
+    string String = "\nPlane normal: " + to_string(normal[0]) + "j + " + to_string(normal[1]) + "k + " + to_string(normal[2]) + "l " + "\n" + "List size: " + to_string(connectedPlanes.size() ) + "\n" + to_string(relatedTriangle.points[0][0]) + " " + to_string(relatedTriangle.points[0][1]) + " " +  to_string(relatedTriangle.points[0][2]) + "\n";
 
     
     return String;

@@ -15,7 +15,9 @@
 using namespace std;
 
 Eigen::MatrixXd V;
+Eigen::MatrixXi L;
 Eigen::MatrixXi F;
+vector<triangleClass> objectTriangleArray;
 double pi = 3.14159265;
 
 void vecToString(vector<vector<double>> vec) {
@@ -46,7 +48,7 @@ void FindConnected(triangleClass *startTriangle, triangleClass curTriangle) {
 			if (count == 2) {	
 				//NEW	
 				double intAng = startTriangle->calcInteriorAngle(objectTriangleArray[x]);
-				//cout << intAng << endl;
+				cout << intAng << endl;
 				//NEW
 				if (objectTriangleArray[x].planeNo != -1) {
 					//searches if next_triangles plane no. is already in start triangles connected planes
@@ -63,6 +65,7 @@ void FindConnected(triangleClass *startTriangle, triangleClass curTriangle) {
 						}
 					}
 				}
+				
 				else if (intAng < 30) {
 						objectTriangleArray[x].updatePlaneNo(startTriangle->planeNo);
 						FindConnected(startTriangle, objectTriangleArray[x]);					
@@ -71,14 +74,14 @@ void FindConnected(triangleClass *startTriangle, triangleClass curTriangle) {
 	}
 }
 
-void combineSimilarPlanes(vector<Plane*> planeList) {
-	for (int x = 0; x < planeList.size();x++) {
-		Plane* curPlane = planeList[x];
-		for (int y = 0;y < planeList.size();y++) {
-
-		}
-	}
-}
+//void combineSimilarPlanes(vector<Plane*> planeList) {
+//	for (int x = 0; x < planeList.size();x++) {
+//		Plane* curPlane = planeList[x];
+//		for (int y = 0;y < planeList.size();y++) {
+//
+//		}
+//	}
+//}
 
 
 
@@ -100,7 +103,7 @@ vector<double> threePlaneIntersectionPoint(Plane plane1, Plane* plane2, Plane* p
 	D(0) = (Normal2[0] * P1[0] + Normal2[1] * P1[1] + Normal2[2] * P1[2]);
 
 	Normal2 = plane2->GetNormal();
-	P1 = plane2->getPoints()[0];
+	P1 = plane2->getRelatedTriangle()[0];
 
 	A(1, 0) = Normal2[0];
 	A(1, 1) = Normal2[1];
@@ -108,7 +111,7 @@ vector<double> threePlaneIntersectionPoint(Plane plane1, Plane* plane2, Plane* p
 	D(1) = (Normal2[0] * P1[0] + Normal2[1] * P1[1] + Normal2[2] * P1[2]);
 
 	Normal2 = plane3->GetNormal();
-	P1 = plane3->getPoints()[0];
+	P1 = plane3->getRelatedTriangle()[0];
 
 	A(2, 0) = Normal2[0];
 	A(2, 1) = Normal2[1];
@@ -352,205 +355,53 @@ bool AxisCheck(vector<vector<double>> loop) {
 int main(int argc, char* argv[])
 {
 	// Load a mesh in OFF format
-	igl::read_triangle_mesh("C:/Users/jaywh/source/repos/Dissertation/models"  "/8SidedTest.obj", V, F);
+	igl::read_triangle_mesh("C:/Users/jaywh/source/repos/Dissertation/models"  "/cylinder.obj", V, F);
 	
-	for (int x = 0; x < V.size(); x++) {
-		if (V(x) == 0) {
-			V(x) = 0;
+	
+	
+
+	
+
+	for (int x = 0; x < F.rows(); x++) {
+		//initialise the current triangle in loop
+		vector<vector<double>> nextTriangle = {};
+		for (int i = 0; i < 3; i++) {
+			nextTriangle.push_back({ V(F(x, i), 0), V(F(x, i), 1), V(F(x, i), 2) });
+		}
+		triangleClass temp = triangleClass(nextTriangle);
+		objectTriangleArray.push_back(temp);
+	}
+	int random = 0;
+	unsigned int numRows = F.rows() - 1;
+	unsigned int numCols = F.cols();
+	int planeCount = 0;
+	for (int t = 0; t < objectTriangleArray.size(); t++) {
+		if (objectTriangleArray[t].planeNo == -1) {
+			objectTriangleArray[t].updatePlaneNo(planeCount);
+			objectTriangleArray[t].makeTrianglePrime();
+			FindConnected(&objectTriangleArray[t], objectTriangleArray[t]);
+			
+			planeCount++;
 		}
 	}
-
-	for (int p = 0; p < V.size();p++) {
-		
-		int temp = (V(p) * 10000);
-		double temp1 = temp;
-		double temp2 = temp1 / 10000;
-		cout << temp1 / 10000 << " ";
-
-		V(p) = temp2;
+	vector<Plane> planeList;
+	vector<triangleClass> primeTriangleList;
+	for (triangleClass prime : objectTriangleArray) {
+		if (prime.isPrimeTriangle) {
+			planeList.push_back(Plane(prime));
+			primeTriangleList.push_back(prime);
+		}
 	}
-
-	//Gets number of triangles from the faces matrix
-	int numOfTriangles = F.rows();
-	cout << numOfTriangles;
-	vector<vector<vector<double>>> fullConnectedList;
-
-	//select random triangle
-	//int random = rand() % numOfTrianlges;
-
-
-	//assign point coordinates of a random traingle 
-	vector<double> P1 = { V(F(0, 0), 0), V(F(0, 0), 1), V(F(0, 0), 2) };
-	vector<double> P2 = { V(F(0, 1), 0), V(F(0, 1), 1), V(F(0, 1), 2) };
-	vector<double> P3 = { V(F(0, 2), 0), V(F(0, 2), 1), V(F(0, 2), 2) };
-	//initialise triangle with the points
-	vector<vector<double>> randTriangle0 = { P1, P2, P3 };
-
-
-	P1 = { V(F(10, 0), 0), V(F(10, 0), 1), V(F(10, 0), 2) };
-	P2 = { V(F(10, 1), 0), V(F(10, 1), 1), V(F(10, 1), 2) };
-	P3 = { V(F(10, 2), 0), V(F(10, 2), 1), V(F(10, 2), 2) };
-	//initialise triangle with the points
-	vector<vector<double>> randTriangle10 = { P1, P2, P3 };
-
-
-	P1 = { V(F(14, 0), 0), V(F(14, 0), 1), V(F(14, 0), 2) };
-	P2 = { V(F(14, 1), 0), V(F(14, 1), 1), V(F(14, 1), 2) };
-	P3 = { V(F(14, 2), 0), V(F(14, 2), 1), V(F(14, 2), 2) };
-	//initialise triangle with the points
-	vector<vector<double>> randTriangle14 = { P1, P2, P3 };
-
-
-	P1 = { V(F(18, 0), 0), V(F(18, 0), 1), V(F(18, 0), 2) };
-	P2 = { V(F(18, 1), 0), V(F(18, 1), 1), V(F(18, 1), 2) };
-	P3 = { V(F(18, 2), 0), V(F(18, 2), 1), V(F(18, 2), 2) };
-	//initialise triangle with the points
-	vector<vector<double>> randTriangle18 = { P1, P2, P3 };
-
-	P1 = { V(F(12, 0), 0), V(F(12, 0), 1), V(F(12, 0), 2) };
-	P2 = { V(F(12, 1), 0), V(F(12, 1), 1), V(F(12, 1), 2) };
-	P3 = { V(F(12, 2), 0), V(F(12, 2), 1), V(F(12, 2), 2) };
-	//initialise triangle with the points
-	vector<vector<double>> randTriangle12 = { P1, P2, P3 };
-
-	P1 = { V(F(16, 0), 0), V(F(16, 0), 1), V(F(16, 0), 2) };
-	P2 = { V(F(16, 1), 0), V(F(16, 1), 1), V(F(16, 1), 2) };
-	P3 = { V(F(16, 2), 0), V(F(16, 2), 1), V(F(16, 2), 2) };
-	//initialise triangle with the points
-	vector<vector<double>> randTriangle16 = { P1, P2, P3 };
-
-	P1 = { V(F(8, 0), 0), V(F(8, 0), 1), V(F(8, 0), 2) };
-	P2 = { V(F(8, 1), 0), V(F(8, 1), 1), V(F(8, 1), 2) };
-	P3 = { V(F(8, 2), 0), V(F(8, 2), 1), V(F(8, 2), 2) };
-	//initialise triangle with the points
-	vector<vector<double>> randTriangle8 = { P1, P2, P3 };
-
-	P1 = { V(F(6, 0), 0), V(F(6, 0), 1), V(F(6, 0), 2) };
-	P2 = { V(F(6, 1), 0), V(F(6, 1), 1), V(F(6, 1), 2) };
-	P3 = { V(F(6, 2), 0), V(F(6, 2), 1), V(F(6, 2), 2) };
-	//initialise triangle with the points
-	vector<vector<double>> randTriangle6 = { P1, P2, P3 };
-
-	P1 = { V(F(2, 0), 0), V(F(2, 0), 1), V(F(2, 0), 2) };
-	P2 = { V(F(2, 1), 0), V(F(2, 1), 1), V(F(2, 1), 2) };
-	P3 = { V(F(2, 2), 0), V(F(2, 2), 1), V(F(2, 2), 2) };
-	//initialise triangle with the points
-	vector<vector<double>> randTriangle2 = { P1, P2, P3 };
-
-	P1 = { V(F(4, 0), 0), V(F(4, 0), 1), V(F(4, 0), 2) };
-	P2 = { V(F(4, 1), 0), V(F(4, 1), 1), V(F(4, 1), 2) };
-	P3 = { V(F(4, 2), 0), V(F(4, 2), 1), V(F(4, 2), 2) };
-	//initialise triangle with the points
-	vector<vector<double>> randTriangle4 = { P1, P2, P3 };
-
-	//list of connected faces to pass into FindConnected recursive function
-	//Call function, currently just returns all triangles in the model but once we 
-	//include the angle checks it will then print the correct triangles to make a plane out of
-	//swap randTriangle for t
-	// 
-	//fullConnectedList.push_back(randTriangle);
-	//fullConnectedList = FindConnected(randTriangle,fullConnectedList,randTriangle);
-
-
-
-	if(angleCheck == failed && )
-
-
-
-	Plane plane0(randTriangle0);
-	Plane plane10(randTriangle10);
-	Plane plane14(randTriangle14);
-	Plane plane18(randTriangle18);
-	Plane plane12(randTriangle12);
-	Plane plane16(randTriangle16);
-	Plane plane8(randTriangle8);
-	Plane plane6(randTriangle6);
-	Plane plane2(randTriangle2);
-	Plane plane4(randTriangle4);
-
-	plane0.AddConnectedPlane(&plane10);
-	plane0.AddConnectedPlane(&plane6);
-	plane0.AddConnectedPlane(&plane2);
-	plane0.AddConnectedPlane(&plane4);
-
-	plane10.AddConnectedPlane(&plane0);
-	plane10.AddConnectedPlane(&plane14);
-	plane10.AddConnectedPlane(&plane2);
-	plane10.AddConnectedPlane(&plane4);
-
-	plane14.AddConnectedPlane(&plane10);
-	plane14.AddConnectedPlane(&plane18);
-	plane14.AddConnectedPlane(&plane2);
-	plane14.AddConnectedPlane(&plane4);
-
-	plane18.AddConnectedPlane(&plane14);
-	plane18.AddConnectedPlane(&plane12);
-	plane18.AddConnectedPlane(&plane2);
-	plane18.AddConnectedPlane(&plane4);
-
-	plane12.AddConnectedPlane(&plane18);
-	plane12.AddConnectedPlane(&plane16);
-	plane12.AddConnectedPlane(&plane2);
-	plane12.AddConnectedPlane(&plane4);
-
-	plane16.AddConnectedPlane(&plane12);
-	plane16.AddConnectedPlane(&plane8);
-	plane16.AddConnectedPlane(&plane2);
-	plane16.AddConnectedPlane(&plane4);
-
-	plane8.AddConnectedPlane(&plane16);
-	plane8.AddConnectedPlane(&plane6);
-	plane8.AddConnectedPlane(&plane2);
-	plane8.AddConnectedPlane(&plane4);
-
-	plane6.AddConnectedPlane(&plane8);
-	plane6.AddConnectedPlane(&plane0);
-	plane6.AddConnectedPlane(&plane2);
-	plane6.AddConnectedPlane(&plane4);
-
-	plane2.AddConnectedPlane(&plane0);
-	plane2.AddConnectedPlane(&plane10);
-	plane2.AddConnectedPlane(&plane14);
-	plane2.AddConnectedPlane(&plane18);
-	plane2.AddConnectedPlane(&plane12);
-	plane2.AddConnectedPlane(&plane16);
-	plane2.AddConnectedPlane(&plane8);
-	plane2.AddConnectedPlane(&plane6);
-
-	plane4.AddConnectedPlane(&plane0);
-	plane4.AddConnectedPlane(&plane10);
-	plane4.AddConnectedPlane(&plane14);
-	plane4.AddConnectedPlane(&plane18);
-	plane4.AddConnectedPlane(&plane12);
-	plane4.AddConnectedPlane(&plane16);
-	plane4.AddConnectedPlane(&plane8);
-	plane4.AddConnectedPlane(&plane6);
-
-	vector<Plane> PlaneList;
-
-	PlaneList.push_back(plane0);
-	PlaneList.push_back(plane10);
-	PlaneList.push_back(plane14);
-	PlaneList.push_back(plane18);
-	PlaneList.push_back(plane12);
-	PlaneList.push_back(plane16);
-	PlaneList.push_back(plane8);
-	PlaneList.push_back(plane6);
-	PlaneList.push_back(plane2);
-	PlaneList.push_back(plane4);
+	for (int planeNo = 0; planeNo < planeList.size();planeNo++) {
+		for (int index : primeTriangleList[planeNo].connectedPlanes) {
+			planeList[planeNo].AddConnectedPlane(&planeList[index]);
+		}
+	}
 	
 
 
-	/*
-		cout << "Plane 1: " << plane1.toString();
-	cout << "Plane 3: " << plane3.toString();
-	cout << "Plane 4: " << plane4.toString();
-	cout << "Plane 7: " << plane7.toString();
-	cout << "Plane 9: " << plane9.toString();
-	cout << "Plane 10: " << plane10.toString();
-	*/
 
-
+	
 
 	Eigen::MatrixXd D;
 	Eigen::MatrixXi P;
@@ -561,9 +412,9 @@ int main(int argc, char* argv[])
 
 
 
-	for (int x = 0; x < PlaneList.size();x++) {
-		cout << PlaneList[x].toString();
-		vector<vector<vector<double>>> Loops = getNextPlane(PlaneList[x], PlaneList[x].GetConnectedPlanes());
+	for (int x = 0; x < planeList.size();x++) {
+		
+		vector<vector<vector<double>>> Loops = getNextPlane(planeList[x], planeList[x].GetConnectedPlanes());
 
 		vector<vector<double>> holePoints;
 		//vector<vector<double>> holePoints = GetPointsInHoles(Loops);
@@ -582,22 +433,22 @@ int main(int argc, char* argv[])
 		int axis = 0;
 
 
-		if (PlaneList[x].GetNormal()[0] == 0 && PlaneList[x].GetNormal()[2] == 0) {
+		if (planeList[x].GetNormal()[0] == 0 && planeList[x].GetNormal()[2] == 0) {
 			axis = 1;
 		}
-		else if (PlaneList[x].GetNormal()[1] == 0 && PlaneList[x].GetNormal()[2] == 0) {
+		else if (planeList[x].GetNormal()[1] == 0 && planeList[x].GetNormal()[2] == 0) {
 			axis = 0;
 		}
-		else if (PlaneList[x].GetNormal()[0] == 0 && PlaneList[x].GetNormal()[1] == 0) {
+		else if (planeList[x].GetNormal()[0] == 0 && planeList[x].GetNormal()[1] == 0) {
 			axis = 2;
 		}
-		else if (abs(PlaneList[x].GetNormal()[0]) == abs(PlaneList[x].GetNormal()[2])) {
+		else if (abs(planeList[x].GetNormal()[0]) == abs(planeList[x].GetNormal()[2])) {
 			axis = 0;
 		}
-		else if (abs(PlaneList[x].GetNormal()[1]) == abs(PlaneList[x].GetNormal()[2])) {
+		else if (abs(planeList[x].GetNormal()[1]) == abs(planeList[x].GetNormal()[2])) {
 			axis = 1;
 		}
-		else if (abs(PlaneList[x].GetNormal()[0]) == abs(PlaneList[x].GetNormal()[1])) {
+		else if (abs(planeList[x].GetNormal()[0]) == abs(planeList[x].GetNormal()[1])) {
 			axis = 0;
 		}
 
@@ -648,7 +499,7 @@ int main(int argc, char* argv[])
 			H(x, 1) = holePoints[x][1];
 		}
 
-		cout << V3;
+		
 
 		igl::triangle::triangulate(V3, E, H, "1", V2, F2);
 
@@ -659,20 +510,20 @@ int main(int argc, char* argv[])
 
 		for (int p = 0;p < V2.rows();p++) {
 			if (axis == 0) {
-				V4(p, 0) = calcX(PlaneList[x], V2(p, 0), V2(p, 1))[2];
+				V4(p, 0) = calcX(planeList[x], V2(p, 0), V2(p, 1))[2];
 				V4(p, 1) = V2(p, 0);
 				V4(p, 2) = V2(p, 1);
 			}
 			else if (axis == 1) {
 				V4(p, 0) = V2(p, 0);
-				V4(p, 1) = calcY(PlaneList[x], V2(p, 0), V2(p, 1))[2];
+				V4(p, 1) = calcY(planeList[x], V2(p, 0), V2(p, 1))[2];
 
 				V4(p, 2) = V2(p, 1);
 			}
 			else if (axis == 2) {
 				V4(p, 0) = V2(p, 0);;
 				V4(p, 1) = V2(p, 1);
-				V4(p, 2) = calcZ(PlaneList[x], V2(p, 0), V2(p, 1))[2];
+				V4(p, 2) = calcZ(planeList[x], V2(p, 0), V2(p, 1))[2];
 			}
 
 
@@ -705,17 +556,16 @@ int main(int argc, char* argv[])
 	
 	
 		//Removing duplicates from the verticies list
-		cout << endl << D << endl;
+		
 		vector<vector<double>> checked;
 		
 		for (int i = 0; i < D.rows();i++) {
-			cout << D(i, 0);
+			
 			vector<double> cur = { D(i,0),D(i,1),D(i,2) };
 			if (cur[0] == test1[0]) {
-				cout << "+++++++++++++++++++++++++++++++++++++++++++++++++";
+				
 			}
 			if (find(checked.begin(), checked.end(), cur) == checked.end()) {
-				cout << endl << cur[0] << " " << cur[1] << " " << cur[2] << endl;
 				checked.push_back(cur);
 			}
 			else {
@@ -729,7 +579,7 @@ int main(int argc, char* argv[])
 		}
 		
 		
-		cout << endl << D << endl;
+		
 
 		for (int n = 0;n < F2.rows();n++) {
 			for (int m = 0;m < 3;m++) {
@@ -773,16 +623,10 @@ int main(int argc, char* argv[])
 	}
 
 	
-	if (igl::writeOBJ("C:/Users/jaywh/source/repos/Dissertation/models/cube.obj", D, P)) {
-		cout << "yay";
-	}
-	else {
-		cout << "nay"
-			;
-	}
+	
 	
 
-	cout<< endl << "->>>" <<  D;
+
 
 	//Plot the mesh
 
@@ -791,7 +635,7 @@ int main(int argc, char* argv[])
 
 	igl::opengl::glfw::Viewer viewer;
 	
-	viewer.data().set_mesh(V, F);
+	viewer.data().set_mesh(D, P);
 	viewer.launch();
 
 	
@@ -801,64 +645,7 @@ int main(int argc, char* argv[])
 }
 
 
-*/
-
-//Alex Testing MainVVVVV
-
-int main(int argc, char* argv[])
-{
-	// Load a mesh in OFF format
 
 
-	//igl::read_triangle_mesh("C:/Users/jaywh/source/repos/ThirdYearDissertation4/models"  "/Tower.obj", V, F);
-	//igl::read_triangle_mesh("C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/models"  "/Tower.obj", V, F);
-	igl::read_triangle_mesh("C:/Users/Wooki/Downloads/"  "/cube.obj", V, F);
-	for (int x = 0; x < F.rows(); x++) {		
-		//initialise the current triangle in loop
-		vector<vector<double>> nextTriangle = {};
-		for (int i = 0; i < 3; i++) {
-			nextTriangle.push_back({ V(F(x, i), 0), V(F(x, i), 1), V(F(x, i), 2) });
-		}
-		triangleClass temp = triangleClass(nextTriangle);
-		objectTriangleArray.push_back(temp);
-	}
-	int random = 0;
-	unsigned int numRows = F.rows() - 1;
-	unsigned int numCols = F.cols();
-	int planeCount = 0;
-	for (int t = 0; t < objectTriangleArray.size(); t++) {
-		if (objectTriangleArray[t].planeNo == -1) {
-			objectTriangleArray[t].updatePlaneNo(planeCount);
-			objectTriangleArray[t].makeTrianglePrime();
-			FindConnected(&objectTriangleArray[t], objectTriangleArray[t]);
-			cout << planeCount << endl;
-			planeCount++;
-		}
-	}
-	vector<Plane> planeList;
-	vector<triangleClass> primeTriangleList;
-	for (triangleClass prime : objectTriangleArray) {
-		if (prime.isPrimeTriangle) {
-			planeList.push_back(Plane(prime));
-			primeTriangleList.push_back(prime);
-		}
-	}
-	for (int planeNo = 0; planeNo < planeList.size();planeNo ++) {
-		for (int index : primeTriangleList[planeNo].connectedPlanes) {
-			planeList[planeNo].AddConnectedPlane(&planeList[index]);
-		}
-	}
-	for (int test1 = 0; test1 < primeTriangleList.size(); test1++) {
-		cout << test1 << endl;
-		cout << primeTriangleList[test1].normal[0] <<" ";
-		cout << primeTriangleList[test1].normal[1] << " ";
-		cout << primeTriangleList[test1].normal[2] << endl;
-		cout << planeList[test1].toString() << endl;
-	}
-	//Plot the mesh
-	std::cout << endl << endl << endl;
-	//open libigl viewer
-	igl::opengl::glfw::Viewer viewer;
-	viewer.data().set_mesh(V, F);
-	viewer.launch();
-}
+
+
