@@ -16,6 +16,7 @@ private:
     vector<Plane*> connectedPlanes;
     
 public:
+    Plane();
     Plane(triangleClass inputTriangle);
     void AddConnectedPlane(Plane* planeToAdd);
     vector<vector<double>> getPoints();

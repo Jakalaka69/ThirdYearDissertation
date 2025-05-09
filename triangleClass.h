@@ -1,8 +1,8 @@
+#pragma once
 #include <vector>
 #include <cmath>
 #define _USE_MATH_DEFINES
-#ifndef _myheader_h_included_
-#define _myheader_h_included_
+
 
 
 
@@ -35,5 +35,3 @@ public:
     friend bool operator==(triangleClass t1, triangleClass t2);
     string toString();
 };
-
-#endif

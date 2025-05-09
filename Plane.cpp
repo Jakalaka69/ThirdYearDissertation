@@ -26,6 +26,10 @@ Plane::Plane(triangleClass inputTriangle) {
     normal = inputTriangle.returnNormal();
 }
 
+Plane::Plane() {
+
+}
+
 void Plane::AddConnectedPlane(Plane* planeToAdd) {
     connectedPlanes.push_back(planeToAdd);
 }

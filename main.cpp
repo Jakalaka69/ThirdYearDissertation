@@ -20,7 +20,7 @@ double pi = 3.14159265;
 void vecToString(vector<vector<double>> vec) {
 	for (int y = 0; y < vec.size();y++) {
 		
-		cout << endl << "== " << vec[y][0] << " ," << vec[y][1] << " ," << vec[y][2];
+		//cout << endl << "== " << vec[y][0] << " ," << vec[y][1] << " ," << vec[y][2];
 		
 	}
 	
@@ -97,7 +97,7 @@ triangleClass FindConnected(triangleClass startTriangle, vector<vector<vector<do
 						fullConnectedList.push_back(nextTriangle);
 						startTriangle.addToAdjacentTriangles(NEXT_TRIANGLE);
 						if (startTriangle.isTrianglePresent(NEXT_TRIANGLE)) {
-							printf("TESTWORKING");
+							//printf("TESTWORKING");
 						}
 
 						
@@ -681,12 +681,12 @@ int main(int argc, char* argv[])
 
 
 
-	cout << P1[0] << P1[1] << P1[2] << endl;
-	cout << P2[0] << P2[1] << P2[2] << endl;
-	cout << P3[0] << P3[1] << P3[2] << endl;
-	cout << x_c << endl;
-	cout << y_c << endl;
-	cout << z_c << endl;
+	//cout << P1[0] << P1[1] << P1[2] << endl;
+	//cout << P2[0] << P2[1] << P2[2] << endl;
+	//cout << P3[0] << P3[1] << P3[2] << endl;
+	//cout << x_c << endl;
+	//cout << y_c << endl;
+	//cout << z_c << endl;
 	V(V.rows() - 1, 0) = x_c + (P1[0] - x_c) * 10;
 	V(V.rows() - 1, 1) = y_c + (P1[1] - y_c) * 10;
 	V(V.rows() - 1, 2) = z_c + (P1[2] - z_c) * 10;
@@ -703,7 +703,7 @@ int main(int argc, char* argv[])
 	F(F.rows() - 1, 1) = V.rows() - 2;
 	F(F.rows() - 1, 2) = V.rows() - 3;
 
-	cout << V << endl;
+	//cout << V << endl;
 
 	//print all triangles in final list
 	//for (vector<vector<double>> triangle : fullConnectedList) {
