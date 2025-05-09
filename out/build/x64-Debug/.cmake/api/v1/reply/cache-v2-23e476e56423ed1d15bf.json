@@ -75,7 +75,11 @@
 				}
 			],
 			"type" : "INTERNAL",
+<<<<<<<< HEAD:out/build/x64-Debug/.cmake/api/v1/reply/cache-v2-23e476e56423ed1d15bf.json
 			"value" : "c:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug"
+========
+			"value" : "c:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug"
+>>>>>>>> jayparts:out/build/x64-Debug/.cmake/api/v1/reply/cache-v2-83ffa4fd83ca2a1a0514.json
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -503,7 +507,11 @@
 				}
 			],
 			"type" : "STATIC",
+<<<<<<<< HEAD:out/build/x64-Debug/.cmake/api/v1/reply/cache-v2-23e476e56423ed1d15bf.json
 			"value" : "C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/CMakeFiles/pkgRedirects"
+========
+			"value" : "C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/CMakeFiles/pkgRedirects"
+>>>>>>>> jayparts:out/build/x64-Debug/.cmake/api/v1/reply/cache-v2-83ffa4fd83ca2a1a0514.json
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -599,7 +607,11 @@
 				}
 			],
 			"type" : "INTERNAL",
+<<<<<<<< HEAD:out/build/x64-Debug/.cmake/api/v1/reply/cache-v2-23e476e56423ed1d15bf.json
 			"value" : "C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation"
+========
+			"value" : "C:/Users/jaywh/source/repos/Dissertation"
+>>>>>>>> jayparts:out/build/x64-Debug/.cmake/api/v1/reply/cache-v2-83ffa4fd83ca2a1a0514.json
 		},
 		{
 			"name" : "CMAKE_INSTALL_BINDIR",
@@ -803,7 +815,11 @@
 				}
 			],
 			"type" : "PATH",
+<<<<<<<< HEAD:out/build/x64-Debug/.cmake/api/v1/reply/cache-v2-23e476e56423ed1d15bf.json
 			"value" : "C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/install/x64-Debug"
+========
+			"value" : "C:/Users/jaywh/source/repos/Dissertation/out/install/x64-Debug"
+>>>>>>>> jayparts:out/build/x64-Debug/.cmake/api/v1/reply/cache-v2-83ffa4fd83ca2a1a0514.json
 		},
 		{
 			"name" : "CMAKE_INSTALL_RUNSTATEDIR",
@@ -1475,7 +1491,11 @@
 				}
 			],
 			"type" : "PATH",
+<<<<<<<< HEAD:out/build/x64-Debug/.cmake/api/v1/reply/cache-v2-23e476e56423ed1d15bf.json
 			"value" : "C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps"
+========
+			"value" : "C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps"
+>>>>>>>> jayparts:out/build/x64-Debug/.cmake/api/v1/reply/cache-v2-83ffa4fd83ca2a1a0514.json
 		},
 		{
 			"name" : "FETCHCONTENT_FULLY_DISCONNECTED",
@@ -1683,7 +1703,11 @@
 				}
 			],
 			"type" : "STATIC",
+<<<<<<<< HEAD:out/build/x64-Debug/.cmake/api/v1/reply/cache-v2-23e476e56423ed1d15bf.json
 			"value" : "C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/glfw-build"
+========
+			"value" : "C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/glfw-build"
+>>>>>>>> jayparts:out/build/x64-Debug/.cmake/api/v1/reply/cache-v2-83ffa4fd83ca2a1a0514.json
 		},
 		{
 			"name" : "GLFW_BUILD_DOCS",
@@ -1755,7 +1779,11 @@
 				}
 			],
 			"type" : "STATIC",
+<<<<<<<< HEAD:out/build/x64-Debug/.cmake/api/v1/reply/cache-v2-23e476e56423ed1d15bf.json
 			"value" : "C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/glfw-src"
+========
+			"value" : "C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/glfw-src"
+>>>>>>>> jayparts:out/build/x64-Debug/.cmake/api/v1/reply/cache-v2-83ffa4fd83ca2a1a0514.json
 		},
 		{
 			"name" : "GLFW_USE_HYBRID_HPG",
@@ -2099,7 +2127,11 @@
 				}
 			],
 			"type" : "INTERNAL",
+<<<<<<<< HEAD:out/build/x64-Debug/.cmake/api/v1/reply/cache-v2-23e476e56423ed1d15bf.json
 			"value" : "C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/install/x64-Debug"
+========
+			"value" : "C:/Users/jaywh/source/repos/Dissertation/out/install/x64-Debug"
+>>>>>>>> jayparts:out/build/x64-Debug/.cmake/api/v1/reply/cache-v2-83ffa4fd83ca2a1a0514.json
 		},
 		{
 			"name" : "example_BINARY_DIR",
@@ -2111,7 +2143,11 @@
 				}
 			],
 			"type" : "STATIC",
+<<<<<<<< HEAD:out/build/x64-Debug/.cmake/api/v1/reply/cache-v2-23e476e56423ed1d15bf.json
 			"value" : "C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug"
+========
+			"value" : "C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug"
+>>>>>>>> jayparts:out/build/x64-Debug/.cmake/api/v1/reply/cache-v2-83ffa4fd83ca2a1a0514.json
 		},
 		{
 			"name" : "example_IS_TOP_LEVEL",
@@ -2135,7 +2171,11 @@
 				}
 			],
 			"type" : "STATIC",
+<<<<<<<< HEAD:out/build/x64-Debug/.cmake/api/v1/reply/cache-v2-23e476e56423ed1d15bf.json
 			"value" : "C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation"
+========
+			"value" : "C:/Users/jaywh/source/repos/Dissertation"
+>>>>>>>> jayparts:out/build/x64-Debug/.cmake/api/v1/reply/cache-v2-83ffa4fd83ca2a1a0514.json
 		},
 		{
 			"name" : "glad_BINARY_DIR",
@@ -2147,7 +2187,11 @@
 				}
 			],
 			"type" : "STATIC",
+<<<<<<<< HEAD:out/build/x64-Debug/.cmake/api/v1/reply/cache-v2-23e476e56423ed1d15bf.json
 			"value" : "C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/glad-build"
+========
+			"value" : "C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/glad-build"
+>>>>>>>> jayparts:out/build/x64-Debug/.cmake/api/v1/reply/cache-v2-83ffa4fd83ca2a1a0514.json
 		},
 		{
 			"name" : "glad_IS_TOP_LEVEL",
@@ -2171,7 +2215,11 @@
 				}
 			],
 			"type" : "STATIC",
+<<<<<<<< HEAD:out/build/x64-Debug/.cmake/api/v1/reply/cache-v2-23e476e56423ed1d15bf.json
 			"value" : "C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/glad-src"
+========
+			"value" : "C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/glad-src"
+>>>>>>>> jayparts:out/build/x64-Debug/.cmake/api/v1/reply/cache-v2-83ffa4fd83ca2a1a0514.json
 		},
 		{
 			"name" : "libigl_BINARY_DIR",
@@ -2183,7 +2231,11 @@
 				}
 			],
 			"type" : "STATIC",
+<<<<<<<< HEAD:out/build/x64-Debug/.cmake/api/v1/reply/cache-v2-23e476e56423ed1d15bf.json
 			"value" : "C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/libigl-build"
+========
+			"value" : "C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/libigl-build"
+>>>>>>>> jayparts:out/build/x64-Debug/.cmake/api/v1/reply/cache-v2-83ffa4fd83ca2a1a0514.json
 		},
 		{
 			"name" : "libigl_IS_TOP_LEVEL",
@@ -2207,7 +2259,11 @@
 				}
 			],
 			"type" : "STATIC",
+<<<<<<<< HEAD:out/build/x64-Debug/.cmake/api/v1/reply/cache-v2-23e476e56423ed1d15bf.json
 			"value" : "C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/libigl-src"
+========
+			"value" : "C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/libigl-src"
+>>>>>>>> jayparts:out/build/x64-Debug/.cmake/api/v1/reply/cache-v2-83ffa4fd83ca2a1a0514.json
 		},
 		{
 			"name" : "triangle_BINARY_DIR",
@@ -2219,7 +2275,11 @@
 				}
 			],
 			"type" : "STATIC",
+<<<<<<<< HEAD:out/build/x64-Debug/.cmake/api/v1/reply/cache-v2-23e476e56423ed1d15bf.json
 			"value" : "C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/triangle-build"
+========
+			"value" : "C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/triangle-build"
+>>>>>>>> jayparts:out/build/x64-Debug/.cmake/api/v1/reply/cache-v2-83ffa4fd83ca2a1a0514.json
 		},
 		{
 			"name" : "triangle_IS_TOP_LEVEL",
@@ -2243,7 +2303,11 @@
 				}
 			],
 			"type" : "STATIC",
+<<<<<<<< HEAD:out/build/x64-Debug/.cmake/api/v1/reply/cache-v2-23e476e56423ed1d15bf.json
 			"value" : "C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/triangle-src"
+========
+			"value" : "C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/triangle-src"
+>>>>>>>> jayparts:out/build/x64-Debug/.cmake/api/v1/reply/cache-v2-83ffa4fd83ca2a1a0514.json
 		}
 	],
 	"kind" : "cache",

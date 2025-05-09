@@ -14,6 +14,7 @@ private:
     vector<vector<double>> Tpoints;
     vector<double> normal;
     vector<Plane*> connectedPlanes;
+   
     
 public:
     Plane();

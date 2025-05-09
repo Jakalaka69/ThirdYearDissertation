@@ -39,7 +39,7 @@ include CMakeFiles\rules.ninja
 #############################################
 # Logical path to working directory; prefix for absolute paths.
 
-cmake_ninja_workdir = C$:\Uni$ Stuff\year3\3rd$ year$ project$ polyfit$ ver\ThirdYearDissertation\out\build\x64-Debug\
+cmake_ninja_workdir = C$:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\
 
 #############################################
 # Utility command for igl_restricted_triangle
@@ -67,37 +67,37 @@ build igl_opengl: phony
 
 build cmake_object_order_depends_target_example: phony || _deps\libigl-build\igl_core cmake_object_order_depends_target_glad cmake_object_order_depends_target_glfw cmake_object_order_depends_target_triangle igl_glfw igl_opengl igl_restricted_triangle
 
-build CMakeFiles\example.dir\Plane.cpp.obj: CXX_COMPILER__example_unscanned_Debug C$:\Uni$ Stuff\year3\3rd$ year$ project$ polyfit$ ver\ThirdYearDissertation\Plane.cpp || cmake_object_order_depends_target_example
+build CMakeFiles\example.dir\Plane.cpp.obj: CXX_COMPILER__example_unscanned_Debug C$:\Users\jaywh\source\repos\Dissertation\Plane.cpp || cmake_object_order_depends_target_example
   DEFINES = -DNOMINMAX
   FLAGS = /DWIN32 /D_WINDOWS /GR /EHsc /Zi /Ob0 /Od /RTC1 -MDd /MP /bigobj
-  INCLUDES = -I"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\libigl-src\include" -I"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glad-src\include" -I"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-src\include" -I"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\triangle-src" -external:I"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\eigen-src" -external:W0
+  INCLUDES = -IC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\libigl-src\include -IC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glad-src\include -IC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glfw-src\include -IC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\triangle-src -external:IC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\eigen-src -external:W0
   OBJECT_DIR = CMakeFiles\example.dir
   OBJECT_FILE_DIR = CMakeFiles\example.dir
   TARGET_COMPILE_PDB = CMakeFiles\example.dir\
   TARGET_PDB = example.pdb
 
-build CMakeFiles\example.dir\main.cpp.obj: CXX_COMPILER__example_unscanned_Debug C$:\Uni$ Stuff\year3\3rd$ year$ project$ polyfit$ ver\ThirdYearDissertation\main.cpp || cmake_object_order_depends_target_example
+build CMakeFiles\example.dir\main.cpp.obj: CXX_COMPILER__example_unscanned_Debug C$:\Users\jaywh\source\repos\Dissertation\main.cpp || cmake_object_order_depends_target_example
   DEFINES = -DNOMINMAX
   FLAGS = /DWIN32 /D_WINDOWS /GR /EHsc /Zi /Ob0 /Od /RTC1 -MDd /MP /bigobj
-  INCLUDES = -I"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\libigl-src\include" -I"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glad-src\include" -I"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-src\include" -I"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\triangle-src" -external:I"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\eigen-src" -external:W0
+  INCLUDES = -IC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\libigl-src\include -IC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glad-src\include -IC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glfw-src\include -IC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\triangle-src -external:IC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\eigen-src -external:W0
   OBJECT_DIR = CMakeFiles\example.dir
   OBJECT_FILE_DIR = CMakeFiles\example.dir
   TARGET_COMPILE_PDB = CMakeFiles\example.dir\
   TARGET_PDB = example.pdb
 
-build CMakeFiles\example.dir\planeClass.cpp.obj: CXX_COMPILER__example_unscanned_Debug C$:\Uni$ Stuff\year3\3rd$ year$ project$ polyfit$ ver\ThirdYearDissertation\planeClass.cpp || cmake_object_order_depends_target_example
+build CMakeFiles\example.dir\planeClass.cpp.obj: CXX_COMPILER__example_unscanned_Debug C$:\Users\jaywh\source\repos\Dissertation\planeClass.cpp || cmake_object_order_depends_target_example
   DEFINES = -DNOMINMAX
   FLAGS = /DWIN32 /D_WINDOWS /GR /EHsc /Zi /Ob0 /Od /RTC1 -MDd /MP /bigobj
-  INCLUDES = -I"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\libigl-src\include" -I"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glad-src\include" -I"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-src\include" -I"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\triangle-src" -external:I"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\eigen-src" -external:W0
+  INCLUDES = -IC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\libigl-src\include -IC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glad-src\include -IC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glfw-src\include -IC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\triangle-src -external:IC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\eigen-src -external:W0
   OBJECT_DIR = CMakeFiles\example.dir
   OBJECT_FILE_DIR = CMakeFiles\example.dir
   TARGET_COMPILE_PDB = CMakeFiles\example.dir\
   TARGET_PDB = example.pdb
 
-build CMakeFiles\example.dir\triangleClass.cpp.obj: CXX_COMPILER__example_unscanned_Debug C$:\Uni$ Stuff\year3\3rd$ year$ project$ polyfit$ ver\ThirdYearDissertation\triangleClass.cpp || cmake_object_order_depends_target_example
+build CMakeFiles\example.dir\triangleClass.cpp.obj: CXX_COMPILER__example_unscanned_Debug C$:\Users\jaywh\source\repos\Dissertation\triangleClass.cpp || cmake_object_order_depends_target_example
   DEFINES = -DNOMINMAX
   FLAGS = /DWIN32 /D_WINDOWS /GR /EHsc /Zi /Ob0 /Od /RTC1 -MDd /MP /bigobj
-  INCLUDES = -I"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\libigl-src\include" -I"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glad-src\include" -I"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-src\include" -I"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\triangle-src" -external:I"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\eigen-src" -external:W0
+  INCLUDES = -IC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\libigl-src\include -IC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glad-src\include -IC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glfw-src\include -IC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\triangle-src -external:IC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\eigen-src -external:W0
   OBJECT_DIR = CMakeFiles\example.dir
   OBJECT_FILE_DIR = CMakeFiles\example.dir
   TARGET_COMPILE_PDB = CMakeFiles\example.dir\
@@ -128,7 +128,7 @@ build example.exe: CXX_EXECUTABLE_LINKER__example_Debug CMakeFiles\example.dir\P
 # Utility command for edit_cache
 
 build CMakeFiles\edit_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug" && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -139,7 +139,7 @@ build edit_cache: phony CMakeFiles\edit_cache.util
 # Utility command for rebuild_cache
 
 build CMakeFiles\rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug" && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -S"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation" -B"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug""
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -SC:\Users\jaywh\source\repos\Dissertation -BC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug"
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -157,7 +157,7 @@ build list_install_components: phony
 # Utility command for install
 
 build CMakeFiles\install.util: CUSTOM_COMMAND all
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug" && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -P cmake_install.cmake"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -P cmake_install.cmake"
   DESC = Install the project...
   pool = console
   restat = 1
@@ -169,7 +169,7 @@ build install: phony CMakeFiles\install.util
 # Utility command for install/local
 
 build CMakeFiles\install\local.util: CUSTOM_COMMAND all
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug" && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
   DESC = Installing only the local directory...
   pool = console
   restat = 1
@@ -178,7 +178,7 @@ build install\local: phony CMakeFiles\install\local.util
 
 # =============================================================================
 # Write statements declared in CMakeLists.txt:
-# C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/cmake/libigl.cmake
+# C:/Users/jaywh/source/repos/Dissertation/cmake/libigl.cmake
 # =============================================================================
 
 
@@ -192,7 +192,7 @@ build _deps\libigl-build\igl_core: phony
 # Utility command for edit_cache
 
 build _deps\libigl-build\CMakeFiles\edit_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\libigl-build" && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\libigl-build && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -203,7 +203,7 @@ build _deps\libigl-build\edit_cache: phony _deps\libigl-build\CMakeFiles\edit_ca
 # Utility command for rebuild_cache
 
 build _deps\libigl-build\CMakeFiles\rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\libigl-build" && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -S"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation" -B"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug""
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\libigl-build && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -SC:\Users\jaywh\source\repos\Dissertation -BC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug"
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -221,7 +221,7 @@ build _deps\libigl-build\list_install_components: phony
 # Utility command for install
 
 build _deps\libigl-build\CMakeFiles\install.util: CUSTOM_COMMAND _deps\libigl-build\all
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\libigl-build" && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -P cmake_install.cmake"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\libigl-build && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -P cmake_install.cmake"
   DESC = Install the project...
   pool = console
   restat = 1
@@ -233,7 +233,7 @@ build _deps\libigl-build\install: phony _deps\libigl-build\CMakeFiles\install.ut
 # Utility command for install/local
 
 build _deps\libigl-build\CMakeFiles\install\local.util: CUSTOM_COMMAND _deps\libigl-build\all
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\libigl-build" && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\libigl-build && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
   DESC = Installing only the local directory...
   pool = console
   restat = 1
@@ -242,7 +242,7 @@ build _deps\libigl-build\install\local: phony _deps\libigl-build\CMakeFiles\inst
 
 # =============================================================================
 # Write statements declared in CMakeLists.txt:
-# C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/libigl-src/cmake/recipes/external/triangle.cmake
+# C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/libigl-src/cmake/recipes/external/triangle.cmake
 # =============================================================================
 
 # =============================================================================
@@ -254,7 +254,7 @@ build _deps\libigl-build\install\local: phony _deps\libigl-build\CMakeFiles\inst
 
 build cmake_object_order_depends_target_triangle: phony || _deps\triangle-build\CMakeFiles\triangle.dir
 
-build _deps\triangle-build\CMakeFiles\triangle.dir\triangle.cpp.obj: CXX_COMPILER__triangle_unscanned_Debug C$:\Uni$ Stuff\year3\3rd$ year$ project$ polyfit$ ver\ThirdYearDissertation\out\build\x64-Debug\_deps\triangle-src\triangle.cpp || cmake_object_order_depends_target_triangle
+build _deps\triangle-build\CMakeFiles\triangle.dir\triangle.cpp.obj: CXX_COMPILER__triangle_unscanned_Debug C$:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\triangle-src\triangle.cpp || cmake_object_order_depends_target_triangle
   DEFINES = -DANSI_DECLARATORS -DNO_TIMER -DTRILIBRARY
   FLAGS = /DWIN32 /D_WINDOWS /GR /EHsc /Zi /Ob0 /Od /RTC1 -MDd
   OBJECT_DIR = _deps\triangle-build\CMakeFiles\triangle.dir
@@ -285,7 +285,7 @@ build _deps\triangle-build\triangle.lib: CXX_STATIC_LIBRARY_LINKER__triangle_Deb
 # Utility command for edit_cache
 
 build _deps\triangle-build\CMakeFiles\edit_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\triangle-build" && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\triangle-build && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -296,7 +296,7 @@ build _deps\triangle-build\edit_cache: phony _deps\triangle-build\CMakeFiles\edi
 # Utility command for rebuild_cache
 
 build _deps\triangle-build\CMakeFiles\rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\triangle-build" && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -S"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation" -B"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug""
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\triangle-build && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -SC:\Users\jaywh\source\repos\Dissertation -BC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug"
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -314,7 +314,7 @@ build _deps\triangle-build\list_install_components: phony
 # Utility command for install
 
 build _deps\triangle-build\CMakeFiles\install.util: CUSTOM_COMMAND _deps\triangle-build\all
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\triangle-build" && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -P cmake_install.cmake"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\triangle-build && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -P cmake_install.cmake"
   DESC = Install the project...
   pool = console
   restat = 1
@@ -326,7 +326,7 @@ build _deps\triangle-build\install: phony _deps\triangle-build\CMakeFiles\instal
 # Utility command for install/local
 
 build _deps\triangle-build\CMakeFiles\install\local.util: CUSTOM_COMMAND _deps\triangle-build\all
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\triangle-build" && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\triangle-build && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
   DESC = Installing only the local directory...
   pool = console
   restat = 1
@@ -335,7 +335,7 @@ build _deps\triangle-build\install\local: phony _deps\triangle-build\CMakeFiles\
 
 # =============================================================================
 # Write statements declared in CMakeLists.txt:
-# C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/libigl-src/cmake/recipes/external/glfw.cmake
+# C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/libigl-src/cmake/recipes/external/glfw.cmake
 # =============================================================================
 
 
@@ -343,7 +343,7 @@ build _deps\triangle-build\install\local: phony _deps\triangle-build\CMakeFiles\
 # Utility command for edit_cache
 
 build _deps\glfw-build\CMakeFiles\edit_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-build" && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glfw-build && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -354,7 +354,7 @@ build _deps\glfw-build\edit_cache: phony _deps\glfw-build\CMakeFiles\edit_cache.
 # Utility command for rebuild_cache
 
 build _deps\glfw-build\CMakeFiles\rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-build" && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -S"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation" -B"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug""
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glfw-build && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -SC:\Users\jaywh\source\repos\Dissertation -BC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug"
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -372,7 +372,7 @@ build _deps\glfw-build\list_install_components: phony
 # Utility command for install
 
 build _deps\glfw-build\CMakeFiles\install.util: CUSTOM_COMMAND _deps\glfw-build\all
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-build" && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -P cmake_install.cmake"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glfw-build && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -P cmake_install.cmake"
   DESC = Install the project...
   pool = console
   restat = 1
@@ -384,7 +384,7 @@ build _deps\glfw-build\install: phony _deps\glfw-build\CMakeFiles\install.util
 # Utility command for install/local
 
 build _deps\glfw-build\CMakeFiles\install\local.util: CUSTOM_COMMAND _deps\glfw-build\all
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-build" && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glfw-build && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
   DESC = Installing only the local directory...
   pool = console
   restat = 1
@@ -393,7 +393,7 @@ build _deps\glfw-build\install\local: phony _deps\glfw-build\CMakeFiles\install\
 
 # =============================================================================
 # Write statements declared in CMakeLists.txt:
-# C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/glfw-src/CMakeLists.txt
+# C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/glfw-src/CMakeLists.txt
 # =============================================================================
 
 # =============================================================================
@@ -405,136 +405,136 @@ build _deps\glfw-build\install\local: phony _deps\glfw-build\CMakeFiles\install\
 
 build cmake_object_order_depends_target_glfw: phony || _deps\glfw-build\src\CMakeFiles\glfw.dir
 
-build _deps\glfw-build\src\CMakeFiles\glfw.dir\context.c.obj: C_COMPILER__glfw_unscanned_Debug C$:\Uni$ Stuff\year3\3rd$ year$ project$ polyfit$ ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-src\src\context.c || cmake_object_order_depends_target_glfw
+build _deps\glfw-build\src\CMakeFiles\glfw.dir\context.c.obj: C_COMPILER__glfw_unscanned_Debug C$:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glfw-src\src\context.c || cmake_object_order_depends_target_glfw
   DEFINES = -D_CRT_SECURE_NO_WARNINGS -D_GLFW_USE_CONFIG_H -D_UNICODE
   FLAGS = /DWIN32 /D_WINDOWS /Zi /Ob0 /Od /RTC1 -MDd /W3
-  INCLUDES = -I"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-src\include" -I"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-src\src" -I"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-build\src"
+  INCLUDES = -IC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glfw-src\include -IC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glfw-src\src -IC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glfw-build\src
   OBJECT_DIR = _deps\glfw-build\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = _deps\glfw-build\src\CMakeFiles\glfw.dir
   TARGET_COMPILE_PDB = _deps\glfw-build\src\CMakeFiles\glfw.dir\glfw.pdb
   TARGET_PDB = _deps\glfw-build\src\glfw3.pdb
 
-build _deps\glfw-build\src\CMakeFiles\glfw.dir\init.c.obj: C_COMPILER__glfw_unscanned_Debug C$:\Uni$ Stuff\year3\3rd$ year$ project$ polyfit$ ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-src\src\init.c || cmake_object_order_depends_target_glfw
+build _deps\glfw-build\src\CMakeFiles\glfw.dir\init.c.obj: C_COMPILER__glfw_unscanned_Debug C$:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glfw-src\src\init.c || cmake_object_order_depends_target_glfw
   DEFINES = -D_CRT_SECURE_NO_WARNINGS -D_GLFW_USE_CONFIG_H -D_UNICODE
   FLAGS = /DWIN32 /D_WINDOWS /Zi /Ob0 /Od /RTC1 -MDd /W3
-  INCLUDES = -I"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-src\include" -I"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-src\src" -I"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-build\src"
+  INCLUDES = -IC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glfw-src\include -IC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glfw-src\src -IC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glfw-build\src
   OBJECT_DIR = _deps\glfw-build\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = _deps\glfw-build\src\CMakeFiles\glfw.dir
   TARGET_COMPILE_PDB = _deps\glfw-build\src\CMakeFiles\glfw.dir\glfw.pdb
   TARGET_PDB = _deps\glfw-build\src\glfw3.pdb
 
-build _deps\glfw-build\src\CMakeFiles\glfw.dir\input.c.obj: C_COMPILER__glfw_unscanned_Debug C$:\Uni$ Stuff\year3\3rd$ year$ project$ polyfit$ ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-src\src\input.c || cmake_object_order_depends_target_glfw
+build _deps\glfw-build\src\CMakeFiles\glfw.dir\input.c.obj: C_COMPILER__glfw_unscanned_Debug C$:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glfw-src\src\input.c || cmake_object_order_depends_target_glfw
   DEFINES = -D_CRT_SECURE_NO_WARNINGS -D_GLFW_USE_CONFIG_H -D_UNICODE
   FLAGS = /DWIN32 /D_WINDOWS /Zi /Ob0 /Od /RTC1 -MDd /W3
-  INCLUDES = -I"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-src\include" -I"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-src\src" -I"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-build\src"
+  INCLUDES = -IC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glfw-src\include -IC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glfw-src\src -IC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glfw-build\src
   OBJECT_DIR = _deps\glfw-build\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = _deps\glfw-build\src\CMakeFiles\glfw.dir
   TARGET_COMPILE_PDB = _deps\glfw-build\src\CMakeFiles\glfw.dir\glfw.pdb
   TARGET_PDB = _deps\glfw-build\src\glfw3.pdb
 
-build _deps\glfw-build\src\CMakeFiles\glfw.dir\monitor.c.obj: C_COMPILER__glfw_unscanned_Debug C$:\Uni$ Stuff\year3\3rd$ year$ project$ polyfit$ ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-src\src\monitor.c || cmake_object_order_depends_target_glfw
+build _deps\glfw-build\src\CMakeFiles\glfw.dir\monitor.c.obj: C_COMPILER__glfw_unscanned_Debug C$:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glfw-src\src\monitor.c || cmake_object_order_depends_target_glfw
   DEFINES = -D_CRT_SECURE_NO_WARNINGS -D_GLFW_USE_CONFIG_H -D_UNICODE
   FLAGS = /DWIN32 /D_WINDOWS /Zi /Ob0 /Od /RTC1 -MDd /W3
-  INCLUDES = -I"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-src\include" -I"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-src\src" -I"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-build\src"
+  INCLUDES = -IC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glfw-src\include -IC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glfw-src\src -IC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glfw-build\src
   OBJECT_DIR = _deps\glfw-build\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = _deps\glfw-build\src\CMakeFiles\glfw.dir
   TARGET_COMPILE_PDB = _deps\glfw-build\src\CMakeFiles\glfw.dir\glfw.pdb
   TARGET_PDB = _deps\glfw-build\src\glfw3.pdb
 
-build _deps\glfw-build\src\CMakeFiles\glfw.dir\vulkan.c.obj: C_COMPILER__glfw_unscanned_Debug C$:\Uni$ Stuff\year3\3rd$ year$ project$ polyfit$ ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-src\src\vulkan.c || cmake_object_order_depends_target_glfw
+build _deps\glfw-build\src\CMakeFiles\glfw.dir\vulkan.c.obj: C_COMPILER__glfw_unscanned_Debug C$:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glfw-src\src\vulkan.c || cmake_object_order_depends_target_glfw
   DEFINES = -D_CRT_SECURE_NO_WARNINGS -D_GLFW_USE_CONFIG_H -D_UNICODE
   FLAGS = /DWIN32 /D_WINDOWS /Zi /Ob0 /Od /RTC1 -MDd /W3
-  INCLUDES = -I"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-src\include" -I"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-src\src" -I"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-build\src"
+  INCLUDES = -IC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glfw-src\include -IC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glfw-src\src -IC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glfw-build\src
   OBJECT_DIR = _deps\glfw-build\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = _deps\glfw-build\src\CMakeFiles\glfw.dir
   TARGET_COMPILE_PDB = _deps\glfw-build\src\CMakeFiles\glfw.dir\glfw.pdb
   TARGET_PDB = _deps\glfw-build\src\glfw3.pdb
 
-build _deps\glfw-build\src\CMakeFiles\glfw.dir\window.c.obj: C_COMPILER__glfw_unscanned_Debug C$:\Uni$ Stuff\year3\3rd$ year$ project$ polyfit$ ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-src\src\window.c || cmake_object_order_depends_target_glfw
+build _deps\glfw-build\src\CMakeFiles\glfw.dir\window.c.obj: C_COMPILER__glfw_unscanned_Debug C$:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glfw-src\src\window.c || cmake_object_order_depends_target_glfw
   DEFINES = -D_CRT_SECURE_NO_WARNINGS -D_GLFW_USE_CONFIG_H -D_UNICODE
   FLAGS = /DWIN32 /D_WINDOWS /Zi /Ob0 /Od /RTC1 -MDd /W3
-  INCLUDES = -I"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-src\include" -I"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-src\src" -I"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-build\src"
+  INCLUDES = -IC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glfw-src\include -IC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glfw-src\src -IC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glfw-build\src
   OBJECT_DIR = _deps\glfw-build\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = _deps\glfw-build\src\CMakeFiles\glfw.dir
   TARGET_COMPILE_PDB = _deps\glfw-build\src\CMakeFiles\glfw.dir\glfw.pdb
   TARGET_PDB = _deps\glfw-build\src\glfw3.pdb
 
-build _deps\glfw-build\src\CMakeFiles\glfw.dir\win32_init.c.obj: C_COMPILER__glfw_unscanned_Debug C$:\Uni$ Stuff\year3\3rd$ year$ project$ polyfit$ ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-src\src\win32_init.c || cmake_object_order_depends_target_glfw
+build _deps\glfw-build\src\CMakeFiles\glfw.dir\win32_init.c.obj: C_COMPILER__glfw_unscanned_Debug C$:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glfw-src\src\win32_init.c || cmake_object_order_depends_target_glfw
   DEFINES = -D_CRT_SECURE_NO_WARNINGS -D_GLFW_USE_CONFIG_H -D_UNICODE
   FLAGS = /DWIN32 /D_WINDOWS /Zi /Ob0 /Od /RTC1 -MDd /W3
-  INCLUDES = -I"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-src\include" -I"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-src\src" -I"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-build\src"
+  INCLUDES = -IC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glfw-src\include -IC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glfw-src\src -IC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glfw-build\src
   OBJECT_DIR = _deps\glfw-build\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = _deps\glfw-build\src\CMakeFiles\glfw.dir
   TARGET_COMPILE_PDB = _deps\glfw-build\src\CMakeFiles\glfw.dir\glfw.pdb
   TARGET_PDB = _deps\glfw-build\src\glfw3.pdb
 
-build _deps\glfw-build\src\CMakeFiles\glfw.dir\win32_joystick.c.obj: C_COMPILER__glfw_unscanned_Debug C$:\Uni$ Stuff\year3\3rd$ year$ project$ polyfit$ ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-src\src\win32_joystick.c || cmake_object_order_depends_target_glfw
+build _deps\glfw-build\src\CMakeFiles\glfw.dir\win32_joystick.c.obj: C_COMPILER__glfw_unscanned_Debug C$:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glfw-src\src\win32_joystick.c || cmake_object_order_depends_target_glfw
   DEFINES = -D_CRT_SECURE_NO_WARNINGS -D_GLFW_USE_CONFIG_H -D_UNICODE
   FLAGS = /DWIN32 /D_WINDOWS /Zi /Ob0 /Od /RTC1 -MDd /W3
-  INCLUDES = -I"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-src\include" -I"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-src\src" -I"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-build\src"
+  INCLUDES = -IC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glfw-src\include -IC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glfw-src\src -IC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glfw-build\src
   OBJECT_DIR = _deps\glfw-build\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = _deps\glfw-build\src\CMakeFiles\glfw.dir
   TARGET_COMPILE_PDB = _deps\glfw-build\src\CMakeFiles\glfw.dir\glfw.pdb
   TARGET_PDB = _deps\glfw-build\src\glfw3.pdb
 
-build _deps\glfw-build\src\CMakeFiles\glfw.dir\win32_monitor.c.obj: C_COMPILER__glfw_unscanned_Debug C$:\Uni$ Stuff\year3\3rd$ year$ project$ polyfit$ ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-src\src\win32_monitor.c || cmake_object_order_depends_target_glfw
+build _deps\glfw-build\src\CMakeFiles\glfw.dir\win32_monitor.c.obj: C_COMPILER__glfw_unscanned_Debug C$:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glfw-src\src\win32_monitor.c || cmake_object_order_depends_target_glfw
   DEFINES = -D_CRT_SECURE_NO_WARNINGS -D_GLFW_USE_CONFIG_H -D_UNICODE
   FLAGS = /DWIN32 /D_WINDOWS /Zi /Ob0 /Od /RTC1 -MDd /W3
-  INCLUDES = -I"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-src\include" -I"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-src\src" -I"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-build\src"
+  INCLUDES = -IC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glfw-src\include -IC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glfw-src\src -IC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glfw-build\src
   OBJECT_DIR = _deps\glfw-build\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = _deps\glfw-build\src\CMakeFiles\glfw.dir
   TARGET_COMPILE_PDB = _deps\glfw-build\src\CMakeFiles\glfw.dir\glfw.pdb
   TARGET_PDB = _deps\glfw-build\src\glfw3.pdb
 
-build _deps\glfw-build\src\CMakeFiles\glfw.dir\win32_time.c.obj: C_COMPILER__glfw_unscanned_Debug C$:\Uni$ Stuff\year3\3rd$ year$ project$ polyfit$ ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-src\src\win32_time.c || cmake_object_order_depends_target_glfw
+build _deps\glfw-build\src\CMakeFiles\glfw.dir\win32_time.c.obj: C_COMPILER__glfw_unscanned_Debug C$:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glfw-src\src\win32_time.c || cmake_object_order_depends_target_glfw
   DEFINES = -D_CRT_SECURE_NO_WARNINGS -D_GLFW_USE_CONFIG_H -D_UNICODE
   FLAGS = /DWIN32 /D_WINDOWS /Zi /Ob0 /Od /RTC1 -MDd /W3
-  INCLUDES = -I"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-src\include" -I"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-src\src" -I"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-build\src"
+  INCLUDES = -IC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glfw-src\include -IC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glfw-src\src -IC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glfw-build\src
   OBJECT_DIR = _deps\glfw-build\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = _deps\glfw-build\src\CMakeFiles\glfw.dir
   TARGET_COMPILE_PDB = _deps\glfw-build\src\CMakeFiles\glfw.dir\glfw.pdb
   TARGET_PDB = _deps\glfw-build\src\glfw3.pdb
 
-build _deps\glfw-build\src\CMakeFiles\glfw.dir\win32_thread.c.obj: C_COMPILER__glfw_unscanned_Debug C$:\Uni$ Stuff\year3\3rd$ year$ project$ polyfit$ ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-src\src\win32_thread.c || cmake_object_order_depends_target_glfw
+build _deps\glfw-build\src\CMakeFiles\glfw.dir\win32_thread.c.obj: C_COMPILER__glfw_unscanned_Debug C$:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glfw-src\src\win32_thread.c || cmake_object_order_depends_target_glfw
   DEFINES = -D_CRT_SECURE_NO_WARNINGS -D_GLFW_USE_CONFIG_H -D_UNICODE
   FLAGS = /DWIN32 /D_WINDOWS /Zi /Ob0 /Od /RTC1 -MDd /W3
-  INCLUDES = -I"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-src\include" -I"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-src\src" -I"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-build\src"
+  INCLUDES = -IC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glfw-src\include -IC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glfw-src\src -IC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glfw-build\src
   OBJECT_DIR = _deps\glfw-build\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = _deps\glfw-build\src\CMakeFiles\glfw.dir
   TARGET_COMPILE_PDB = _deps\glfw-build\src\CMakeFiles\glfw.dir\glfw.pdb
   TARGET_PDB = _deps\glfw-build\src\glfw3.pdb
 
-build _deps\glfw-build\src\CMakeFiles\glfw.dir\win32_window.c.obj: C_COMPILER__glfw_unscanned_Debug C$:\Uni$ Stuff\year3\3rd$ year$ project$ polyfit$ ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-src\src\win32_window.c || cmake_object_order_depends_target_glfw
+build _deps\glfw-build\src\CMakeFiles\glfw.dir\win32_window.c.obj: C_COMPILER__glfw_unscanned_Debug C$:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glfw-src\src\win32_window.c || cmake_object_order_depends_target_glfw
   DEFINES = -D_CRT_SECURE_NO_WARNINGS -D_GLFW_USE_CONFIG_H -D_UNICODE
   FLAGS = /DWIN32 /D_WINDOWS /Zi /Ob0 /Od /RTC1 -MDd /W3
-  INCLUDES = -I"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-src\include" -I"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-src\src" -I"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-build\src"
+  INCLUDES = -IC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glfw-src\include -IC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glfw-src\src -IC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glfw-build\src
   OBJECT_DIR = _deps\glfw-build\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = _deps\glfw-build\src\CMakeFiles\glfw.dir
   TARGET_COMPILE_PDB = _deps\glfw-build\src\CMakeFiles\glfw.dir\glfw.pdb
   TARGET_PDB = _deps\glfw-build\src\glfw3.pdb
 
-build _deps\glfw-build\src\CMakeFiles\glfw.dir\wgl_context.c.obj: C_COMPILER__glfw_unscanned_Debug C$:\Uni$ Stuff\year3\3rd$ year$ project$ polyfit$ ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-src\src\wgl_context.c || cmake_object_order_depends_target_glfw
+build _deps\glfw-build\src\CMakeFiles\glfw.dir\wgl_context.c.obj: C_COMPILER__glfw_unscanned_Debug C$:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glfw-src\src\wgl_context.c || cmake_object_order_depends_target_glfw
   DEFINES = -D_CRT_SECURE_NO_WARNINGS -D_GLFW_USE_CONFIG_H -D_UNICODE
   FLAGS = /DWIN32 /D_WINDOWS /Zi /Ob0 /Od /RTC1 -MDd /W3
-  INCLUDES = -I"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-src\include" -I"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-src\src" -I"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-build\src"
+  INCLUDES = -IC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glfw-src\include -IC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glfw-src\src -IC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glfw-build\src
   OBJECT_DIR = _deps\glfw-build\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = _deps\glfw-build\src\CMakeFiles\glfw.dir
   TARGET_COMPILE_PDB = _deps\glfw-build\src\CMakeFiles\glfw.dir\glfw.pdb
   TARGET_PDB = _deps\glfw-build\src\glfw3.pdb
 
-build _deps\glfw-build\src\CMakeFiles\glfw.dir\egl_context.c.obj: C_COMPILER__glfw_unscanned_Debug C$:\Uni$ Stuff\year3\3rd$ year$ project$ polyfit$ ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-src\src\egl_context.c || cmake_object_order_depends_target_glfw
+build _deps\glfw-build\src\CMakeFiles\glfw.dir\egl_context.c.obj: C_COMPILER__glfw_unscanned_Debug C$:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glfw-src\src\egl_context.c || cmake_object_order_depends_target_glfw
   DEFINES = -D_CRT_SECURE_NO_WARNINGS -D_GLFW_USE_CONFIG_H -D_UNICODE
   FLAGS = /DWIN32 /D_WINDOWS /Zi /Ob0 /Od /RTC1 -MDd /W3
-  INCLUDES = -I"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-src\include" -I"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-src\src" -I"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-build\src"
+  INCLUDES = -IC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glfw-src\include -IC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glfw-src\src -IC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glfw-build\src
   OBJECT_DIR = _deps\glfw-build\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = _deps\glfw-build\src\CMakeFiles\glfw.dir
   TARGET_COMPILE_PDB = _deps\glfw-build\src\CMakeFiles\glfw.dir\glfw.pdb
   TARGET_PDB = _deps\glfw-build\src\glfw3.pdb
 
-build _deps\glfw-build\src\CMakeFiles\glfw.dir\osmesa_context.c.obj: C_COMPILER__glfw_unscanned_Debug C$:\Uni$ Stuff\year3\3rd$ year$ project$ polyfit$ ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-src\src\osmesa_context.c || cmake_object_order_depends_target_glfw
+build _deps\glfw-build\src\CMakeFiles\glfw.dir\osmesa_context.c.obj: C_COMPILER__glfw_unscanned_Debug C$:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glfw-src\src\osmesa_context.c || cmake_object_order_depends_target_glfw
   DEFINES = -D_CRT_SECURE_NO_WARNINGS -D_GLFW_USE_CONFIG_H -D_UNICODE
   FLAGS = /DWIN32 /D_WINDOWS /Zi /Ob0 /Od /RTC1 -MDd /W3
-  INCLUDES = -I"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-src\include" -I"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-src\src" -I"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-build\src"
+  INCLUDES = -IC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glfw-src\include -IC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glfw-src\src -IC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glfw-build\src
   OBJECT_DIR = _deps\glfw-build\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = _deps\glfw-build\src\CMakeFiles\glfw.dir
   TARGET_COMPILE_PDB = _deps\glfw-build\src\CMakeFiles\glfw.dir\glfw.pdb
@@ -563,7 +563,7 @@ build _deps\glfw-build\src\glfw3.lib: C_STATIC_LIBRARY_LINKER__glfw_Debug _deps\
 # Utility command for edit_cache
 
 build _deps\glfw-build\src\CMakeFiles\edit_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-build\src" && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glfw-build\src && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -574,7 +574,7 @@ build _deps\glfw-build\src\edit_cache: phony _deps\glfw-build\src\CMakeFiles\edi
 # Utility command for rebuild_cache
 
 build _deps\glfw-build\src\CMakeFiles\rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-build\src" && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -S"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation" -B"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug""
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glfw-build\src && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -SC:\Users\jaywh\source\repos\Dissertation -BC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug"
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -592,7 +592,7 @@ build _deps\glfw-build\src\list_install_components: phony
 # Utility command for install
 
 build _deps\glfw-build\src\CMakeFiles\install.util: CUSTOM_COMMAND _deps\glfw-build\src\all
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-build\src" && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -P cmake_install.cmake"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glfw-build\src && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -P cmake_install.cmake"
   DESC = Install the project...
   pool = console
   restat = 1
@@ -604,7 +604,7 @@ build _deps\glfw-build\src\install: phony _deps\glfw-build\src\CMakeFiles\instal
 # Utility command for install/local
 
 build _deps\glfw-build\src\CMakeFiles\install\local.util: CUSTOM_COMMAND _deps\glfw-build\src\all
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-build\src" && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glfw-build\src && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
   DESC = Installing only the local directory...
   pool = console
   restat = 1
@@ -613,7 +613,7 @@ build _deps\glfw-build\src\install\local: phony _deps\glfw-build\src\CMakeFiles\
 
 # =============================================================================
 # Write statements declared in CMakeLists.txt:
-# C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/libigl-src/cmake/recipes/external/glad.cmake
+# C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/libigl-src/cmake/recipes/external/glad.cmake
 # =============================================================================
 
 # =============================================================================
@@ -625,9 +625,9 @@ build _deps\glfw-build\src\install\local: phony _deps\glfw-build\src\CMakeFiles\
 
 build cmake_object_order_depends_target_glad: phony || _deps\glad-build\CMakeFiles\glad.dir
 
-build _deps\glad-build\CMakeFiles\glad.dir\src\glad.c.obj: C_COMPILER__glad_unscanned_Debug C$:\Uni$ Stuff\year3\3rd$ year$ project$ polyfit$ ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glad-src\src\glad.c || cmake_object_order_depends_target_glad
+build _deps\glad-build\CMakeFiles\glad.dir\src\glad.c.obj: C_COMPILER__glad_unscanned_Debug C$:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glad-src\src\glad.c || cmake_object_order_depends_target_glad
   FLAGS = /DWIN32 /D_WINDOWS /Zi /Ob0 /Od /RTC1 -MDd
-  INCLUDES = -I"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glad-src\include"
+  INCLUDES = -IC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glad-src\include
   OBJECT_DIR = _deps\glad-build\CMakeFiles\glad.dir
   OBJECT_FILE_DIR = _deps\glad-build\CMakeFiles\glad.dir\src
   TARGET_COMPILE_PDB = _deps\glad-build\CMakeFiles\glad.dir\glad.pdb
@@ -656,7 +656,7 @@ build _deps\glad-build\glad.lib: C_STATIC_LIBRARY_LINKER__glad_Debug _deps\glad-
 # Utility command for edit_cache
 
 build _deps\glad-build\CMakeFiles\edit_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glad-build" && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glad-build && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -667,7 +667,7 @@ build _deps\glad-build\edit_cache: phony _deps\glad-build\CMakeFiles\edit_cache.
 # Utility command for rebuild_cache
 
 build _deps\glad-build\CMakeFiles\rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glad-build" && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -S"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation" -B"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug""
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glad-build && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -SC:\Users\jaywh\source\repos\Dissertation -BC:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug"
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -685,7 +685,7 @@ build _deps\glad-build\list_install_components: phony
 # Utility command for install
 
 build _deps\glad-build\CMakeFiles\install.util: CUSTOM_COMMAND _deps\glad-build\all
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glad-build" && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -P cmake_install.cmake"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glad-build && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -P cmake_install.cmake"
   DESC = Install the project...
   pool = console
   restat = 1
@@ -697,7 +697,7 @@ build _deps\glad-build\install: phony _deps\glad-build\CMakeFiles\install.util
 # Utility command for install/local
 
 build _deps\glad-build\CMakeFiles\install\local.util: CUSTOM_COMMAND _deps\glad-build\all
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glad-build" && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\jaywh\source\repos\Dissertation\out\build\x64-Debug\_deps\glad-build && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
   DESC = Installing only the local directory...
   pool = console
   restat = 1
@@ -729,42 +729,42 @@ build triangle.lib: phony _deps\triangle-build\triangle.lib
 # =============================================================================
 
 #############################################
-# Folder: C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug
+# Folder: C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug
 
 build all: phony igl_restricted_triangle igl_glfw igl_opengl example.exe _deps\libigl-build\all _deps\triangle-build\all _deps\glfw-build\all _deps\glad-build\all
 
 # =============================================================================
 
 #############################################
-# Folder: C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/glad-build
+# Folder: C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/glad-build
 
 build _deps\glad-build\all: phony _deps\glad-build\glad.lib
 
 # =============================================================================
 
 #############################################
-# Folder: C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/glfw-build
+# Folder: C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/glfw-build
 
 build _deps\glfw-build\all: phony _deps\glfw-build\src\all
 
 # =============================================================================
 
 #############################################
-# Folder: C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/glfw-build/src
+# Folder: C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/glfw-build/src
 
 build _deps\glfw-build\src\all: phony _deps\glfw-build\src\glfw3.lib
 
 # =============================================================================
 
 #############################################
-# Folder: C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/libigl-build
+# Folder: C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/libigl-build
 
 build _deps\libigl-build\all: phony _deps\libigl-build\igl_core
 
 # =============================================================================
 
 #############################################
-# Folder: C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/triangle-build
+# Folder: C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/triangle-build
 
 build _deps\triangle-build\all: phony _deps\triangle-build\triangle.lib
 
@@ -775,14 +775,14 @@ build _deps\triangle-build\all: phony _deps\triangle-build\triangle.lib
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\BasicConfigVersion-SameMajorVersion.cmake.in C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeCInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeCXXInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeCommonLanguageInclude.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeDependentOption.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeGenericSystem.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeInitializeConfigs.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeLanguageInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakePackageConfigHelpers.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeRCInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeSystemSpecificInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeSystemSpecificInitialize.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CheckCSourceCompiles.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CheckIncludeFile.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CheckLibraryExists.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Compiler\CMakeCommonCompilerMacros.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Compiler\MSVC-C.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Compiler\MSVC-CXX.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Compiler\MSVC.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\ExternalProject\shared_internal_commands.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FetchContent.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FetchContent\CMakeLists.cmake.in C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FindGit.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FindOpenGL.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FindPackageHandleStandardArgs.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FindPackageMessage.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FindThreads.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\GNUInstallDirs.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Internal\CheckSourceCompiles.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows-Initialize.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows-MSVC-C.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows-MSVC-CXX.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows-MSVC.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\WindowsPaths.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\WriteBasicConfigVersionFile.cmake C$:\Uni$ Stuff\year3\3rd$ year$ project$ polyfit$ ver\ThirdYearDissertation\CMakeLists.txt C$:\Uni$ Stuff\year3\3rd$ year$ project$ polyfit$ ver\ThirdYearDissertation\cmake\libigl.cmake CMakeCache.txt CMakeFiles\3.28.0-msvc1\CMakeCCompiler.cmake CMakeFiles\3.28.0-msvc1\CMakeCXXCompiler.cmake CMakeFiles\3.28.0-msvc1\CMakeRCCompiler.cmake CMakeFiles\3.28.0-msvc1\CMakeSystem.cmake _deps\glad-src\CMakeLists.txt _deps\glfw-src\CMakeLists.txt _deps\glfw-src\CMake\glfw3.pc.in _deps\glfw-src\CMake\glfw3Config.cmake.in _deps\glfw-src\src\CMakeLists.txt _deps\glfw-src\src\glfw_config.h.in _deps\libigl-src\CMakeLists.txt _deps\libigl-src\cmake\igl\igl_add_library.cmake _deps\libigl-src\cmake\igl\igl_add_test.cmake _deps\libigl-src\cmake\igl\igl_add_tutorial.cmake _deps\libigl-src\cmake\igl\igl_copy_dll.cmake _deps\libigl-src\cmake\igl\igl_include.cmake _deps\libigl-src\cmake\igl\igl_install.cmake _deps\libigl-src\cmake\igl\igl_target_sources.cmake _deps\libigl-src\cmake\igl\igl_windows.cmake _deps\libigl-src\cmake\igl\modules\core.cmake _deps\libigl-src\cmake\igl\modules\glfw.cmake _deps\libigl-src\cmake\igl\modules\opengl.cmake _deps\libigl-src\cmake\igl\modules\restricted\triangle.cmake _deps\libigl-src\cmake\libigl.cmake _deps\libigl-src\cmake\recipes\external\eigen.cmake _deps\libigl-src\cmake\recipes\external\glad.cmake _deps\libigl-src\cmake\recipes\external\glfw.cmake _deps\libigl-src\cmake\recipes\external\triangle.cmake _deps\triangle-src\CMakeLists.txt
+build build.ninja: RERUN_CMAKE | C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\BasicConfigVersion-SameMajorVersion.cmake.in C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeCInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeCXXInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeCommonLanguageInclude.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeDependentOption.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeGenericSystem.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeInitializeConfigs.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeLanguageInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakePackageConfigHelpers.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeRCInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeSystemSpecificInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeSystemSpecificInitialize.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CheckCSourceCompiles.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CheckIncludeFile.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CheckLibraryExists.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Compiler\CMakeCommonCompilerMacros.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Compiler\MSVC-C.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Compiler\MSVC-CXX.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Compiler\MSVC.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\ExternalProject\shared_internal_commands.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FetchContent.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FetchContent\CMakeLists.cmake.in C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FindGit.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FindOpenGL.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FindPackageHandleStandardArgs.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FindPackageMessage.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FindThreads.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\GNUInstallDirs.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Internal\CheckSourceCompiles.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows-Initialize.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows-MSVC-C.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows-MSVC-CXX.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows-MSVC.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\WindowsPaths.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\WriteBasicConfigVersionFile.cmake C$:\Users\jaywh\source\repos\Dissertation\CMakeLists.txt C$:\Users\jaywh\source\repos\Dissertation\cmake\libigl.cmake CMakeCache.txt CMakeFiles\3.28.0-msvc1\CMakeCCompiler.cmake CMakeFiles\3.28.0-msvc1\CMakeCXXCompiler.cmake CMakeFiles\3.28.0-msvc1\CMakeRCCompiler.cmake CMakeFiles\3.28.0-msvc1\CMakeSystem.cmake _deps\glad-src\CMakeLists.txt _deps\glfw-src\CMakeLists.txt _deps\glfw-src\CMake\glfw3.pc.in _deps\glfw-src\CMake\glfw3Config.cmake.in _deps\glfw-src\src\CMakeLists.txt _deps\glfw-src\src\glfw_config.h.in _deps\libigl-src\CMakeLists.txt _deps\libigl-src\cmake\igl\igl_add_library.cmake _deps\libigl-src\cmake\igl\igl_add_test.cmake _deps\libigl-src\cmake\igl\igl_add_tutorial.cmake _deps\libigl-src\cmake\igl\igl_copy_dll.cmake _deps\libigl-src\cmake\igl\igl_include.cmake _deps\libigl-src\cmake\igl\igl_install.cmake _deps\libigl-src\cmake\igl\igl_target_sources.cmake _deps\libigl-src\cmake\igl\igl_windows.cmake _deps\libigl-src\cmake\igl\modules\core.cmake _deps\libigl-src\cmake\igl\modules\glfw.cmake _deps\libigl-src\cmake\igl\modules\opengl.cmake _deps\libigl-src\cmake\igl\modules\restricted\triangle.cmake _deps\libigl-src\cmake\libigl.cmake _deps\libigl-src\cmake\recipes\external\eigen.cmake _deps\libigl-src\cmake\recipes\external\glad.cmake _deps\libigl-src\cmake\recipes\external\glfw.cmake _deps\libigl-src\cmake\recipes\external\triangle.cmake _deps\triangle-src\CMakeLists.txt
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\BasicConfigVersion-SameMajorVersion.cmake.in C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeCInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeCXXInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeCommonLanguageInclude.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeDependentOption.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeGenericSystem.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeInitializeConfigs.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeLanguageInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakePackageConfigHelpers.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeRCInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeSystemSpecificInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeSystemSpecificInitialize.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CheckCSourceCompiles.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CheckIncludeFile.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CheckLibraryExists.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Compiler\CMakeCommonCompilerMacros.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Compiler\MSVC-C.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Compiler\MSVC-CXX.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Compiler\MSVC.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\ExternalProject\shared_internal_commands.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FetchContent.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FetchContent\CMakeLists.cmake.in C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FindGit.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FindOpenGL.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FindPackageHandleStandardArgs.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FindPackageMessage.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FindThreads.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\GNUInstallDirs.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Internal\CheckSourceCompiles.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows-Initialize.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows-MSVC-C.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows-MSVC-CXX.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows-MSVC.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\WindowsPaths.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\WriteBasicConfigVersionFile.cmake C$:\Uni$ Stuff\year3\3rd$ year$ project$ polyfit$ ver\ThirdYearDissertation\CMakeLists.txt C$:\Uni$ Stuff\year3\3rd$ year$ project$ polyfit$ ver\ThirdYearDissertation\cmake\libigl.cmake CMakeCache.txt CMakeFiles\3.28.0-msvc1\CMakeCCompiler.cmake CMakeFiles\3.28.0-msvc1\CMakeCXXCompiler.cmake CMakeFiles\3.28.0-msvc1\CMakeRCCompiler.cmake CMakeFiles\3.28.0-msvc1\CMakeSystem.cmake _deps\glad-src\CMakeLists.txt _deps\glfw-src\CMakeLists.txt _deps\glfw-src\CMake\glfw3.pc.in _deps\glfw-src\CMake\glfw3Config.cmake.in _deps\glfw-src\src\CMakeLists.txt _deps\glfw-src\src\glfw_config.h.in _deps\libigl-src\CMakeLists.txt _deps\libigl-src\cmake\igl\igl_add_library.cmake _deps\libigl-src\cmake\igl\igl_add_test.cmake _deps\libigl-src\cmake\igl\igl_add_tutorial.cmake _deps\libigl-src\cmake\igl\igl_copy_dll.cmake _deps\libigl-src\cmake\igl\igl_include.cmake _deps\libigl-src\cmake\igl\igl_install.cmake _deps\libigl-src\cmake\igl\igl_target_sources.cmake _deps\libigl-src\cmake\igl\igl_windows.cmake _deps\libigl-src\cmake\igl\modules\core.cmake _deps\libigl-src\cmake\igl\modules\glfw.cmake _deps\libigl-src\cmake\igl\modules\opengl.cmake _deps\libigl-src\cmake\igl\modules\restricted\triangle.cmake _deps\libigl-src\cmake\libigl.cmake _deps\libigl-src\cmake\recipes\external\eigen.cmake _deps\libigl-src\cmake\recipes\external\glad.cmake _deps\libigl-src\cmake\recipes\external\glfw.cmake _deps\libigl-src\cmake\recipes\external\triangle.cmake _deps\triangle-src\CMakeLists.txt: phony
+build C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\BasicConfigVersion-SameMajorVersion.cmake.in C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeCInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeCXXInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeCommonLanguageInclude.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeDependentOption.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeGenericSystem.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeInitializeConfigs.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeLanguageInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakePackageConfigHelpers.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeRCInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeSystemSpecificInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeSystemSpecificInitialize.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CheckCSourceCompiles.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CheckIncludeFile.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CheckLibraryExists.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Compiler\CMakeCommonCompilerMacros.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Compiler\MSVC-C.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Compiler\MSVC-CXX.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Compiler\MSVC.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\ExternalProject\shared_internal_commands.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FetchContent.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FetchContent\CMakeLists.cmake.in C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FindGit.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FindOpenGL.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FindPackageHandleStandardArgs.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FindPackageMessage.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\FindThreads.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\GNUInstallDirs.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Internal\CheckSourceCompiles.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows-Initialize.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows-MSVC-C.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows-MSVC-CXX.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows-MSVC.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\WindowsPaths.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\WriteBasicConfigVersionFile.cmake C$:\Users\jaywh\source\repos\Dissertation\CMakeLists.txt C$:\Users\jaywh\source\repos\Dissertation\cmake\libigl.cmake CMakeCache.txt CMakeFiles\3.28.0-msvc1\CMakeCCompiler.cmake CMakeFiles\3.28.0-msvc1\CMakeCXXCompiler.cmake CMakeFiles\3.28.0-msvc1\CMakeRCCompiler.cmake CMakeFiles\3.28.0-msvc1\CMakeSystem.cmake _deps\glad-src\CMakeLists.txt _deps\glfw-src\CMakeLists.txt _deps\glfw-src\CMake\glfw3.pc.in _deps\glfw-src\CMake\glfw3Config.cmake.in _deps\glfw-src\src\CMakeLists.txt _deps\glfw-src\src\glfw_config.h.in _deps\libigl-src\CMakeLists.txt _deps\libigl-src\cmake\igl\igl_add_library.cmake _deps\libigl-src\cmake\igl\igl_add_test.cmake _deps\libigl-src\cmake\igl\igl_add_tutorial.cmake _deps\libigl-src\cmake\igl\igl_copy_dll.cmake _deps\libigl-src\cmake\igl\igl_include.cmake _deps\libigl-src\cmake\igl\igl_install.cmake _deps\libigl-src\cmake\igl\igl_target_sources.cmake _deps\libigl-src\cmake\igl\igl_windows.cmake _deps\libigl-src\cmake\igl\modules\core.cmake _deps\libigl-src\cmake\igl\modules\glfw.cmake _deps\libigl-src\cmake\igl\modules\opengl.cmake _deps\libigl-src\cmake\igl\modules\restricted\triangle.cmake _deps\libigl-src\cmake\libigl.cmake _deps\libigl-src\cmake\recipes\external\eigen.cmake _deps\libigl-src\cmake\recipes\external\glad.cmake _deps\libigl-src\cmake\recipes\external\glfw.cmake _deps\libigl-src\cmake\recipes\external\triangle.cmake _deps\triangle-src\CMakeLists.txt: phony
 
 
 #############################################

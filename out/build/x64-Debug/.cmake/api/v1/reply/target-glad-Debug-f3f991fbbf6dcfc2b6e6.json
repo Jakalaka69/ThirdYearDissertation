@@ -59,7 +59,11 @@
 			[
 				{
 					"backtrace" : 2,
+<<<<<<<< HEAD:out/build/x64-Debug/.cmake/api/v1/reply/target-glad-Debug-f3f991fbbf6dcfc2b6e6.json
 					"path" : "C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/glad-src/include"
+========
+					"path" : "C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/glad-src/include"
+>>>>>>>> jayparts:out/build/x64-Debug/.cmake/api/v1/reply/target-glad-Debug-f4a1276bcf84b9562c58.json
 				}
 			],
 			"language" : "C",

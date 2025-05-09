@@ -1,8 +1,7 @@
 #include <vector>
 #include <cmath>
 #include <iostream>
-#include <String>
-#include <C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\triangleClass.h>
+#include "triangleClass.h"
 #define _USE_MATH_DEFINES
 using namespace std;
 double pii = 3.14159265;

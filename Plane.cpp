@@ -55,16 +55,16 @@ bool Plane::isPlaneConnected(Plane inputPlane) {
 
 bool operator==(Plane plane1, Plane plane2)
 {
-    return plane1.GetNormal() == plane2.GetNormal();
+    return plane1.getRelatedTriangle() == plane2.getRelatedTriangle();
 }
 
 bool operator!=(Plane plane1, Plane plane2)
 {
-    return plane1.GetNormal() != plane2.GetNormal();
+    return plane1.getRelatedTriangle() == plane2.getRelatedTriangle();
 }
 
 string Plane::toString() {
-    string String = "\nPlane normal: " + to_string(normal[0]) + "j + " + to_string(normal[1]) + "k + " + to_string(normal[2]) + "l " + "\n" + "List size: " + to_string(connectedPlanes.size() ) + "\n";
+    string String = "\nPlane normal: " + to_string(normal[0]) + "j + " + to_string(normal[1]) + "k + " + to_string(normal[2]) + "l " + "\n" + "List size: " + to_string(connectedPlanes.size() ) + "\n" + to_string(relatedTriangle[0][0]) + " " + to_string(relatedTriangle[0][1]) + " " +  to_string(relatedTriangle[0][2]) + "\n";
 
     
     return String;
