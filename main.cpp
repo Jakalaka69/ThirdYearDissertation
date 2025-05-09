@@ -188,7 +188,7 @@ vector<double> threePlaneIntersectionPoint(Plane plane1, Plane* plane2, Plane* p
 
 	inter = A.inverse() * D;
 
-
+	cout << endl << "->" << inter << "<-" << endl;
 
 	vector<double> interPoint = { inter(0),inter(1),inter(2) };
 
@@ -196,12 +196,7 @@ vector<double> threePlaneIntersectionPoint(Plane plane1, Plane* plane2, Plane* p
 
 	return interPoint;
 }
-void weightingChecks(vector<vector<vector<double>>> faces) {
-	//calculating surface area
-	for (vector<vector<double>> triangle : faces) {
 
-	}
-}
 vector<vector<double>> GetPointsInHoles(vector<vector<vector<double>>> Loops) {
 	//calculating areas of each loop to find the biggest
 	vector<vector<double>> pointsInHoles;
@@ -425,12 +420,22 @@ bool AxisCheck(vector<vector<double>> loop) {
 int main(int argc, char* argv[])
 {
 	// Load a mesh in OFF format
-	igl::read_triangle_mesh("C:/Users/jaywh/source/repos/Dissertation/models"  "/CubeTest.obj", V, F);
+	igl::read_triangle_mesh("C:/Users/jaywh/source/repos/Dissertation/models"  "/8SidedTest.obj", V, F);
 	
 	for (int x = 0; x < V.size(); x++) {
 		if (V(x) == 0) {
 			V(x) = 0;
 		}
+	}
+
+	for (int p = 0; p < V.size();p++) {
+		
+		int temp = (V(p) * 10000);
+		double temp1 = temp;
+		double temp2 = temp1 / 10000;
+		cout << temp1 / 10000 << " ";
+
+		V(p) = temp2;
 	}
 
 	//Gets number of triangles from the faces matrix
@@ -447,51 +452,7 @@ int main(int argc, char* argv[])
 	vector<double> P2 = { V(F(0, 1), 0), V(F(0, 1), 1), V(F(0, 1), 2) };
 	vector<double> P3 = { V(F(0, 2), 0), V(F(0, 2), 1), V(F(0, 2), 2) };
 	//initialise triangle with the points
-	vector<vector<double>> randTriangle1 = { P1, P2, P3 };
-
-
-
-
-
-
-
-	P1 = { V(F(3, 0), 0), V(F(3, 0), 1), V(F(3, 0), 2) };
-	P2 = { V(F(3, 1), 0), V(F(3, 1), 1), V(F(3, 1), 2) };
-	P3 = { V(F(3, 2), 0), V(F(3, 2), 1), V(F(3, 2), 2) };
-	//initialise triangle with the points
-	vector<vector<double>> randTriangle3 = { P1, P2, P3 };
-
-
-
-
-	P1 = { V(F(4, 0), 0), V(F(4, 0), 1), V(F(4, 0), 2) };
-	P2 = { V(F(4, 1), 0), V(F(4, 1), 1), V(F(4, 1), 2) };
-	P3 = { V(F(4, 2), 0), V(F(4, 2), 1), V(F(4, 2), 2) };
-	//initialise triangle with the points
-	vector<vector<double>> randTriangle4 = { P1, P2, P3 };
-
-
-
-
-
-
-	P1 = { V(F(7, 0), 0), V(F(7, 0), 1), V(F(7, 0), 2) };
-	P2 = { V(F(7, 1), 0), V(F(7, 1), 1), V(F(7, 1), 2) };
-	P3 = { V(F(7, 2), 0), V(F(7, 2), 1), V(F(7, 2), 2) };
-	//initialise triangle with the points
-	vector<vector<double>> randTriangle7 = { P1, P2, P3 };
-
-
-
-	P1 = { V(F(9, 0), 0), V(F(9, 0), 1), V(F(9, 0), 2) };
-	P2 = { V(F(9, 1), 0), V(F(9, 1), 1), V(F(9, 1), 2) };
-	P3 = { V(F(9, 2), 0), V(F(9, 2), 1), V(F(9, 2), 2) };
-	//initialise triangle with the points
-	vector<vector<double>> randTriangle9 = { P1, P2, P3 };
-
-	V.conservativeResize(V.rows() + 3, V.cols());
-
-
+	vector<vector<double>> randTriangle0 = { P1, P2, P3 };
 
 
 	P1 = { V(F(10, 0), 0), V(F(10, 0), 1), V(F(10, 0), 2) };
@@ -500,6 +461,55 @@ int main(int argc, char* argv[])
 	//initialise triangle with the points
 	vector<vector<double>> randTriangle10 = { P1, P2, P3 };
 
+
+	P1 = { V(F(14, 0), 0), V(F(14, 0), 1), V(F(14, 0), 2) };
+	P2 = { V(F(14, 1), 0), V(F(14, 1), 1), V(F(14, 1), 2) };
+	P3 = { V(F(14, 2), 0), V(F(14, 2), 1), V(F(14, 2), 2) };
+	//initialise triangle with the points
+	vector<vector<double>> randTriangle14 = { P1, P2, P3 };
+
+
+	P1 = { V(F(18, 0), 0), V(F(18, 0), 1), V(F(18, 0), 2) };
+	P2 = { V(F(18, 1), 0), V(F(18, 1), 1), V(F(18, 1), 2) };
+	P3 = { V(F(18, 2), 0), V(F(18, 2), 1), V(F(18, 2), 2) };
+	//initialise triangle with the points
+	vector<vector<double>> randTriangle18 = { P1, P2, P3 };
+
+	P1 = { V(F(12, 0), 0), V(F(12, 0), 1), V(F(12, 0), 2) };
+	P2 = { V(F(12, 1), 0), V(F(12, 1), 1), V(F(12, 1), 2) };
+	P3 = { V(F(12, 2), 0), V(F(12, 2), 1), V(F(12, 2), 2) };
+	//initialise triangle with the points
+	vector<vector<double>> randTriangle12 = { P1, P2, P3 };
+
+	P1 = { V(F(16, 0), 0), V(F(16, 0), 1), V(F(16, 0), 2) };
+	P2 = { V(F(16, 1), 0), V(F(16, 1), 1), V(F(16, 1), 2) };
+	P3 = { V(F(16, 2), 0), V(F(16, 2), 1), V(F(16, 2), 2) };
+	//initialise triangle with the points
+	vector<vector<double>> randTriangle16 = { P1, P2, P3 };
+
+	P1 = { V(F(8, 0), 0), V(F(8, 0), 1), V(F(8, 0), 2) };
+	P2 = { V(F(8, 1), 0), V(F(8, 1), 1), V(F(8, 1), 2) };
+	P3 = { V(F(8, 2), 0), V(F(8, 2), 1), V(F(8, 2), 2) };
+	//initialise triangle with the points
+	vector<vector<double>> randTriangle8 = { P1, P2, P3 };
+
+	P1 = { V(F(6, 0), 0), V(F(6, 0), 1), V(F(6, 0), 2) };
+	P2 = { V(F(6, 1), 0), V(F(6, 1), 1), V(F(6, 1), 2) };
+	P3 = { V(F(6, 2), 0), V(F(6, 2), 1), V(F(6, 2), 2) };
+	//initialise triangle with the points
+	vector<vector<double>> randTriangle6 = { P1, P2, P3 };
+
+	P1 = { V(F(2, 0), 0), V(F(2, 0), 1), V(F(2, 0), 2) };
+	P2 = { V(F(2, 1), 0), V(F(2, 1), 1), V(F(2, 1), 2) };
+	P3 = { V(F(2, 2), 0), V(F(2, 2), 1), V(F(2, 2), 2) };
+	//initialise triangle with the points
+	vector<vector<double>> randTriangle2 = { P1, P2, P3 };
+
+	P1 = { V(F(4, 0), 0), V(F(4, 0), 1), V(F(4, 0), 2) };
+	P2 = { V(F(4, 1), 0), V(F(4, 1), 1), V(F(4, 1), 2) };
+	P3 = { V(F(4, 2), 0), V(F(4, 2), 1), V(F(4, 2), 2) };
+	//initialise triangle with the points
+	vector<vector<double>> randTriangle4 = { P1, P2, P3 };
 
 	//list of connected faces to pass into FindConnected recursive function
 	//Call function, currently just returns all triangles in the model but once we 
@@ -511,55 +521,92 @@ int main(int argc, char* argv[])
 
 
 
+	if(angleCheck == failed && )
 
 
 
-	Plane plane1(randTriangle1);
-	Plane plane3(randTriangle3);
-	Plane plane4(randTriangle4);
-	Plane plane7(randTriangle7);
-	Plane plane9(randTriangle9);
+	Plane plane0(randTriangle0);
 	Plane plane10(randTriangle10);
+	Plane plane14(randTriangle14);
+	Plane plane18(randTriangle18);
+	Plane plane12(randTriangle12);
+	Plane plane16(randTriangle16);
+	Plane plane8(randTriangle8);
+	Plane plane6(randTriangle6);
+	Plane plane2(randTriangle2);
+	Plane plane4(randTriangle4);
 
-	plane1.AddConnectedPlane(&plane3);
-	plane1.AddConnectedPlane(&plane4);
-	plane1.AddConnectedPlane(&plane7);
-	plane1.AddConnectedPlane(&plane9);
+	plane0.AddConnectedPlane(&plane10);
+	plane0.AddConnectedPlane(&plane6);
+	plane0.AddConnectedPlane(&plane2);
+	plane0.AddConnectedPlane(&plane4);
 
-	plane3.AddConnectedPlane(&plane1);
-	plane3.AddConnectedPlane(&plane7);
-	plane3.AddConnectedPlane(&plane9);
-	plane3.AddConnectedPlane(&plane10);
-
-	plane4.AddConnectedPlane(&plane1);
-	plane4.AddConnectedPlane(&plane7);
-	plane4.AddConnectedPlane(&plane9);
-	plane4.AddConnectedPlane(&plane10);
-
-	plane7.AddConnectedPlane(&plane1);
-	plane7.AddConnectedPlane(&plane3);
-	plane7.AddConnectedPlane(&plane4);
-	plane7.AddConnectedPlane(&plane10);
-
-	plane9.AddConnectedPlane(&plane1);
-	plane9.AddConnectedPlane(&plane3);
-	plane9.AddConnectedPlane(&plane4);
-	plane9.AddConnectedPlane(&plane10);
-
-	plane10.AddConnectedPlane(&plane3);
+	plane10.AddConnectedPlane(&plane0);
+	plane10.AddConnectedPlane(&plane14);
+	plane10.AddConnectedPlane(&plane2);
 	plane10.AddConnectedPlane(&plane4);
-	plane10.AddConnectedPlane(&plane7);
-	plane10.AddConnectedPlane(&plane9);
+
+	plane14.AddConnectedPlane(&plane10);
+	plane14.AddConnectedPlane(&plane18);
+	plane14.AddConnectedPlane(&plane2);
+	plane14.AddConnectedPlane(&plane4);
+
+	plane18.AddConnectedPlane(&plane14);
+	plane18.AddConnectedPlane(&plane12);
+	plane18.AddConnectedPlane(&plane2);
+	plane18.AddConnectedPlane(&plane4);
+
+	plane12.AddConnectedPlane(&plane18);
+	plane12.AddConnectedPlane(&plane16);
+	plane12.AddConnectedPlane(&plane2);
+	plane12.AddConnectedPlane(&plane4);
+
+	plane16.AddConnectedPlane(&plane12);
+	plane16.AddConnectedPlane(&plane8);
+	plane16.AddConnectedPlane(&plane2);
+	plane16.AddConnectedPlane(&plane4);
+
+	plane8.AddConnectedPlane(&plane16);
+	plane8.AddConnectedPlane(&plane6);
+	plane8.AddConnectedPlane(&plane2);
+	plane8.AddConnectedPlane(&plane4);
+
+	plane6.AddConnectedPlane(&plane8);
+	plane6.AddConnectedPlane(&plane0);
+	plane6.AddConnectedPlane(&plane2);
+	plane6.AddConnectedPlane(&plane4);
+
+	plane2.AddConnectedPlane(&plane0);
+	plane2.AddConnectedPlane(&plane10);
+	plane2.AddConnectedPlane(&plane14);
+	plane2.AddConnectedPlane(&plane18);
+	plane2.AddConnectedPlane(&plane12);
+	plane2.AddConnectedPlane(&plane16);
+	plane2.AddConnectedPlane(&plane8);
+	plane2.AddConnectedPlane(&plane6);
+
+	plane4.AddConnectedPlane(&plane0);
+	plane4.AddConnectedPlane(&plane10);
+	plane4.AddConnectedPlane(&plane14);
+	plane4.AddConnectedPlane(&plane18);
+	plane4.AddConnectedPlane(&plane12);
+	plane4.AddConnectedPlane(&plane16);
+	plane4.AddConnectedPlane(&plane8);
+	plane4.AddConnectedPlane(&plane6);
 
 	vector<Plane> PlaneList;
 
-	PlaneList.push_back(plane1);
-
-	PlaneList.push_back(plane3);
-	PlaneList.push_back(plane4);
-	PlaneList.push_back(plane7);
-	PlaneList.push_back(plane9);
+	PlaneList.push_back(plane0);
 	PlaneList.push_back(plane10);
+	PlaneList.push_back(plane14);
+	PlaneList.push_back(plane18);
+	PlaneList.push_back(plane12);
+	PlaneList.push_back(plane16);
+	PlaneList.push_back(plane8);
+	PlaneList.push_back(plane6);
+	PlaneList.push_back(plane2);
+	PlaneList.push_back(plane4);
+	
 
 
 	/*
@@ -583,11 +630,13 @@ int main(int argc, char* argv[])
 
 
 	for (int x = 0; x < PlaneList.size();x++) {
+		cout << PlaneList[x].toString();
 		vector<vector<vector<double>>> Loops = getNextPlane(PlaneList[x], PlaneList[x].GetConnectedPlanes());
-		
+
 		vector<vector<double>> holePoints;
 		//vector<vector<double>> holePoints = GetPointsInHoles(Loops);
 		vector<vector<double>> frame;
+
 
 
 
@@ -598,7 +647,8 @@ int main(int argc, char* argv[])
 		Eigen::MatrixXi F2;
 
 
-		int axis;
+		int axis = 0;
+
 
 		if (PlaneList[x].GetNormal()[0] == 0 && PlaneList[x].GetNormal()[2] == 0) {
 			axis = 1;
@@ -609,9 +659,16 @@ int main(int argc, char* argv[])
 		else if (PlaneList[x].GetNormal()[0] == 0 && PlaneList[x].GetNormal()[1] == 0) {
 			axis = 2;
 		}
-		else {
+		else if (abs(PlaneList[x].GetNormal()[0]) == abs(PlaneList[x].GetNormal()[2])) {
+			axis = 0;
+		}
+		else if (abs(PlaneList[x].GetNormal()[1]) == abs(PlaneList[x].GetNormal()[2])) {
 			axis = 1;
 		}
+		else if (abs(PlaneList[x].GetNormal()[0]) == abs(PlaneList[x].GetNormal()[1])) {
+			axis = 0;
+		}
+
 
 
 		for (int x = 0; x < Loops.size();x++) {
@@ -658,7 +715,8 @@ int main(int argc, char* argv[])
 			H(x, 0) = holePoints[x][0];
 			H(x, 1) = holePoints[x][1];
 		}
-		
+
+		cout << V3;
 
 		igl::triangle::triangulate(V3, E, H, "1", V2, F2);
 
@@ -685,37 +743,47 @@ int main(int argc, char* argv[])
 				V4(p, 2) = calcZ(PlaneList[x], V2(p, 0), V2(p, 1))[2];
 			}
 
-			
+
 
 		}
-		
-		
-		
 
-		
-		
-		
-		
+
+
+
+
+
+
+
 		if (D.rows() == 0) {
-			
+
 			D.conservativeResize(V4.rows(), V4.cols());
 			D << V4;
 		}
 		else {
 			Eigen::MatrixXd temp1(D.rows() + V4.rows(), 3);
-			
+
 			temp1 << D, V4;
 			D = temp1;
 		}
 
+		vector<double> test1 = {0.751771,1.9335,1.9433 };
+		vector<double> test2 = { 0.751771,1.9335,1.9433 };
 
-		//Removing duplicates from the verticies list
 		
+	
+	
+		//Removing duplicates from the verticies list
+		cout << endl << D << endl;
 		vector<vector<double>> checked;
 		
 		for (int i = 0; i < D.rows();i++) {
+			cout << D(i, 0);
 			vector<double> cur = { D(i,0),D(i,1),D(i,2) };
+			if (cur[0] == test1[0]) {
+				cout << "+++++++++++++++++++++++++++++++++++++++++++++++++";
+			}
 			if (find(checked.begin(), checked.end(), cur) == checked.end()) {
+				cout << endl << cur[0] << " " << cur[1] << " " << cur[2] << endl;
 				checked.push_back(cur);
 			}
 			else {
@@ -729,7 +797,7 @@ int main(int argc, char* argv[])
 		}
 		
 		
-
+		cout << endl << D << endl;
 
 		for (int n = 0;n < F2.rows();n++) {
 			for (int m = 0;m < 3;m++) {
@@ -738,6 +806,7 @@ int main(int argc, char* argv[])
 					if (D.block<1, 3>(l, 0) == V4.block<1, 3>(F2(n, m), 0)) {
 						F2(n, m) = l;
 						found = true;
+						
 						break;
 					}
 				}
@@ -772,7 +841,13 @@ int main(int argc, char* argv[])
 	}
 
 	
-
+	if (igl::writeOBJ("C:/Users/jaywh/source/repos/Dissertation/models/cube.obj", D, P)) {
+		cout << "yay";
+	}
+	else {
+		cout << "nay"
+			;
+	}
 	
 
 	cout<< endl << "->>>" <<  D;
@@ -787,7 +862,8 @@ int main(int argc, char* argv[])
 	viewer.data().set_mesh(V, F);
 	viewer.launch();
 
-
+	
+		
 
 
 }
