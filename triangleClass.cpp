@@ -11,6 +11,9 @@ double pii = 3.14159265;
     vector<vector<double>> points;  
     vector<triangleClass> adjacenttriangles;
     vector<double> normal;
+    int planeNo;
+    bool isPrimeTriangle;
+    vector<int> connectedPlanes;
 
 
     //triangles that are adjacent to the outermost layer of connected triangles
@@ -18,6 +21,7 @@ double pii = 3.14159265;
     vector<triangleClass> borderTriangles;
 
     triangleClass::triangleClass(vector<vector<double>> x) {
+        planeNo = -1;
         points = x;
         vector<double> U = { points[0][0] - points[1][0]
                                    , points[0][1] - points[1][1]
@@ -32,6 +36,7 @@ double pii = 3.14159265;
         normal[0] = (U[1] * V[2]) - (U[2] * V[1]);
         normal[1] = (U[2] * V[0]) - (U[0] * V[2]);
         normal[2] = (U[0] * V[1]) - (U[1] * V[0]);
+        isPrimeTriangle = false;
     }
 
     triangleClass::triangleClass() {
@@ -42,18 +47,18 @@ double pii = 3.14159265;
     //    adjacenttriangles.push_back(triangle);
     //}
 
-    void triangleClass::addToAdjacentTriangles(triangleClass triangle){
-        adjacenttriangles.push_back(triangle);
-    }
+    //void triangleClass::addToAdjacentTriangles(triangleClass triangle){
+    //    adjacenttriangles.push_back(triangle);
+    //}
 
-    void triangleClass::addToBorderTriangles(triangleClass triangle) {
-        borderTriangles.push_back(triangle);
-    }
+    //void triangleClass::addToBorderTriangles(triangleClass triangle) {
+    //    borderTriangles.push_back(triangle);
+    //}
 
-    void triangleClass::removeAdjacentTriangle(triangleClass triangle) {
-        adjacenttriangles.erase(std::remove(adjacenttriangles.begin(), adjacenttriangles.end(), triangle), adjacenttriangles.end());
+    //void triangleClass::removeAdjacentTriangle(triangleClass triangle) {
+    //    adjacenttriangles.erase(std::remove(adjacenttriangles.begin(), adjacenttriangles.end(), triangle), adjacenttriangles.end());
 
-    }
+    //}
 
     vector<vector<double>> triangleClass::returnPoints() {
         return points;
@@ -63,30 +68,47 @@ double pii = 3.14159265;
         return this->normal;
     }
 
-    int triangleClass::getNoOfConnectedTriangles()
+    void triangleClass::makeTrianglePrime()
     {
-        return adjacenttriangles.size();
+        this->isPrimeTriangle = true;
     }
 
-    vector<triangleClass> triangleClass::getConnectedTriangles()
-    {
-        return adjacenttriangles;
-    }
-
-    bool triangleClass::isTrianglePresent(triangleClass t)
+    void triangleClass::addToConnectedPlanes(int x)
     {
 
-        for (triangleClass queried : adjacenttriangles) {
-            if (queried == t) {
-                return true;
-            }
-            else {
-                return false;
-            }
-        }
-
-        return false;
+        //cout << "HERE" << endl;
+        connectedPlanes.push_back(x);
     }
+
+    void triangleClass::updatePlaneNo(int x)
+    {
+        this->planeNo = x;
+    }
+
+    //int triangleClass::getNoOfConnectedTriangles()
+    //{
+    //    return adjacenttriangles.size();
+    //}
+
+    //vector<triangleClass> triangleClass::getConnectedTriangles()
+    //{
+    //    return adjacenttriangles;
+    //}
+
+    //bool triangleClass::isTrianglePresent(triangleClass t)
+    //{
+
+    //    for (triangleClass queried : adjacenttriangles) {
+    //        if (queried == t) {
+    //            return true;
+    //        }
+    //        else {
+    //            return false;
+    //        }
+    //    }
+
+    //    return false;
+    //}
 
     string triangleClass::toString() {
         string String = "\n Triangle Point: " + to_string(points[0][0]) + " " + to_string(points[0][1]) + " Normal: " + to_string(points[0][2]) + " "

@@ -15,6 +15,7 @@ using namespace std;
 
 Eigen::MatrixXd V;
 Eigen::MatrixXi F;
+vector<triangleClass> objectTriangleArray;
 double pi = 3.14159265; 
 
 void vecToString(vector<vector<double>> vec) {
@@ -26,105 +27,48 @@ void vecToString(vector<vector<double>> vec) {
 	
 }
 
-triangleClass FindConnected(triangleClass startTriangle, vector<vector<vector<double>>> fullConnectedList, vector<vector<double>> curTriangle) {
+void FindConnected(triangleClass *startTriangle, triangleClass curTriangle) {
+	for (int x = 0; x < objectTriangleArray.size();x++) {
+		if (objectTriangleArray[x].planeNo == startTriangle->planeNo) {
 
-	
-
-	for (int x = 0; x < F.rows();x++) {
-
-		//if the triangle has not already been added to the fullConnectedList (stops repeats and looping)
-		if (F(x, 0) == 0 && F(x, 1) == 0 && F(x, 2) == 0) {
 			continue;
 		}
-
-		//initialise the current triangle in loop
-		vector<vector<double>> nextTriangle = {};
-		vector<vector<double>> touchingPoints = {};
-
-		for (int i = 0; i < 3; i++) {
-
-			nextTriangle.push_back({ V(F(x, i), 0), V(F(x, i), 1), V(F(x, i), 2) });
-
-		}
-
-		//NEW
-
-		triangleClass NEXT_TRIANGLE = triangleClass(nextTriangle);
-
-		//NEW
-
-			//check all points of the startTriangle that we pass in and the current triangle of 
-			// the for loop and keep a count of the amount of corners that touch
 			int count = 0;
 			for (int j = 0;j < 3;j++) {
 				for (int k = 0; k < 3; k++) {
 
-					if (curTriangle[j] == nextTriangle[k]) {
-
-						touchingPoints.push_back(curTriangle[j]);
+					if (curTriangle.points[j] == objectTriangleArray[x].points[k]) {
 
 						count++;
 					}
-
 				}
 			}
-
-			//if the amount of corners that touch is equal to 2 then remove the current triangle of the for loop from F
-			//and recurse, using the current triangle as the start triangle for the function
-
-
-			if (count == 2) {
-				
+			if (count == 2) {	
+				//NEW	
+				double intAng = startTriangle->calcInteriorAngle(objectTriangleArray[x]);
+				//cout << intAng << endl;
 				//NEW
-				
-				double intAng = startTriangle.calcInteriorAngle(NEXT_TRIANGLE);
-				//NEW
-
-				if (intAng < 30) {
-
-						//adds row to matrix
-					
-						unsigned int numRows = F.rows() - 1;
-						unsigned int numCols = F.cols();
-
-						if (x < numRows) {
-							F.block(x, 0, numRows - x, numCols) = F.block(x + 1, 0, numRows - x, numCols);
+				if (objectTriangleArray[x].planeNo != -1) {
+					//searches if next_triangles plane no. is already in start triangles connected planes
+					//doesnt add again if true
+					if (find(startTriangle->connectedPlanes.begin(), startTriangle->connectedPlanes.end(),
+						objectTriangleArray[x].planeNo) == startTriangle->connectedPlanes.end()) {
+						//loops through triangle array
+						for (int no = 0; no < objectTriangleArray.size();no++) {							
+							//if prime is a prime and has the same planeNo as next_triangle
+							if (objectTriangleArray[no].isPrimeTriangle && objectTriangleArray[no].planeNo == objectTriangleArray[x].planeNo) {
+																startTriangle->addToConnectedPlanes(objectTriangleArray[x].planeNo);
+								objectTriangleArray[no].addToConnectedPlanes(startTriangle->planeNo);
+							}
 						}
-
-						F.conservativeResize(numRows, numCols);
-
-					
-						fullConnectedList.push_back(nextTriangle);
-						startTriangle.addToAdjacentTriangles(NEXT_TRIANGLE);
-						if (startTriangle.isTrianglePresent(NEXT_TRIANGLE)) {
-							//printf("TESTWORKING");
-						}
-
-						
-
-						
-
-						//changed startTriangle to temp + 1 to incrmement triangle each loop
-						startTriangle = FindConnected(startTriangle, fullConnectedList, nextTriangle);
-					
+					}
 				}
-
-				else {
-					startTriangle.addToBorderTriangles(NEXT_TRIANGLE);
+				else if (intAng < 30) {
+						objectTriangleArray[x].updatePlaneNo(startTriangle->planeNo);
+						FindConnected(startTriangle, objectTriangleArray[x]);					
 				}
-
 			}
-
-
-
-
-		}
-
-
-	
-	return startTriangle;
-	
-
+	}
 }
 
 vector<double> threePlaneIntersectionPoint(Plane plane1, Plane* plane2, Plane* plane3) {
@@ -600,126 +544,50 @@ int main(int argc, char* argv[])
 
 
 	//igl::read_triangle_mesh("C:/Users/jaywh/source/repos/ThirdYearDissertation4/models"  "/Tower.obj", V, F);
-	igl::read_triangle_mesh("C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/models"  "/Tower.obj", V, F);
-
-
-	//Gets number of triangles from the faces matrix
-	int numOfTriangles = F.rows();
-	vector<vector<vector<double>>> fullConnectedList;
-
-	//select random triangle
-	//int random = rand() % numOfTrianlges;
-	int random = 14;
-
-	//assign point coordinates of a random traingle 
-	vector<double> P1 = { V(F(random, 0), 0), V(F(random, 0), 1), V(F(random, 0), 2) };
-	vector<double> P2 = { V(F(random, 1), 0), V(F(random, 1), 1), V(F(random, 1), 2) };
-	vector<double> P3 = { V(F(random, 2), 0), V(F(random, 2), 1), V(F(random, 2), 2) };
-
-
-
-	//initialise triangle with the points
-	vector<vector<double>> randTriangle = { P1, P2, P3 };
-
-
-	triangleClass START_TRIANGLE = triangleClass(randTriangle);
-	//remove randTriangle from F
+	//igl::read_triangle_mesh("C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/models"  "/Tower.obj", V, F);
+	igl::read_triangle_mesh("C:/Users/Wooki/Downloads/"  "/cube.obj", V, F);
+	for (int x = 0; x < F.rows(); x++) {		
+		//initialise the current triangle in loop
+		vector<vector<double>> nextTriangle = {};
+		for (int i = 0; i < 3; i++) {
+			nextTriangle.push_back({ V(F(x, i), 0), V(F(x, i), 1), V(F(x, i), 2) });
+		}
+		triangleClass temp = triangleClass(nextTriangle);
+		objectTriangleArray.push_back(temp);
+	}
+	int random = 0;
 	unsigned int numRows = F.rows() - 1;
 	unsigned int numCols = F.cols();
-
-	if (random < numRows) {
-		//F.block(random, 0, numRows - random, numCols) = F.block(random + 1, 0, numRows - random, numCols);
-	}
-	//F.conservativeResize(numRows, numCols);
-
-	//list of connected faces to pass into FindConnected recursive function
-
-
-	//Call function, currently just returns all triangles in the model but once we 
-	//include the angle checks it will then print the correct triangles to make a plane out of
-
-	//swap randTriangle for t
-	fullConnectedList.push_back(randTriangle);
-	//fullConnectedList = FindConnected(START_TRIANGLE, fullConnectedList, randTriangle);
-	triangleClass finalTriangle = FindConnected(START_TRIANGLE, fullConnectedList, randTriangle);
-	int z = finalTriangle.getNoOfConnectedTriangles();
-	for (int x = 0; x < z; x++) {
-		if (finalTriangle.adjacenttriangles[x].adjacenttriangles.empty()) {
-			finalTriangle.adjacenttriangles[x].addToAdjacentTriangles(finalTriangle);
-		}
-		for (int y = 0; y < z; y++) {
-			if (!finalTriangle.adjacenttriangles[x].isTrianglePresent(finalTriangle.adjacenttriangles[y])) {
-				finalTriangle.adjacenttriangles[x].addToAdjacentTriangles(finalTriangle.adjacenttriangles[y]);
-			}
+	int planeCount = 0;
+	for (int t = 0; t < objectTriangleArray.size(); t++) {
+		if (objectTriangleArray[t].planeNo == -1) {
+			objectTriangleArray[t].updatePlaneNo(planeCount);
+			objectTriangleArray[t].makeTrianglePrime();
+			FindConnected(&objectTriangleArray[t], objectTriangleArray[t]);
+			cout << planeCount << endl;
+			planeCount++;
 		}
 	}
-	cout << "NUMBER OF CONNECTED TRIANGLES" << endl;
-	int temp = finalTriangle.getNoOfConnectedTriangles();
-	cout << to_string(temp)	 << endl;
-
-	//vector<double> P1 = { V(F(random, 0), 0), V(F(random, 0), 1), V(F(random, 0), 2) };
-	//vector<double> P2 = { V(F(random, 1), 0), V(F(random, 1), 1), V(F(random, 1), 2) };
-	//vector<double> P3 = { V(F(random, 2), 0), V(F(random, 2), 1), V(F(random, 2), 2) };
-
-	////initialise triangle with the points
-	//vector<vector<double>> randTriangle = { P1, P2, P3 };
-
-
-	V.conservativeResize(V.rows() + 3, V.cols());
-
-	double x_c = (P1[0] + P2[0] + P3[0]) / 3;
-	double y_c = (P1[1] + P2[1] + P3[1]) / 3;
-	double z_c = (P1[2] + P2[2] + P3[2]) / 3;
-
-
-	//test plane
-	//plane made of 2 traingles
-	// double plane1
-	// plane1
-	// double
-	// double
-
-
-
-	//cout << P1[0] << P1[1] << P1[2] << endl;
-	//cout << P2[0] << P2[1] << P2[2] << endl;
-	//cout << P3[0] << P3[1] << P3[2] << endl;
-	//cout << x_c << endl;
-	//cout << y_c << endl;
-	//cout << z_c << endl;
-	V(V.rows() - 1, 0) = x_c + (P1[0] - x_c) * 10;
-	V(V.rows() - 1, 1) = y_c + (P1[1] - y_c) * 10;
-	V(V.rows() - 1, 2) = z_c + (P1[2] - z_c) * 10;
-	V(V.rows() - 2, 0) = x_c + (P2[0] - x_c) * 10;
-	V(V.rows() - 2, 1) = y_c + (P2[1] - y_c) * 10;
-	V(V.rows() - 2, 2) = z_c + (P2[2] - z_c) * 10;
-	V(V.rows() - 3, 0) = x_c + (P3[0] - x_c) * 10;
-	V(V.rows() - 3, 1) = y_c + (P3[1] - y_c) * 10;
-	V(V.rows() - 3, 2) = z_c + (P3[2] - z_c) * 10;
-
-	F.conservativeResize(F.rows() + 1, V.cols());
-
-	F(F.rows() - 1, 0) = V.rows() - 1;
-	F(F.rows() - 1, 1) = V.rows() - 2;
-	F(F.rows() - 1, 2) = V.rows() - 3;
-
-	//cout << V << endl;
-
-	//print all triangles in final list
-	//for (vector<vector<double>> triangle : fullConnectedList) {
-	//	std::cout << "Start of triangle" << endl;
-	//	int count1 = 0;
-	//	for (vector<double> point : triangle) {
-	//		std::cout << "Point " << count1 << " coordinates:";
-	//		count1++;
-	//		//for (double coord : point) {
-	//		//	std::cout << coord;
-	//		//}
-	//		std::cout << endl;
-	//	}
-	//	std::cout << "End of triangle" << endl;
-	//}
-
+	vector<Plane> planeList;
+	vector<triangleClass> primeTriangleList;
+	for (triangleClass prime : objectTriangleArray) {
+		if (prime.isPrimeTriangle) {
+			planeList.push_back(Plane(prime));
+			primeTriangleList.push_back(prime);
+		}
+	}
+	for (int planeNo = 0; planeNo < planeList.size();planeNo ++) {
+		for (int index : primeTriangleList[planeNo].connectedPlanes) {
+			planeList[planeNo].AddConnectedPlane(&planeList[index]);
+		}
+	}
+	for (int test1 = 0; test1 < primeTriangleList.size(); test1++) {
+		cout << test1 << endl;
+		cout << primeTriangleList[test1].normal[0] <<" ";
+		cout << primeTriangleList[test1].normal[1] << " ";
+		cout << primeTriangleList[test1].normal[2] << endl;
+		cout << planeList[test1].toString() << endl;
+	}
 	//Plot the mesh
 	std::cout << endl << endl << endl;
 	//open libigl viewer
@@ -727,47 +595,3 @@ int main(int argc, char* argv[])
 	viewer.data().set_mesh(V, F);
 	viewer.launch();
 }
-
-
-
-/*output code for printing a triangle(weird because its a vector)
-
-cout << "Start of startTriangle" << endl;
-
-
-for (vector<double> point : startTriangle) {
-	cout << "Point " << " coordinates:";
-
-	for (double coord : point) {
-		cout << coord << " ";
-	}
-	cout << endl;
-}
-cout << "End startTriangle" << endl;*/
-
-
-
-//Code to create visual plane for testing
-
-/*
-V.conservativeResize(V.rows() + 3, V.cols());
-
-	double x_c = (P1[0] + P2[0] + P3[0]) / 3;
-	double y_c = (P1[1] + P2[1] + P3[1]) / 3;
-	double z_c = (P1[2] + P2[2] + P3[2]) / 3;
-
-	V(V.rows() - 1, 0) = x_c + (P1[0] - x_c) * 10;
-	V(V.rows() - 1, 1) = y_c + (P1[1] - y_c) * 10;
-	V(V.rows() - 1, 2) = z_c + (P1[2] - z_c) * 10;
-	V(V.rows() - 2, 0) = x_c + (P2[0] - x_c) * 10;
-	V(V.rows() - 2, 1) = y_c + (P2[1] - y_c) * 10;
-	V(V.rows() - 2, 2) = z_c + (P2[2] - z_c) * 10;
-	V(V.rows() - 3, 0) = x_c + (P3[0] - x_c) * 10;
-	V(V.rows() - 3, 1) = y_c + (P3[1] - y_c) * 10;
-	V(V.rows() - 3, 2) = z_c + (P3[2] - z_c) * 10;
-
-	F.conservativeResize(F.rows() + 1, V.cols());
-
-	F(F.rows() - 1, 0) = V.rows() - 1;
-	F(F.rows() - 1, 1) = V.rows() - 2;
-	F(F.rows() - 1, 2) = V.rows() - 3;*/
