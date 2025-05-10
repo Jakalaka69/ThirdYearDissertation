@@ -47,8 +47,8 @@ void FindConnected(triangleClass *startTriangle, triangleClass curTriangle) {
 			}
 			if (count == 2) {	
 				//NEW	
-				double intAng = startTriangle->calcInteriorAngle(objectTriangleArray[x]);
-				cout << intAng << endl;
+				
+				
 				//NEW
 				if (objectTriangleArray[x].planeNo != -1) {
 					//searches if next_triangles plane no. is already in start triangles connected planes
@@ -65,11 +65,16 @@ void FindConnected(triangleClass *startTriangle, triangleClass curTriangle) {
 						}
 					}
 				}
-				
-				else if (intAng < 30) {
+				else {
+					
+					double intAng = startTriangle->calcInteriorAngle(objectTriangleArray[x]);
+					
+					if (intAng < 50) {
 						objectTriangleArray[x].updatePlaneNo(startTriangle->planeNo);
-						FindConnected(startTriangle, objectTriangleArray[x]);					
+						FindConnected(startTriangle, objectTriangleArray[x]);
+			}
 				}
+				
 			}
 	}
 }
@@ -213,21 +218,35 @@ vector<vector<vector<double>>> getNextPlane(Plane planeX, vector<Plane*> remaini
 
 
 	for (int i = 0; i < adjacentPlanes.size();i++) {
+		cout << i << "<-" << endl;
 		for (int x = 0; x < adjacentPlanes.size(); x++) {
+			
 			Plane* nextPlane = adjacentPlanes[x];
+			cout << nextPlane->toString();
+
+
+			cout << curPlane->toString();
 			//checks to make sure the current plane is worth evaluating and also if its gone back to the start, that final condition stops the other conditions from mattering if its the first loop
 			if ((nextPlane == curPlane || nextPlane == lastPlane || usedPlanes.size() >= adjacentPlanes.size()) && lastPlane != NULL) {
 				continue;
 			}
 			vector<Plane*> nextPlaneList = nextPlane->GetConnectedPlanes();
+			
+			cout << endl << endl;
+
+			
+
 			if (find(nextPlaneList.begin(), nextPlaneList.end(), curPlane) != nextPlaneList.end()) {
 				frame.push_back(threePlaneIntersectionPoint(planeX, curPlane, nextPlane));
 				lastPlane = curPlane;
 				curPlane = nextPlane;
 				usedPlanes.push_back(curPlane);
+				break;
 			}
+			
 		}
 	}
+
 
 
 	if (usedPlanes.size() == adjacentPlanes.size()) {
@@ -355,10 +374,11 @@ bool AxisCheck(vector<vector<double>> loop) {
 int main(int argc, char* argv[])
 {
 	// Load a mesh in OFF format
-	igl::read_triangle_mesh("C:/Users/jaywh/source/repos/Dissertation/models"  "/cylinder.obj", V, F);
+	igl::read_triangle_mesh("C:/Users/jaywh/source/repos/Dissertation/models"  "/old_chair.obj", V, F);
 	
 	
 	
+
 
 	
 
@@ -384,10 +404,18 @@ int main(int argc, char* argv[])
 			planeCount++;
 		}
 	}
+	
 	vector<Plane> planeList;
 	vector<triangleClass> primeTriangleList;
 	for (triangleClass prime : objectTriangleArray) {
 		if (prime.isPrimeTriangle) {
+			
+				cout << endl << endl;
+				for (int p : prime.connectedPlanes) {
+					cout << p << " ";
+				}
+
+			
 			planeList.push_back(Plane(prime));
 			primeTriangleList.push_back(prime);
 		}
@@ -408,7 +436,7 @@ int main(int argc, char* argv[])
 
 
 
-
+	
 
 
 
@@ -416,8 +444,8 @@ int main(int argc, char* argv[])
 		
 		vector<vector<vector<double>>> Loops = getNextPlane(planeList[x], planeList[x].GetConnectedPlanes());
 
-		vector<vector<double>> holePoints;
-		//vector<vector<double>> holePoints = GetPointsInHoles(Loops);
+		
+		vector<vector<double>> holePoints = GetPointsInHoles(Loops);
 		vector<vector<double>> frame;
 
 
@@ -634,12 +662,11 @@ int main(int argc, char* argv[])
 	//open libigl viewer
 
 	igl::opengl::glfw::Viewer viewer;
-	
+
 	viewer.data().set_mesh(D, P);
 	viewer.launch();
 
 	
-		
 
 
 }
