@@ -12,10 +12,11 @@ const triangleClass relatedTriangle;
 vector<vector<double>> Tpoints;
 const vector<double> normal;
 vector<Plane*> connectedPlanes;
-
+int num;
    
 
-Plane::Plane(triangleClass inputTriangle) {
+Plane::Plane(triangleClass inputTriangle, int x) {
+    num = x;
     relatedTriangle = inputTriangle;
     Tpoints = inputTriangle.returnPoints();
 
@@ -25,6 +26,8 @@ Plane::Plane(triangleClass inputTriangle) {
 
     normal = inputTriangle.returnNormal();
 }
+
+
 
 Plane::Plane() {
 
@@ -36,6 +39,10 @@ void Plane::AddConnectedPlane(Plane* planeToAdd) {
     
 vector<vector<double>> Plane::getRelatedTriangle() {
     return Tpoints;
+}
+
+triangleClass Plane::getRelatedTriangleClass() {
+    return relatedTriangle;
 }
 
 vector<double> Plane::GetNormal() {
@@ -64,7 +71,8 @@ bool operator!=(Plane plane1, Plane plane2)
 }
 
 string Plane::toString() {
-    string String = "\nPlane normal: " + to_string(normal[0]) + "j + " + to_string(normal[1]) + "k + " + to_string(normal[2]) + "l " + "\n" + "List size: " + to_string(connectedPlanes.size() ) + "\n" + to_string(relatedTriangle.points[0][0]) + " " + to_string(relatedTriangle.points[0][1]) + " " +  to_string(relatedTriangle.points[0][2]) + "\n";
+    //string String = "\nPlane normal: " + to_string(normal[0]) + "j + " + to_string(normal[1]) + "k + " + to_string(normal[2]) + "l " + "\n" + "List size: " + to_string(connectedPlanes.size() ) + "\n" + to_string(relatedTriangle.points[0][0]) + " " + to_string(relatedTriangle.points[0][1]) + " " +  to_string(relatedTriangle.points[0][2]) + "\n" + "Plane Number:" + to_string(num) + "\n";
+    string String = "\n PlaneNumber:" + to_string(num) + "\n";
 
     
     return String;

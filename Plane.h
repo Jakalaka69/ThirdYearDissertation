@@ -14,11 +14,13 @@ private:
     vector<vector<double>> Tpoints;
     vector<double> normal;
     vector<Plane*> connectedPlanes;
+    int num;
    
     
 public:
+    triangleClass Plane::getRelatedTriangleClass();
     Plane();
-    Plane(triangleClass inputTriangle);
+    Plane(triangleClass inputTriangle, int x);
     void AddConnectedPlane(Plane* planeToAdd);
     vector<vector<double>> getRelatedTriangle();
     vector<double> GetNormal();
