@@ -13,6 +13,7 @@ double pii = 3.14159265;
     int planeNo;
     bool isPrimeTriangle;
     vector<int> connectedPlanes;
+    vector<double> centerPoint;
 
 
     //triangles that are adjacent to the outermost layer of connected triangles
@@ -42,6 +43,17 @@ double pii = 3.14159265;
 
     }
 
+    vector<double> triangleClass::calcCentoid() {
+        for (int x = 0; x < 3; x++) {
+            double temp;
+            for (int y = 0; y < 3; y++) {
+                temp += points[y][x];
+            }
+            centerPoint.push_back(temp / 3);
+        }
+    }
+
+
     //void triangleClass::addToAdjacentTriangles(triangleClass* triangle) {
     //    adjacenttriangles.push_back(triangle);
     //}
@@ -70,6 +82,7 @@ double pii = 3.14159265;
     void triangleClass::makeTrianglePrime()
     {
         this->isPrimeTriangle = true;
+        this->calcCentoid();
     }
 
     void triangleClass::addToConnectedPlanes(int x)

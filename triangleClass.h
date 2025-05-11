@@ -17,6 +17,7 @@ public:
     int planeNo;
     bool isPrimeTriangle;
     vector<int> connectedPlanes;
+    vector<double> centerPoint;
 public:
     triangleClass();
     triangleClass(vector<vector<double>> x);
@@ -33,6 +34,7 @@ public:
     double calcInteriorAngle(triangleClass);
     //vector<triangleClass> getConnectedTriangles();
     //bool isTrianglePresent(triangleClass t);
+    vector<double> triangleClass::calcCentoid()
     friend bool operator!=(triangleClass t1, triangleClass t2);
     friend bool operator==(triangleClass t1, triangleClass t2);
     
