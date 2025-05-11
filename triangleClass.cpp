@@ -14,6 +14,7 @@ int planeNo;
 bool isPrimeTriangle;
 vector<int> connectedPlanes;
 vector<double> centerPoint;
+vector<int> countNum;
 
 
 //triangles that are adjacent to the outermost layer of connected triangles
@@ -53,6 +54,11 @@ void triangleClass::calcCentoid() {
     }
 }
 
+void triangleClass::setCount(int x)
+{
+    this->countNum.push_back(x);
+}
+
 
 //void triangleClass::addToAdjacentTriangles(triangleClass* triangle) {
 //    adjacenttriangles.push_back(triangle);
@@ -78,6 +84,7 @@ vector<vector<double>> triangleClass::returnPoints() {
 vector<double> triangleClass::returnNormal() {
     return this->normal;
 }
+
 
 void triangleClass::makeTrianglePrime()
 {

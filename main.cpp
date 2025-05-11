@@ -72,7 +72,7 @@ void FindConnected(triangleClass *startTriangle, triangleClass *curTriangle) {
 			
 			
 
-			if (count == 2 ) {
+			if (count > 0 ) {
 				
 				
 				
@@ -90,6 +90,8 @@ void FindConnected(triangleClass *startTriangle, triangleClass *curTriangle) {
 							//if prime is a prime and has the same planeNo as next_triangle
 							if (objectTriangleArray[no].isPrimeTriangle && objectTriangleArray[no].planeNo == objectTriangleArray[x].planeNo) {
 								startTriangle->addToConnectedPlanes(objectTriangleArray[no].planeNo);
+								startTriangle->setCount(count);
+								objectTriangleArray[no].setCount(count);
 								objectTriangleArray[no].addToConnectedPlanes(startTriangle->planeNo);
 							}
 						}
@@ -255,7 +257,7 @@ vector<vector<vector<double>>> getNextPlane(Plane planeX, vector<Plane*> remaini
 	for (int x = 0; x < adjacentPlanes.size();x++) {
 		double closestDist = 10000000000000000;
 		vector<double> closestPoint;
-		Plane* closestPlane;
+		Plane* closestPlane = NULL;
 		for (int i = 0; i < adjacentPlanes.size();i++) {
 			if (adjacentPlanes[i] == curPlane || adjacentPlanes[i] == lastPlane) {
 				continue;
@@ -602,8 +604,9 @@ bool AxisCheck(vector<vector<double>> loop) {
 int main(int argc, char* argv[])
 {
 	// Load a mesh in OFF format
-	igl::read_triangle_mesh("C:/Users/jaywh/source/repos/Dissertation/models"  "/old_chair.obj", V, F);
-	
+	//igl::read_triangle_mesh("C:/Users/jaywh/source/repos/Dissertation/models"  "/old_chair.obj", V, F);
+	igl::read_triangle_mesh("C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/models" "/Tower.obj", V, F);
+
 	for (int x = 0; x < V.size();x++) {
 		double temp1 = V(x) * 100;
 		int temp2 = int(temp1);
