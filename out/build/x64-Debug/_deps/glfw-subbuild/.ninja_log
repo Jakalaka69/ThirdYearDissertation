@@ -1,21 +1,37 @@
 # ninja log v5
-1	81	7687088939462922	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-mkdir	28cb306009bb66a6
-1	81	7687088939462922	C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-mkdir	28cb306009bb66a6
-82	4796	7687088986610309	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-download	135464434ac4c2b
-82	4796	7687088986610309	C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-download	135464434ac4c2b
-4797	4991	0	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-update	aec998bff433ae32
-4797	4991	0	C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-update	aec998bff433ae32
-4991	5064	7687088989283772	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-patch	261f67fecf64b9ed
-4991	5064	7687088989283772	C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-patch	261f67fecf64b9ed
-5064	5138	7687088990019608	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-configure	4b8c169e5d5668c0
-5064	5138	7687088990019608	C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-configure	4b8c169e5d5668c0
-5138	5214	7687088990789601	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-build	c381a9cb6751bd2a
-5138	5214	7687088990789601	C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-build	c381a9cb6751bd2a
-5214	5287	7687088991525397	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-install	a3a38857ddd8ccec
-5214	5287	7687088991525397	C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-install	a3a38857ddd8ccec
-5288	5366	7687088992310632	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-test	242d4a1b853b4742
-5288	5366	7687088992310632	C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-test	242d4a1b853b4742
-5366	5472	7687088993368698	CMakeFiles/glfw-populate-complete	bb77e2fcbf6572c6
-5366	5472	7687088993368698	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-done	bb77e2fcbf6572c6
-5366	5472	7687088993368698	C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/glfw-subbuild/CMakeFiles/glfw-populate-complete	bb77e2fcbf6572c6
-5366	5472	7687088993368698	C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-done	bb77e2fcbf6572c6
+203	278	7688481192331078	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-patch	901986508304a21f
+2	71	7687105133525292	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-mkdir	338310abd45e08d2
+10	203	0	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-update	968cfe22e031d6a2
+203	278	7688481192331078	C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-patch	901986508304a21f
+2	71	7687105133525292	C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-mkdir	338310abd45e08d2
+72	3959	7687105172410033	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-download	7e7a8cfa6ad308a8
+10	203	0	C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-update	968cfe22e031d6a2
+72	3959	7687105172410033	C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-download	7e7a8cfa6ad308a8
+278	355	7688481193101266	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-configure	291fa6c4dd2b8eaf
+568	667	7688481196229561	CMakeFiles/glfw-populate-complete	65830224a3b5fe18
+278	355	7688481193101266	C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-configure	291fa6c4dd2b8eaf
+356	426	7688481193815458	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-build	a7af8413723b5bcb
+356	426	7688481193815458	C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-build	a7af8413723b5bcb
+568	667	7688481196229561	C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-done	65830224a3b5fe18
+426	494	7688481194490831	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-install	778ee03a9288ef4d
+426	494	7688481194490831	C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-install	778ee03a9288ef4d
+494	568	7688481195226770	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-test	c0b67229bbd553f0
+494	568	7688481195226770	C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-test	c0b67229bbd553f0
+568	667	7688481196229561	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-done	65830224a3b5fe18
+568	667	7688481196229561	C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/glfw-subbuild/CMakeFiles/glfw-populate-complete	65830224a3b5fe18
+14	256	0	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-update	968cfe22e031d6a2
+14	256	0	C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-update	968cfe22e031d6a2
+257	351	7688512959179227	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-patch	901986508304a21f
+257	351	7688512959179227	C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-patch	901986508304a21f
+351	431	7688512960014215	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-configure	291fa6c4dd2b8eaf
+351	431	7688512960014215	C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-configure	291fa6c4dd2b8eaf
+431	510	7688512960797977	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-build	a7af8413723b5bcb
+431	510	7688512960797977	C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-build	a7af8413723b5bcb
+510	586	7688512961571039	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-install	778ee03a9288ef4d
+510	586	7688512961571039	C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-install	778ee03a9288ef4d
+587	657	7688512962274220	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-test	c0b67229bbd553f0
+587	657	7688512962274220	C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-test	c0b67229bbd553f0
+657	752	7688512963219650	CMakeFiles/glfw-populate-complete	65830224a3b5fe18
+657	752	7688512963219650	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-done	65830224a3b5fe18
+657	752	7688512963219650	C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/glfw-subbuild/CMakeFiles/glfw-populate-complete	65830224a3b5fe18
+657	752	7688512963219650	C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-done	65830224a3b5fe18
