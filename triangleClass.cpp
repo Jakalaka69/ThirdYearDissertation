@@ -60,7 +60,10 @@ void triangleClass::setCount(int x)
 }
 
 
-//void triangleClass::addToAdjacentTriangles(triangleClass* triangle) {
+//void triangleClass::addTo
+// 
+// 
+// Triangles(triangleClass* triangle) {
 //    adjacenttriangles.push_back(triangle);
 //}
 

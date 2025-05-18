@@ -19,11 +19,6 @@ Plane::Plane(triangleClass inputTriangle, int x) {
     num = x;
     relatedTriangle = inputTriangle;
     Tpoints = inputTriangle.returnPoints();
-
-    vector<double> P1 = { Tpoints[0][0], Tpoints[0][1], Tpoints[0][2] };
-    vector<double> P2 = { Tpoints[1][0], Tpoints[1][1], Tpoints[1][2] };
-    vector<double> P3 = { Tpoints[2][0], Tpoints[2][1], Tpoints[2][2] };
-
     normal = inputTriangle.returnNormal();
 }
 

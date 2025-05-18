@@ -79,26 +79,20 @@ void boundingBoxCreation() {
 	boundingBox.push_back({ maxX,maxY,maxZ });
 }
 
+bool boundingBoxCheck(vector<double> point) {
+	if (minX <= point[0] && point[0] <= maxX &&
+		minY <= point[1] && point[1] <= maxY &&
+		minZ <= point[2] && point[2] <= maxZ) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+
 void FindConnected(triangleClass *startTriangle, triangleClass *curTriangle) {
-
-	/*for (triangleClass prime : objectTriangleArray) {
-		if (prime.isPrimeTriangle) {
-
-			cout << endl << endl;
-			for (int p : prime.connectedPlanes) {
-				cout << p << " ";
-			}
-
-
-			
-
-		}
-	}*/
-	/*cout << endl << endl << curTriangle->points[0][0] << " " << curTriangle->points[0][1] << " " << curTriangle->points[0][2];
-	cout << endl  << curTriangle->points[1][0] << " " << curTriangle->points[1][1] << " " << curTriangle->points[1][2];
-	cout << endl  << curTriangle->points[2][0] << " " << curTriangle->points[2][1] << " " << curTriangle->points[2][2];
-	cout << endl << curTriangle->planeNo;*/
 	int count1 = 0;
+	//for every triangle in object
 	for (int x = 0; x < objectTriangleArray.size();x++) {
 			int count = 0;
 		
@@ -110,10 +104,11 @@ void FindConnected(triangleClass *startTriangle, triangleClass *curTriangle) {
 			
 			for (int j = 0;j < 3;j++) {
 				for (int k = 0; k < 3; k++) {
+					//check if the bounding box can be updated with any of the next_triangles points
 					boundingBoxUpdate(curTriangle->points[j]);
-					
+					//check if triangle 1 overlaps points with triangle 2
 					if (curTriangle->points[j] == objectTriangleArray[x].points[k]) {
-						
+						//increment duplicate point count
 						count++;
 						
 					}
@@ -122,17 +117,19 @@ void FindConnected(triangleClass *startTriangle, triangleClass *curTriangle) {
 			
 			
 			
-
+			//if the triangles have any overlapping points
 			if (count > 0 ) {
 				
+				//testing
 				if (startTriangle->planeNo == 5 && objectTriangleArray[x].planeNo == 4) {
 					cout << "here";
 					cout << count;
 				}
 				
+				//checks if the next_triangles has been assigned a plane number
 				if (objectTriangleArray[x].planeNo != -1) {
 					//searches if next_triangles plane no. is already in start triangles connected planes
-					//doesnt add again if true
+					//adds to start triangles connected planes if not present
 					
 					bool inArray = false;
 					int countArrayIndex = -1;
@@ -145,9 +142,12 @@ void FindConnected(triangleClass *startTriangle, triangleClass *curTriangle) {
 						}
 					}
 
+
 					if (!inArray) {
+						//loops through the triangle array and when the prime triangle for the current plane no. is found
+						//add next_triangle to that triangles connectedPLanes list
 						for (int no = 0; no < objectTriangleArray.size();no++) {
-							//if prime is a prime and has the same planeNo as next_triangle
+							
 							if (objectTriangleArray[no].isPrimeTriangle && objectTriangleArray[no].planeNo == objectTriangleArray[x].planeNo) {
 								startTriangle->addToConnectedPlanes(objectTriangleArray[no].planeNo);
 								startTriangle->setCount(count);
@@ -156,6 +156,8 @@ void FindConnected(triangleClass *startTriangle, triangleClass *curTriangle) {
 							}
 						}
 					}
+
+
 					else if (inArray && inArrayCount == 1 && count == 2) {
 						for (int no = 0; no < objectTriangleArray.size();no++) {
 							//if prime is a prime and has the same planeNo as next_triangle
@@ -417,95 +419,7 @@ vector<vector<vector<double>>> getNextPlane(Plane planeX, vector<Plane*> remaini
 	
 
 
-			//vector<double> startPoint;
-			//vector<vector<double>> points;
-			//
 
-			////loops until frame is finished
-			//while(true){
-
-			//	double closestDist = 10000000000000000;
-			//	vector<double> closestPoint;
-			//	Plane* closestPlane = NULL;
-
-			//	//goes through every adjacent plane
-			//	for (int i = 0; i < adjacentPlanes.size();i++) {
-			//		Plane* nextPlane = adjacentPlanes[i];
-
-			//		
-			//		if (nextPlane == curPlane || nextPlane == lastPlane) {
-			//			continue;
-			//		}
-			//		//get the next intersection point
-			//		vector<double> point = threePlaneIntersectionPoint(curPlane, nextPlane, &planeX);
-
-			//		//skips if its trying to go back on itself
-			//		if (abs(lastPoint[0] - point[0]) < 0.01 && abs(lastPoint[1] - point[1]) < 0.01 && abs(lastPoint[2] - point[2]) < 0.01) {
-			//			continue;
-			//		};
-			//		//get distance from intersection to (around) center of plane
-			//		double dist = getDistanceToMain(point, curPlane->getRelatedTriangleClass().centerPoint);
-
-			//		//if distance is smaller than last closest point, regardless of count switch them
-			//		if (dist < closestDist) {
-			//			closestDist = dist;
-			//			closestPoint = point;
-			//			closestPlane = nextPlane;
-			//		}
-			//		//if it is the same point as the closest but with the nextplane being a direct adjacent, switch them
-			//		else if ((abs(closestDist - dist) < 0.01 ) && planeX.getRelatedTriangleClass().countNum[i] == 2) {
-			//			closestDist = dist;
-			//			closestPoint = point;
-			//			closestPlane = nextPlane;
-			//		}
-			//		
-			//	}
-			//	cout << endl << closestPlane->toString();
-			//	if (startPoint.empty()) {
-			//		startPoint = closestPoint;
-			//	}
-			//	else if (closestPoint == startPoint) {
-			//		
-			//		break;
-			//	}
-			//	lastPlane = curPlane;
-			//	curPlane = closestPlane;
-			//	lastPoint = closestPoint;
-			//	frame.push_back(closestPoint);
-			//	usedPlanes.push_back(lastPlane);
-			//	
-			//}
-
-			/*if (usedPlanes.size() == adjacentPlanes.size()) {
-				for (int x = 0; x < usedPlanes.size();x++) {
-
-				}
-
-				Loops.push_back(frame);
-
-				return Loops;
-			}
-			else {
-				vector<Plane*> unusedPlanes = {};
-				for (int x = 0; x < adjacentPlanes.size();x++) {
-					if (find(usedPlanes.begin(), usedPlanes.end(), adjacentPlanes[x]) == usedPlanes.end()) {
-						unusedPlanes.push_back(adjacentPlanes[x]);
-
-					}
-
-				}
-
-
-
-				vector<vector<vector<double>>> L = getNextPlane(planeX, unusedPlanes);
-				Loops.push_back(frame);
-				Loops.insert(Loops.end(), L.begin(), L.end());
-
-
-				return Loops;
-
-
-			}*/
 
 vector<double> calcX(Plane plane, double y, double z) {
 	vector<double> pointOnPlane = plane.getRelatedTriangle()[0];
@@ -971,7 +885,9 @@ vector<double> P1 =  prime.points[0] ;
 
 
 
-			//for (int i = 0; i < adjacentPlanes.size();i++) {
+			//for (int i = 0; i < 
+			// 
+			// Planes.size();i++) {
 				//	cout << i << "<-" << endl;
 				//	bool touchingCheck = false;
 				//	for (int x = 0; x < adjacentPlanes.size(); x++) {

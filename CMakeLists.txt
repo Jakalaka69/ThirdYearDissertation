@@ -3,7 +3,8 @@ project(example)
 
 list(PREPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 
-# Libigl
+# Lib
+
 include(libigl)
 
 igl_include(restricted triangle)

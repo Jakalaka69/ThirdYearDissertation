@@ -11,7 +11,9 @@ class triangleClass {
 
 public:
     vector<vector<double>> points;
-    //vector<triangleClass> adjacenttriangles;
+    //vector<triangleClass> 
+    // 
+    // triangles;
     vector<double> normal;
     //vector<triangleClass> borderTriangles;
     int planeNo;
@@ -23,7 +25,9 @@ public:
     triangleClass();
     triangleClass(vector<vector<double>> x);
     //void addToAdjacentTriangles(triangleClass*);
-    //void addToAdjacentTriangles(triangleClass);
+    //void 
+    // 
+    // ToAdjacentTriangles(triangleClass);
     //void addToBorderTriangles(triangleClass);
     //void removeAdjacentTriangle(triangleClass triangle);
     vector<vector<double>> returnPoints();
