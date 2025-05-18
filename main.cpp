@@ -19,6 +19,13 @@ Eigen::MatrixXd V;
 Eigen::MatrixXi L;
 Eigen::MatrixXi F;
 int count1 = 0;
+float minX = 0;
+float maxX = 0;
+float minY = 0;
+float maxY = 0;
+float minZ = 0;
+float maxZ = 0;
+vector<vector<double>> boundingBox;
 vector<triangleClass> objectTriangleArray;
 vector<vector<double>> corners;
 double pi = 3.14159265;
@@ -30,6 +37,46 @@ void vecToString(vector<vector<double>> vec) {
 
 	}
 
+}
+
+void boundingBoxUpdate(vector<double> coords) {
+	for (int t = 0; t < coords.size(); t++) {
+		if (t == 0) {
+			if (coords[0] < minX) {
+				minX = coords[0];
+			}
+			if (coords[0] > maxX) {
+				maxX = coords[0];
+			}
+		}
+		if (t == 1) {
+			if (coords[1] < minY) {
+				minY = coords[1];
+			}
+			if (coords[1] > maxY) {
+				maxY = coords[1];
+			}
+		}
+		if (t == 2) {
+			if (coords[2] < minZ) {
+				minZ = coords[2];
+			}
+			if (coords[2] > maxZ) {
+				maxZ = coords[2];
+			}
+		}
+	}
+}
+
+void boundingBoxCreation() {
+	boundingBox.push_back({ minX,minY,minZ });
+	boundingBox.push_back({ minX,minY,maxZ });
+	boundingBox.push_back({ minX,maxY,minZ });
+	boundingBox.push_back({ minX,maxY,maxZ });
+	boundingBox.push_back({ maxX,minY,minZ });
+	boundingBox.push_back({ maxX,minY,maxZ });
+	boundingBox.push_back({ maxX,maxY,minZ });
+	boundingBox.push_back({ maxX,maxY,maxZ });
 }
 
 void FindConnected(triangleClass *startTriangle, triangleClass *curTriangle) {
@@ -63,6 +110,7 @@ void FindConnected(triangleClass *startTriangle, triangleClass *curTriangle) {
 			
 			for (int j = 0;j < 3;j++) {
 				for (int k = 0; k < 3; k++) {
+					boundingBoxUpdate(curTriangle->points[j]);
 					
 					if (curTriangle->points[j] == objectTriangleArray[x].points[k]) {
 						
@@ -554,8 +602,8 @@ int main(int argc, char* argv[])
 {
 	// Load a mesh in OFF format
 	planeDict.clear();
-	igl::read_triangle_mesh("C:/Users/jaywh/source/repos/Dissertation/models"  "/old_chair.obj", V, F);
-	//igl::read_triangle_mesh("C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/models" "/Tower.obj", V, F);
+	//igl::read_triangle_mesh("C:/Users/jaywh/source/repos/Dissertation/models"  "/old_chair.obj", V, F);
+	igl::read_triangle_mesh("C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/models" "/Tower.obj", V, F);
 
 	
 	
@@ -584,6 +632,12 @@ int main(int argc, char* argv[])
 			
 			planeCount++;
 		}
+	}
+	boundingBoxCreation();
+	for (int num = 0; num < boundingBox.size(); num++) {
+		cout << boundingBox[num][0]<<",";
+		cout << boundingBox[num][1] << ",";
+		cout << boundingBox[num][2] << endl;
 	}
 	
 	vector<Plane> planeList;
