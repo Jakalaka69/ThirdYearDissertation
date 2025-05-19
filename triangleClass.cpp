@@ -97,9 +97,11 @@ void triangleClass::makeTrianglePrime()
 
 void triangleClass::addToConnectedPlanes(int x)
 {
-
+    if (find(connectedPlanes.begin(), connectedPlanes.end(), x) == connectedPlanes.end()) {
+        connectedPlanes.push_back(x);
+    }
     //cout << "HERE" << endl;
-    connectedPlanes.push_back(x);
+    
 }
 
 void triangleClass::updatePlaneNo(int x)

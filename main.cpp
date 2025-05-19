@@ -2,6 +2,7 @@
 #include <igl/triangle/triangulate.h>
 #include <unordered_set>
 #include "triangleClass.h"
+#include "PointClass.h"
 #include <igl/readOFF.h>
 #include <igl/opengl/glfw/Viewer.h>
 #include <igl/read_triangle_mesh.h>
@@ -27,13 +28,14 @@ float minZ = 0;
 float maxZ = 0;
 vector<vector<double>> boundingBox;
 vector<triangleClass> objectTriangleArray;
+vector<PointClass> mainFrame;
 vector<vector<double>> corners;
 double pi = 3.14159265;
 
 void vecToString(vector<vector<double>> vec) {
 	for (int y = 0; y < vec.size();y++) {
 
-		cout << endl << "== " << vec[y][0] << " ," << vec[y][1] << " ," << vec[y][2];
+		std::cout << endl << "== " << vec[y][0] << " ," << vec[y][1] << " ," << vec[y][2];
 
 	}
 
@@ -96,11 +98,11 @@ void FindConnected(triangleClass *startTriangle, triangleClass *curTriangle) {
 	for (int x = 0; x < objectTriangleArray.size();x++) {
 			int count = 0;
 		
-			if (objectTriangleArray[x].planeNo == startTriangle->planeNo) {
+			
+			if (curTriangle->planeNo == objectTriangleArray[x].planeNo) {
 				continue;
 			}
-		
-			
+			vector<vector<double>> twoPoints;
 			
 			for (int j = 0;j < 3;j++) {
 				for (int k = 0; k < 3; k++) {
@@ -109,6 +111,7 @@ void FindConnected(triangleClass *startTriangle, triangleClass *curTriangle) {
 					//check if triangle 1 overlaps points with triangle 2
 					if (curTriangle->points[j] == objectTriangleArray[x].points[k]) {
 						//increment duplicate point count
+						twoPoints.push_back(curTriangle->points[j]);
 						count++;
 						
 					}
@@ -118,62 +121,35 @@ void FindConnected(triangleClass *startTriangle, triangleClass *curTriangle) {
 			
 			
 			//if the triangles have any overlapping points
-			if (count > 0 ) {
-				
-				//testing
-				if (startTriangle->planeNo == 5 && objectTriangleArray[x].planeNo == 4) {
-					cout << "here";
-					cout << count;
-				}
-				
+			if (count == 2 ) {
+
 				//checks if the next_triangles has been assigned a plane number
 				if (objectTriangleArray[x].planeNo != -1) {
-					//searches if next_triangles plane no. is already in start triangles connected planes
-					//adds to start triangles connected planes if not present
 					
-					bool inArray = false;
-					int countArrayIndex = -1;
-					int inArrayCount = -1;
-					for (int k = 0; k < startTriangle->connectedPlanes.size();k++) {
-						if (startTriangle->connectedPlanes[k] == objectTriangleArray[x].planeNo) {
-							inArray = true;
-							inArrayCount = startTriangle->countNum[k];
-							countArrayIndex = k;
-						}
-					}
+					
+					for (int r = 0; r < 2;r++) {
 
-
-					if (!inArray) {
-						//loops through the triangle array and when the prime triangle for the current plane no. is found
-						//add next_triangle to that triangles connectedPLanes list
-						for (int no = 0; no < objectTriangleArray.size();no++) {
-							
-							if (objectTriangleArray[no].isPrimeTriangle && objectTriangleArray[no].planeNo == objectTriangleArray[x].planeNo) {
-								startTriangle->addToConnectedPlanes(objectTriangleArray[no].planeNo);
-								startTriangle->setCount(count);
-								objectTriangleArray[no].setCount(count);
-								objectTriangleArray[no].addToConnectedPlanes(startTriangle->planeNo);
-							}
-						}
-					}
-
-
-					else if (inArray && inArrayCount == 1 && count == 2) {
-						for (int no = 0; no < objectTriangleArray.size();no++) {
-							//if prime is a prime and has the same planeNo as next_triangle
-							if (objectTriangleArray[no].isPrimeTriangle && objectTriangleArray[no].planeNo == objectTriangleArray[x].planeNo) {
-								
-								startTriangle->countNum[countArrayIndex] = count;
-								for (int k = 0; k < objectTriangleArray[no].connectedPlanes.size();k++) {
-									if (objectTriangleArray[no].connectedPlanes[k] == startTriangle->planeNo) {
-										objectTriangleArray[no].countNum[k] = count;
-									}
+						//if point is already in the mainFrame, add the two plane numbers to the point's plane list (if they arent already in it)
+						bool found = false;
+						for (int j = 0; j < mainFrame.size();j++) {
+							if (mainFrame[j].point == twoPoints[r]) {
+								found = true;
+								if (find(mainFrame[j].planeList.begin(), mainFrame[j].planeList.end(), curTriangle->planeNo) == mainFrame[j].planeList.end()) {
+									mainFrame[j].planeList.push_back(curTriangle->planeNo);
 								}
-								
+								if (find(mainFrame[j].planeList.begin(), mainFrame[j].planeList.end(), objectTriangleArray[x].planeNo) == mainFrame[j].planeList.end()) {
+									mainFrame[j].planeList.push_back(objectTriangleArray[x].planeNo);
+								}
+								break;
 							}
 						}
+						//if point not in list
+						if (found == false) {
+							mainFrame.push_back(twoPoints[r]);
+							mainFrame[mainFrame.size() - 1].planeList.push_back(curTriangle->planeNo);
+							mainFrame[mainFrame.size() - 1].planeList.push_back(objectTriangleArray[x].planeNo);
+						}
 					}
-					
 
 				}
 				else {
@@ -362,8 +338,8 @@ vector<vector<vector<double>>> getNextPlane(Plane planeX, vector<Plane*> remaini
 			vector<Plane*> nextPlaneList = nextPlane->GetConnectedPlanes();
 			vector<Plane*> curPlaneList = curPlane->GetConnectedPlanes();
 
-			cout << endl << endl;
-			cout << "--" << endl;
+			std::cout << endl << endl;
+			std::cout << "--" << endl;
 			int localCount = curPlane->getRelatedTriangleClass().countNum[x];
 			if (localCount == 2 && find(adjacentPlanes.begin(),adjacentPlanes.end(), nextPlane) != adjacentPlanes.end()) {
 				
@@ -386,7 +362,7 @@ vector<vector<vector<double>>> getNextPlane(Plane planeX, vector<Plane*> remaini
 				if (!found) {
 					frame.push_back(point);
 				}
-				cout << curPlane->toString();
+				std::cout << curPlane->toString();
 				lastPlane = curPlane;
 				curPlane = nextPlane;
 
@@ -416,14 +392,99 @@ vector<vector<vector<double>>> getNextPlane(Plane planeX, vector<Plane*> remaini
 		
 
 }
+
+//function to get the effective "plane" boundary pointr
+vector<vector<PointClass>> getRegionLoop(int PlaneX, vector<PointClass> remainingFrame) {
+	vector<PointClass> frame;
+	PointClass firmStartPoint = remainingFrame[0];
+	PointClass startPoint = remainingFrame[0];
+	bool first = true;
+	bool looped = false;
 	
 
+	vector<vector<double>> checkedPoints;
+	PointClass lastPoint = startPoint;
+	int curPlane;
+
+	
+	vector<int> all;
+
+	
+	bool trueFinish = false;
+
+	while (looped != true) {
+		if (checkedPoints.size() == remainingFrame.size()) {
+			break;
+		}
+
+		for (int plane : startPoint.planeList) {
+			bool found = false;
+			if (plane == PlaneX) {
+				continue;
+			}
+			
+			for (PointClass p : remainingFrame) {
+
+				
+				//find(checkedPoints.begin(),checkedPoints.end(),p.point
+				if (p.point == startPoint.point || p.point == lastPoint.point) {
+					continue;
+				}
+
+				if (find(p.planeList.begin(), p.planeList.end(), plane) != p.planeList.end()) {
+					if (startPoint.point == remainingFrame[0].point && !first) {
+						trueFinish = true;
+						continue;
+					}
+					
+
+					/*if (startPoint.point == remainingFrame[0].point && !first ) {
+						looped = true;
+						found = true;
+						checkedPoints.push_back(startPoint.point);
+						break;
+					}*/
+					trueFinish = false;
+					first = false;
+					frame.push_back(p);
+					lastPoint = startPoint;
+					startPoint = p;
+					found = true;
+					checkedPoints.push_back(startPoint.point);
+					break;
+				}
+			}
+			if (trueFinish) {
+				checkedPoints.push_back(startPoint.point);
+				looped = true;
+				break;
+			}
+
+			if (found) {
+				break;
+			}
+			
+			
+			
+		}
+
+
+		
+
+		
+	}
+	
+	return { frame };
+	
+
+}
 
 
 
-vector<double> calcX(Plane plane, double y, double z) {
-	vector<double> pointOnPlane = plane.getRelatedTriangle()[0];
-	vector<double> normal = plane.GetNormal();
+
+vector<double> calcX(triangleClass plane, double y, double z) {
+	vector<double> pointOnPlane = plane.points[0];
+	vector<double> normal = plane.returnNormal();
 	double total = 0;
 	total += normal[0] * pointOnPlane[0] + normal[1] * pointOnPlane[1] + normal[2] * pointOnPlane[2];
 
@@ -436,9 +497,9 @@ vector<double> calcX(Plane plane, double y, double z) {
 
 }
 
-vector<double> calcZ(Plane plane, double x, double y) {
-	vector<double> pointOnPlane = plane.getRelatedTriangle()[0];
-	vector<double> normal = plane.GetNormal();
+vector<double> calcZ(triangleClass plane, double x, double y) {
+	vector<double> pointOnPlane = plane.points[0];
+	vector<double> normal = plane.returnNormal();
 	double total = 0;
 	total += normal[0] * pointOnPlane[0] + normal[1] * pointOnPlane[1] + normal[2] * pointOnPlane[2];
 
@@ -450,9 +511,9 @@ vector<double> calcZ(Plane plane, double x, double y) {
 
 
 }
-vector<double> calcY(Plane plane, double x, double z) {
-	vector<double> pointOnPlane = plane.getRelatedTriangle()[0];
-	vector<double> normal = plane.GetNormal();
+vector<double> calcY(triangleClass plane, double x, double z) {
+	vector<double> pointOnPlane = plane.points[0];
+	vector<double> normal = plane.returnNormal();
 	double total = 0;
 	total += normal[0] * pointOnPlane[0] + normal[1] * pointOnPlane[1] + normal[2] * pointOnPlane[2];
 
@@ -516,14 +577,14 @@ int main(int argc, char* argv[])
 {
 	// Load a mesh in OFF format
 	planeDict.clear();
-	//igl::read_triangle_mesh("C:/Users/jaywh/source/repos/Dissertation/models"  "/old_chair.obj", V, F);
-	igl::read_triangle_mesh("C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/models" "/Tower.obj", V, F);
-
-	
-	
+	igl::read_triangle_mesh("C:/Users/jaywh/source/repos/Dissertation/models"  "/objBuilding.obj", V, F);
+	//igl::read_triangle_mesh("C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/models" "/Tower.obj", V, F);
 
 
-	
+
+
+
+
 
 	for (int x = 0; x < F.rows(); x++) {
 		//initialise the current triangle in loop
@@ -534,56 +595,75 @@ int main(int argc, char* argv[])
 		triangleClass temp = triangleClass(nextTriangle);
 		objectTriangleArray.push_back(temp);
 	}
-	
+
 	int planeCount = 0;
+	float percentCalsDenom = objectTriangleArray.size();
 	for (int t = 0; t < objectTriangleArray.size(); t++) {
-		
+
+
+
 		if (objectTriangleArray[t].planeNo == -1) {
-			
+
 			objectTriangleArray[t].updatePlaneNo(planeCount);
 			objectTriangleArray[t].makeTrianglePrime();
 			FindConnected(&objectTriangleArray[t], &objectTriangleArray[t]);
-			
+
 			planeCount++;
 		}
+
+
+		cout<< t/percentCalsDenom*100  <<"%"<<endl;
 	}
+
+
+
+	for (PointClass p : mainFrame) {
+		if (p.planeList.size() > 2) {
+			std::cout << endl;
+			for (int i = 0; i < p.planeList.size();i++) {
+				std::cout << " " << p.planeList[i];
+			}
+		}
+	}
+
+
 	boundingBoxCreation();
 	for (int num = 0; num < boundingBox.size(); num++) {
-		cout << boundingBox[num][0]<<",";
-		cout << boundingBox[num][1] << ",";
-		cout << boundingBox[num][2] << endl;
+		std::cout << boundingBox[num][0] << ",";
+		std::cout << boundingBox[num][1] << ",";
+		std::cout << boundingBox[num][2] << endl;
 	}
-	
+
 	vector<Plane> planeList;
 	vector<triangleClass> primeTriangleList;
 	int c = 0;
 	int c2 = 0;
-	for (triangleClass prime : objectTriangleArray) {
-		
-		
+	/*for (triangleClass prime : objectTriangleArray) {
+
+
 		if (prime.isPrimeTriangle) {
 			cout << endl << endl;
 				cout << c << " : ";
 				cout << endl << endl;
 				for (int p : prime.connectedPlanes) {
 					cout << p << " ";
-					
+
 				}
 
-				
+
 			planeList.push_back(Plane(prime,c));
 			primeTriangleList.push_back(prime);
 			c++;
 		}
 		c2++;
-	}
+	}*/
 	for (int planeNo = 0; planeNo < planeList.size();planeNo++) {
 		for (int index : primeTriangleList[planeNo].connectedPlanes) {
 			planeList[planeNo].AddConnectedPlane(&planeList[index]);
 		}
 	}
-	
-	for (int p = 0; p < objectTriangleArray.size()-1;p++) {
+
+	for (int p = 0; p < objectTriangleArray.size() - 1;p++) {
 		if (objectTriangleArray[p].planeNo == 2 || objectTriangleArray[p].planeNo == 0) {
 			for (int x = 0; x < F.rows(); x++) {
 				//initialise the current triangle in loop
@@ -600,30 +680,48 @@ int main(int argc, char* argv[])
 
 					F.conservativeResize(numRows, numCols);
 				}
-				
+
 			}
-			
+
 		}
 	}
-	
+
+
+
+
+
 
 	Eigen::MatrixXd D;
 	Eigen::MatrixXi P;
 
 
 
-	
 
 
 
-	for (int x = 0; x < planeList.size();x++) {
-		/*if (x == 9 || x == 2 ) {
-			continue;
-		}*/
-		vector<vector<vector<double>>> Loops = getNextPlane(planeList[x], planeList[x].GetConnectedPlanes());
 
+	for (int x = 0; x < planeCount;x++) {
+
+		vector<PointClass> mainFrame2;
+
+		for (PointClass p : mainFrame) {
+			if (p.planeList.size() > 2 && (find(p.planeList.begin(), p.planeList.end(), x) != p.planeList.end())) {
+				mainFrame2.push_back(p);
+			}
+		}
 		
-		vector<vector<double>> holePoints = GetPointsInHoles(Loops); 
+		if (mainFrame2.size() < 3) {
+			for (PointClass p : mainFrame) {
+				if (p.planeList.size() == 2 && (find(p.planeList.begin(), p.planeList.end(), x) != p.planeList.end())) {
+					mainFrame2.push_back(p);
+				}
+			}
+		}
+
+		vector<vector<PointClass>> Loops = getRegionLoop(x, mainFrame2);
+
+
+		//vector<vector<double>> holePoints = GetPointsInHoles(Loops); 
 		vector<vector<double>> frame;
 
 
@@ -634,83 +732,139 @@ int main(int argc, char* argv[])
 		Eigen::MatrixXd H;
 		Eigen::MatrixXd V2;
 		Eigen::MatrixXi F2;
+		Eigen::MatrixXd pre;
 
 
-		int axis = 0;
+		triangleClass checks = triangleClass({ Loops[0][0].point, Loops[0][1].point, Loops[0][2].point });
+
+		//redundant checks
 
 
-		if (planeList[x].GetNormal()[0] == 0 && planeList[x].GetNormal()[2] == 0) {
-			axis = 1;
-		}
-		else if (planeList[x].GetNormal()[1] == 0 && planeList[x].GetNormal()[2] == 0) {
-			axis = 0;
-		}
-		else if (planeList[x].GetNormal()[0] == 0 && planeList[x].GetNormal()[1] == 0) {
-			axis = 2;
-		}
-		else if (abs(planeList[x].GetNormal()[0]) == abs(planeList[x].GetNormal()[2])) {
-			axis = 0;
-		}
-		else if (abs(planeList[x].GetNormal()[1]) == abs(planeList[x].GetNormal()[2])) {
-			axis = 1;
-		}
-		else if (abs(planeList[x].GetNormal()[0]) == abs(planeList[x].GetNormal()[1])) {
-			axis = 0;
+		//if (checks.returnNormal()[0] == 0 && checks.returnNormal()[2] == 0) {
+		//	axis = 1;
+		//}
+		//else if (checks.returnNormal()[1] == 0 && checks.returnNormal()[2] == 0) {
+		//	axis = 0;
+		//}
+		//else if (checks.returnNormal()[0] == 0 && checks.returnNormal()[1] == 0) {
+		//	axis = 2;
+		//}
+		//else if (abs(checks.returnNormal()[0]) == abs(checks.returnNormal()[2])) {
+		//	axis = 0;
+		//}
+		//else if (abs(checks.returnNormal()[1]) == abs(checks.returnNormal()[2])) {
+		//	axis = 1;
+		//}
+		//else if (abs(checks.returnNormal()[0]) == abs(checks.returnNormal()[1])) {
+		//	axis = 0;
+		//}
+		//else if (checks.returnNormal()[0] == 0) {
+		//	axis = 1;
+		//}
+		//else if (checks.returnNormal()[1] == 0) {
+		//	axis = 0;
+		//}
+		//else if (checks.returnNormal()[2] == 0) {
+		//	axis = 0;
+		//}
+
+		//
+		for (int g = 0; g < Loops.size();g++) {
+			pre.resize(pre.rows() + Loops[g].size(), 3);
 		}
 
-
-		cout << axis;
-		
-
-		for (int x = 0; x < Loops.size();x++) {
-			V3.resize(V3.rows() + Loops[x].size(), 2);
-			E.resize(E.rows() + Loops[x].size(), 2);
-		}
 		int z = 0;
-		for (int x = 0; x < Loops.size();x++) {
-			for (int y = 0; y < Loops[x].size();y++) {
-				if (axis == 0) {
-					V3(y + z, 0) = Loops[x][y][1];
-					V3(y + z, 1) = Loops[x][y][2];
-					cout << endl << Loops[x][y][0];
-					cout << Loops[x][y][1];
-					cout << Loops[x][y][2];
-				}
-				else if (axis == 1) {
-					V3(y + z, 0) = Loops[x][y][0];
-					V3(y + z, 1) = Loops[x][y][2];
-				}
-				else if (axis == 2) {
-					V3(y + z, 0) = Loops[x][y][0];
-					V3(y + z, 1) = Loops[x][y][1];
-				}
+		for (int g = 0; g < Loops.size();g++) {
+			for (int y = 0; y < Loops[g].size();y++) {
 
-				E(y + z, 0) = y + z;
-				if (y + z == z + Loops[x].size() - 1)
-				{
-					E(y + z, 1) = z;
-				}
-				else
-				{
-					E(y + z, 1) = y + z + 1;
-				}
+				pre(y + z, 0) = Loops[g][y].point[0];
+				pre(y + z, 1) = Loops[g][y].point[1];
+				pre(y + z, 2) = Loops[g][y].point[2];
+
+
 
 			}
-			z += Loops[x].size();
+			z += Loops[g].size();
+		}
+		std::cout << pre << endl;
+
+
+		for (int g = 0; g < Loops.size();g++) {
+			V3.resize(V3.rows() + Loops[g].size(), 2);
+			E.resize(E.rows() + Loops[g].size(), 2);
+		}
+		int jay = 0;
+		for (int j = 0;j < 3;j++) {
+
+
+			jay = j;
+			z = 0;
+			for (int g = 0; g < Loops.size();g++) {
+				for (int y = 0; y < Loops[g].size();y++) {
+					if (j == 0) {
+						V3(y + z, 0) = Loops[g][y].point[1];
+						V3(y + z, 1) = Loops[g][y].point[2];
+
+					}
+					else if (j == 1) {
+						V3(y + z, 0) = Loops[g][y].point[0];
+						V3(y + z, 1) = Loops[g][y].point[2];
+
+					}
+					else if (j == 2) {
+						V3(y + z, 0) = Loops[g][y].point[0];
+						V3(y + z, 1) = Loops[g][y].point[1];
+
+					}
+
+					E(y + z, 0) = y + z;
+					if (y + z == z + Loops[g].size() - 1)
+					{
+						E(y + z, 1) = z;
+					}
+					else
+					{
+						E(y + z, 1) = y + z + 1;
+					}
+
+				}
+				z += Loops[g].size();
+			}
+
+
+			bool break1 = false;
+			for (int n = 0;n < V3.rows();n++) {
+				for (int m = 0;m < V3.rows();m++) {
+					if (n == m) {
+						continue;
+					}
+					if (V3.block<1, 2>(n, 0) == V3.block<1, 2>(m, 0)) {
+						break1 = true;
+					}
+
+				}
+			}
+			if (break1) {
+				continue;
+			}
+			break;
+
+		
 		}
 
 
 
-		
 
-		H.resize(holePoints.size(), 2);
+
+
+		/*H.resize(holePoints.size(), 2);
 
 		for (int x = 0; x < holePoints.size();x++) {
 			H(x, 0) = holePoints[x][0];
 			H(x, 1) = holePoints[x][1];
-		}
-		cout << endl << endl;
-		cout << V3;
+		}*/
+		std::cout << endl << endl;
+		std::cout << V3;
 
 		igl::triangle::triangulate(V3, E, H, "1", V2, F2);
 
@@ -719,28 +873,33 @@ int main(int argc, char* argv[])
 
 		V4.resize(V2.rows(), 3);
 
+
+
+
+
+
+
 		for (int p = 0;p < V2.rows();p++) {
-			if (axis == 0) {
-				V4(p, 0) = calcX(planeList[x], V2(p, 0), V2(p, 1))[2];
+			if (jay == 0) {
+				V4(p, 0) = pre(p, 0);
 				V4(p, 1) = V2(p, 0);
 				V4(p, 2) = V2(p, 1);
 			}
-			else if (axis == 1) {
+			else if (jay == 1) {
 				V4(p, 0) = V2(p, 0);
-				V4(p, 1) = calcY(planeList[x], V2(p, 0), V2(p, 1))[2];
+				V4(p, 1) = pre(p, 1);
 
 				V4(p, 2) = V2(p, 1);
 			}
-			else if (axis == 2) {
+			else if (jay == 2) {
 				V4(p, 0) = V2(p, 0);;
 				V4(p, 1) = V2(p, 1);
-				V4(p, 2) = calcZ(planeList[x], V2(p, 0), V2(p, 1))[2];
+				V4(p, 2) = pre(p, 2);
 			}
 
-
-
 		}
 
+			//}
 
 
 
@@ -748,112 +907,96 @@ int main(int argc, char* argv[])
 
 
 
-		if (D.rows() == 0) {
 
-			D.conservativeResize(V4.rows(), V4.cols());
-			D << V4;
-		}
-		else {
-			Eigen::MatrixXd temp1(D.rows() + V4.rows(), 3);
+			if (D.rows() == 0) {
 
-			temp1 << D, V4;
-			D = temp1;
-		}
-
-		vector<double> test1 = {0.751771,1.9335,1.9433 };
-		vector<double> test2 = { 0.751771,1.9335,1.9433 };
-
-		
-	
-	
-		//Removing duplicates from the verticies list
-		
-		vector<vector<double>> checked;
-		
-		for (int i = 0; i < D.rows();i++) {
-			
-			vector<double> cur = { D(i,0),D(i,1),D(i,2) };
-			if (cur[0] == test1[0]) {
-				
-			}
-			if (find(checked.begin(), checked.end(), cur) == checked.end()) {
-				checked.push_back(cur);
+				D.conservativeResize(V4.rows(), V4.cols());
+				D << V4;
 			}
 			else {
-				int rows = D.rows() - 1;
-				if (i < rows) {
-					D.block(i, 0, rows - i, 3) = D.block(i + 1, 0, rows - i, 3);
-				}
-				D.conservativeResize(rows, 3);
-				i--;
-			}
-		}
-		
-		
-		
+				Eigen::MatrixXd temp1(D.rows() + V4.rows(), 3);
 
-		for (int n = 0;n < F2.rows();n++) {
-			for (int m = 0;m < 3;m++) {
-				bool found = false;
-				for (int l = 0;l < D.rows();l++) {
-					if (D.block<1, 3>(l, 0) == V4.block<1, 3>(F2(n, m), 0)) {
-						F2(n, m) = l;
-						found = true;
-						
-						break;
+				temp1 << D, V4;
+				D = temp1;
+			}
+
+
+
+
+
+			//Removing duplicates from the verticies list
+
+			vector<vector<double>> checked;
+
+			for (int i = 0; i < D.rows();i++) {
+
+				vector<double> cur = { D(i,0),D(i,1),D(i,2) };
+
+				if (find(checked.begin(), checked.end(), cur) == checked.end()) {
+					checked.push_back(cur);
+				}
+				else {
+					int rows = D.rows() - 1;
+					if (i < rows) {
+						D.block(i, 0, rows - i, 3) = D.block(i + 1, 0, rows - i, 3);
 					}
+					D.conservativeResize(rows, 3);
+					i--;
 				}
-				if (found == false) { F2(n, m) += D.rows(); }
 			}
+
+
+
+
+			for (int n = 0;n < F2.rows();n++) {
+				for (int m = 0;m < 3;m++) {
+					bool found = false;
+					for (int l = 0;l < D.rows();l++) {
+						if (D.block<1, 3>(l, 0) == V4.block<1, 3>(F2(n, m), 0)) {
+							F2(n, m) = l;
+							found = true;
+
+							break;
+						}
+					}
+					if (found == false) { F2(n, m) += D.rows(); }
+				}
+			}
+
+
+
+
+
+			if (P.rows() == 0) {
+				P.conservativeResize(F2.rows(), F2.cols());
+
+				P << F2;
+			}
+			else {
+				Eigen::MatrixXi temp2(P.rows() + F2.rows(), 3);
+
+				temp2 << P, F2;
+				P = temp2;
+			}
+
 		}
-		
 
-	
+		//Plot the mesh
 
-		
-		if (P.rows() == 0) {
-			P.conservativeResize(F2.rows(), F2.cols());
-			
-			P << F2;
-		}
-		else {
-			Eigen::MatrixXi temp2(P.rows() + F2.rows(), 3);
-			
-			temp2 << P, F2;
-			P = temp2;
-		}
-		
+		std::cout << endl << endl << endl;
+		//open libigl viewer
 
-		
 
-		
 
-		
+		igl::opengl::glfw::Viewer viewer;
 
-		
+		viewer.data().set_mesh(D, P);
+		viewer.launch();
+
+
+
 	}
 
-	
-	
-	
-
-
-
-	//Plot the mesh
-
-	std::cout << endl << endl << endl;
-	//open libigl viewer
-
-	
-
-	igl::opengl::glfw::Viewer viewer;
-
-	viewer.data().set_mesh(D, P);
-	viewer.launch();
-
-
-
-}
 
 /*
 vector<double> P1 =  prime.points[0] ;

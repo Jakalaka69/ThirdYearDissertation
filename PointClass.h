@@ -11,9 +11,7 @@ public:
 	vector<double> point;
 	vector<int> planeList;
 
-public:
+
 	PointClass(vector<double> input);
 	void AddPlanesToPoint(int x, int y, int z);
-
-
-}
+};
