@@ -13,5 +13,6 @@ public:
 
 
 	PointClass(vector<double> input);
+	PointClass();
 	void AddPlanesToPoint(int x, int y, int z);
 };

@@ -105,9 +105,17 @@ void FindConnected(triangleClass *startTriangle, triangleClass *curTriangle) {
 			vector<vector<double>> twoPoints;
 			
 			for (int j = 0;j < 3;j++) {
+
+				
+
+
+				if (j == 2 && count < 1) {
+					break;
+				}
+
 				for (int k = 0; k < 3; k++) {
 					//check if the bounding box can be updated with any of the next_triangles points
-					boundingBoxUpdate(curTriangle->points[j]);
+					//boundingBoxUpdate(curTriangle->points[j]);
 					//check if triangle 1 overlaps points with triangle 2
 					if (curTriangle->points[j] == objectTriangleArray[x].points[k]) {
 						//increment duplicate point count
@@ -156,7 +164,7 @@ void FindConnected(triangleClass *startTriangle, triangleClass *curTriangle) {
 
 					double intAng = startTriangle->calcInteriorAngle(objectTriangleArray[x]);
 
-					if (intAng <= 70) {
+					if (intAng <= 50) {
 						objectTriangleArray[x].updatePlaneNo(startTriangle->planeNo);
 						FindConnected(startTriangle, &objectTriangleArray[x]);
 
@@ -234,21 +242,21 @@ double getDistanceToMain(vector<double> point, vector<double> midOfMain) {
 	return dist;
 
 }
-vector<vector<double>> GetPointsInHoles(vector<vector<vector<double>>> Loops) {
+vector<vector<double>> GetPointsInHoles(vector<vector<PointClass>> Loops) {
 	//calculating areas of each loop to find the biggest
 	vector<vector<double>> pointsInHoles;
 	int pos = 0;
 	double biggestArea = 0;
 	for (int x = 0; x < Loops.size();x++) {
-		vector<double> anchorPoint = Loops[x][0];
+		vector<double> anchorPoint = Loops[x][0].point;
 		double totalArea = 0;
 		for (int y = 1; y < Loops[x].size(); y++) {
 			if (y + 1 == Loops[x].size()) {
 				continue;
 			}
 			else {
-				vector<double> c2 = Loops[x][y];
-				vector<double> c3 = Loops[x][y + 1];
+				vector<double> c2 = Loops[x][y].point;
+				vector<double> c3 = Loops[x][y + 1].point;
 				double a = sqrt(pow(anchorPoint[0] - c2[0], 2) + pow(anchorPoint[1] - c2[1], 2) + pow(anchorPoint[2] - c2[2], 2));
 				double b = sqrt(pow(anchorPoint[0] - c3[0], 2) + pow(anchorPoint[1] - c3[1], 2) + pow(anchorPoint[2] - c3[2], 2));
 				double c = sqrt(pow(c3[0] - c2[0], 2) + pow(c3[1] - c2[1], 2) + pow(c3[2] - c2[2], 2));
@@ -270,9 +278,9 @@ vector<vector<double>> GetPointsInHoles(vector<vector<vector<double>>> Loops) {
 			continue;
 		}
 		else {
-			vector<double> c1 = Loops[x][0];
-			vector<double> c2 = Loops[x][1];
-			vector<double> c3 = Loops[x][2];
+			vector<double> c1 = Loops[x][0].point;
+			vector<double> c2 = Loops[x][1].point;
+			vector<double> c3 = Loops[x][2].point;
 			double a = sqrt(pow(c1[0] - c2[0], 2) + pow(c1[1] - c2[1], 2) + pow(c1[2] - c2[2], 2));
 			double b = sqrt(pow(c1[0] - c3[0], 2) + pow(c1[1] - c3[1], 2) + pow(c1[2] - c3[2], 2));
 			double c = sqrt(pow(c3[0] - c2[0], 2) + pow(c3[1] - c2[1], 2) + pow(c3[2] - c2[2], 2));
@@ -338,8 +346,7 @@ vector<vector<vector<double>>> getNextPlane(Plane planeX, vector<Plane*> remaini
 			vector<Plane*> nextPlaneList = nextPlane->GetConnectedPlanes();
 			vector<Plane*> curPlaneList = curPlane->GetConnectedPlanes();
 
-			std::cout << endl << endl;
-			std::cout << "--" << endl;
+			
 			int localCount = curPlane->getRelatedTriangleClass().countNum[x];
 			if (localCount == 2 && find(adjacentPlanes.begin(),adjacentPlanes.end(), nextPlane) != adjacentPlanes.end()) {
 				
@@ -394,7 +401,7 @@ vector<vector<vector<double>>> getNextPlane(Plane planeX, vector<Plane*> remaini
 }
 
 //function to get the effective "plane" boundary pointr
-vector<vector<PointClass>> getRegionLoop(int PlaneX, vector<PointClass> remainingFrame) {
+vector<PointClass> getRegionLoop(int PlaneX, vector<PointClass> remainingFrame) {
 	vector<PointClass> frame;
 	PointClass firmStartPoint = remainingFrame[0];
 	PointClass startPoint = remainingFrame[0];
@@ -412,26 +419,30 @@ vector<vector<PointClass>> getRegionLoop(int PlaneX, vector<PointClass> remainin
 	
 	bool trueFinish = false;
 
-	while (looped != true) {
+	for (int l = 0;l < remainingFrame.size();l++) {
+
 		if (checkedPoints.size() == remainingFrame.size()) {
 			break;
 		}
 
 		for (int plane : startPoint.planeList) {
+
 			bool found = false;
+
 			if (plane == PlaneX) {
 				continue;
 			}
 			
-			for (PointClass p : remainingFrame) {
+			for (int d = 0; d < remainingFrame.size();d++) {
 
 				
-				//find(checkedPoints.begin(),checkedPoints.end(),p.point
-				if (p.point == startPoint.point || p.point == lastPoint.point) {
+				
+				if (remainingFrame[d].point == startPoint.point || remainingFrame[d].point == lastPoint.point || find(checkedPoints.begin(), checkedPoints.end(), remainingFrame[d].point) != checkedPoints.end()) {
 					continue;
 				}
 
-				if (find(p.planeList.begin(), p.planeList.end(), plane) != p.planeList.end()) {
+				if (find(remainingFrame[d].planeList.begin(), remainingFrame[d].planeList.end(), plane) != remainingFrame[d].planeList.end()) {
+					
 					if (startPoint.point == remainingFrame[0].point && !first) {
 						trueFinish = true;
 						continue;
@@ -446,9 +457,9 @@ vector<vector<PointClass>> getRegionLoop(int PlaneX, vector<PointClass> remainin
 					}*/
 					trueFinish = false;
 					first = false;
-					frame.push_back(p);
+					frame.push_back(remainingFrame[d]);
 					lastPoint = startPoint;
-					startPoint = p;
+					startPoint = remainingFrame[d];
 					found = true;
 					checkedPoints.push_back(startPoint.point);
 					break;
@@ -577,7 +588,7 @@ int main(int argc, char* argv[])
 {
 	// Load a mesh in OFF format
 	planeDict.clear();
-	igl::read_triangle_mesh("C:/Users/jaywh/source/repos/Dissertation/models"  "/objBuilding.obj", V, F);
+	igl::read_triangle_mesh("C:/Users/jaywh/source/repos/Dissertation/models"  "/statueHole.obj", V, F);
 	//igl::read_triangle_mesh("C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/models" "/Tower.obj", V, F);
 
 
@@ -617,46 +628,21 @@ int main(int argc, char* argv[])
 
 
 
-	for (PointClass p : mainFrame) {
-		if (p.planeList.size() > 2) {
-			std::cout << endl;
-			for (int i = 0; i < p.planeList.size();i++) {
-				std::cout << " " << p.planeList[i];
-			}
-		}
-	}
+	
 
 
-	boundingBoxCreation();
-	for (int num = 0; num < boundingBox.size(); num++) {
-		std::cout << boundingBox[num][0] << ",";
-		std::cout << boundingBox[num][1] << ",";
-		std::cout << boundingBox[num][2] << endl;
-	}
+	//boundingBoxCreation();
+	//for (int num = 0; num < boundingBox.size(); num++) {
+	//	std::cout << boundingBox[num][0] << ",";
+	//	std::cout << boundingBox[num][1] << ",";
+	//	std::cout << boundingBox[num][2] << endl;
+	//}
 
 	vector<Plane> planeList;
 	vector<triangleClass> primeTriangleList;
 	int c = 0;
 	int c2 = 0;
-	/*for (triangleClass prime : objectTriangleArray) {
 
-
-		if (prime.isPrimeTriangle) {
-			cout << endl << endl;
-				cout << c << " : ";
-				cout << endl << endl;
-				for (int p : prime.connectedPlanes) {
-					cout << p << " ";
-
-				}
-
-
-			planeList.push_back(Plane(prime,c));
-			primeTriangleList.push_back(prime);
-			c++;
-		}
-		c2++;
-	}*/
 	for (int planeNo = 0; planeNo < planeList.size();planeNo++) {
 		for (int index : primeTriangleList[planeNo].connectedPlanes) {
 			planeList[planeNo].AddConnectedPlane(&planeList[index]);
@@ -701,7 +687,8 @@ int main(int argc, char* argv[])
 
 
 	for (int x = 0; x < planeCount;x++) {
-
+		cout << x;
+		
 		vector<PointClass> mainFrame2;
 
 		for (PointClass p : mainFrame) {
@@ -711,21 +698,68 @@ int main(int argc, char* argv[])
 		}
 		
 		if (mainFrame2.size() < 3) {
-			for (PointClass p : mainFrame) {
-				if (p.planeList.size() == 2 && (find(p.planeList.begin(), p.planeList.end(), x) != p.planeList.end())) {
-					mainFrame2.push_back(p);
-				}
-			}
+			continue;
 		}
 
-		vector<vector<PointClass>> Loops = getRegionLoop(x, mainFrame2);
 
 
-		//vector<vector<double>> holePoints = GetPointsInHoles(Loops); 
+
+
+		int looping = true;
+		vector<vector<PointClass>> Loops;
+		while (looping) {
+
+			vector<PointClass> mainFrame3;
+			vector<int> planes;
+			mainFrame3.push_back(mainFrame2[0]);
+			for (int h : mainFrame2[0].planeList) {
+				if (h == x) {
+					continue;
+				}
+				planes.push_back(h);
+			}
+			mainFrame2.erase(mainFrame2.begin());
+			bool looping2 = true;
+			while (looping2) {
+				int size = mainFrame3.size();
+				for (int h = 0; h < mainFrame2.size();h++) {
+					for (int k : mainFrame2[h].planeList) {
+						if (k == x) {
+							continue;
+						}
+						if (find(planes.begin(), planes.end(), k) != planes.end()) {
+							mainFrame3.push_back(mainFrame2[h]);
+							for (int h : mainFrame2[h].planeList) {
+								planes.push_back(h);
+							}
+							mainFrame2.erase(mainFrame2.begin() + h);
+							h--;
+						}
+					}
+				}
+				if (mainFrame3.size() == size) {
+					break;
+				}
+			}
+		
+
+
+
+			Loops.push_back(getRegionLoop(x, mainFrame3));
+			if (mainFrame2.size() == 0) {
+				looping = false;
+			}
+
+		}
+
+		
+
+
+		vector<vector<double>> holePoints = GetPointsInHoles(Loops); 
 		vector<vector<double>> frame;
 
 
-
+		triangleClass checks = triangleClass({ Loops[0][0].point, Loops[0][2].point, Loops[0][1].point });
 
 		Eigen::MatrixXd V3;
 		Eigen::MatrixXi E;
@@ -735,40 +769,7 @@ int main(int argc, char* argv[])
 		Eigen::MatrixXd pre;
 
 
-		triangleClass checks = triangleClass({ Loops[0][0].point, Loops[0][1].point, Loops[0][2].point });
-
-		//redundant checks
-
-
-		//if (checks.returnNormal()[0] == 0 && checks.returnNormal()[2] == 0) {
-		//	axis = 1;
-		//}
-		//else if (checks.returnNormal()[1] == 0 && checks.returnNormal()[2] == 0) {
-		//	axis = 0;
-		//}
-		//else if (checks.returnNormal()[0] == 0 && checks.returnNormal()[1] == 0) {
-		//	axis = 2;
-		//}
-		//else if (abs(checks.returnNormal()[0]) == abs(checks.returnNormal()[2])) {
-		//	axis = 0;
-		//}
-		//else if (abs(checks.returnNormal()[1]) == abs(checks.returnNormal()[2])) {
-		//	axis = 1;
-		//}
-		//else if (abs(checks.returnNormal()[0]) == abs(checks.returnNormal()[1])) {
-		//	axis = 0;
-		//}
-		//else if (checks.returnNormal()[0] == 0) {
-		//	axis = 1;
-		//}
-		//else if (checks.returnNormal()[1] == 0) {
-		//	axis = 0;
-		//}
-		//else if (checks.returnNormal()[2] == 0) {
-		//	axis = 0;
-		//}
-
-		//
+		
 		for (int g = 0; g < Loops.size();g++) {
 			pre.resize(pre.rows() + Loops[g].size(), 3);
 		}
@@ -786,8 +787,8 @@ int main(int argc, char* argv[])
 			}
 			z += Loops[g].size();
 		}
-		std::cout << pre << endl;
-
+		
+		
 
 		for (int g = 0; g < Loops.size();g++) {
 			V3.resize(V3.rows() + Loops[g].size(), 2);
@@ -796,8 +797,10 @@ int main(int argc, char* argv[])
 		int jay = 0;
 		for (int j = 0;j < 3;j++) {
 
+			
 
 			jay = j;
+			
 			z = 0;
 			for (int g = 0; g < Loops.size();g++) {
 				for (int y = 0; y < Loops[g].size();y++) {
@@ -830,7 +833,8 @@ int main(int argc, char* argv[])
 				}
 				z += Loops[g].size();
 			}
-
+			
+			
 
 			bool break1 = false;
 			for (int n = 0;n < V3.rows();n++) {
@@ -838,11 +842,16 @@ int main(int argc, char* argv[])
 					if (n == m) {
 						continue;
 					}
-					if (V3.block<1, 2>(n, 0) == V3.block<1, 2>(m, 0)) {
+					auto b1 = V3.block<1, 2>(n, 0);
+					auto b2 = V3.block<1, 2>(m, 0);
+					
+					if (abs(b1(0) - b2(0)) < 0.001 && abs(b1(1) - b2(1)) < 0.001){
 						break1 = true;
 					}
+					
 
 				}
+				
 			}
 			if (break1) {
 				continue;
@@ -856,53 +865,94 @@ int main(int argc, char* argv[])
 
 
 
+		if (holePoints.size() > 0) {
+			H.resize(holePoints.size(), 2);
 
-		/*H.resize(holePoints.size(), 2);
-
-		for (int x = 0; x < holePoints.size();x++) {
-			H(x, 0) = holePoints[x][0];
-			H(x, 1) = holePoints[x][1];
-		}*/
-		std::cout << endl << endl;
-		std::cout << V3;
-
+			for (int x = 0; x < holePoints.size();x++) {
+				H(x, 0) = holePoints[x][0];
+				H(x, 1) = holePoints[x][1];
+			}
+		}
+	
+		cout << endl << endl << V3;
 		igl::triangle::triangulate(V3, E, H, "1", V2, F2);
 
+	
+	
+	
 		Eigen::MatrixXd V4;
 		Eigen::MatrixXi F4;
 
 		V4.resize(V2.rows(), 3);
 
 
+		
+		
+
+		
 
 
-
-
-
-		for (int p = 0;p < V2.rows();p++) {
+		for (int p = 0;p < pre.rows();p++) {
 			if (jay == 0) {
-				V4(p, 0) = pre(p, 0);
+
+				
+				V4(p, 0) = pre(p,0);
+				//V4(p, 0) = calcX(checks, V2(p, 0), V2(p, 1))[2];
 				V4(p, 1) = V2(p, 0);
 				V4(p, 2) = V2(p, 1);
 			}
 			else if (jay == 1) {
+				
+
 				V4(p, 0) = V2(p, 0);
 				V4(p, 1) = pre(p, 1);
+				//V4(p, 1) = calcY(checks, V2(p, 0), V2(p, 1))[2];
 
 				V4(p, 2) = V2(p, 1);
 			}
 			else if (jay == 2) {
-				V4(p, 0) = V2(p, 0);;
+
+				
+				V4(p, 0) = V2(p, 0);
 				V4(p, 1) = V2(p, 1);
 				V4(p, 2) = pre(p, 2);
+				//V4(p, 2) = calcZ(checks, V2(p, 0), V2(p, 1))[2];
+			}
+			
+		}
+
+		for (int p = pre.rows();p < V2.rows();p++) {
+			if (jay == 0) {
+
+				
+				
+				V4(p, 0) = calcX(checks, V2(p, 0), V2(p, 1))[2];
+				V4(p, 1) = V2(p, 0);
+				V4(p, 2) = V2(p, 1);
+			}
+			else if (jay == 1) {
+			
+
+				V4(p, 0) = V2(p, 0);
+				
+				V4(p, 1) = calcY(checks, V2(p, 0), V2(p, 1))[2];
+
+				V4(p, 2) = V2(p, 1);
+			}
+			else if (jay == 2) {
+
+				
+				V4(p, 0) = V2(p, 0);
+				V4(p, 1) = V2(p, 1);
+				
+				V4(p, 2) = calcZ(checks, V2(p, 0), V2(p, 1))[2];
 			}
 
 		}
 
 			//}
 
-
-
+	
 
 
 
@@ -986,7 +1036,10 @@ int main(int argc, char* argv[])
 		std::cout << endl << endl << endl;
 		//open libigl viewer
 
+		cout << D;
 
+
+		cout << P;
 
 		igl::opengl::glfw::Viewer viewer;
 

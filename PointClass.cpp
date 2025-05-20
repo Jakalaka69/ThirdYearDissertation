@@ -12,6 +12,9 @@ vector<int> planeList;
 PointClass::PointClass(vector<double> input) {
 	this->point = input;
 }
+PointClass::PointClass() {
+
+}
 
 void PointClass::AddPlanesToPoint(int x, int y, int z) {
 	planeList.push_back(x);
