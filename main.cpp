@@ -164,7 +164,7 @@ void FindConnected(triangleClass *startTriangle, triangleClass *curTriangle) {
 
 					double intAng = startTriangle->calcInteriorAngle(objectTriangleArray[x]);
 
-					if (intAng <= 50) {
+					if (intAng <= 10) {
 						objectTriangleArray[x].updatePlaneNo(startTriangle->planeNo);
 						FindConnected(startTriangle, &objectTriangleArray[x]);
 
@@ -293,9 +293,10 @@ vector<vector<double>> GetPointsInHoles(vector<vector<PointClass>> Loops) {
 			double y = (a * c1[1] + b * c2[1] + c * c3[1]) / (a + b + c);
 			double z = (a * c1[2] + b * c2[2] + c * c3[2]) / (a + b + c);
 
-			pointsInHoles.push_back({ x, y });
+			pointsInHoles.push_back({ x, y,z });
 		}
 	}
+
 	return pointsInHoles;
 }
 vector<vector<vector<double>>> getNextPlane(Plane planeX, vector<Plane*> remaining) {
@@ -437,7 +438,7 @@ vector<PointClass> getRegionLoop(int PlaneX, vector<PointClass> remainingFrame) 
 
 				
 				
-				if (remainingFrame[d].point == startPoint.point || remainingFrame[d].point == lastPoint.point || find(checkedPoints.begin(), checkedPoints.end(), remainingFrame[d].point) != checkedPoints.end()) {
+				if ((remainingFrame[d].point == firmStartPoint.point && checkedPoints.size() != remainingFrame.size()-1) ||remainingFrame[d].point == startPoint.point || remainingFrame[d].point == lastPoint.point || find(checkedPoints.begin(), checkedPoints.end(), remainingFrame[d].point) != checkedPoints.end()) {
 					continue;
 				}
 
@@ -588,7 +589,10 @@ int main(int argc, char* argv[])
 {
 	// Load a mesh in OFF format
 	planeDict.clear();
-	igl::read_triangle_mesh("C:/Users/jaywh/source/repos/Dissertation/models"  "/statueHole.obj", V, F);
+
+	igl::read_triangle_mesh("C:/Users/karen/source/repos/year3diss/models"  "/Pin.obj", V, F);
+
+	//igl::read_triangle_mesh("C:/Users/jaywh/source/repos/Dissertation/models"  "/statueHole.obj", V, F);
 	//igl::read_triangle_mesh("C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/models" "/Tower.obj", V, F);
 
 
@@ -643,14 +647,14 @@ int main(int argc, char* argv[])
 	int c = 0;
 	int c2 = 0;
 
-	for (int planeNo = 0; planeNo < planeList.size();planeNo++) {
-		for (int index : primeTriangleList[planeNo].connectedPlanes) {
-			planeList[planeNo].AddConnectedPlane(&planeList[index]);
-		}
-	}
+	//for (int planeNo = 0; planeNo < planeList.size();planeNo++) {
+	//	for (int index : primeTriangleList[planeNo].connectedPlanes) {
+	//		planeList[planeNo].AddConnectedPlane(&planeList[index]);
+	//	}
+	//}
 
 	for (int p = 0; p < objectTriangleArray.size() - 1;p++) {
-		if (objectTriangleArray[p].planeNo == 2 || objectTriangleArray[p].planeNo == 0) {
+		if (objectTriangleArray[p].planeNo == 111 || objectTriangleArray[p].planeNo == 104 || objectTriangleArray[p].planeNo == 105) {
 			for (int x = 0; x < F.rows(); x++) {
 				//initialise the current triangle in loop
 				vector<vector<double>> nextTriangle = {};
@@ -672,7 +676,10 @@ int main(int argc, char* argv[])
 		}
 	}
 
+	/*igl::opengl::glfw::Viewer viewer;
 
+	viewer.data().set_mesh(V, F);
+	viewer.launch();*/
 
 
 
@@ -680,20 +687,55 @@ int main(int argc, char* argv[])
 	Eigen::MatrixXd D;
 	Eigen::MatrixXi P;
 
+	//removing points with equal plane lists
+	for (int p = 0; p < mainFrame.size();p++) {
+		for (int h = 0; h < mainFrame.size();h++) {
+			if (p == h) {
+				continue;
+			}
+			if (mainFrame[p].planeList == mainFrame[h].planeList) {
+				mainFrame.erase(mainFrame.begin() + h);
+			}
+		}
+	}
 
 
 
-
-
-
-	for (int x = 0; x < planeCount;x++) {
+	for (int x = 9; x < 10;x++) {
 		cout << x;
 		
 		vector<PointClass> mainFrame2;
-
+		vector<int> uniquePlanesInFrame;
+		vector<int> planesInFrame;
 		for (PointClass p : mainFrame) {
 			if (p.planeList.size() > 2 && (find(p.planeList.begin(), p.planeList.end(), x) != p.planeList.end())) {
+				for (int d = 0;d < p.planeList.size(); d++) {
+					if (find(uniquePlanesInFrame.begin(), uniquePlanesInFrame.end(), p.planeList[d]) == uniquePlanesInFrame.end()) {
+						uniquePlanesInFrame.push_back(p.planeList[d]);
+					}
+					planesInFrame.push_back(p.planeList[d]);
+				}
 				mainFrame2.push_back(p);
+			}
+		}
+
+
+
+
+		for (int i = 0; i < uniquePlanesInFrame.size();i++) {
+			int count = 0;
+			for (int d = 0; d < planesInFrame.size();d++) {
+				if (uniquePlanesInFrame[i] == planesInFrame[d]) {
+					count++;
+				}
+			}
+
+			if (count < 2) {
+				for (int d = 0; d < mainFrame2.size();d++) {
+					if (find(mainFrame2[d].planeList.begin(), mainFrame2[d].planeList.end(), uniquePlanesInFrame[i]) != mainFrame2[d].planeList.end() && mainFrame2[d].planeList.size() < 4) {
+						mainFrame2.erase(mainFrame2.begin() + d);
+					}
+				}
 			}
 		}
 		
@@ -703,7 +745,7 @@ int main(int argc, char* argv[])
 
 
 
-
+		
 
 		int looping = true;
 		vector<vector<PointClass>> Loops;
@@ -746,16 +788,21 @@ int main(int argc, char* argv[])
 
 
 			Loops.push_back(getRegionLoop(x, mainFrame3));
-			if (mainFrame2.size() == 0) {
+			if (mainFrame2.size() < 3) {
 				looping = false;
 			}
 
 		}
 
 		
-
-
+		cout << Loops.size();
+		for (int g = 0; g < Loops.size();g++) {
+			if (Loops[g].size() < 3) {
+				Loops.erase(Loops.begin() + g);
+			}
+		}
 		vector<vector<double>> holePoints = GetPointsInHoles(Loops); 
+		//vector<vector<double>> holePoints;
 		vector<vector<double>> frame;
 
 
@@ -869,12 +916,23 @@ int main(int argc, char* argv[])
 			H.resize(holePoints.size(), 2);
 
 			for (int x = 0; x < holePoints.size();x++) {
-				H(x, 0) = holePoints[x][0];
-				H(x, 1) = holePoints[x][1];
+				if (jay == 0) {
+					H(x, 0) = holePoints[x][1];
+					H(x, 1) = holePoints[x][2];
+				}
+				else if(jay == 1) {
+					H(x, 0) = holePoints[x][0];
+					H(x, 1) = holePoints[x][2];
+				}
+				else if(jay == 2) {
+					H(x, 0) = holePoints[x][0];
+					H(x, 1) = holePoints[x][1];
+				}
+				
 			}
 		}
 	
-		cout << endl << endl << V3;
+		cout << endl << endl << H;
 		igl::triangle::triangulate(V3, E, H, "1", V2, F2);
 
 	
@@ -1036,10 +1094,10 @@ int main(int argc, char* argv[])
 		std::cout << endl << endl << endl;
 		//open libigl viewer
 
-		cout << D;
+		//cout << D;
 
 
-		cout << P;
+		cout << P.rows();
 
 		igl::opengl::glfw::Viewer viewer;
 
