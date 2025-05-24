@@ -14,6 +14,6 @@ public:
 
 	PointClass(vector<double> input);
 	PointClass();
-	AddToPlaneList(int x);
+	void AddToPlaneList(int x);
 	friend bool operator==(PointClass a, PointClass b);
 };

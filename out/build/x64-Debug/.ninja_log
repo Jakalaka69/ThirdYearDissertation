@@ -1,0 +1,27 @@
+# ninja log v5
+52	612	7698241214797621	_deps/triangle-build/CMakeFiles/triangle.dir/triangle.cpp.obj	3ee3e996f3ccd930
+20	685	7698241215575180	CMakeFiles/example.dir/PointClass.cpp.obj	605ce2d22f815759
+157	775	7698241216429962	_deps/glfw-build/src/CMakeFiles/glfw.dir/win32_time.c.obj	54b374a417456563
+166	776	7698241216445090	_deps/glfw-build/src/CMakeFiles/glfw.dir/win32_thread.c.obj	25cab213bcbe4dd4
+125	780	7698241216460328	_deps/glfw-build/src/CMakeFiles/glfw.dir/win32_init.c.obj	2c28c918a7c4be43
+105	782	7698241216537328	_deps/glfw-build/src/CMakeFiles/glfw.dir/vulkan.c.obj	efedc0be70d0fbe1
+115	783	7698241216568023	_deps/glfw-build/src/CMakeFiles/glfw.dir/window.c.obj	d814a944b9c7a798
+85	785	7698241216593705	_deps/glfw-build/src/CMakeFiles/glfw.dir/input.c.obj	470a257b66d92bca
+95	786	7698241216613929	_deps/glfw-build/src/CMakeFiles/glfw.dir/monitor.c.obj	7972ad2d259b1fb0
+64	790	7698241216645530	_deps/glfw-build/src/CMakeFiles/glfw.dir/context.c.obj	df91c9ba88e83448
+147	791	7698241216666226	_deps/glfw-build/src/CMakeFiles/glfw.dir/win32_monitor.c.obj	5c0e4f8e7a7f4047
+189	791	7698241216671291	_deps/glfw-build/src/CMakeFiles/glfw.dir/wgl_context.c.obj	3080e75b61acc2c0
+178	794	7698241216715339	_deps/glfw-build/src/CMakeFiles/glfw.dir/win32_window.c.obj	99fe4874851aee2a
+74	794	7698241216696565	_deps/glfw-build/src/CMakeFiles/glfw.dir/init.c.obj	dac8bc0432eeb420
+135	795	7698241216715339	_deps/glfw-build/src/CMakeFiles/glfw.dir/win32_joystick.c.obj	6966e8c5122d237d
+31	13388	7698241342564745	CMakeFiles/example.dir/main.cpp.obj	6dad2abffe092af7
+38	125	7698242164994729	_deps/triangle-build/triangle.lib	d6cf056bf39d7915
+67	386	7698242167645239	_deps/glfw-build/src/CMakeFiles/glfw.dir/osmesa_context.c.obj	1f7126c24d11e6fb
+49	394	7698242167717986	_deps/glfw-build/src/CMakeFiles/glfw.dir/egl_context.c.obj	f96e9c58c8a1a674
+77	458	7698242168349728	_deps/glad-build/CMakeFiles/glad.dir/src/glad.c.obj	3a1f2dc492ab6251
+394	469	7698242168410529	_deps/glfw-build/src/glfw3.lib	1368d7c27a2dd8e3
+458	522	7698242168974212	_deps/glad-build/glad.lib	71b212f8f19eee13
+25	553	7698242169307446	CMakeFiles/example.dir/triangleClass.cpp.obj	52195daeede81db4
+28	13380	7698243617486237	CMakeFiles/example.dir/main.cpp.obj	6dad2abffe092af7
+11	13694	7698243620654043	CMakeFiles/example.dir/OperatorClass.cpp.obj	f1f86a06c974e9ab
+13694	14935	7698243632865353	example.exe	ee69a1efd7dd7270

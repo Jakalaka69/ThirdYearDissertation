@@ -82,7 +82,6 @@ vector<double> triangleClass::returnNormal() {
 void triangleClass::makeTrianglePrime()
 {
     this->isPrimeTriangle = true;
-    this->calcCentoid();
 }
 
 void triangleClass::addToConnectedPlanes(int x)

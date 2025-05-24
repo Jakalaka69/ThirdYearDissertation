@@ -67,6 +67,15 @@ build igl_opengl: phony
 
 build cmake_object_order_depends_target_example: phony || _deps\libigl-build\igl_core cmake_object_order_depends_target_glad cmake_object_order_depends_target_glfw cmake_object_order_depends_target_triangle igl_glfw igl_opengl igl_restricted_triangle
 
+build CMakeFiles\example.dir\OperatorClass.cpp.obj: CXX_COMPILER__example_unscanned_Debug C$:\Uni$ Stuff\year3\3rd$ year$ project$ polyfit$ ver\ThirdYearDissertation\OperatorClass.cpp || cmake_object_order_depends_target_example
+  DEFINES = -DNOMINMAX
+  FLAGS = /DWIN32 /D_WINDOWS /GR /EHsc /Zi /Ob0 /Od /RTC1 -MDd /MP /bigobj
+  INCLUDES = -I"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\libigl-src\include" -I"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glad-src\include" -I"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\glfw-src\include" -I"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\triangle-src" -external:I"C:\Uni Stuff\year3\3rd year project polyfit ver\ThirdYearDissertation\out\build\x64-Debug\_deps\eigen-src" -external:W0
+  OBJECT_DIR = CMakeFiles\example.dir
+  OBJECT_FILE_DIR = CMakeFiles\example.dir
+  TARGET_COMPILE_PDB = CMakeFiles\example.dir\
+  TARGET_PDB = example.pdb
+
 build CMakeFiles\example.dir\PointClass.cpp.obj: CXX_COMPILER__example_unscanned_Debug C$:\Uni$ Stuff\year3\3rd$ year$ project$ polyfit$ ver\ThirdYearDissertation\PointClass.cpp || cmake_object_order_depends_target_example
   DEFINES = -DNOMINMAX
   FLAGS = /DWIN32 /D_WINDOWS /GR /EHsc /Zi /Ob0 /Od /RTC1 -MDd /MP /bigobj
@@ -102,7 +111,7 @@ build CMakeFiles\example.dir\triangleClass.cpp.obj: CXX_COMPILER__example_unscan
 #############################################
 # Link the executable example.exe
 
-build example.exe: CXX_EXECUTABLE_LINKER__example_Debug CMakeFiles\example.dir\PointClass.cpp.obj CMakeFiles\example.dir\main.cpp.obj CMakeFiles\example.dir\triangleClass.cpp.obj | _deps\glad-build\glad.lib _deps\glfw-build\src\glfw3.lib _deps\triangle-build\triangle.lib || _deps\glad-build\glad.lib _deps\glfw-build\src\glfw3.lib _deps\libigl-build\igl_core _deps\triangle-build\triangle.lib igl_glfw igl_opengl igl_restricted_triangle
+build example.exe: CXX_EXECUTABLE_LINKER__example_Debug CMakeFiles\example.dir\OperatorClass.cpp.obj CMakeFiles\example.dir\PointClass.cpp.obj CMakeFiles\example.dir\main.cpp.obj CMakeFiles\example.dir\triangleClass.cpp.obj | _deps\glad-build\glad.lib _deps\glfw-build\src\glfw3.lib _deps\triangle-build\triangle.lib || _deps\glad-build\glad.lib _deps\glfw-build\src\glfw3.lib _deps\libigl-build\igl_core _deps\triangle-build\triangle.lib igl_glfw igl_opengl igl_restricted_triangle
   FLAGS = /DWIN32 /D_WINDOWS /GR /EHsc /Zi /Ob0 /Od /RTC1 -MDd
   LINK_FLAGS = /machine:x64 /debug /INCREMENTAL /subsystem:console
   LINK_LIBRARIES = _deps\glad-build\glad.lib  opengl32.lib  _deps\glfw-build\src\glfw3.lib  _deps\triangle-build\triangle.lib  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib
