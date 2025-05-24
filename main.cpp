@@ -20,7 +20,8 @@ int main(int argc, char* argv[])
 	OperatorClass test = OperatorClass();
 
 
-	auto fart = test.getVectors("C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/models/objBuilding.obj", 30);
+	auto fart = test.getVectors("C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/models/objBuilding.obj"
+		, 30);
 	
 	
 	printf("hello");

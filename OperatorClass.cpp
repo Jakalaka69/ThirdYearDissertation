@@ -73,14 +73,14 @@ void OperatorClass::FindConnected(triangleClass* startTriangle, triangleClass* c
 					//if point not in list
 					if (found == false) {
 						pointList.push_back(twoPoints[r]);
-						pointList[pointList.size() - 1].planeList.push_back(curTriangle->planeNo);
-						pointList[pointList.size() - 1].planeList.push_back(triangleList[x].planeNo);
+						pointList[pointList.size() - 1].AddToPlaneList(curTriangle->planeNo);
+						pointList[pointList.size() - 1].AddToPlaneList(triangleList[x].planeNo);
 					}
 				}
 			}
 			else {
 				double intAng = startTriangle->calcInteriorAngle(triangleList[x]);
-				if (intAng <= 10) {
+				if (intAng <= this->simplificationAngle) {
 					triangleList[x].updatePlaneNo(startTriangle->planeNo);
 					FindConnected(startTriangle, &triangleList[x]);
 				}
@@ -90,6 +90,7 @@ void OperatorClass::FindConnected(triangleClass* startTriangle, triangleClass* c
 }
 
 OperatorClass::funcReturn OperatorClass::getVectors(string filePath, double simplificationAngle) {
+	this->simplificationAngle = simplificationAngle;
 	igl::read_triangle_mesh(filePath, V, F);
 	cout << V.rows();
 	for (int x = 0; x < F.rows(); x++) {
