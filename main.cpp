@@ -82,12 +82,9 @@ void FindConnected(triangleClass *startTriangle, triangleClass *curTriangle) {
 						for (int j = 0; j < mainFrame.size();j++) {
 							if (mainFrame[j].point == twoPoints[r]) {
 								found = true;
-								if (find(mainFrame[j].planeList.begin(), mainFrame[j].planeList.end(), curTriangle->planeNo) == mainFrame[j].planeList.end()) {
-									mainFrame[j].planeList.push_back(curTriangle->planeNo);
-								}
-								if (find(mainFrame[j].planeList.begin(), mainFrame[j].planeList.end(), objectTriangleArray[x].planeNo) == mainFrame[j].planeList.end()) {
-									mainFrame[j].planeList.push_back(objectTriangleArray[x].planeNo);
-								}
+								mainFrame[j].AddToPlaneList(curTriangle->planeNo);
+								mainFrame[j].AddToPlaneList(objectTriangleArray[x].planeNo);
+								
 								break;
 							}
 						}
@@ -269,8 +266,8 @@ int main(int argc, char* argv[])
 
 	//igl::read_triangle_mesh("C:/Users/karen/source/repos/year3diss/models"  "/Pin.obj", V, F);
 
-	igl::read_triangle_mesh("C:/Users/jaywh/source/repos/Dissertation/models"  "/handle.obj", V, F);
-	//igl::read_triangle_mesh("C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/models" "/Tower.obj", V, F);
+	//igl::read_triangle_mesh("C:/Users/jaywh/source/repos/Dissertation/models"  "/handle.obj", V, F);
+	igl::read_triangle_mesh("C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/models" "/Tower.obj", V, F);
 
 
 	cout << V.rows();

@@ -13,7 +13,6 @@ vector<double> normal;
 int planeNo;
 bool isPrimeTriangle;
 vector<int> connectedPlanes;
-vector<double> centerPoint;
 vector<int> countNum;
 
 
@@ -44,15 +43,6 @@ triangleClass::triangleClass() {
 
 }
 
-void triangleClass::calcCentoid() {
-    for (int x = 0; x < 3; x++) {
-        double temp = 0;
-        for (int y = 0; y < 3; y++) {
-            temp += points[y][x];
-        }
-        centerPoint.push_back(temp / 3);
-    }
-}
 
 void triangleClass::setCount(int x)
 {

@@ -15,11 +15,11 @@ PointClass::PointClass(vector<double> input) {
 PointClass::PointClass() {
 
 }
-
-void PointClass::AddPlanesToPoint(int x, int y, int z) {
-	planeList.push_back(x);
-	planeList.push_back(y);
-	planeList.push_back(z);
+void PointClass::AddToPlaneList(int x)
+{
+	if (std::find(planeList.begin(), planeList.end(), x) == planeList.end()) {
+		planeList.push_back(x);
+	}
 }
 bool operator==(PointClass a, PointClass b) {
 	return a.point == b.point;

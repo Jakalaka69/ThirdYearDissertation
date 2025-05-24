@@ -1,37 +1,21 @@
 # ninja log v5
-1685	1744	7698027483925888	C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/triangle-subbuild/triangle-populate-prefix/src/triangle-populate-stamp/triangle-populate-configure	40c28200ed23a466
-2	66	7698027467131700	triangle-populate-prefix/src/triangle-populate-stamp/triangle-populate-mkdir	c056eebd51f87ac0
-2	66	7698027467131700	C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/triangle-subbuild/triangle-populate-prefix/src/triangle-populate-stamp/triangle-populate-mkdir	c056eebd51f87ac0
-1627	1685	7698027483333717	C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/triangle-subbuild/triangle-populate-prefix/src/triangle-populate-stamp/triangle-populate-patch	20765d28c34aec25
-66	1470	7698027481188003	triangle-populate-prefix/src/triangle-populate-stamp/triangle-populate-download	3c58df1c727abf81
-1470	1627	0	C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/triangle-subbuild/triangle-populate-prefix/src/triangle-populate-stamp/triangle-populate-update	aae7547877f647d6
-66	1470	7698027481188003	C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/triangle-subbuild/triangle-populate-prefix/src/triangle-populate-stamp/triangle-populate-download	3c58df1c727abf81
-1801	1858	7698027485067182	triangle-populate-prefix/src/triangle-populate-stamp/triangle-populate-install	db32910626fc0a34
-1801	1858	7698027485067182	C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/triangle-subbuild/triangle-populate-prefix/src/triangle-populate-stamp/triangle-populate-install	db32910626fc0a34
-1470	1627	0	triangle-populate-prefix/src/triangle-populate-stamp/triangle-populate-update	aae7547877f647d6
-1627	1685	7698027483333717	triangle-populate-prefix/src/triangle-populate-stamp/triangle-populate-patch	20765d28c34aec25
-1685	1744	7698027483925888	triangle-populate-prefix/src/triangle-populate-stamp/triangle-populate-configure	40c28200ed23a466
-1744	1801	7698027484492025	triangle-populate-prefix/src/triangle-populate-stamp/triangle-populate-build	a967e2b58c6ac83c
-1744	1801	7698027484492025	C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/triangle-subbuild/triangle-populate-prefix/src/triangle-populate-stamp/triangle-populate-build	a967e2b58c6ac83c
-1858	1914	7698027485610772	triangle-populate-prefix/src/triangle-populate-stamp/triangle-populate-test	48dec227d2cc58ea
-1858	1914	7698027485610772	C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/triangle-subbuild/triangle-populate-prefix/src/triangle-populate-stamp/triangle-populate-test	48dec227d2cc58ea
-1914	1992	7698027486403034	CMakeFiles/triangle-populate-complete	41c99d6215cbbf0d
-1914	1992	7698027486403034	triangle-populate-prefix/src/triangle-populate-stamp/triangle-populate-done	41c99d6215cbbf0d
-1914	1992	7698027486403034	C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/triangle-subbuild/CMakeFiles/triangle-populate-complete	41c99d6215cbbf0d
-1914	1992	7698027486403034	C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/triangle-subbuild/triangle-populate-prefix/src/triangle-populate-stamp/triangle-populate-done	41c99d6215cbbf0d
-11	169	0	triangle-populate-prefix/src/triangle-populate-stamp/triangle-populate-update	aae7547877f647d6
-11	169	0	C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/triangle-subbuild/triangle-populate-prefix/src/triangle-populate-stamp/triangle-populate-update	aae7547877f647d6
-169	232	7698028134390769	triangle-populate-prefix/src/triangle-populate-stamp/triangle-populate-patch	20765d28c34aec25
-169	232	7698028134390769	C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/triangle-subbuild/triangle-populate-prefix/src/triangle-populate-stamp/triangle-populate-patch	20765d28c34aec25
-232	293	7698028134998923	triangle-populate-prefix/src/triangle-populate-stamp/triangle-populate-configure	40c28200ed23a466
-232	293	7698028134998923	C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/triangle-subbuild/triangle-populate-prefix/src/triangle-populate-stamp/triangle-populate-configure	40c28200ed23a466
-293	360	7698028135672380	triangle-populate-prefix/src/triangle-populate-stamp/triangle-populate-build	a967e2b58c6ac83c
-293	360	7698028135672380	C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/triangle-subbuild/triangle-populate-prefix/src/triangle-populate-stamp/triangle-populate-build	a967e2b58c6ac83c
-361	435	7698028136409072	triangle-populate-prefix/src/triangle-populate-stamp/triangle-populate-install	db32910626fc0a34
-361	435	7698028136409072	C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/triangle-subbuild/triangle-populate-prefix/src/triangle-populate-stamp/triangle-populate-install	db32910626fc0a34
-435	505	7698028137108863	triangle-populate-prefix/src/triangle-populate-stamp/triangle-populate-test	48dec227d2cc58ea
-435	505	7698028137108863	C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/triangle-subbuild/triangle-populate-prefix/src/triangle-populate-stamp/triangle-populate-test	48dec227d2cc58ea
-505	603	7698028138088065	CMakeFiles/triangle-populate-complete	41c99d6215cbbf0d
-505	603	7698028138088065	triangle-populate-prefix/src/triangle-populate-stamp/triangle-populate-done	41c99d6215cbbf0d
-505	603	7698028138088065	C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/triangle-subbuild/CMakeFiles/triangle-populate-complete	41c99d6215cbbf0d
-505	603	7698028138088065	C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/triangle-subbuild/triangle-populate-prefix/src/triangle-populate-stamp/triangle-populate-done	41c99d6215cbbf0d
+5	97	7698075761690269	triangle-populate-prefix/src/triangle-populate-stamp/triangle-populate-mkdir	a7f47ef9ecdcc52d
+5	97	7698075761690269	C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/triangle-subbuild/triangle-populate-prefix/src/triangle-populate-stamp/triangle-populate-mkdir	a7f47ef9ecdcc52d
+98	2690	7698075787638642	triangle-populate-prefix/src/triangle-populate-stamp/triangle-populate-download	9ef79c7c91432fe5
+98	2690	7698075787638642	C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/triangle-subbuild/triangle-populate-prefix/src/triangle-populate-stamp/triangle-populate-download	9ef79c7c91432fe5
+2690	2901	0	triangle-populate-prefix/src/triangle-populate-stamp/triangle-populate-update	6cfaab7d21f7ed31
+2690	2901	0	C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/triangle-subbuild/triangle-populate-prefix/src/triangle-populate-stamp/triangle-populate-update	6cfaab7d21f7ed31
+2901	2984	7698075790631624	triangle-populate-prefix/src/triangle-populate-stamp/triangle-populate-patch	dee2c466ad8a2b83
+2901	2984	7698075790631624	C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/triangle-subbuild/triangle-populate-prefix/src/triangle-populate-stamp/triangle-populate-patch	dee2c466ad8a2b83
+2984	3101	7698075791797337	triangle-populate-prefix/src/triangle-populate-stamp/triangle-populate-configure	53b723bbacbde88b
+2984	3101	7698075791797337	C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/triangle-subbuild/triangle-populate-prefix/src/triangle-populate-stamp/triangle-populate-configure	53b723bbacbde88b
+3102	3178	7698075792542095	triangle-populate-prefix/src/triangle-populate-stamp/triangle-populate-build	c73adce36bf1b926
+3102	3178	7698075792542095	C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/triangle-subbuild/triangle-populate-prefix/src/triangle-populate-stamp/triangle-populate-build	c73adce36bf1b926
+3179	3251	7698075793312948	triangle-populate-prefix/src/triangle-populate-stamp/triangle-populate-install	eac14020a41b042d
+3179	3251	7698075793312948	C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/triangle-subbuild/triangle-populate-prefix/src/triangle-populate-stamp/triangle-populate-install	eac14020a41b042d
+3252	3336	7698075794144119	triangle-populate-prefix/src/triangle-populate-stamp/triangle-populate-test	280a913d982da2cf
+3252	3336	7698075794144119	C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/triangle-subbuild/triangle-populate-prefix/src/triangle-populate-stamp/triangle-populate-test	280a913d982da2cf
+3337	3442	7698075795198630	CMakeFiles/triangle-populate-complete	c101123634974ecb
+3337	3442	7698075795198630	triangle-populate-prefix/src/triangle-populate-stamp/triangle-populate-done	c101123634974ecb
+3337	3442	7698075795198630	C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/triangle-subbuild/CMakeFiles/triangle-populate-complete	c101123634974ecb
+3337	3442	7698075795198630	C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/triangle-subbuild/triangle-populate-prefix/src/triangle-populate-stamp/triangle-populate-done	c101123634974ecb

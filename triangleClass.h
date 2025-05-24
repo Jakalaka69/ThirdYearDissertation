@@ -19,7 +19,6 @@ public:
     int planeNo;
     bool isPrimeTriangle;
     vector<int> connectedPlanes;
-    vector<double> centerPoint;
     vector<int> countNum;
 public:
     triangleClass();
@@ -37,9 +36,6 @@ public:
     void updatePlaneNo(int x);
     //int getNoOfConnectedTriangles();
     double calcInteriorAngle(triangleClass);
-    //vector<triangleClass> getConnectedTriangles();
-    //bool isTrianglePresent(triangleClass t);
-    void triangleClass::calcCentoid();
     void setCount(int x);
     friend bool operator!=(triangleClass t1, triangleClass t2);
     friend bool operator==(triangleClass t1, triangleClass t2);
