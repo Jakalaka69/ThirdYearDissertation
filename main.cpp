@@ -1,12 +1,10 @@
 ﻿#include <igl/opengl/glfw/Viewer.h>
 #include <igl/triangle/triangulate.h>
 #include <unordered_set>
-#include "triangleClass.h"
 #include "PointClass.h"
 #include <igl/readOFF.h>
 #include <igl/opengl/glfw/Viewer.h>
 #include <igl/read_triangle_mesh.h>
-#include "Plane.h"
 #include "triangleClass.h"
 #include <vector>
 #include <cmath>
@@ -15,7 +13,7 @@
 #define _USE_MATH_DEFINES
 using namespace std;
 
-map<vector<double>, vector<Plane*>> planeDict;
+
 Eigen::MatrixXd V;
 Eigen::MatrixXi L;
 Eigen::MatrixXi F;
@@ -26,71 +24,13 @@ float minY = 0;
 float maxY = 0;
 float minZ = 0;
 float maxZ = 0;
-vector<vector<double>> boundingBox;
+
 vector<triangleClass> objectTriangleArray;
 vector<PointClass> mainFrame;
-vector<vector<double>> corners;
+
 double pi = 3.14159265;
 
-void vecToString(vector<vector<double>> vec) {
-	for (int y = 0; y < vec.size();y++) {
 
-		std::cout << endl << "== " << vec[y][0] << " ," << vec[y][1] << " ," << vec[y][2];
-
-	}
-
-}
-
-void boundingBoxUpdate(vector<double> coords) {
-	for (int t = 0; t < coords.size(); t++) {
-		if (t == 0) {
-			if (coords[0] < minX) {
-				minX = coords[0];
-			}
-			if (coords[0] > maxX) {
-				maxX = coords[0];
-			}
-		}
-		if (t == 1) {
-			if (coords[1] < minY) {
-				minY = coords[1];
-			}
-			if (coords[1] > maxY) {
-				maxY = coords[1];
-			}
-		}
-		if (t == 2) {
-			if (coords[2] < minZ) {
-				minZ = coords[2];
-			}
-			if (coords[2] > maxZ) {
-				maxZ = coords[2];
-			}
-		}
-	}
-}
-
-void boundingBoxCreation() {
-	boundingBox.push_back({ minX,minY,minZ });
-	boundingBox.push_back({ minX,minY,maxZ });
-	boundingBox.push_back({ minX,maxY,minZ });
-	boundingBox.push_back({ minX,maxY,maxZ });
-	boundingBox.push_back({ maxX,minY,minZ });
-	boundingBox.push_back({ maxX,minY,maxZ });
-	boundingBox.push_back({ maxX,maxY,minZ });
-	boundingBox.push_back({ maxX,maxY,maxZ });
-}
-
-bool boundingBoxCheck(vector<double> point) {
-	if (minX <= point[0] && point[0] <= maxX &&
-		minY <= point[1] && point[1] <= maxY &&
-		minZ <= point[2] && point[2] <= maxZ) {
-		return true;
-	}
-	else {
-		return false;
-	}
-}
 
 void FindConnected(triangleClass *startTriangle, triangleClass *curTriangle) {
 	int count1 = 0;
@@ -173,75 +113,10 @@ void FindConnected(triangleClass *startTriangle, triangleClass *curTriangle) {
 			}
 	}
 } 
-//void combineSimilarPlanes(vector<Plane*> planeList) {
-//	for (int x = 0; x < planeList.size();x++) {
-//		Plane* curPlane = planeList[x];
-//		for (int y = 0;y < planeList.size();y++) {
-//
-//		}
-//	}
-//}
 
 
 
-vector<double> threePlaneIntersectionPoint(Plane* plane1, Plane* plane2, Plane* plane3) {
-	vector<vector<double>> planeNormals;
-	Eigen::MatrixXd A(3, 3);
-	Eigen::MatrixXd D(3, 1);
 
-	//cout << "++++" << endl << plane1->toString() << plane2->toString() << plane3->toString();
-
-
-	vector<double> Normal2 = plane1->GetNormal();
-
-	vector<double> P1 = plane1->getRelatedTriangle()[0];
-
-
-	A(0, 0) = Normal2[0];
-	A(0, 1) = Normal2[1];
-	A(0, 2) = Normal2[2];
-
-	D(0) = (Normal2[0] * P1[0] + Normal2[1] * P1[1] + Normal2[2] * P1[2]);
-
-	Normal2 = plane2->GetNormal();
-	P1 = plane2->getRelatedTriangle()[0];
-
-	A(1, 0) = Normal2[0];
-	A(1, 1) = Normal2[1];
-	A(1, 2) = Normal2[2];
-	D(1) = (Normal2[0] * P1[0] + Normal2[1] * P1[1] + Normal2[2] * P1[2]);
-
-	Normal2 = plane3->GetNormal();
-	P1 = plane3->getRelatedTriangle()[0];
-
-	A(2, 0) = Normal2[0];
-	A(2, 1) = Normal2[1];
-	A(2, 2) = Normal2[2];
-	D(2) = (Normal2[0] * P1[0] + Normal2[1] * P1[1] + Normal2[2] * P1[2]);
-
-
-	Eigen::MatrixXd inter(3, 1);
-
-	inter = A.inverse() * D;
-
-
-	
-
-	//cout << endl << "->" << inter << "<-" << endl;
-
-	vector<double> interPoint = { inter(0),inter(1),inter(2) };
-
-	planeDict[interPoint].push_back(plane1);
-	planeDict[interPoint].push_back(plane2);
-	planeDict[interPoint].push_back(plane3);
-
-	return interPoint;
-}
-double getDistanceToMain(vector<double> point, vector<double> midOfMain) {
-	double dist = sqrt(pow(point[0] - midOfMain[0], 2) + pow(point[1] - midOfMain[1], 2) + pow(point[2] - midOfMain[2], 2));
-	return dist;
-
-}
 vector<vector<double>> GetPointsInHoles(vector<vector<PointClass>> Loops) {
 	//calculating areas of each loop to find the biggest
 	vector<vector<double>> pointsInHoles;
@@ -278,9 +153,12 @@ vector<vector<double>> GetPointsInHoles(vector<vector<PointClass>> Loops) {
 			continue;
 		}
 		else {
+			//three points in the loop
 			vector<double> c1 = Loops[x][0].point;
 			vector<double> c2 = Loops[x][1].point;
 			vector<double> c3 = Loops[x][2].point;
+
+			//get their edge distances
 			double a = sqrt(pow(c1[0] - c2[0], 2) + pow(c1[1] - c2[1], 2) + pow(c1[2] - c2[2], 2));
 			double b = sqrt(pow(c1[0] - c3[0], 2) + pow(c1[1] - c3[1], 2) + pow(c1[2] - c3[2], 2));
 			double c = sqrt(pow(c3[0] - c2[0], 2) + pow(c3[1] - c2[1], 2) + pow(c3[2] - c2[2], 2));
@@ -288,7 +166,7 @@ vector<vector<double>> GetPointsInHoles(vector<vector<PointClass>> Loops) {
 
 
 
-
+			//find the incenter point
 			double x = (a * c1[0] + b * c2[0] + c * c3[0]) / (a + b + c);
 			double y = (a * c1[1] + b * c2[1] + c * c3[1]) / (a + b + c);
 			double z = (a * c1[2] + b * c2[2] + c * c3[2]) / (a + b + c);
@@ -299,201 +177,42 @@ vector<vector<double>> GetPointsInHoles(vector<vector<PointClass>> Loops) {
 
 	return pointsInHoles;
 }
-vector<vector<vector<double>>> getNextPlane(Plane planeX, vector<Plane*> remaining) {
-
-	//Get connected planes to input plane
-	vector<Plane*> adjacentPlanes = remaining;
-
-	//initialise the last plane checked
-	Plane* lastPlane = NULL;
-	vector<double> lastPoint = { -100000,-100000,-100000 };
-	//initialise the frame
-	vector<vector<double>> frame;
-	vector<vector<vector<double>>> Loops;
-
-	//used for when there is more than one loop
-	vector<Plane*> usedPlanes;
-	Plane* curPlane = adjacentPlanes[0];
-	Plane* startPlane = adjacentPlanes[0];
-	int startIndex = 0;
-	//initialise the first plane checked
-	
-
-	bool break1 = false;
-	for(int y = 0; y < adjacentPlanes.size();y++){
-
-		
-
-		
-
-		for (int x = 0; x < curPlane->GetConnectedPlanes().size(); x++) {
-			
-			
-			Plane* nextPlane = curPlane->GetConnectedPlanes()[x];
-			
-
-			if (curPlane == startPlane && y != 0) {
-				break1 = true;
-				break;
-			}
-
-			
-
-			//checks to make sure the current plane is worth evaluating and also if its gone back to the start, that final condition stops the other conditions from mattering if its the first loop
-			if ((nextPlane == curPlane) || usedPlanes.size() >= adjacentPlanes.size() || nextPlane == lastPlane || nextPlane->getRelatedTriangle() == planeX.getRelatedTriangle()) {
-				continue;
-			}
-
-			vector<Plane*> nextPlaneList = nextPlane->GetConnectedPlanes();
-			vector<Plane*> curPlaneList = curPlane->GetConnectedPlanes();
-
-			
-			int localCount = curPlane->getRelatedTriangleClass().countNum[x];
-			if (localCount == 2 && find(adjacentPlanes.begin(),adjacentPlanes.end(), nextPlane) != adjacentPlanes.end()) {
-				
-
-					
-
-
-
-				vector<double> point = threePlaneIntersectionPoint(&planeX, curPlane, nextPlane);
-
-				bool found = false;
-
-				for (int l = 0; l < frame.size();l++) {
-
-					if (abs(frame[l][0] - point[0]) < 0.001 && abs(frame[l][1] - point[1]) < 0.001 && abs(frame[l][2] - point[2]) < 0.001) {
-						found = true;
-					}
-
-				}
-				if (!found) {
-					frame.push_back(point);
-				}
-				std::cout << curPlane->toString();
-				lastPlane = curPlane;
-				curPlane = nextPlane;
-
-				usedPlanes.push_back(curPlane);
-
-
-
-
-			}
-				
-				
-			
-				
-		}
-			
-			
-		if (break1) {
-			break;
-		}
-			
-
-	}
-
-	Loops.push_back(frame);
-
-	return Loops;
-		
-
-}
-
 //function to get the effective "plane" boundary pointr
-vector<PointClass> getRegionLoop(int PlaneX, vector<PointClass> remainingFrame) {
+vector<PointClass> getRegionLoop(int PlaneX, vector<PointClass> unOrderedFrame) {
 	vector<PointClass> frame;
-	PointClass firmStartPoint = remainingFrame[0];
-	PointClass startPoint = remainingFrame[0];
-	bool first = true;
-	bool looped = false;
+	const PointClass firmStartPoint = unOrderedFrame[0];
+	PointClass startPoint = unOrderedFrame[0];
 	
-
-	vector<vector<double>> checkedPoints;
 	PointClass lastPoint = startPoint;
-	int curPlane;
-
-	
-	vector<int> all;
-
-	
-	bool trueFinish = false;
-
-	for (int l = 0;l < remainingFrame.size();l++) {
-
-		if (checkedPoints.size() == remainingFrame.size()) {
+	for (int l = 0;l < unOrderedFrame.size();l++) {
+		if (frame.size() == unOrderedFrame.size()) {
 			break;
 		}
-
 		for (int plane : startPoint.planeList) {
-
 			bool found = false;
-
 			if (plane == PlaneX) {
 				continue;
 			}
-			
-			for (int d = 0; d < remainingFrame.size();d++) {
-
-				
-				
-				if ((remainingFrame[d].point == firmStartPoint.point && checkedPoints.size() != remainingFrame.size()-1) ||remainingFrame[d].point == startPoint.point || remainingFrame[d].point == lastPoint.point || find(checkedPoints.begin(), checkedPoints.end(), remainingFrame[d].point) != checkedPoints.end()) {
+			for (int d = 0; d < unOrderedFrame.size();d++) {
+				if (unOrderedFrame[d].point == startPoint.point || unOrderedFrame[d].point == lastPoint.point || find(frame.begin(), frame.end(), unOrderedFrame[d]) != frame.end()) {
 					continue;
 				}
-
-				if (find(remainingFrame[d].planeList.begin(), remainingFrame[d].planeList.end(), plane) != remainingFrame[d].planeList.end()) {
-					
-					if (startPoint.point == remainingFrame[0].point && !first) {
-						trueFinish = true;
-						continue;
-					}
-					
-
-					/*if (startPoint.point == remainingFrame[0].point && !first ) {
-						looped = true;
-						found = true;
-						checkedPoints.push_back(startPoint.point);
-						break;
-					}*/
-					trueFinish = false;
-					first = false;
-					frame.push_back(remainingFrame[d]);
+				if (find(unOrderedFrame[d].planeList.begin(), unOrderedFrame[d].planeList.end(), plane) != unOrderedFrame[d].planeList.end()) {
+					frame.push_back(unOrderedFrame[d]);
 					lastPoint = startPoint;
-					startPoint = remainingFrame[d];
+					startPoint = unOrderedFrame[d];
 					found = true;
-					checkedPoints.push_back(startPoint.point);
 					break;
 				}
 			}
-			if (trueFinish) {
-				checkedPoints.push_back(startPoint.point);
-				looped = true;
-				break;
-			}
-
 			if (found) {
 				break;
 			}
-			
-			
-			
 		}
-
-
-		
-
-		
 	}
 	
 	return { frame };
-	
-
 }
-
-
-
-
 vector<double> calcX(triangleClass plane, double y, double z) {
 	vector<double> pointOnPlane = plane.points[0];
 	vector<double> normal = plane.returnNormal();
@@ -508,7 +227,6 @@ vector<double> calcX(triangleClass plane, double y, double z) {
 
 
 }
-
 vector<double> calcZ(triangleClass plane, double x, double y) {
 	vector<double> pointOnPlane = plane.points[0];
 	vector<double> normal = plane.returnNormal();
@@ -544,61 +262,23 @@ vector<double> calcY(triangleClass plane, double x, double z) {
 
 }
 
-bool AxisCheck(vector<vector<double>> loop) {
-	vector<double> checkedXs;
-	bool x = false;
-	bool y = false;
-	bool z = false;
-
-	for (int x = 0; x < loop.size();x++) {
-		if (find(checkedXs.begin(), checkedXs.end(), loop[x][0]) != checkedXs.end()) {
-			
-			x = true;
-		}
-		else {
-			checkedXs.push_back(loop[x][0]);
-		}
-	}
-
-	vector<double> checkedYs;
-
-	for (int x = 0; x < loop.size();x++) {
-		if (find(checkedYs.begin(), checkedYs.end(), loop[x][1]) != checkedYs.end()) {
-			y = true;
-		}
-		else {
-			checkedYs.push_back(loop[x][1]);
-		}
-	}
-
-	vector<double> checkedZs;
-
-	for (int x = 0; x < loop.size();x++) {
-		if (find(checkedZs.begin(), checkedZs.end(), loop[x][2]) != checkedZs.end()) {
-			z = true;
-		}
-		else {
-			checkedZs.push_back(loop[x][2]);
-		}
-	}
-	return 1;
-}
-
-
 int main(int argc, char* argv[])
 {
 	// Load a mesh in OFF format
-	planeDict.clear();
+	
 
-	igl::read_triangle_mesh("C:/Users/karen/source/repos/year3diss/models"  "/Pin.obj", V, F);
+	//igl::read_triangle_mesh("C:/Users/karen/source/repos/year3diss/models"  "/Pin.obj", V, F);
 
-	//igl::read_triangle_mesh("C:/Users/jaywh/source/repos/Dissertation/models"  "/statueHole.obj", V, F);
+	igl::read_triangle_mesh("C:/Users/jaywh/source/repos/Dissertation/models"  "/handle.obj", V, F);
 	//igl::read_triangle_mesh("C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/models" "/Tower.obj", V, F);
 
 
+	cout << V.rows();
 
+	//igl::opengl::glfw::Viewer viewer;
 
-
+	//viewer.data().set_mesh(V, F);
+	//viewer.launch();
 
 
 	for (int x = 0; x < F.rows(); x++) {
@@ -635,26 +315,15 @@ int main(int argc, char* argv[])
 	
 
 
-	//boundingBoxCreation();
-	//for (int num = 0; num < boundingBox.size(); num++) {
-	//	std::cout << boundingBox[num][0] << ",";
-	//	std::cout << boundingBox[num][1] << ",";
-	//	std::cout << boundingBox[num][2] << endl;
-	//}
 
-	vector<Plane> planeList;
+
+	
 	vector<triangleClass> primeTriangleList;
 	int c = 0;
 	int c2 = 0;
 
-	//for (int planeNo = 0; planeNo < planeList.size();planeNo++) {
-	//	for (int index : primeTriangleList[planeNo].connectedPlanes) {
-	//		planeList[planeNo].AddConnectedPlane(&planeList[index]);
-	//	}
-	//}
-
 	for (int p = 0; p < objectTriangleArray.size() - 1;p++) {
-		if (objectTriangleArray[p].planeNo == 111 || objectTriangleArray[p].planeNo == 104 || objectTriangleArray[p].planeNo == 105) {
+		if (objectTriangleArray[p].planeNo == 1) {
 			for (int x = 0; x < F.rows(); x++) {
 				//initialise the current triangle in loop
 				vector<vector<double>> nextTriangle = {};
@@ -689,24 +358,42 @@ int main(int argc, char* argv[])
 
 	//removing points with equal plane lists
 	for (int p = 0; p < mainFrame.size();p++) {
+		bool pErase = false;
 		for (int h = 0; h < mainFrame.size();h++) {
 			if (p == h) {
 				continue;
 			}
 			if (mainFrame[p].planeList == mainFrame[h].planeList) {
 				mainFrame.erase(mainFrame.begin() + h);
+				
+				h--;
 			}
 		}
+		
 	}
 
 
-
-	for (int x = 9; x < 10;x++) {
+	//Loops through each region
+	for (int x = 0; x < planeCount;x++) {
 		cout << x;
 		
+
+
+
+
+
+
+
+
+		//Points connected to current region
 		vector<PointClass> mainFrame2;
+
+		//Used to remove duplicate points that may occur if a region is contained within two other planes
 		vector<int> uniquePlanesInFrame;
 		vector<int> planesInFrame;
+
+
+		//finding points in the main Frame
 		for (PointClass p : mainFrame) {
 			if (p.planeList.size() > 2 && (find(p.planeList.begin(), p.planeList.end(), x) != p.planeList.end())) {
 				for (int d = 0;d < p.planeList.size(); d++) {
@@ -720,9 +407,10 @@ int main(int argc, char* argv[])
 		}
 
 
-
+		cout << endl << mainFrame2.size();
 
 		for (int i = 0; i < uniquePlanesInFrame.size();i++) {
+
 			int count = 0;
 			for (int d = 0; d < planesInFrame.size();d++) {
 				if (uniquePlanesInFrame[i] == planesInFrame[d]) {
@@ -771,11 +459,12 @@ int main(int argc, char* argv[])
 						}
 						if (find(planes.begin(), planes.end(), k) != planes.end()) {
 							mainFrame3.push_back(mainFrame2[h]);
-							for (int h : mainFrame2[h].planeList) {
-								planes.push_back(h);
+							for (int r : mainFrame2[h].planeList) {
+								planes.push_back(r);
 							}
 							mainFrame2.erase(mainFrame2.begin() + h);
 							h--;
+							break;
 						}
 					}
 				}
@@ -795,17 +484,28 @@ int main(int argc, char* argv[])
 		}
 
 		
+
+		
 		cout << Loops.size();
 		for (int g = 0; g < Loops.size();g++) {
 			if (Loops[g].size() < 3) {
 				Loops.erase(Loops.begin() + g);
 			}
 		}
-		vector<vector<double>> holePoints = GetPointsInHoles(Loops); 
+
+		if (Loops.size() == 0) {
+			continue;
+		}
+		vector<vector<double>> holePoints;
+		if (Loops.size() > 1) {
+			holePoints = GetPointsInHoles(Loops);
+		}
+		
 		//vector<vector<double>> holePoints;
 		vector<vector<double>> frame;
 
 
+		
 		triangleClass checks = triangleClass({ Loops[0][0].point, Loops[0][2].point, Loops[0][1].point });
 
 		Eigen::MatrixXd V3;
@@ -1109,214 +809,8 @@ int main(int argc, char* argv[])
 	}
 
 
-/*
-vector<double> P1 =  prime.points[0] ;
-			vector<double> P2 =  prime.points[1] ;
-			vector<double> P3 = prime.points[2];
-
-			V.conservativeResize(V.rows() + 3, V.cols());
-
-			double x_c = (P1[0] + P2[0] + P3[0]) / 3;
-			double y_c = (P1[1] + P2[1] + P3[1]) / 3;
-			double z_c = (P1[2] + P2[2] + P3[2]) / 3;
-
-			V(V.rows() - 1, 0) = x_c + (P1[0] - x_c) * 20;
-			V(V.rows() - 1, 1) = y_c + (P1[1] - y_c) * 20;
-			V(V.rows() - 1, 2) = z_c + (P1[2] - z_c) * 20;
-			V(V.rows() - 2, 0) = x_c + (P2[0] - x_c) * 20;
-			V(V.rows() - 2, 1) = y_c + (P2[1] - y_c) * 20;
-			V(V.rows() - 2, 2) = z_c + (P2[2] - z_c) * 20;
-			V(V.rows() - 3, 0) = x_c + (P3[0] - x_c) * 20;
-			V(V.rows() - 3, 1) = y_c + (P3[1] - y_c) * 20;
-			V(V.rows() - 3, 2) = z_c + (P3[2] - z_c) * 20;
-
-			F.conservativeResize(F.rows() + 1, V.cols());
-
-			F(F.rows() - 1, 0) = V.rows() - 1;
-			F(F.rows() - 1, 1) = V.rows() - 2;
-			F(F.rows() - 1, 2) = V.rows() - 3;*/
 
 
 
 
-			//for (int i = 0; i < 
-			// 
-			// Planes.size();i++) {
-				//	cout << i << "<-" << endl;
-				//	bool touchingCheck = false;
-				//	for (int x = 0; x < adjacentPlanes.size(); x++) {
-				//		
-				//		Plane* nextPlane = adjacentPlanes[x];
-				//		
-				//		//checks to make sure the current plane is worth evaluating and also if its gone back to the start, that final condition stops the other conditions from mattering if its the first loop
-				//		if ((nextPlane == curPlane) || usedPlanes.size() >= adjacentPlanes.size() || ((nextPlane == lastPlane) && lastPlane != NULL)) {
-				//			continue;
-				//		}
-				//		vector<Plane*> nextPlaneList = nextPlane->GetConnectedPlanes();
-				//		vector<Plane*> curPlaneList = curPlane->GetConnectedPlanes();
-				//		cout << endl << endl;
-				//		bool break1 = false;
-				//		cout << "--" << endl;
-
-				//		for (int d = 0; d < nextPlaneList.size();d++) {
-				//			if (nextPlaneList[d]->getRelatedTriangle() == curPlane->getRelatedTriangle()) {
-				//				vector<double> point = threePlaneIntersectionPoint(&planeX, curPlane, nextPlane);
-				//				frame.push_back(point);
-				//				corners.push_back(point);
-				//				lastPlane = curPlane;
-				//				curPlane = nextPlane;
-				//				usedPlanes.push_back(curPlane);
-				//				
-				//				break1 = true;
-				//				break;
-				//			}
-				//		}
-
-				//		if (break1) {
-				//			break1 = false;
-				//			break;
-				//		}			
-						//else {
-						//	 
-						//	
-						//	bool breakk = false;
-						//	bool breakkk = false;
-						//	int c2 = 0;
-						//	for (int d = 0; d < nextPlaneList.size();d++) {
-						//		
-						//		
-						//		if (nextPlaneList[d]->getRelatedTriangle() == planeX.getRelatedTriangle()) {
-						//			
-						//			continue;
-						//		}
-
-						//		vector<Plane*> temp4 = nextPlaneList[d]->GetConnectedPlanes();
-						//		
-						//		for (int l = 0; l < temp4.size();l++) {
-						//			Plane* temp5 = temp4[l];
-						//			if (temp5->getRelatedTriangle() == planeX.getRelatedTriangle()) {
-						//				breakkk = true;
-						//				break;
-						//			}
-						//			else if (temp5->getRelatedTriangle() == curPlane->getRelatedTriangle()) {
-						//				c2++;
-						//			}
-						//			else if (temp5->getRelatedTriangle() == nextPlane->getRelatedTriangle()) {
-						//				c2++;
-						//			}
-						//			else {
-						//				for (int y = 0; y < adjacentPlanes.size();y++) {
-						//					if (temp5->getRelatedTriangle() == adjacentPlanes[y]->getRelatedTriangle()) {
-						//						c2--;
-						//					}
-						//				}
-						//			}
-						//		}
-
-						//		if (breakkk == true || c2 != 2) {
-						//			breakkk = false;
-						//			c2 = 0;
-						//			continue;
-						//		}
-
-						//		for (int l = 0; l < temp4.size();l++) {
-						//			
-						//			
-						//			
-
-
-						//			if (temp4[l] == curPlane) {
-						//				
-						//				
-						//				//nextPlaneList[d]->AddConnectedPlane(&planeX);
-						//				cout << nextPlaneList[d]->toString();
-						//				cout << curPlane->toString();
-						//				cout << planeX.toString();
-
-						//				vector<double> first = threePlaneIntersectionPoint(&planeX, curPlane, nextPlane);
-						//				vector<double> second = threePlaneIntersectionPoint(nextPlaneList[d], nextPlane, &planeX);
-						//				vector<double> third = threePlaneIntersectionPoint(nextPlaneList[d], curPlane, &planeX);
-						//				vector<double> fourth = threePlaneIntersectionPoint(nextPlaneList[d], curPlane, nextPlane);
-						//				bool pushed = false;
-						//				for (int m = 0; m < corners.size();m++) {
-						//					if (corners[m] == first) {
-						//						frame.push_back(first);
-						//						pushed = true;
-						//						break;
-						//					}
-						//					else if (corners[m] == second) {
-						//						frame.push_back(second);
-						//						pushed = true;
-						//						break;
-						//					}
-						//					else if (corners[m] == third) {
-						//						frame.push_back(third);
-						//						pushed = true;
-						//						break;
-						//					}
-						//					else if (corners[m] == fourth) {
-						//						frame.push_back(fourth);
-						//						pushed = true;
-						//						break;
-						//					}
-						//				}
-
-						//				if (!pushed) {
-						//					frame.push_back(first);
-						//					corners.push_back(first);
-						//				}
-						//				
-						//				
-						//				
-						//					
-						//				
-						//				
-						//				
-						//				
-						//				lastPlane = curPlane;
-						//				curPlane = nextPlane;
-						//				usedPlanes.push_back(curPlane);
-						//				touchingCheck = true;
-						//				breakk = true;
-						//				break;
-						//			}
-
-
-						//			/*  1 2 3 9
-
-						//				0 3 4 8
-
-						//				0 4 5
-
-						//				1 0 6 9
-
-						//				2 1 7 8
-
-						//				2 6 7 9
-
-						//				5 3 7 8
-
-						//				4 6 5
-
-						//				6 1 4
-
-						//				5 0 3*/
-
-
-						//		}
-						//		if (breakk) {
-						//			break;
-						//		}
-						//	}
-						//	if (breakk) {
-						//		break;
-						//	}
-						//}
-
-
-
-					//}
-
-
-
-				//}
+			

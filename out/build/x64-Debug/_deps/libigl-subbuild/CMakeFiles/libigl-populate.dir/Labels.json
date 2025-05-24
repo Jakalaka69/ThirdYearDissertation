@@ -2,37 +2,37 @@
 	"sources" : 
 	[
 		{
-			"file" : "C:/Users/karen/source/repos/year3diss/out/build/x64-Debug/_deps/libigl-subbuild/CMakeFiles/libigl-populate"
+			"file" : "C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/libigl-subbuild/CMakeFiles/libigl-populate"
 		},
 		{
-			"file" : "C:/Users/karen/source/repos/year3diss/out/build/x64-Debug/_deps/libigl-subbuild/CMakeFiles/libigl-populate.rule"
+			"file" : "C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/libigl-subbuild/CMakeFiles/libigl-populate.rule"
 		},
 		{
-			"file" : "C:/Users/karen/source/repos/year3diss/out/build/x64-Debug/_deps/libigl-subbuild/CMakeFiles/libigl-populate-complete.rule"
+			"file" : "C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/libigl-subbuild/CMakeFiles/libigl-populate-complete.rule"
 		},
 		{
-			"file" : "C:/Users/karen/source/repos/year3diss/out/build/x64-Debug/_deps/libigl-subbuild/libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-build.rule"
+			"file" : "C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/libigl-subbuild/libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-build.rule"
 		},
 		{
-			"file" : "C:/Users/karen/source/repos/year3diss/out/build/x64-Debug/_deps/libigl-subbuild/libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-configure.rule"
+			"file" : "C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/libigl-subbuild/libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-configure.rule"
 		},
 		{
-			"file" : "C:/Users/karen/source/repos/year3diss/out/build/x64-Debug/_deps/libigl-subbuild/libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-download.rule"
+			"file" : "C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/libigl-subbuild/libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-download.rule"
 		},
 		{
-			"file" : "C:/Users/karen/source/repos/year3diss/out/build/x64-Debug/_deps/libigl-subbuild/libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-install.rule"
+			"file" : "C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/libigl-subbuild/libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-install.rule"
 		},
 		{
-			"file" : "C:/Users/karen/source/repos/year3diss/out/build/x64-Debug/_deps/libigl-subbuild/libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-mkdir.rule"
+			"file" : "C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/libigl-subbuild/libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-mkdir.rule"
 		},
 		{
-			"file" : "C:/Users/karen/source/repos/year3diss/out/build/x64-Debug/_deps/libigl-subbuild/libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-patch.rule"
+			"file" : "C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/libigl-subbuild/libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-patch.rule"
 		},
 		{
-			"file" : "C:/Users/karen/source/repos/year3diss/out/build/x64-Debug/_deps/libigl-subbuild/libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-test.rule"
+			"file" : "C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/libigl-subbuild/libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-test.rule"
 		},
 		{
-			"file" : "C:/Users/karen/source/repos/year3diss/out/build/x64-Debug/_deps/libigl-subbuild/libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-update.rule"
+			"file" : "C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/libigl-subbuild/libigl-populate-prefix/src/libigl-populate-stamp/libigl-populate-update.rule"
 		}
 	],
 	"target" : 

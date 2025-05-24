@@ -21,3 +21,6 @@ void PointClass::AddPlanesToPoint(int x, int y, int z) {
 	planeList.push_back(y);
 	planeList.push_back(z);
 }
+bool operator==(PointClass a, PointClass b) {
+	return a.point == b.point;
+}
