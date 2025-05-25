@@ -174,6 +174,43 @@ vector<vector<double>> GetPointsInHoles(vector<vector<PointClass>> Loops) {
 
 	return pointsInHoles;
 }
+
+//bool isPointInPolygon(vector<PointClass> loop ,PointClass p)
+//{
+//	
+//	int size = loop.size();
+//	int count = 0;
+//
+//	for (int i = 0; i < size; i++) {
+//
+//		PointClass p1 = loop[i];
+//		PointClass p2 = loop[(i + 1) % size];
+//
+//		if ((p.point[1] > min(p1.point[1], p2.point[1]))
+//			&& (p.point[1] <= max(p1.point[1], p2.point[1]))
+//			&& (p.point[1] <= max(p1.point[1], p2.point[1]))) {
+//			// Calculate the x-coordinate of the
+//			// intersection of the edge with a horizontal
+//			// line through the point
+//			double xIntersect = (point.y - p1.y)
+//				* (p2.x - p1.x)
+//				/ (p2.y - p1.y)
+//				+ p1.x;
+//			// If the edge is vertical or the point's
+//			// x-coordinate is less than or equal to the
+//			// intersection x-coordinate, increment count
+//			if (p1.x == p2.x || point.x <= xIntersect) {
+//				count++;
+//			}
+//		}
+//	}
+//	// If the number of intersections is odd, the point is
+//	// inside the polygon
+//	return count % 2 == 1;
+//}
+
+
+
 //function to get the effective "plane" boundary pointr
 vector<PointClass> getRegionLoop(int PlaneX, vector<PointClass> unOrderedFrame) {
 	vector<PointClass> frame;
@@ -288,6 +325,8 @@ int main(int argc, char* argv[])
 		objectTriangleArray.push_back(temp);
 	}
 
+
+
 	int planeCount = 0;
 	float percentCalsDenom = objectTriangleArray.size();
 	for (int t = 0; t < objectTriangleArray.size(); t++) {
@@ -320,7 +359,7 @@ int main(int argc, char* argv[])
 	int c2 = 0;
 
 	for (int p = 0; p < objectTriangleArray.size() - 1;p++) {
-		if (objectTriangleArray[p].planeNo == 1) {
+		if (objectTriangleArray[p].planeNo == 43) {
 			for (int x = 0; x < F.rows(); x++) {
 				//initialise the current triangle in loop
 				vector<vector<double>> nextTriangle = {};
@@ -342,10 +381,10 @@ int main(int argc, char* argv[])
 		}
 	}
 
-	/*igl::opengl::glfw::Viewer viewer;
+	//igl::opengl::glfw::Viewer viewer;
 
-	viewer.data().set_mesh(V, F);
-	viewer.launch();*/
+	//viewer.data().set_mesh(V, F);
+	//viewer.launch();
 
 
 
@@ -354,24 +393,11 @@ int main(int argc, char* argv[])
 	Eigen::MatrixXi P;
 
 	//removing points with equal plane lists
-	for (int p = 0; p < mainFrame.size();p++) {
-		bool pErase = false;
-		for (int h = 0; h < mainFrame.size();h++) {
-			if (p == h) {
-				continue;
-			}
-			if (mainFrame[p].planeList == mainFrame[h].planeList) {
-				mainFrame.erase(mainFrame.begin() + h);
-				
-				h--;
-			}
-		}
-		
-	}
+
 
 
 	//Loops through each region
-	for (int x = 0; x < planeCount;x++) {
+	for (int x = 98; x < 99;x++){
 		cout << x;
 		
 
@@ -403,34 +429,60 @@ int main(int argc, char* argv[])
 			}
 		}
 
+	
 
-		cout << endl << mainFrame2.size();
-
+		
+		//seach through each unique plane in all of the points
 		for (int i = 0; i < uniquePlanesInFrame.size();i++) {
 
+			//counts how in how many points that plane appears
 			int count = 0;
 			for (int d = 0; d < planesInFrame.size();d++) {
 				if (uniquePlanesInFrame[i] == planesInFrame[d]) {
 					count++;
 				}
 			}
+			
 
+			//if it in at least two points, i.e. an edge can be made
 			if (count < 2) {
+
+				//for every point in the frame
 				for (int d = 0; d < mainFrame2.size();d++) {
+
+					//if this unique plane is in this point, and this point has 3 or less points, it removes the point from the frame
 					if (find(mainFrame2[d].planeList.begin(), mainFrame2[d].planeList.end(), uniquePlanesInFrame[i]) != mainFrame2[d].planeList.end() && mainFrame2[d].planeList.size() < 4) {
 						mainFrame2.erase(mainFrame2.begin() + d);
 					}
+					
 				}
 			}
 		}
 		
+		
+
+
+		for (int p = 0; p < mainFrame2.size();p++) {
+			bool pErase = false;
+			for (int h = 0; h < mainFrame2.size();h++) {
+				if (p == h) {
+					continue;
+				}
+				auto v1 = mainFrame2[p].planeList;
+				auto v2 = mainFrame2[h].planeList;
+				sort(v1.begin(), v1.end());
+				sort(v2.begin(), v2.end());
+				if (v1 == v2) {
+					mainFrame2.erase(mainFrame2.begin() + h);
+
+					h--;
+				}
+			}
+
+		}
 		if (mainFrame2.size() < 3) {
 			continue;
 		}
-
-
-
-		
 
 		int looping = true;
 		vector<vector<PointClass>> Loops;
@@ -483,7 +535,7 @@ int main(int argc, char* argv[])
 		
 
 		
-		cout << Loops.size();
+		
 		for (int g = 0; g < Loops.size();g++) {
 			if (Loops[g].size() < 3) {
 				Loops.erase(Loops.begin() + g);
@@ -512,6 +564,32 @@ int main(int argc, char* argv[])
 		Eigen::MatrixXi F2;
 		Eigen::MatrixXd pre;
 
+		triangleClass normalCalc;
+		double xDiff = 0;
+		double yDiff = 0;
+		double zDiff = 0;
+		for (int p = 0; p < Loops[0].size();p++) {
+			normalCalc = triangleClass({ Loops[0][p% Loops[0].size()].point, Loops[0][(p + 1) % Loops[0].size()].point, Loops[0][(p + 2) % Loops[0].size()].point });
+			xDiff += abs(normalCalc.normal[0]);
+			yDiff += abs(normalCalc.normal[1]);
+			zDiff += abs(normalCalc.normal[2]);
+		}
+
+		double s = 0;
+
+		int jay = 0;
+		if (xDiff > s) {
+			jay = 0;
+			s = xDiff;
+		}
+		if (yDiff > s) {
+			jay = 1;
+			s = yDiff;
+		}
+		if (zDiff > s) {
+			jay = 2;
+			s = zDiff;
+		}
 
 		
 		for (int g = 0; g < Loops.size();g++) {
@@ -538,74 +616,123 @@ int main(int argc, char* argv[])
 			V3.resize(V3.rows() + Loops[g].size(), 2);
 			E.resize(E.rows() + Loops[g].size(), 2);
 		}
-		int jay = 0;
-		for (int j = 0;j < 3;j++) {
 
-			
-
-			jay = j;
-			
-			z = 0;
-			for (int g = 0; g < Loops.size();g++) {
-				for (int y = 0; y < Loops[g].size();y++) {
-					if (j == 0) {
-						V3(y + z, 0) = Loops[g][y].point[1];
-						V3(y + z, 1) = Loops[g][y].point[2];
-
-					}
-					else if (j == 1) {
-						V3(y + z, 0) = Loops[g][y].point[0];
-						V3(y + z, 1) = Loops[g][y].point[2];
-
-					}
-					else if (j == 2) {
-						V3(y + z, 0) = Loops[g][y].point[0];
-						V3(y + z, 1) = Loops[g][y].point[1];
-
-					}
-
-					E(y + z, 0) = y + z;
-					if (y + z == z + Loops[g].size() - 1)
-					{
-						E(y + z, 1) = z;
-					}
-					else
-					{
-						E(y + z, 1) = y + z + 1;
-					}
-
-				}
-				z += Loops[g].size();
-			}
-			
-			
-
-			bool break1 = false;
-			for (int n = 0;n < V3.rows();n++) {
-				for (int m = 0;m < V3.rows();m++) {
-					if (n == m) {
-						continue;
-					}
-					auto b1 = V3.block<1, 2>(n, 0);
-					auto b2 = V3.block<1, 2>(m, 0);
-					
-					if (abs(b1(0) - b2(0)) < 0.001 && abs(b1(1) - b2(1)) < 0.001){
-						break1 = true;
-					}
-					
-
-				}
-				
-			}
-			if (break1) {
-				continue;
-			}
-			break;
 
 		
+		//double biggestAvgDiff = 0;
+		//int pos = -1;
+		//for (int j = 0;j < 3;j++) {
+		//	
+		//	z = 0;
+		//	for (int g = 0; g < Loops.size();g++) {
+		//		for (int y = 0; y < Loops[g].size();y++) {
+		//			if (j == 0) {
+		//				V3(y + z, 0) = Loops[g][y].point[1] ;
+		//				V3(y + z, 1) = Loops[g][y].point[2] ;
+
+		//			}
+		//			else if (j == 1) {
+		//				V3(y + z, 0) = Loops[g][y].point[0] ;
+		//				V3(y + z, 1) = Loops[g][y].point[2] ;
+
+		//			}
+		//			else if (j == 2) {
+		//				V3(y + z, 0) = Loops[g][y].point[0] ;
+		//				V3(y + z, 1) = Loops[g][y].point[1];
+
+		//			}
+
+		//			E(y + z, 0) = y + z;
+		//			if (y + z == z + Loops[g].size() - 1)
+		//			{
+		//				E(y + z, 1) = z;
+		//			}
+		//			else
+		//			{
+		//				E(y + z, 1) = y + z + 1;
+		//			}
+
+		//		}
+		//		z += Loops[g].size();
+		//	}
+		//	
+		//	cout << endl << V3 << endl;
+
+		//	bool break1 = false;
+		//	double avgDiff = 0;
+		//	for (int n = 0;n < V3.rows();n++) {
+		//		for (int m = 0;m < V3.rows();m++) {
+		//			if (n == m) {
+		//				continue;
+		//			}
+		//			
+		//			
+		//			auto b1 = V3.block<1, 2>(n, 0);
+		//			auto b2 = V3.block<1, 2>(m, 0);
+		//			
+		//			avgDiff += abs(b1(0) - b2(0)) + abs(b1(1) - b2(1));
+
+		//			if (abs(b1(0) - b2(0)) < 0.001 && abs(b1(1) - b2(1)) < 0.001){
+		//				break1 = true;
+		//				break;
+		//			}
+		//			
+
+		//		}
+		//		
+
+		//		
+		//	}
+		//	
+		//	if (break1) {
+		//		continue;
+		//	}
+		//	double rows = pow(V3.rows(), 2);
+		//	if ((avgDiff / rows )> biggestAvgDiff) {
+		//		jay = j;
+		//		biggestAvgDiff = (avgDiff / rows);
+		//	}
+		//	cout << endl << endl << biggestAvgDiff << "" << endl;
+		//	//continue;
+		//	
+
+		//
+		//}
+
+		
+
+		z = 0;
+		for (int g = 0; g < Loops.size();g++) {
+			for (int y = 0; y < Loops[g].size();y++) {
+				if (jay == 0) {
+					V3(y + z, 0) = Loops[g][y].point[1];
+					V3(y + z, 1) = Loops[g][y].point[2];
+
+				}
+				else if (jay == 1) {
+					V3(y + z, 0) = Loops[g][y].point[0];
+					V3(y + z, 1) = Loops[g][y].point[2];
+
+				}
+				else if (jay == 2) {
+					V3(y + z, 0) = Loops[g][y].point[0];
+					V3(y + z, 1) = Loops[g][y].point[1];
+
+				}
+
+				E(y + z, 0) = y + z;
+				if (y + z == z + Loops[g].size() - 1)
+				{
+					E(y + z, 1) = z;
+				}
+				else
+				{
+					E(y + z, 1) = y + z + 1;
+				}
+
+			}
+			z += Loops[g].size();
 		}
-
-
 
 
 
@@ -628,12 +755,14 @@ int main(int argc, char* argv[])
 				
 			}
 		}
-	
-		cout << endl << endl << H;
-		igl::triangle::triangulate(V3, E, H, "1", V2, F2);
+		
+		cout << E;
+		igl::triangle::triangulate(V3, E, H, "0.9", V2, F2);
+		
 
-	
-	
+		cout << V2;
+
+		cout << F2;
 	
 		Eigen::MatrixXd V4;
 		Eigen::MatrixXi F4;
@@ -651,7 +780,7 @@ int main(int argc, char* argv[])
 			if (jay == 0) {
 
 				
-				V4(p, 0) = pre(p,0);
+				V4(p, 0) = pre(p, 0);;
 				//V4(p, 0) = calcX(checks, V2(p, 0), V2(p, 1))[2];
 				V4(p, 1) = V2(p, 0);
 				V4(p, 2) = V2(p, 1);
@@ -681,7 +810,7 @@ int main(int argc, char* argv[])
 
 				
 				
-				V4(p, 0) = calcX(checks, V2(p, 0), V2(p, 1))[2];
+				V4(p, 0) = V4(p, 0) = calcX(checks, V2(p, 0), V2(p, 1))[2];
 				V4(p, 1) = V2(p, 0);
 				V4(p, 2) = V2(p, 1);
 			}
@@ -690,7 +819,7 @@ int main(int argc, char* argv[])
 
 				V4(p, 0) = V2(p, 0);
 				
-				V4(p, 1) = calcY(checks, V2(p, 0), V2(p, 1))[2];
+				V4(p, 1) = V4(p, 1) = calcY(checks, V2(p, 0), V2(p, 1))[2];
 
 				V4(p, 2) = V2(p, 1);
 			}
@@ -705,105 +834,101 @@ int main(int argc, char* argv[])
 
 		}
 
-			//}
-
-	
-
+			
+		cout << V4;
 
 
+		if (D.rows() == 0) {
 
+			D.conservativeResize(V4.rows(), V4.cols());
+			D << V4;
+		}
+		else {
+			Eigen::MatrixXd temp1(D.rows() + V4.rows(), 3);
 
-			if (D.rows() == 0) {
-
-				D.conservativeResize(V4.rows(), V4.cols());
-				D << V4;
-			}
-			else {
-				Eigen::MatrixXd temp1(D.rows() + V4.rows(), 3);
-
-				temp1 << D, V4;
-				D = temp1;
-			}
-
-
-
-
-
-			//Removing duplicates from the verticies list
-
-			vector<vector<double>> checked;
-
-			for (int i = 0; i < D.rows();i++) {
-
-				vector<double> cur = { D(i,0),D(i,1),D(i,2) };
-
-				if (find(checked.begin(), checked.end(), cur) == checked.end()) {
-					checked.push_back(cur);
-				}
-				else {
-					int rows = D.rows() - 1;
-					if (i < rows) {
-						D.block(i, 0, rows - i, 3) = D.block(i + 1, 0, rows - i, 3);
-					}
-					D.conservativeResize(rows, 3);
-					i--;
-				}
-			}
-
-
-
-
-			for (int n = 0;n < F2.rows();n++) {
-				for (int m = 0;m < 3;m++) {
-					bool found = false;
-					for (int l = 0;l < D.rows();l++) {
-						if (D.block<1, 3>(l, 0) == V4.block<1, 3>(F2(n, m), 0)) {
-							F2(n, m) = l;
-							found = true;
-
-							break;
-						}
-					}
-					if (found == false) { F2(n, m) += D.rows(); }
-				}
-			}
-
-
-
-
-
-			if (P.rows() == 0) {
-				P.conservativeResize(F2.rows(), F2.cols());
-
-				P << F2;
-			}
-			else {
-				Eigen::MatrixXi temp2(P.rows() + F2.rows(), 3);
-
-				temp2 << P, F2;
-				P = temp2;
-			}
-
+			temp1 << D, V4;
+			D = temp1;
 		}
 
-		//Plot the mesh
-
-		std::cout << endl << endl << endl;
-		//open libigl viewer
-
-		//cout << D;
 
 
-		cout << P.rows();
-
-		igl::opengl::glfw::Viewer viewer;
-
-		viewer.data().set_mesh(D, P);
-		viewer.launch();
 
 
+		//Removing duplicates from the verticies list
+
+		vector<vector<double>> checked;
+
+		for (int i = 0; i < D.rows();i++) {
+
+			vector<double> cur = { D(i,0),D(i,1),D(i,2) };
+
+			if (find(checked.begin(), checked.end(), cur) == checked.end()) {
+				checked.push_back(cur);
+			}
+			else {
+				int rows = D.rows() - 1;
+				if (i < rows) {
+					D.block(i, 0, rows - i, 3) = D.block(i + 1, 0, rows - i, 3);
+				}
+				D.conservativeResize(rows, 3);
+				i--;
+			}
+		}
+
+
+
+
+		for (int n = 0;n < F2.rows();n++) {
+			for (int m = 0;m < 3;m++) {
+				bool found = false;
+				for (int l = 0;l < D.rows();l++) {
+					if (D.block<1, 3>(l, 0) == V4.block<1, 3>(F2(n, m), 0)) {
+						F2(n, m) = l;
+						found = true;
+
+						break;
+					}
+				}
+				if (found == false) { F2(n, m) += D.rows(); }
+			}
+		}
+
+
+
+
+
+		if (P.rows() == 0) {
+			P.conservativeResize(F2.rows(), F2.cols());
+
+			P << F2;
+		}
+		else {
+			Eigen::MatrixXi temp2(P.rows() + F2.rows(), 3);
+
+			temp2 << P, F2;
+			P = temp2;
+		}
 
 	}
+
+	//Plot the mesh
+
+	std::cout << endl << endl << endl;
+	//open libigl viewer
+
+	//cout << D;
+
+
+	cout << P.rows();
+
+	igl::opengl::glfw::Viewer viewer;
+
+	viewer.data().set_mesh(D, P);
+	viewer.launch();
+
+
+
+}
 
 
 
