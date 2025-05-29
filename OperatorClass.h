@@ -28,7 +28,6 @@ public:
 		Eigen::MatrixXd V;
 		Eigen::MatrixXi F;
 		int planeCount;
-
 	};
 
 

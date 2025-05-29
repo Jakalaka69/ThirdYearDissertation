@@ -173,7 +173,7 @@ Reconstructor::matrixOut Reconstructor::Reconstruct(OperatorClass::funcReturn re
 {
 	int RegionCount = returnValues.planeCount;
 	vector<PointClass> mainFrame = returnValues.pointList;
-	
+
 
 
 	
@@ -747,7 +747,7 @@ Reconstructor::matrixOut Reconstructor::Reconstruct(OperatorClass::funcReturn re
 
 	//cout << D;
 	igl::writeOBJ(outputPath, D, P);
-	
+
 
 	Reconstructor::matrixOut outVals;
 	outVals.D = D;

@@ -27,7 +27,6 @@ OperatorClass::OperatorClass() {
 
 
 void OperatorClass::FindConnected(triangleClass* startTriangle, triangleClass* curTriangle) {
-	int count1 = 0;
 	//for every triangle in object
 	for (int x = 0; x < triangleList.size(); x++) {
 		int count = 0;

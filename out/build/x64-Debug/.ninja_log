@@ -27,3 +27,6 @@
 6	36	0	clean	8c45b54705a541e8
 8	17112	7701742674204757	CMakeFiles/example.dir/main.cpp.obj	6dad2abffe092af7
 17115	18628	7701742688759830	example.exe	ee69a1efd7dd7270
+22	12199	7701884324867499	CMakeFiles/example.dir/OperatorClass.cpp.obj	f1f86a06c974e9ab
+33	12686	7701884329688869	CMakeFiles/example.dir/main.cpp.obj	6dad2abffe092af7
+12687	14044	7701884342678773	example.exe	ee69a1efd7dd7270
