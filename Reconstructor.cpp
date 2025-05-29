@@ -10,8 +10,9 @@
 #include <cmath>
 #include <string>
 #include <map> 
-#include "RegionGen.h"
+//#include "RegionGen.h"
 #include "Reconstructor.h"
+#include "OperatorClass.h"
 
 #define _USE_MATH_DEFINES
 using namespace std;
@@ -395,7 +396,7 @@ Reconstructor::matrixOut Reconstructor::Reconstruct(OperatorClass::funcReturn re
 
 
 		
-		triangleClass checks = triangleClass({ Loops[0][0].point, Loops[0][2].point, Loops[0][1].point });
+		triangleClass checks = triangleClass({ Loops[0][0].point, Loops[0][2].point, Loops[0][1].point },0);
 
 		Eigen::MatrixXd V3;
 		Eigen::MatrixXi E;
@@ -411,7 +412,7 @@ Reconstructor::matrixOut Reconstructor::Reconstruct(OperatorClass::funcReturn re
 
 		//Taking the average normal directions of some triangles that could make up the region
 		for (int p = 0; p < Loops[0].size();p++) {
-			normalCalc = triangleClass({ Loops[0][p% Loops[0].size()].point, Loops[0][(p + 1) % Loops[0].size()].point, Loops[0][(p + 2) % Loops[0].size()].point });
+			normalCalc = triangleClass({ Loops[0][p% Loops[0].size()].point, Loops[0][(p + 1) % Loops[0].size()].point, Loops[0][(p + 2) % Loops[0].size()].point },0);
 			xDiff += abs(normalCalc.normal[0]);
 			yDiff += abs(normalCalc.normal[1]);
 			zDiff += abs(normalCalc.normal[2]);

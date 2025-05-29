@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include <cmath>
+#include "OperatorClass.h"
 #define _USE_MATH_DEFINES
 
 using namespace std;

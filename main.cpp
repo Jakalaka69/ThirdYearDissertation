@@ -31,6 +31,7 @@ int ub = 100;
 int main(int argc, char* argv[])
 {
 	OperatorClass test = OperatorClass();
+	Reconstructor recon = Reconstructor();
 
 
 	auto temp = test.getVectors(
@@ -42,15 +43,12 @@ int main(int argc, char* argv[])
 	pointListMain = temp.pointList;
 	
 	for (triangleClass x : triangleListMain) {
-		int cnt = count(planeNums.begin(), planeNums.end(), x.planeNo);
-		if (cnt <= 0) {
+		int num = count(planeNums.begin(), planeNums.end(), x.planeNo);
+		if (num <= 0) {
 			planeNums.push_back(x.planeNo);
 		}
 	}
-	
 
-	
-	
 	MatrixXd C = RowVector3d(0.4, 0.8, 0.3).replicate(F.rows(), 1);
 
 	for (int y : planeNums) {
@@ -68,10 +66,17 @@ int main(int argc, char* argv[])
 		}
 	}
 
+	auto out = recon.Reconstruct(temp, "C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/models/out.obj");
+
+
+	cout << endl << "Started with " << V.rows() << " Vertices, ended with " << out.D.rows() << " Vertices" << endl;
+
+	cout << endl << "Started with " << F.rows() << " Faces, ended with " << out.P.rows() << " Faces" << endl << endl << endl;
 
 	igl::opengl::glfw::Viewer viewer;
+	//viewer.data().set_mesh(out.D, out.P);
 	viewer.data().set_mesh(V, F);
-	viewer.data().set_colors(C);
+	//viewer.data().set_colors(C);
 	viewer.launch();
 
 

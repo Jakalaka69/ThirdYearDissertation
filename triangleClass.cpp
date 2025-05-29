@@ -8,12 +8,9 @@ double pii = 3.14159265;
 
 
 vector<vector<double>> points;
-vector<triangleClass> adjacenttriangles;
 vector<double> normal;
 int planeNo;
 bool isPrimeTriangle;
-vector<int> connectedPlanes;
-vector<int> countNum;
 int faceNum;
 
 
@@ -46,32 +43,6 @@ triangleClass::triangleClass() {
 }
 
 
-void triangleClass::setCount(int x)
-{
-    this->countNum.push_back(x);
-}
-
-
-//void triangleClass::addTo
-// 
-// 
-// Triangles(triangleClass* triangle) {
-//    adjacenttriangles.push_back(triangle);
-//}
-
-//void triangleClass::addToAdjacentTriangles(triangleClass triangle){
-//    adjacenttriangles.push_back(triangle);
-//}
-
-//void triangleClass::addToBorderTriangles(triangleClass triangle) {
-//    borderTriangles.push_back(triangle);
-//}
-
-//void triangleClass::removeAdjacentTriangle(triangleClass triangle) {
-//    adjacenttriangles.erase(std::remove(adjacenttriangles.begin(), adjacenttriangles.end(), triangle), adjacenttriangles.end());
-
-//}
-
 vector<vector<double>> triangleClass::returnPoints() {
     return points;
 }
@@ -86,46 +57,11 @@ void triangleClass::makeTrianglePrime()
     this->isPrimeTriangle = true;
 }
 
-void triangleClass::addToConnectedPlanes(int x)
-{
-    if (find(connectedPlanes.begin(), connectedPlanes.end(), x) == connectedPlanes.end()) {
-        connectedPlanes.push_back(x);
-    }
-    //cout << "HERE" << endl;
-    
-}
 
 void triangleClass::updatePlaneNo(int x)
 {
     this->planeNo = x;
 }
-
-//int triangleClass::getNoOfConnectedTriangles()
-//{
-//    return adjacenttriangles.size();
-//}
-
-//vector<triangleClass> triangleClass::getConnectedTriangles()
-//{
-//    return adjacenttriangles;
-//}
-
-//bool triangleClass::isTrianglePresent(triangleClass t)
-//{
-
-//    for (triangleClass queried : adjacenttriangles) {
-//        if (queried == t) {
-//            return true;
-//        }
-//        else {
-//            return false;
-//        }
-//    }
-
-//    return false;
-//}
-
-
 
 
 double triangleClass::calcInteriorAngle(triangleClass triangle) {

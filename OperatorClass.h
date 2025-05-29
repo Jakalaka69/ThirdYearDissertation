@@ -31,9 +31,9 @@ public:
 	};
 
 
-	OperatorClass::OperatorClass();
-	void OperatorClass::FindConnected(triangleClass* startTriangle, triangleClass* curTriangle);
-	OperatorClass::funcReturn OperatorClass::getVectors(string filePath, double simplificationAngle);
+	OperatorClass();
+	void FindConnected(triangleClass* startTriangle, triangleClass* curTriangle);
+	funcReturn getVectors(string filePath, double simplificationAngle);
 
 };
 
