@@ -20,9 +20,10 @@ public:
     bool isPrimeTriangle;
     vector<int> connectedPlanes;
     vector<int> countNum;
+    int faceNum;
 public:
     triangleClass();
-    triangleClass(vector<vector<double>> x);
+    triangleClass(vector<vector<double>> x, int faceNum);
     //void addToAdjacentTriangles(triangleClass*);
     //void 
     // 

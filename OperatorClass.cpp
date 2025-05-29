@@ -19,11 +19,7 @@ Eigen::MatrixXi F;
 vector<triangleClass> triangleList;
 vector<PointClass> pointList;
 double simplificationAngle;
-struct funcReturn
-{
-	vector<triangleClass> triangleList;
-	vector<PointClass> pointList;
-};
+
 
 OperatorClass::OperatorClass() {
 
@@ -99,7 +95,7 @@ OperatorClass::funcReturn OperatorClass::getVectors(string filePath, double simp
 		for (int i = 0; i < 3; i++) {
 			nextTriangle.push_back({ V(F(x, i), 0), V(F(x, i), 1), V(F(x, i), 2) });
 		}
-		triangleClass temp = triangleClass(nextTriangle);
+		triangleClass temp = triangleClass(nextTriangle,x);
 		triangleList.push_back(temp);
 	}
 	int planeCount = 0;
@@ -117,6 +113,9 @@ OperatorClass::funcReturn OperatorClass::getVectors(string filePath, double simp
 	OperatorClass::funcReturn returnValues;
 	returnValues.triangleList = triangleList;
 	returnValues.pointList = pointList;
+	returnValues.V = V;
+	returnValues.F = F;
+	returnValues.planeCount = planeCount;
 	return returnValues;
 
 }

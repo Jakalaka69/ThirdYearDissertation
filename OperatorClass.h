@@ -25,6 +25,10 @@ public:
 	{
 		vector<triangleClass> triangleList;
 		vector<PointClass> pointList;
+		Eigen::MatrixXd V;
+		Eigen::MatrixXi F;
+		int planeCount;
+
 	};
 
 
