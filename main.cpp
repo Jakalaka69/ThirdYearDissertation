@@ -30,13 +30,13 @@ int ub = 100;
 
 int main(int argc, char* argv[])
 {
+	int angle = int(argv[3]);
+
 	OperatorClass test = OperatorClass();
 	Reconstructor recon = Reconstructor();
 
 
-	auto temp = test.getVectors(
-		"C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/models/objBuilding.obj", //objBuilding
-		30);
+	auto temp = test.getVectors(argv[0], angle);
 	MatrixXi F = temp.F;
 	MatrixXd V = temp.V;
 	
@@ -68,7 +68,7 @@ int main(int argc, char* argv[])
 	//	}
 	//}
 
-	auto out = recon.Reconstruct(temp, "C:/Users/Wooki/Downloads/out.obj");
+	auto out = recon.Reconstruct(temp, argv[0]);
 
 
 	cout << endl << "Started with " << V.rows() << " Vertices, ended with " << out.D.rows() << " Vertices" << endl;
