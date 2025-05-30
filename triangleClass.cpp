@@ -14,10 +14,6 @@ bool isPrimeTriangle;
 int faceNum;
 
 
-//triangles that are adjacent to the outermost layer of connected triangles
-//but not apart of it
-vector<triangleClass> borderTriangles;
-
 triangleClass::triangleClass(vector<vector<double>> x, int faceNum) {
     planeNo = -1;
     points = x;

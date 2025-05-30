@@ -55,7 +55,8 @@ void OperatorClass::FindConnected(triangleClass* startTriangle, triangleClass* c
 			//checks if the next_triangles has been assigned a plane number
 			if (triangleList[x].planeNo != -1) {
 				for (int r = 0; r < 2; r++) {
-					//if point is already in the pointList, add the two plane numbers to the point's plane list (if they arent already in it)
+					//if point is already in the pointList,
+					//add the two plane numbers to the point's plane list (if they arent already in it)
 					bool found = false;
 					for (int j = 0; j < pointList.size(); j++) {
 						if (pointList[j].point == twoPoints[r]) {
@@ -99,6 +100,9 @@ OperatorClass::funcReturn OperatorClass::getVectors(string filePath, double simp
 	}
 	int planeCount = 0;
 	float percentCalcDenom = triangleList.size();
+	
+	//int t = triangleList.size();
+	//for (t > 0; t--;) {
 	for (int t = 0; t < triangleList.size(); t++) {
 		if (triangleList[t].planeNo == -1) {
 			triangleList[t].updatePlaneNo(planeCount);
