@@ -30,14 +30,18 @@ int ub = 100;
 
 int main(int argc, char* argv[])
 {
-
+	string src;
+	string dst;
+	int angle;
 	OperatorClass test = OperatorClass();
 	Reconstructor recon = Reconstructor();
 
-
+	cout << "Enter the sourceObj, the angle threshold and the outputObj: ";
+	cin >> src >> angle >> dst;
 	auto temp = test.getVectors(
-		"C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/models/objBuilding.obj", //objBuilding
-		30);
+		src, //objBuilding
+		angle);
+
 	MatrixXi F = temp.F;
 	MatrixXd V = temp.V;
 	
@@ -69,7 +73,7 @@ int main(int argc, char* argv[])
 	//	}
 	//}
 
-	auto out = recon.Reconstruct(temp, "C:/Users/Wooki/Downloads/out.obj");
+	auto out = recon.Reconstruct(temp, dst);
 
 
 	cout << endl << "Started with " << V.rows() << " Vertices, ended with " << out.D.rows() << " Vertices" << endl;
@@ -78,6 +82,8 @@ int main(int argc, char* argv[])
 	cout << endl << "Started with " << F.rows() << " Faces, ended with " << out.P.rows() << " Faces" << endl << endl << endl;
 
 	cout << "planeCount: " << temp.planeCount << endl;
+
+	cout << "Press Escape To Save Object";
 
 	igl::opengl::glfw::Viewer viewer;
 	viewer.data().set_mesh(out.D, out.P);
