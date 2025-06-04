@@ -14,15 +14,16 @@ int planeNo;
 bool isPrimeTriangle;
 vector<int> connectedPlanes;
 vector<int> countNum;
-
+int faceNum;
 
 //triangles that are adjacent to the outermost layer of connected triangles
 //but not apart of it
 vector<triangleClass> borderTriangles;
 
-triangleClass::triangleClass(vector<vector<double>> x) {
+triangleClass::triangleClass(vector<vector<double>> x,int facenum1) {
     planeNo = -1;
     points = x;
+    faceNum = facenum1;
     vector<double> U = { points[0][0] - points[1][0]
                                , points[0][1] - points[1][1]
                                , points[0][2] - points[1][2] };
@@ -82,7 +83,7 @@ vector<double> triangleClass::returnNormal() {
 void triangleClass::makeTrianglePrime()
 {
     this->isPrimeTriangle = true;
-    this->calcCentoid();
+    //this->calcCentoid();
 }
 
 void triangleClass::addToConnectedPlanes(int x)

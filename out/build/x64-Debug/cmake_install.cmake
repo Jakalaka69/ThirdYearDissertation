@@ -1,8 +1,8 @@
-# Install script for directory: C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation
+# Install script for directory: C:/Users/jaywh/source/repos/Dissertation
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/install/x64-Debug")
+  set(CMAKE_INSTALL_PREFIX "C:/Users/jaywh/source/repos/Dissertation/out/install/x64-Debug")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -34,22 +34,22 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/libigl-build/cmake_install.cmake")
+  include("C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/libigl-build/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/triangle-build/cmake_install.cmake")
+  include("C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/triangle-build/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/glfw-build/cmake_install.cmake")
+  include("C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/glfw-build/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/_deps/glad-build/cmake_install.cmake")
+  include("C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/_deps/glad-build/cmake_install.cmake")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
@@ -60,5 +60,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Uni Stuff/year3/3rd year project polyfit ver/ThirdYearDissertation/out/build/x64-Debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/jaywh/source/repos/Dissertation/out/build/x64-Debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
