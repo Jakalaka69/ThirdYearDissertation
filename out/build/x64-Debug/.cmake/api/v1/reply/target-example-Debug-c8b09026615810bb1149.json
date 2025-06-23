@@ -201,11 +201,7 @@
 		},
 		{
 			"backtrace" : 17,
-			"id" : "glad::@f022c46af7fd79d63a94"
-		},
-		{
-			"backtrace" : 17,
-			"id" : "glfw::@fa9f4482d3a2b070f206"
+			"id" : "triangle::@afb7f2633d2441d2a5b6"
 		},
 		{
 			"backtrace" : 17,
@@ -217,7 +213,11 @@
 		},
 		{
 			"backtrace" : 17,
-			"id" : "triangle::@afb7f2633d2441d2a5b6"
+			"id" : "glad::@f022c46af7fd79d63a94"
+		},
+		{
+			"backtrace" : 17,
+			"id" : "glfw::@fa9f4482d3a2b070f206"
 		}
 	],
 	"id" : "example::@6890427a1f51a3e7e1df",

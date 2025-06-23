@@ -57,8 +57,9 @@ int main(int argc, char* argv[])
 
 	MatrixXd C = RowVector3d(0.4, 0.8, 0.3).replicate(F.rows(), 1);
 
+	//////vv uncomment for colouring
 	//for (int y : planeNums) {
-	//	//cout << "colouring faces " << y << " out of " << planeNums.size() << endl;
+	//	cout << "colouring faces " << y << " out of " << planeNums.size() << endl;
 	//	srand(y);
 	//	double col1 = double(((rand() % (ub - lb + 1)) + lb)) / 100;
 	//	double col2 = double(((rand() % (ub - lb + 1)) + lb)) / 100;
@@ -72,26 +73,37 @@ int main(int argc, char* argv[])
 	//		}
 	//	}
 	//}
+	//////^^ uncomment colouring
 
+	//vv uncomment simplifying
 	auto out = recon.Reconstruct(temp, dst);
-
-
 	cout << endl << "Started with " << V.rows() << " Vertices, ended with " << out.D.rows() << " Vertices" << endl;
-
-
 	cout << endl << "Started with " << F.rows() << " Faces, ended with " << out.P.rows() << " Faces" << endl << endl << endl;
+	//^^ uncomment simplifying
 
-	cout << "planeCount: " << temp.planeCount << endl;
+	//////vv uncomment for colouring
+	//cout << "faceCount: " << F.rows() << endl;
+	//cout << "planeCount: " << temp.planeCount << endl;
+	//////^^ uncomment for colouring
+	
 
 	cout << "Press Escape To Save Object";
 
 	igl::opengl::glfw::Viewer viewer;
+
+	
+	//vv uncomment for simplifying
 	viewer.data().set_mesh(out.D, out.P);
+	//^^ uncomment for simplifying
+	
+	//////vv uncomment for colouring
 	//viewer.data().set_mesh(V, F);
 	//viewer.data().set_colors(C);
+	//////^^ uncomment for colouring
+
 	viewer.launch();
 
-
+    //C:/Users/Wooki/objBuilding.obj 40 C:/Users/Wooki/HouseObjTest1.obj
 }
 
 
